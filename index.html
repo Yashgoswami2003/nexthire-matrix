@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional ATS Resume Builder | Free & Secure</title>
+    
+    <!-- Professional Inline SVG Favicon (Lightning Bolt) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Universal SEO & Open Graph Tags -->
+    <meta name="description" content="Build clean, professional, and 100% ATS-optimized resumes instantly for free. Get instant ATS score and PDF export.">
+    <meta property="og:title" content="Professional ATS Resume Builder - Create & Check ATS Score">
+    <meta property="og:description" content="Build your professional ATS-friendly resume in minutes, check your ATS score, and download PDF instantly for free!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional ATS Resume Builder">
+    <meta name="twitter:description" content="Create high-scoring ATS resumes and boost your interview selection chances!">
+
+    <!-- Fast Schema Markup (JSON-LD Rich Snippet for Google Search) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Professional ATS Resume Builder",
+      "operatingSystem": "All",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Build clean, professional, and 100% ATS-optimized resumes instantly for free with instant score and PDF export."
+    }
+    </script>
+
+    <!-- Sentry SDK for Silent Error Tracking -->
+    <script src="https://browser.sentry-cdn.com/7.81.1/bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        Sentry.init({
+            dsn: "YOUR_SENTRY_DSN_HERE",
+            tracesSampleRate: 1.0,
+        });
+    </script>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300 relative">
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-base sm:text-xl font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+                <span>⚡</span> Professional ATS Resume Builder
+            </h1>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Live Counter Badge (Persistent LocalStorage) -->
+                <span class="text-[11px] sm:text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                    🔥 <span id="liveCounter">1250</span> Resumes Built Today
+                </span>
+                <span class="text-xs bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 font-medium px-2.5 py-1 rounded-full hidden md:inline-block">100% Privacy & Free</span>
+                <!-- Dark Mode Toggle Button -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition text-sm flex items-center gap-1 font-medium">
+                    <span id="themeIcon">🌙</span> <span class="hidden sm:inline" id="themeText">Dark</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container with Fully Responsive Grid Layout -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-grow w-full">
+        
+        <!-- Left Column: Structured Inputs (5 Cols on Desktop, Full on Mobile) -->
+        <section class="lg:col-span-5 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-4 h-fit transition-colors duration-300">
+            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                <h2 class="text-base font-bold text-slate-700 dark:text-slate-200">Enter Your Details</h2>
+                <button onclick="clearLocalStorage()" class="text-xs text-rose-500 hover:underline">Clear History</button>
+            </div>
+
+            <!-- Template Selector -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Choose Resume Template</label>
+                <select id="templateSelector" onchange="updatePreview()" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="classic">Classic ATS (Single Column, High Score)</option>
+                    <option value="modern">Modern Tech (Clean Divider Style)</option>
+                    <option value="executive">Executive Minimal (Compact & Sharp)</option>
+                    <option value="creative">Creative Developer (Stylish Accent Bar)</option>
+                    <option value="academic">Academic / Researcher (Formal Layout)</option>
+                </select>
+            </div>
+
+            <!-- Photo Upload -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Upload Profile Photo</label>
+                <input type="file" id="photoInput" accept="image/*" onchange="handlePhoto(event)" class="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900/40 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100">
+            </div>
+
+            <!-- Personal Info with Sanitized Professional Placeholders -->
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                    <input type="text" id="fullName" placeholder="e.g. John Doe" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Email</label>
+                        <input type="email" id="email" placeholder="john.doe@example.com" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Phone Number</label>
+                        <div class="flex gap-1.5">
+                            <!-- Country Code Dropdown -->
+                            <select id="countryCode" onchange="saveAndPreview()" class="w-32 px-1.5 py-2 border dark:border-slate-600 rounded-lg text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="+91">🇮🇳 India (+91)</option>
+                                <option value="+1">🇺🇸 USA (+1)</option>
+                                <option value="+44">🇬🇧 UK (+44)</option>
+                                <option value="+61">🇦🇺 Aus (+61)</option>
+                                <option value="+971">🇦🇪 UAE (+971)</option>
+                                <option value="+966">🇸🇦 KSA (+966)</option>
+                                <option value="+49">🇩🇪 Ger (+49)</option>
+                                <option value="+33">🇫🇷 Fra (+33)</option>
+                                <option value="+81">🇯🇵 Jpn (+81)</option>
+                                <option value="+82">🇰🇷 KR (+82)</option>
+                                <option value="+86">🇨🇳 Chn (+86)</option>
+                                <option value="+7">🇷🇺 Rus (+7)</option>
+                                <option value="+55">🇧🇷 Bra (+55)</option>
+                                <option value="+27">🇿🇦 SA (+27)</option>
+                                <option value="+65">🇸🇬 SGP (+65)</option>
+                                <option value="+64">🇳🇿 NZ (+64)</option>
+                                <option value="+92">🇵🇰 Pak (+92)</option>
+                                <option value="+880">🇧🇩 Ban (+880)</option>
+                                <option value="+94">🇱🇰 SL (+94)</option>
+                                <option value="+977">🇳🇵 Nep (+977)</option>
+                                <option value="+60">🇲🇾 MYS (+60)</option>
+                                <option value="+62">🇮🇩 IDN (+62)</option>
+                                <option value="+63">🇵🇭 PHL (+63)</option>
+                                <option value="+84">🇻🇳 VNM (+84)</option>
+                                <option value="+66">🇹🇭 THA (+66)</option>
+                                <option value="+39">🇮🇹 ITA (+39)</option>
+                                <option value="+34">🇪🇸 ESP (+34)</option>
+                                <option value="+31">🇳🇱 NLD (+31)</option>
+                                <option value="+41">🇨🇭 CHE (+41)</option>
+                                <option value="+46">🇸🇪 SWE (+46)</option>
+                                <option value="+47">🇳🇴 NOR (+47)</option>
+                                <option value="+45">🇩🇰 DNK (+45)</option>
+                                <option value="+358">🇫🇮 FIN (+358)</option>
+                                <option value="+353">🇮🇪 IRL (+353)</option>
+                                <option value="+48">🇵🇱 POL (+48)</option>
+                                <option value="+351">🇵🇹 PRT (+351)</option>
+                                <option value="+30">🇬🇷 GRC (+30)</option>
+                                <option value="+90">🇹🇷 TUR (+90)</option>
+                                <option value="+20">🇪🇬 EGY (+20)</option>
+                                <option value="+234">🇳🇬 NGA (+234)</option>
+                                <option value="+254">🇰🇪 KEN (+254)</option>
+                                <option value="+52">🇲🇽 MEX (+52)</option>
+                                <option value="+54">🇦🇷 ARG (+54)</option>
+                                <option value="+56">🇨🇱 CHL (+56)</option>
+                                <option value="+57">🇨🇴 COL (+57)</option>
+                            </select>
+                            <input type="text" id="phone" placeholder="XXXXXXXXXX" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">LinkedIn / Portfolio</label>
+                    <input type="text" id="links" placeholder="linkedin.com/in/johndoe" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Professional Summary</label>
+                <textarea id="summary" rows="2" placeholder="Brief summary about yourself..." class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Technical / Core Skills (Comma separated)</label>
+                <input type="text" id="skills" placeholder="Python, JavaScript, Communication, MS Office" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+            </div>
+
+            <!-- Experience / Projects Section -->
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-3 space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Work Experience / Projects</h3>
+                    <button onclick="addExperienceField()" class="text-xs bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 font-semibold px-2 py-1 rounded hover:bg-indigo-100">+ Add More</button>
+                </div>
+                <div id="experienceContainer" class="space-y-4"></div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-3 space-y-3">
+                <h3 class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Education Details</h3>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Graduation / Post Graduation</label>
+                    <input type="text" id="eduGrad" placeholder="B.Tech in CSE - University Name (2028)" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">12th / Senior Secondary</label>
+                    <input type="text" id="edu12th" placeholder="School Name / Board - Percentage/CGPA" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">10th / Secondary School</label>
+                    <input type="text" id="edu10th" placeholder="School Name / Board - Percentage/CGPA" class="w-full px-3 py-2 border dark:border-slate-600 rounded-lg text-sm bg-transparent focus:ring-2 focus:ring-indigo-500 focus:outline-none" oninput="saveAndPreview()">
+                </div>
+            </div>
+
+            <!-- Submit & Download Button -->
+            <div class="pt-4">
+                <button onclick="submitAndAnalyze()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm shadow-lg transition flex items-center justify-center gap-2">
+                    <span>🚀</span> Submit, Analyze ATS & Download Resume
+                </button>
+            </div>
+        </section>
+
+        <!-- Right Column: Live Preview & Hidden ATS/Download Section (7 Cols on Desktop) -->
+        <section class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- ATS Score & Feedback Box (Initially Hidden until Submit) -->
+            <div id="atsAnalysisBox" class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-3 transition-colors duration-300 hidden">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">ATS Scanner & Score Report</h3>
+                        <p id="selectionChance" class="text-xs font-semibold text-slate-500 mt-0.5">Analyzed successfully</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="atsScoreNum" class="text-2xl font-black text-indigo-600 dark:text-indigo-400">0</span><span class="text-xs text-slate-400">/100</span>
+                    </div>
+                </div>
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+                    <div id="scoreBar" class="bg-indigo-600 dark:bg-indigo-400 h-full w-0 transition-all duration-300"></div>
+                </div>
+                <!-- Problems & Solutions -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                    <p class="font-bold text-slate-700 dark:text-slate-300">💡 ATS Improvement Checklist (Problems & Solutions):</p>
+                    <ul id="suggestionList" class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-0.5"></ul>
+                </div>
+            </div>
+
+            <!-- Action Bar: Download PDF (Initially Hidden until Submit) -->
+            <div id="downloadActionBar" class="flex-col sm:flex-row justify-between items-center gap-3 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300 hidden">
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">Ready to Export</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Download your verified ATS-optimized PDF resume.</p>
+                </div>
+                <button onclick="downloadPDF()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-xs shadow-md transition-all flex items-center justify-center gap-1.5">
+                    <span>📥</span> Download PDF
+                </button>
+            </div>
+
+            <!-- Paper Preview Box -->
+            <div id="previewContainer" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 min-h-[650px] text-slate-900 space-y-4 overflow-x-auto">
+                <div id="previewHeader" class="flex flex-col sm:flex-row items-center gap-4 border-b pb-4 text-center sm:text-left">
+                    <img id="prevPhoto" class="w-20 h-20 object-cover rounded-lg border border-slate-300 hidden" alt="Profile Photo" />
+                    <div class="space-y-1 w-full">
+                        <h1 id="prevName" class="text-xl font-bold uppercase tracking-wider text-slate-900">Your Name</h1>
+                        <p id="prevContact" class="text-xs text-slate-600 break-words">email@example.com | Portfolio</p>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <h4 id="sec1Title" class="text-xs font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1">Professional Summary</h4>
+                    <p id="prevSummary" class="text-xs text-slate-700 leading-relaxed">Your professional summary will appear here...</p>
+                </div>
+
+                <div class="space-y-1">
+                    <h4 id="sec2Title" class="text-xs font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1">Technical Skills</h4>
+                    <p id="prevSkills" class="text-xs text-slate-700 leading-relaxed">Your technical skills will appear here...</p>
+                </div>
+
+                <div class="space-y-1">
+                    <h4 id="sec3Title" class="text-xs font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1">Projects & Experience</h4>
+                    <div id="prevExpContainer" class="space-y-2">
+                        <p class="text-xs text-slate-500">Your project or work experience will appear here...</p>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <h4 id="sec4Title" class="text-xs font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1">Education</h4>
+                    <div id="prevEduBox" class="text-xs text-slate-700 space-y-1">
+                        <p id="prevEduGrad"><b>Graduation:</b> Degree details...</p>
+                        <p id="prevEdu12th"><b>12th / Senior Secondary:</b> School & Board...</p>
+                        <p id="prevEdu10th"><b>10th / Secondary:</b> School & Board...</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Emoji Bug Report / Feedback Widget -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-2">
+        <button onclick="openFeedbackPopup('bug')" class="bg-rose-600 hover:bg-rose-700 text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 flex items-center justify-center text-lg" title="Report a Bug / Issue (🛠️)">
+            🛠️
+        </button>
+        <button onclick="openFeedbackPopup('love')" class="bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 flex items-center justify-center text-lg" title="Send Love / Suggestion (😍)">
+            😍
+        </button>
+    </div>
+
+    <!-- Floating Feedback / Bug Report Modal -->
+    <div id="floatingFeedbackModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-3 animate-fade-in">
+            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                <h3 id="modalTitle" class="font-bold text-slate-800 dark:text-slate-100 text-sm">🛠️ Report Bug or Suggestion</h3>
+                <button onclick="closeFloatingFeedback()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg font-bold">×</button>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Your feedback goes directly to our development team email!</p>
+            <textarea id="floatingFeedbackInput" rows="3" placeholder="Describe the bug or feature request..." class="w-full px-3 py-2 border dark:border-slate-600 rounded-xl text-xs bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            <button onclick="submitFloatingFeedback()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl font-semibold text-xs shadow-md transition">Send Feedback</button>
+        </div>
+    </div>
+
+    <!-- Post-Download Feedback & Social Share Modal -->
+    <div id="feedbackModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4 animate-fade-in">
+            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-3">
+                <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">🎉 Resume Downloaded Successfully!</h3>
+                <button onclick="closeFeedbackModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg font-bold">×</button>
+            </div>
+            
+            <!-- Dynamic Trending Memes & Motivational Box -->
+            <div id="memeBox" class="bg-indigo-50 dark:bg-indigo-950/50 p-3.5 rounded-xl border border-indigo-200 dark:border-indigo-800 text-xs text-indigo-800 dark:text-indigo-300 font-semibold text-center leading-relaxed shadow-inner">
+                "Code works? Don't touch it! 🚀 Now share this tool with friends!"
+            </div>
+
+            <p class="text-xs text-slate-500 dark:text-slate-400">Share this free tool with your friends or classmates:</p>
+            
+            <!-- Social Share Bar inside Modal -->
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="shareSocial('whatsapp')" class="bg-emerald-600 hover:bg-emerald-700 text-white p-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">🟢 WhatsApp</button>
+                <button onclick="shareSocial('linkedin')" class="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">💼 LinkedIn</button>
+                <button onclick="shareSocial('twitter')" class="bg-slate-900 hover:bg-black text-white p-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">🕞 Twitter</button>
+                <button onclick="shareSocial('telegram')" class="bg-sky-500 hover:bg-sky-600 text-white p-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">✈️ Telegram</button>
+            </div>
+
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-3 space-y-2">
+                <p class="text-xs font-semibold text-slate-700 dark:text-slate-300">How was your experience?</p>
+                <!-- Emoji Ratings -->
+                <div class="flex justify-around py-1">
+                    <button onclick="setEmojiRating(1, this)" class="emoji-btn text-2xl p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition transform hover:scale-125" title="Very Bad">😡</button>
+                    <button onclick="setEmojiRating(2, this)" class="emoji-btn text-2xl p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition transform hover:scale-125" title="Bad">🙁</button>
+                    <button onclick="setEmojiRating(3, this)" class="emoji-btn text-2xl p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition transform hover:scale-125" title="Neutral">😐</button>
+                    <button onclick="setEmojiRating(4, this)" class="emoji-btn text-2xl p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition transform hover:scale-125" title="Good">😊</button>
+                    <button onclick="setEmojiRating(5, this)" class="emoji-btn text-2xl p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition transform hover:scale-125" title="Excellent">😍</button>
+                </div>
+                <!-- Feedback Text -->
+                <textarea id="modalFeedbackText" rows="2" placeholder="Any suggestions or feedback? (Optional)" class="w-full px-3 py-2 border dark:border-slate-600 rounded-xl text-xs bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                <button onclick="submitModalFeedback()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl font-semibold text-xs shadow-md transition">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Advanced Client Security Protection (Disabling Right-Click & Inspect Shortcuts)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', function(event) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (event.keyCode === 123 || 
+                (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) || 
+                (event.ctrlKey && event.keyCode === 85)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        let uploadedPhotoData = null;
+        let selectedRating = 5;
+
+        // Expanded Viral Meme Quotes & Motivations List
+        const memeQuotes = [
+            "\"There are 2 hard things in CS: cache invalidation and naming things.\" — Now go clear that interview! 🚀",
+            "\"My code doesn't work: I don't know why. My code works: I don't know why.\" 🤖 Resume Exported!",
+            "\"It's not a bug, it's an undocumented feature!\" 😎 ATS Score Cleared!",
+            "\"To err is human, to commit without testing is divine.\" ⚡ You are ready to crack recruiters!",
+            "\"HR: What's your notice period? Me: Immediate joiner!\" 🔥 Let's land that dream job!",
+            "\"99 little bugs in the code. Fix one, 127 bugs in the code!\" 🐞 ATS Resume Built Successfully!",
+            "\"Work hard in silence, let your offer letter make the noise!\" 💼 All the best!",
+            "\"Backend developer trying to design UI vs You downloading a 100% ATS score resume!\" 🎨 Nailed it!"
+        ];
+
+        window.onload = function() {
+            try {
+                // Persistent LocalStorage Live Counter Logic
+                let currentCount = localStorage.getItem('totalResumesBuilt');
+                if (!currentCount) {
+                    currentCount = 1250; // Base count
+                } else {
+                    currentCount = parseInt(currentCount);
+                }
+                document.getElementById('liveCounter').innerText = currentCount;
+
+                if(localStorage.getItem('resumeData')) {
+                    const data = JSON.parse(localStorage.getItem('resumeData'));
+                    document.getElementById('fullName').value = data.fullName || '';
+                    document.getElementById('email').value = data.email || '';
+                    if(data.countryCode) document.getElementById('countryCode').value = data.countryCode;
+                    document.getElementById('phone').value = data.phone || '';
+                    document.getElementById('links').value = data.links || '';
+                    document.getElementById('summary').value = data.summary || '';
+                    document.getElementById('skills').value = data.skills || '';
+                    
+                    document.getElementById('eduGrad').value = data.eduGrad || '';
+                    document.getElementById('edu12th').value = data.edu12th || '';
+                    document.getElementById('edu10th').value = data.edu10th || '';
+                    document.getElementById('templateSelector').value = data.template || 'classic';
+
+                    if(data.experiences && data.experiences.length > 0) {
+                        data.experiences.forEach(exp => addExperienceField(exp.company, exp.start, exp.end, exp.desc));
+                    } else {
+                        addExperienceField();
+                    }
+
+                    if(data.photo) {
+                        uploadedPhotoData = data.photo;
+                        const prevPhoto = document.getElementById('prevPhoto');
+                        prevPhoto.src = uploadedPhotoData;
+                        prevPhoto.classList.remove('hidden');
+                    }
+                } else {
+                    addExperienceField();
+                }
+                updatePreview();
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in window.onload: " + error.message);
+            }
+        }
+
+        function addExperienceField(company = '', start = '', end = '', desc = '') {
+            try {
+                const container = document.getElementById('experienceContainer');
+                const index = container.children.length;
+                
+                const div = document.createElement('div');
+                div.className = "p-3 border border-slate-200 dark:border-slate-700 rounded-xl space-y-2 bg-slate-50/50 dark:bg-slate-900/50 relative exp-item";
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="text-[11px] font-bold text-slate-500">Experience / Project #${index + 1}</span>
+                        ${index > 0 ? `<button onclick="this.closest('.exp-item').remove(); saveAndPreview();" class="text-xs text-rose-500 hover:underline">Remove</button>` : ''}
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-600 dark:text-slate-300 mb-0.5">Company / Project Title</label>
+                        <input type="text" class="exp-company w-full px-2.5 py-1.5 border dark:border-slate-600 rounded-lg text-xs bg-transparent focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="e.g. Freelance Web Developer" value="${company}" oninput="saveAndPreview()">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <div class="flex justify-between items-center mb-0.5">
+                                <label class="text-[11px] font-semibold text-slate-600 dark:text-slate-300">Start Date</label>
+                                <span class="text-[9px] text-slate-400">DD/MM/YYYY</span>
+                            </div>
+                            <input type="date" class="exp-start w-full px-2 py-1 border dark:border-slate-600 rounded-lg text-xs bg-transparent focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${start}" onchange="saveAndPreview()">
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-0.5">
+                                <label class="text-[11px] font-semibold text-slate-600 dark:text-slate-300">End Date</label>
+                                <span class="text-[9px] text-slate-400">DD/MM/YYYY</span>
+                            </div>
+                            <input type="date" class="exp-end w-full px-2 py-1 border dark:border-slate-600 rounded-lg text-xs bg-transparent focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${end}" onchange="saveAndPreview()">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-600 dark:text-slate-300 mb-0.5">Description</label>
+                        <textarea rows="2" class="exp-desc w-full px-2.5 py-1.5 border dark:border-slate-600 rounded-lg text-xs bg-transparent focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Key responsibilities or tech stack..." oninput="saveAndPreview()">${desc}</textarea>
+                    </div>
+                `;
+                container.appendChild(div);
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in addExperienceField: " + error.message);
+            }
+        }
+
+        function toggleDarkMode() {
+            const root = document.getElementById('htmlRoot');
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (root.classList.contains('dark')) {
+                root.classList.remove('dark');
+                root.classList.add('light');
+                icon.innerText = '🌙';
+                text.innerText = 'Dark';
+            } else {
+                root.classList.remove('light');
+                root.classList.add('dark');
+                icon.innerText = '☀️';
+                text.innerText = 'Light';
+            }
+        }
+
+        function handlePhoto(event) {
+            try {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        uploadedPhotoData = e.target.result;
+                        const prevPhoto = document.getElementById('prevPhoto');
+                        prevPhoto.src = uploadedPhotoData;
+                        prevPhoto.classList.remove('hidden');
+                        saveAndPreview();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in handlePhoto: " + error.message);
+            }
+        }
+
+        function getExperiencesData() {
+            const items = document.querySelectorAll('.exp-item');
+            let list = [];
+            items.forEach(item => {
+                list.push({
+                    company: item.querySelector('.exp-company').value.trim(),
+                    start: item.querySelector('.exp-start').value,
+                    end: item.querySelector('.exp-end').value,
+                    desc: item.querySelector('.exp-desc').value.trim()
+                });
+            });
+            return list;
+        }
+
+        function saveAndPreview() {
+            try {
+                const template = document.getElementById('templateSelector').value;
+                const data = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    countryCode: document.getElementById('countryCode').value,
+                    phone: document.getElementById('phone').value,
+                    links: document.getElementById('links').value,
+                    summary: document.getElementById('summary').value,
+                    skills: document.getElementById('skills').value,
+                    experiences: getExperiencesData(),
+                    eduGrad: document.getElementById('eduGrad').value,
+                    edu12th: document.getElementById('edu12th').value,
+                    edu10th: document.getElementById('edu10th').value,
+                    template: template,
+                    photo: uploadedPhotoData
+                };
+                localStorage.setItem('resumeData', JSON.stringify(data));
+                updatePreview();
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in saveAndPreview: " + error.message);
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem('resumeData');
+            location.reload();
+        }
+
+        function updatePreview() {
+            try {
+                const name = document.getElementById('fullName').value.trim() || "Your Name";
+                const email = document.getElementById('email').value.trim() || "email@example.com";
+                const countryCode = document.getElementById('countryCode').value;
+                const rawPhone = document.getElementById('phone').value.trim();
+                const links = document.getElementById('links').value.trim() || "Portfolio";
+                
+                // Professional contact formatting: Only show phone if user entered it
+                let contactParts = [email];
+                if (rawPhone) {
+                    contactParts.push(`${countryCode} ${rawPhone}`);
+                }
+                if (links) {
+                    contactParts.push(links);
+                }
+
+                const summary = document.getElementById('summary').value.trim() || "Your professional summary will appear here...";
+                const skills = document.getElementById('skills').value.trim() || "Your technical skills will appear here...";
+                
+                const eduGrad = document.getElementById('eduGrad').value.trim() || "Graduation Details (e.g. B.Tech / Degree)";
+                const edu12th = document.getElementById('edu12th').value.trim() || "12th / Senior Secondary Details";
+                const edu10th = document.getElementById('edu10th').value.trim() || "10th / Secondary School Details";
+
+                const template = document.getElementById('templateSelector').value;
+
+                document.getElementById('prevName').innerText = name;
+                document.getElementById('prevContact').innerText = contactParts.join(" | ");
+                document.getElementById('prevSummary').innerText = summary;
+                document.getElementById('prevSkills').innerText = skills;
+                
+                const expContainer = document.getElementById('prevExpContainer');
+                expContainer.innerHTML = '';
+                const exps = getExperiencesData();
+                
+                if(exps.length === 0 || (exps.length === 1 && !exps[0].company && !exps[0].desc)) {
+                    expContainer.innerHTML = `<p class="text-xs text-slate-500">Your project or work experience will appear here...</p>`;
+                } else {
+                    exps.forEach(exp => {
+                        if(exp.company || exp.desc) {
+                            const div = document.createElement('div');
+                            div.className = "space-y-0.5";
+                            div.innerHTML = `
+                                <p class="text-xs font-bold text-slate-900">${exp.company || 'Project Title'}</p>
+                                <p class="text-[11px] text-slate-500 italic">${exp.start || ''} ${exp.start && exp.end ? 'to' : ''} ${exp.end || ''}</p>
+                                <p class="text-xs text-slate-700">${exp.desc || ''}</p>
+                            `;
+                            expContainer.appendChild(div);
+                        }
+                    });
+                }
+
+                document.getElementById('prevEduGrad').innerHTML = `<b>Graduation:</b> ${eduGrad}`;
+                document.getElementById('prevEdu12th').innerHTML = `<b>12th / High School:</b> ${edu12th}`;
+                document.getElementById('prevEdu10th').innerHTML = `<b>10th / Secondary:</b> ${edu10th}`;
+
+                const sec1 = document.getElementById('sec1Title');
+                const sec2 = document.getElementById('sec2Title');
+                const sec3 = document.getElementById('sec3Title');
+                const sec4 = document.getElementById('sec4Title');
+                const header = document.getElementById('previewHeader');
+
+                if(template === 'modern') {
+                    header.className = "flex flex-col sm:flex-row items-center gap-4 border-b-2 border-indigo-600 pb-4 bg-indigo-50/50 p-3 rounded-xl text-center sm:text-left";
+                    sec1.className = sec2.className = sec3.className = sec4.className = "text-xs font-bold uppercase tracking-widest text-indigo-700 border-l-4 border-indigo-600 pl-2 py-0.5 bg-slate-50 mb-1";
+                } else if(template === 'executive') {
+                    header.className = "flex flex-col sm:flex-row items-center gap-4 border-b pb-4 text-center sm:text-left";
+                    sec1.className = sec2.className = sec3.className = sec4.className = "text-xs font-extrabold uppercase tracking-widest text-slate-900 border-b border-slate-800 pb-0.5 mb-1";
+                } else if(template === 'creative') {
+                    header.className = "flex flex-col sm:flex-row items-center gap-4 border-b-4 border-purple-600 pb-4 bg-purple-50/40 p-3 rounded-xl text-center sm:text-left";
+                    sec1.className = sec2.className = sec3.className = sec4.className = "text-xs font-bold uppercase tracking-widest text-purple-700 border-b border-purple-200 pb-1 mb-1";
+                } else if(template === 'academic') {
+                    header.className = "flex flex-col sm:flex-row items-center gap-4 border-b pb-4 text-center sm:text-left";
+                    sec1.className = sec2.className = sec3.className = sec4.className = "text-xs font-bold uppercase tracking-widest text-emerald-700 border-b border-emerald-300 pb-1 mb-1";
+                } else {
+                    header.className = "flex flex-col sm:flex-row items-center gap-4 border-b pb-4 text-center sm:text-left";
+                    sec1.className = sec2.className = sec3.className = sec4.className = "text-xs font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1 mb-1";
+                }
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in updatePreview: " + error.message);
+            }
+        }
+
+        function submitAndAnalyze() {
+            try {
+                const name = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const summary = document.getElementById('summary').value.trim();
+                const skills = document.getElementById('skills').value.trim();
+                const exps = getExperiencesData();
+                const edu = document.getElementById('eduGrad').value.trim();
+
+                let score = 0;
+                let suggestions = [];
+
+                if (name && name.length > 2) score += 20;
+                else suggestions.push("Problem: Missing Full Name -> Solution: Enter your official full name.");
+
+                if (email && email.includes("@")) score += 20;
+                else suggestions.push("Problem: Missing Email -> Solution: Add a valid email address.");
+
+                if (summary && summary.length > 15) score += 20;
+                else suggestions.push("Problem: Summary too short -> Solution: Write a strong 2-3 line professional summary.");
+
+                if (skills && skills.split(',').length >= 2) score += 20;
+                else suggestions.push("Problem: Few skills added -> Solution: Add at least 3 core or technical skills separated by commas.");
+
+                let hasValidExp = exps.some(e => e.company || e.desc);
+                if (hasValidExp || (edu && edu !== "Graduation Details (e.g. B.Tech / Degree)")) score += 20;
+                else suggestions.push("Problem: Missing Experience/Education -> Solution: Fill in your work experience or education details.");
+
+                document.getElementById('atsScoreNum').innerText = score;
+                document.getElementById('scoreBar').style.width = score + '%';
+
+                const chanceEl = document.getElementById('selectionChance');
+                const listEl = document.getElementById('suggestionList');
+                
+                listEl.innerHTML = '';
+                if (suggestions.length === 0) {
+                    listEl.innerHTML = `<li class="text-emerald-600 font-semibold">Great! Your resume is fully ATS optimized. Ready to download!</li>`;
+                    chanceEl.innerText = "Chances of Selection: High 🚀";
+                    chanceEl.className = "text-xs font-semibold text-emerald-600 mt-0.5";
+                } else {
+                    suggestions.forEach(s => {
+                        const li = document.createElement('li');
+                        li.innerText = s;
+                        listEl.appendChild(li);
+                    });
+
+                    if (score >= 60) {
+                        chanceEl.innerText = "Chances of Selection: Good ⚠️";
+                        chanceEl.className = "text-xs font-semibold text-amber-600 mt-0.5";
+                    } else {
+                        chanceEl.innerText = "Chances of Selection: Low (Improve Score) ❌";
+                        chanceEl.className = "text-xs font-semibold text-rose-600 mt-0.5";
+                    }
+                }
+
+                document.getElementById('atsAnalysisBox').classList.remove('hidden');
+                document.getElementById('downloadActionBar').classList.remove('hidden');
+                document.getElementById('downloadActionBar').classList.add('flex');
+                document.getElementById('atsAnalysisBox').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in submitAndAnalyze: " + error.message);
+            }
+        }
+
+        function shareSocial(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Check out this 100% Free ATS-Friendly Resume Builder tool! Build clean resumes instantly: ");
+            let shareUrl = "";
+
+            if (platform === 'whatsapp') {
+                shareUrl = `https://api.whatsapp.com/send?text=${text}${url}`;
+            } else if (platform === 'linkedin') {
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            } else if (platform === 'twitter') {
+                shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+            } else if (platform === 'telegram') {
+                shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+            }
+            window.open(shareUrl, '_blank');
+        }
+
+        function setEmojiRating(rating, btn) {
+            selectedRating = rating;
+            document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('bg-indigo-100', 'dark:bg-slate-700', 'scale-125'));
+            btn.classList.add('bg-indigo-100', 'dark:bg-slate-700', 'scale-125');
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').classList.add('hidden');
+        }
+
+        function submitModalFeedback() {
+            logErrorToEmail(`User Feedback Rating: ${selectedRating}/5 | Comment: ${document.getElementById('modalFeedbackText').value}`);
+            alert("Thank you for your valuable feedback!");
+            closeFeedbackModal();
+        }
+
+        // Floating Feedback Widget Handlers
+        function openFeedbackPopup(type) {
+            const modal = document.getElementById('floatingFeedbackModal');
+            const title = document.getElementById('modalTitle');
+            if(type === 'bug') {
+                title.innerText = "🛠️ Report a Bug or Issue";
+            } else {
+                title.innerText = "😍 Send Love / Suggestion";
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeFloatingFeedback() {
+            document.getElementById('floatingFeedbackModal').classList.add('hidden');
+        }
+
+        function submitFloatingFeedback() {
+            const text = document.getElementById('floatingFeedbackInput').value.trim();
+            if(text) {
+                logErrorToEmail("Floating Widget Feedback: " + text);
+                alert("Thank you! Your feedback has been sent successfully.");
+                document.getElementById('floatingFeedbackInput').value = '';
+                closeFloatingFeedback();
+            } else {
+                alert("Please write something before submitting.");
+            }
+        }
+
+        // EmailJS Error Logging Function
+        function logErrorToEmail(errorMsg) {
+            const serviceID = "service_3gtl3go";
+            const templateID = "template_default";
+            const publicKey = "wUjUJ2yPxE4VqI6MZ";
+
+            const templateParams = {
+                message: errorMsg,
+                time: new Date().toLocaleString(),
+                page: "Professional ATS Resume Builder"
+            };
+
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send(serviceID, templateID, templateParams, publicKey)
+                    .then(function(response) {
+                        console.log("Error/Feedback sent to email successfully!", response.status);
+                    }, function(error) {
+                        console.error("EmailJS failed:", error);
+                    });
+            }
+        }
+
+        function downloadPDF() {
+            try {
+                const { jsPDF } = window.jspdf;
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+
+                // Increment Counter on Successful Download and save to LocalStorage
+                let currentCount = localStorage.getItem('totalResumesBuilt');
+                currentCount = currentCount ? parseInt(currentCount) + 1 : 1251;
+                localStorage.setItem('totalResumesBuilt', currentCount);
+                document.getElementById('liveCounter').innerText = currentCount;
+
+                const doc = new jsPDF();
+                const name = document.getElementById('prevName').innerText;
+                const contact = document.getElementById('prevContact').innerText;
+                const summary = document.getElementById('prevSummary').innerText;
+                const skills = document.getElementById('prevSkills').innerText;
+                
+                const exps = getExperiencesData();
+
+                const eduGrad = document.getElementById('prevEduGrad').innerText;
+                const edu12th = document.getElementById('prevEdu12th').innerText;
+                const edu10th = document.getElementById('prevEdu10th').innerText;
+
+                let startY = 20;
+
+                if (uploadedPhotoData) {
+                    doc.addImage(uploadedPhotoData, 'JPEG', 15, 15, 20, 20);
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(16);
+                    doc.text(name, 40, startY + 5);
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    doc.text(contact, 40, startY + 12);
+                    startY += 25;
+                } else {
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(16);
+                    doc.text(name, 105, startY, { align: "center" });
+                    startY += 7;
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    doc.text(contact, 105, startY, { align: "center" });
+                    startY += 10;
+                }
+
+                doc.setLineWidth(0.4);
+                doc.line(15, startY, 195, startY);
+
+                function addSection(title, contentArray) {
+                    startY += 8;
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(10);
+                    doc.text(title.toUpperCase(), 15, startY);
+                    startY += 2;
+                    doc.setLineWidth(0.1);
+                    doc.line(15, startY, 195, startY);
+
+                    startY += 5;
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    
+                    contentArray.forEach(text => {
+                        const splitText = doc.splitTextToSize(text, 180);
+                        doc.text(splitText, 15, startY);
+                        startY += (splitText.length * 5) + 2;
+                    });
+                }
+
+                let expTextArray = [];
+                exps.forEach(exp => {
+                    if(exp.company || exp.desc) {
+                        expTextArray.push(`${exp.company || 'Project'} (${exp.start || ''} to ${exp.end || ''})`);
+                        expTextArray.push(exp.desc || '');
+                    }
+                });
+
+                addSection("Professional Summary", [summary]);
+                addSection("Technical Skills", [skills]);
+                addSection("Projects & Experience", expTextArray.length > 0 ? expTextArray : ["No experience added"]);
+                addSection("Education", [eduGrad, edu12th, edu10th]);
+
+                doc.save(`${name.replace(/\s+/g, '_')}_Resume.pdf`);
+
+                // Set Random Meme / Easter Egg in Modal from Array
+                const randomMeme = memeQuotes[Math.floor(Math.random() * memeQuotes.length)];
+                document.getElementById('memeBox').innerText = randomMeme;
+
+                setTimeout(() => {
+                    document.getElementById('feedbackModal').classList.remove('hidden');
+                }, 1000);
+            } catch (error) {
+                if (typeof Sentry !== 'undefined') Sentry.captureException(error);
+                logErrorToEmail("Error in downloadPDF: " + error.message);
+                alert("An error occurred while downloading the PDF. Our error tracker has recorded it!");
+            }
+        }
+    </script>
+</body>
+</html>

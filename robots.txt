@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tera-domain.vercel.app/sitemap.xml

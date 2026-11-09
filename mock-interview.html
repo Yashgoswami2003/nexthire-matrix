@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock HR & Tech Interviewer - NextHire Matrix</title>
     
+    <!-- Lightning-Fast Preconnect & DNS Prefetch -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    </script>
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
     <meta name="description" content="Practice interactive mock interviews with simulated AI HR and technical interviewers. Get instant feedback and score reports.">
     <meta property="og:type" content="website">
@@ -74,7 +84,7 @@
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
         <div class="text-center space-y-2">
             <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Mock HR & Technical Interviewer</h2>
-            <p class="text-xs text-slate-500 font-medium">Choose your interview track, answer simulated technical & behavioral questions, and receive instant AI feedback.</p>
+            <p class="text-xs text-slate-500 font-medium">Choose your interview track and difficulty level, answer simulated questions, and receive instant AI feedback.</p>
         </div>
 
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
@@ -88,21 +98,21 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Interviewer Tone</label>
-                    <select id="interviewerTone" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option>Strict & Professional (FAANG Standard)</option>
-                        <option>Encouraging & Mentorship Style</option>
-                        <option>Rapid Fire Startup Style</option>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Difficulty Level</label>
+                    <select id="interviewDifficulty" onchange="loadNewQuestion()" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option value="Basic">Basic Level</option>
+                        <option value="Moderate">Moderate Level</option>
+                        <option value="Advanced">Advanced Level</option>
                     </select>
                 </div>
             </div>
 
             <div class="p-5 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-2">
                 <div class="flex justify-between items-center">
-                    <span class="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400">Interviewer AI Question #1</span>
+                    <span id="questionBadgeLabel" class="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400">Interviewer AI Question [BASIC]</span>
                     <button onclick="readQuestionAloud()" class="text-xs bg-white dark:bg-slate-900 px-3 py-1 rounded-xl font-bold shadow-sm text-indigo-600 hover:bg-indigo-50 transition"><i class="fa-solid fa-volume-high mr-1"></i> Listen</button>
                 </div>
-                <p id="mockQuestionText" class="text-sm font-bold text-slate-800 dark:text-slate-100">"Tell me about a time you handled a complex database bottleneck or performance issue under tight deadlines."</p>
+                <p id="mockQuestionText" class="text-sm font-bold text-slate-800 dark:text-slate-100">"What are the core fundamentals and syntax rules of Python & Django?"</p>
             </div>
 
             <div>
@@ -124,7 +134,7 @@
                     <h3 class="text-xs font-black uppercase tracking-wider text-emerald-600 flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> AI Evaluation Report</h3>
                     <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 px-3 py-1 rounded-xl">Score: 9/10</span>
                 </div>
-                <p id="feedbackContentText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Strong structural clarity using STAR format. Recommended enhancement: Mention specific metrics (e.g., query execution time reduced by 40% using Redis caching).</p>
+                <p id="feedbackContentText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Strong structural clarity. Recommended enhancement: Mention specific edge cases and code modularity principles.</p>
             </div>
         </div>
     </main>
@@ -137,29 +147,68 @@
 
     <script>
         const questionPool = {
-            tech: [
-                "Tell me about a time you handled a complex database bottleneck or performance issue under tight deadlines.",
-                "Explain how Django ORM handles database transactions and how you prevent race conditions in high-concurrency environments.",
-                "What are React custom hooks, and can you describe a practical use case where you implemented one?"
-            ],
-            hr: [
-                "Describe a situation where you had a strong disagreement with a team member regarding a technical decision. How did you resolve it?",
-                "Tell me about a time when a project deadline was shifted unexpectedly. How did you adapt your workflow?",
-                "Why do you want to join our engineering team, and what value do you plan to bring in your first 90 days?"
-            ],
-            system: [
-                "How would you design a URL shortening service like Bitly to handle 100 million redirects per day?",
-                "Explain database sharding vs replication and when you would choose one over the other.",
-                "How do you implement rate limiting in a high-traffic REST API backend?"
-            ]
+            tech: {
+                Basic: [
+                    "What are the core fundamentals and syntax rules of Python and Django?",
+                    "How do you handle basic error management and debugging in web applications?",
+                    "What is the difference between HTML semantic tags and standard div elements?"
+                ],
+                Moderate: [
+                    "How do you optimize runtime performance and database query complexity in Django ORM?",
+                    "Describe how asynchronous operations or concurrency are handled in modern web frameworks.",
+                    "How do you manage state and side effects effectively using React hooks?"
+                ],
+                Advanced: [
+                    "Explain advanced architectural patterns and microservices scalability strategies in high-traffic systems.",
+                    "How do you secure web applications against SQL injection, CSRF, and JWT vulnerabilities?",
+                    "Describe a complex production bottleneck you resolved using APM tools and caching layers."
+                ]
+            },
+            hr: {
+                Basic: [
+                    "Tell me about yourself and your primary technical skill set.",
+                    "Why do you want to join our engineering team as an intern or developer?",
+                    "What is your greatest strength when working in a team environment?"
+                ],
+                Moderate: [
+                    "Describe a situation where you had a strong disagreement with a team member regarding a technical decision.",
+                    "Tell me about a time when a project deadline was shifted unexpectedly. How did you adapt?",
+                    "How do you handle constructive criticism during code reviews?"
+                ],
+                Advanced: [
+                    "Describe a time you took ownership of a failing project and successfully turned it around.",
+                    "How do you mentor junior developers while managing your own high-priority deliverables?",
+                    "Where do you see your technical leadership and career trajectory in the next 5 years?"
+                ]
+            },
+            system: {
+                Basic: [
+                    "What is the difference between SQL relational databases and NoSQL databases?",
+                    "What is the role of a load balancer in web architecture?",
+                    "Why do we use caching (like Redis) in web applications?"
+                ],
+                Moderate: [
+                    "How would you design a scalable notification service for millions of active users?",
+                    "Explain database indexing and how it speeds up query execution.",
+                    "What are the trade-offs between horizontal scaling and vertical scaling?"
+                ],
+                Advanced: [
+                    "How would you design a global video streaming platform like YouTube or Netflix?",
+                    "Explain eventual consistency vs strong consistency in distributed database systems.",
+                    "How do you design a rate limiter to protect public APIs against DDoS attacks?"
+                ]
+            }
         };
 
         let currentQIdx = 0;
 
         function loadNewQuestion() {
             const track = document.getElementById('interviewTrack').value;
-            const pool = questionPool[track] || questionPool.tech;
+            const diff = document.getElementById('interviewDifficulty').value;
+            const pool = questionPool[track]?.[diff] || questionPool.tech.Basic;
             currentQIdx = (currentQIdx + 1) % pool.length;
+            
+            document.getElementById('questionBadgeLabel').innerText = `Interviewer AI Question [${diff.toUpperCase()}]`;
             document.getElementById('mockQuestionText').innerText = `"${pool[currentQIdx]}"`;
             document.getElementById('candidateAnswerInput').value = '';
             document.getElementById('mockFeedbackBox').classList.add('hidden');

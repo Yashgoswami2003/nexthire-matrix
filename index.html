@@ -14,7 +14,7 @@
 
     <!-- 🌐 OPEN GRAPH / SOCIAL MEDIA PREVIEW CARDS (LINKEDIN & WHATSAPP BOOSTER) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nexthirematrix.vercel.app">
+    <meta property="og:url" content="https://www.nexthirematrix.com">
     <meta property="og:title" content="NextHire Matrix - Ultimate Free Career & Proctored Tech Hub">
     <meta property="og:description" content="Create ATS-proof resumes, calculate ATS scores, and ace technical interviews instantly. 100% Free & Secure!">
     <meta property="og:image" content="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=630&fit=crop">
@@ -209,7 +209,7 @@
                 <div class="space-y-3.5">
                     <div>
                         <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Full Name</label>
-                        <input type="text" id="fullName" placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
+                        <input type="text" id="fullName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
@@ -345,8 +345,8 @@
                 <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">📁 Upload & Check ATS Score</h2>
                 <div class="border-2 border-dashed border-indigo-300 dark:border-indigo-700 rounded-3xl p-8 bg-indigo-50/40 dark:bg-indigo-950/30 cursor-pointer hover:bg-indigo-50 transition" onclick="document.getElementById('pdfUploadInput').click()">
                     <span class="text-4xl"><i class="fa-solid fa-file-pdf text-indigo-600"></i></span>
-                    <p class="text-sm font-bold text-slate-700 dark:text-slate-200 mt-2">Click to browse & upload resume PDF</p>
-                    <input type="file" id="pdfUploadInput" accept=".pdf" class="hidden" onchange="handlePDFUpload(event)">
+                    <p class="text-sm font-bold text-slate-700 dark:text-slate-200 mt-2">Click to browse & upload resume PDF or DOCX</p>
+                    <input type="file" id="pdfUploadInput" accept=".pdf,.docx" class="hidden" onchange="handlePDFUpload(event)">
                 </div>
                 <div id="pdfResultBox" class="hidden p-5 bg-slate-50 dark:bg-slate-900 rounded-2xl text-left border border-slate-200 dark:border-slate-700 space-y-3">
                     <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
@@ -524,7 +524,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Your Full Name / Title</label>
-                        <input type="text" id="clName" placeholder="e.g. Rahul Sharma" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
+                        <input type="text" id="clName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Job Role / Company</label>
@@ -562,7 +562,7 @@
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
             <div>
-                <p class="text-xs font-bold text-slate-700 dark:text-slate-300">© 2026 NextHire Matrix. All rights reserved.</p>
+                <p class="text-xs font-bold text-slate-700 dark:text-slate-300">© <span id="currentYear">2026</span> NextHire Matrix. All rights reserved.</p>
                 <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Ultimate Free Career & Proctored Tech Hub.</p>
             </div>
             <div class="flex items-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-400">
@@ -691,6 +691,10 @@
             setupAntiCheatingProtection();
             addExperienceField();
             updatePreview();
+            
+            // Dynamic Footer Year Update
+            const yearElem = document.getElementById('currentYear');
+            if(yearElem) yearElem.innerText = new Date().getFullYear();
         };
 
         function setupAntiCheatingProtection() {
@@ -1350,6 +1354,16 @@
             const resultBox = document.getElementById('pdfResultBox');
             const scoreTitle = document.getElementById('pdfScoreTitle');
             if (!file) return;
+
+            // Strict File Type Validation (.pdf and .docx only)
+            const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            if (!allowedTypes.includes(file.type)) {
+                alert("❌ Error: Sirf PDF ya DOCX file allow hai! MP3, Image, ya Notepad file ATS par nahi chalegi.");
+                event.target.value = "";
+                resultBox.classList.add('hidden');
+                return;
+            }
+
             resultBox.classList.remove('hidden');
             document.getElementById('pdfFileName').innerText = file.name;
             scoreTitle.innerText = "Scanned Score: 85/100 (ATS Optimized)";

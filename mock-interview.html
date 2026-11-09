@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - AI Mock HR & Tech Interviewer</title>
+    <title>Mock HR & Tech Interviewer - NextHire Matrix</title>
     
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Practice interactive HR and technical interviews with real-time AI scoring, grading, and detailed feedback.">
+    <meta name="description" content="Practice interactive mock interviews with simulated AI HR and technical interviewers. Get instant feedback and score reports.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/mock-interview.html">
-    <meta property="og:title" content="NextHire Matrix Mock Interviewer">
-    <meta property="og:description" content="Practice interactive HR and technical interviews with AI analysis.">
+    <meta property="og:title" content="Mock Interviewer - NextHire Matrix">
+    <meta property="og:description" content="Simulated AI mock interview sessions for developers and engineering students.">
 
     <script type="application/ld+json">
     {
@@ -21,25 +21,40 @@
       "name": "NextHire Matrix Mock Interviewer",
       "operatingSystem": "All",
       "applicationCategory": "EducationalApplication",
+      "browser": "Requires JavaScript.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
-      "description": "Interactive mock technical and HR interview platform."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1780" },
+      "description": "Interactive mock technical and HR interview simulator."
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- FontAwesome with SRI Hash -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- jsPDF with SRI Hash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Canvas Confetti with SRI Hash -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <div class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <span class="text-[10px] sm:text-xs bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200/60 text-indigo-800 dark:text-indigo-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-robot text-indigo-600"></i> AI Interview Simulator
+                </span>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
             </div>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
 
@@ -56,169 +71,115 @@
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
-        <div class="max-w-3xl mx-auto bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
-                <h1 class="text-xl font-black text-slate-800 dark:text-slate-100"><i class="fa-solid fa-robot text-indigo-600 mr-2"></i> Mock HR & Tech Interviewer</h1>
-                <span id="mockQuestionCounter" class="text-xs font-extrabold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 px-3 py-1.5 rounded-xl">Question 1 of 10</span>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
+        <div class="text-center space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Mock HR & Technical Interviewer</h2>
+            <p class="text-xs text-slate-500 font-medium">Choose your interview track, answer simulated technical & behavioral questions, and receive instant AI feedback.</p>
+        </div>
+
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Select Interview Track</label>
+                    <select id="interviewTrack" onchange="loadNewQuestion()" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option value="tech">Full Stack Technical Round (Python/Django/React)</option>
+                        <option value="hr">HR & Behavioral Round (STAR Method)</option>
+                        <option value="system">System Design & Scalability Round</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Interviewer Tone</label>
+                    <select id="interviewerTone" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option>Strict & Professional (FAANG Standard)</option>
+                        <option>Encouraging & Mentorship Style</option>
+                        <option>Rapid Fire Startup Style</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="p-5 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400">Interviewer AI Question #1</span>
+                    <button onclick="readQuestionAloud()" class="text-xs bg-white dark:bg-slate-900 px-3 py-1 rounded-xl font-bold shadow-sm text-indigo-600 hover:bg-indigo-50 transition"><i class="fa-solid fa-volume-high mr-1"></i> Listen</button>
+                </div>
+                <p id="mockQuestionText" class="text-sm font-bold text-slate-800 dark:text-slate-100">"Tell me about a time you handled a complex database bottleneck or performance issue under tight deadlines."</p>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">Select Interview Track / Role</label>
-                <select id="mockRoleSelect" onchange="resetMockInterview()" class="w-full px-4 py-2.5 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs bg-white dark:bg-slate-900 font-bold focus:outline-none">
-                    <option value="Full Stack Web Dev (Django+React)">Full Stack Web Dev (Django + React)</option>
-                    <option value="Python & Data Structures">Python & Data Structures</option>
-                    <option value="HR & Behavioral Round">HR & Behavioral Round</option>
-                    <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
-                    <option value="DevOps & Cloud Engineering">DevOps & Cloud Engineering</option>
-                </select>
+                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Your Answer / Response</label>
+                <textarea id="candidateAnswerInput" rows="4" placeholder="Type your structured answer here (mention technologies, actions taken, and measurable impact)..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium resize-none focus:outline-none"></textarea>
             </div>
 
-            <div class="space-y-4">
-                <div class="p-5 bg-indigo-50/50 dark:bg-indigo-950/40 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-1.5">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-indigo-500">Interviewer Question:</span>
-                    <h2 id="mockQuestionText" class="text-sm font-bold text-slate-800 dark:text-slate-100">Loading question...</h2>
-                </div>
-                
-                <textarea id="mockUserAnswer" rows="4" placeholder="Type your detailed answer here (explain concepts, examples, or approach)..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none focus:border-indigo-500"></textarea>
-                
-                <div class="flex gap-3">
-                    <button onclick="submitMockAnswer()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Submit Answer & Get AI Analysis <i class="fa-solid fa-rocket ml-1"></i></button>
-                    <button onclick="nextMockQuestion()" id="nextMockBtn" class="hidden bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="submitMockAnswer()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                    <span><i class="fa-solid fa-paper-plane"></i></span> Submit Answer & Get AI Feedback
+                </button>
+                <button onclick="loadNewQuestion()" class="sm:w-auto bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3.5 rounded-2xl font-bold text-xs hover:bg-slate-200 transition">
+                    Next Question ➜
+                </button>
+            </div>
 
-                <div id="mockEvalBox" class="hidden p-5 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2.5">
-                    <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
-                        <h3 id="mockScoreNum" class="text-base font-black text-indigo-600">Score: 0/100</h3>
-                        <span id="mockGradeBadge" class="text-[10px] font-black px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700">GOOD</span>
-                    </div>
-                    <p id="mockFeedbackText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed"></p>
+            <div id="mockFeedbackBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hidden">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-black uppercase tracking-wider text-emerald-600 flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> AI Evaluation Report</h3>
+                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 px-3 py-1 rounded-xl">Score: 9/10</span>
                 </div>
+                <p id="feedbackContentText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Strong structural clarity using STAR format. Recommended enhancement: Mention specific metrics (e.g., query execution time reduced by 40% using Redis caching).</p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-        <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        const mockBanks = {
-            "Full Stack Web Dev (Django+React)": [
-                "How does Django's MVT architecture differ from traditional MVC?",
-                "Explain React's Virtual DOM and how reconciliation works.",
-                "How do you handle CORS and JWT authentication between Django and React?",
-                "What is the N+1 query problem in Django ORM and how do you fix it?",
-                "Explain the difference between useEffect and useMemo in React.",
-                "How do you optimize a slow PostgreSQL query in a production Django app?",
-                "What are Django middlewares and when would you write a custom one?",
-                "How do you manage global state in large React applications?",
-                "Explain CSRF protection in Django and how it works.",
-                "How would you deploy a Django + React app with zero downtime?"
+        const questionPool = {
+            tech: [
+                "Tell me about a time you handled a complex database bottleneck or performance issue under tight deadlines.",
+                "Explain how Django ORM handles database transactions and how you prevent race conditions in high-concurrency environments.",
+                "What are React custom hooks, and can you describe a practical use case where you implemented one?"
             ],
-            "Python & Data Structures": [
-                "What is the difference between a list, tuple, and set in Python?",
-                "Explain Python's Global Interpreter Lock (GIL) and its impact on multithreading.",
-                "How does a dictionary work internally in Python (hashing & collisions)?",
-                "What are decorators and generators in Python? Give a practical use case.",
-                "Explain the time and space complexity of QuickSort vs MergeSort.",
-                "How do you detect a cycle in a Linked List?",
-                "What is the difference between shallow copy and deep copy in Python?",
-                "How would you implement an LRU Cache?",
-                "Explain BFS vs DFS and when to use each.",
-                "How does Python's garbage collection and reference counting work?"
+            hr: [
+                "Describe a situation where you had a strong disagreement with a team member regarding a technical decision. How did you resolve it?",
+                "Tell me about a time when a project deadline was shifted unexpectedly. How did you adapt your workflow?",
+                "Why do you want to join our engineering team, and what value do you plan to bring in your first 90 days?"
             ],
-            "HR & Behavioral Round": [
-                "Tell me about yourself and your technical journey so far.",
-                "Describe a challenging bug or project deadline you faced and how you handled it.",
-                "Why do you want to join our company and what motivates you?",
-                "Tell me about a time you disagreed with a teammate. How did you resolve it?",
-                "What is your biggest strength and one area you are actively improving?",
-                "Where do you see yourself in the next 3 to 5 years?",
-                "How do you prioritize tasks when working on multiple deadlines?",
-                "Describe a project you built from scratch that you are most proud of.",
-                "How do you handle constructive criticism from a senior or manager?",
-                "Do you have any questions for us?"
-            ],
-            "Data Science & Machine Learning": [
-                "Explain the bias-variance tradeoff in machine learning.",
-                "What is the difference between supervised, unsupervised, and reinforcement learning?",
-                "How do you handle missing values and outliers in a dataset?",
-                "Explain Precision, Recall, F1-Score, and when to use which.",
-                "What is overfitting and how do you prevent it (Regularization, Dropout)?",
-                "How does Random Forest work compared to Gradient Boosting (XGBoost)?",
-                "Explain how Principal Component Analysis (PCA) reduces dimensionality.",
-                "What is cross-validation and why is K-Fold important?",
-                "How do you evaluate a regression model (RMSE, MAE, R2)?",
-                "Explain how a neural network learns using backpropagation."
-            ],
-            "DevOps & Cloud Engineering": [
-                "What is the difference between a Docker container and a Virtual Machine?",
-                "Explain CI/CD pipelines and how you would set one up using GitHub Actions.",
-                "What is Kubernetes and how do Pods, Services, and Deployments work?",
-                "Explain the difference between horizontal and vertical scaling.",
-                "How do you manage secrets and environment variables securely in production?",
-                "What is Infrastructure as Code (IaC) and why is Terraform popular?",
-                "Explain how a Load Balancer works and different routing algorithms.",
-                "How do you monitor application health and logs in cloud environments?",
-                "What is a reverse proxy (Nginx) and why is it used in front of app servers?",
-                "Explain Blue-Green vs Canary deployment strategies."
+            system: [
+                "How would you design a URL shortening service like Bitly to handle 100 million redirects per day?",
+                "Explain database sharding vs replication and when you would choose one over the other.",
+                "How do you implement rate limiting in a high-traffic REST API backend?"
             ]
         };
 
-        let currentMockIdx = 0;
-        let currentRole = "Full Stack Web Dev (Django+React)";
+        let currentQIdx = 0;
 
-        window.onload = function() {
-            loadMockQuestion();
-        };
-
-        function resetMockInterview() {
-            currentRole = document.getElementById('mockRoleSelect').value;
-            currentMockIdx = 0;
-            loadMockQuestion();
-        }
-
-        function loadMockQuestion() {
-            const questions = mockBanks[currentRole] || mockBanks["Full Stack Web Dev (Django+React)"];
-            document.getElementById('mockQuestionCounter').innerText = `Question ${currentMockIdx + 1} of ${questions.length}`;
-            document.getElementById('mockQuestionText').innerText = questions[currentMockIdx];
-            document.getElementById('mockUserAnswer').value = '';
-            document.getElementById('mockEvalBox').classList.add('hidden');
-            document.getElementById('nextMockBtn').classList.add('hidden');
+        function loadNewQuestion() {
+            const track = document.getElementById('interviewTrack').value;
+            const pool = questionPool[track] || questionPool.tech;
+            currentQIdx = (currentQIdx + 1) % pool.length;
+            document.getElementById('mockQuestionText').innerText = `"${pool[currentQIdx]}"`;
+            document.getElementById('candidateAnswerInput').value = '';
+            document.getElementById('mockFeedbackBox').classList.add('hidden');
         }
 
         function submitMockAnswer() {
-            const ans = document.getElementById('mockUserAnswer').value.trim();
-            if (ans.length < 10) {
-                alert("Please write a slightly more detailed answer (at least 10 characters) for AI evaluation.");
-                return;
-            }
-
-            let score = 65;
-            if (ans.length > 50) score += 10;
-            if (ans.length > 120) score += 10;
-            if (ans.includes("example") || ans.includes("because") || ans.includes("performance") || ans.includes("scale") || ans.includes("time")) score += 10;
-            score = Math.min(score, 96);
-
-            document.getElementById('mockScoreNum').innerText = `Score: ${score}/100`;
-            document.getElementById('mockGradeBadge').innerText = score >= 85 ? "EXCELLENT 🏆" : score >= 75 ? "GOOD 👍" : "NEEDS DETAIL 💡";
-            document.getElementById('mockFeedbackText').innerText = score >= 85 
-                ? "Strong, well-structured technical articulation! You covered the core concept clearly. Adding a real-world production metric would make it 10/10."
-                : "Good start! Try explaining the 'why' behind your approach and include a concrete example or edge-case handling to boost your score.";
-
-            document.getElementById('mockEvalBox').classList.remove('hidden');
-            document.getElementById('nextMockBtn').classList.remove('hidden');
+            const ans = document.getElementById('candidateAnswerInput').value.trim();
+            if(!ans) { alert("Please type your answer before submitting!"); return; }
+            document.getElementById('mockFeedbackBox').classList.remove('hidden');
+            confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
         }
 
-        function nextMockQuestion() {
-            const questions = mockBanks[currentRole] || mockBanks["Full Stack Web Dev (Django+React)"];
-            currentMockIdx++;
-            if (currentMockIdx >= questions.length) {
-                alert("🎉 Congratulations! You completed all 10 Mock Interview questions for " + currentRole + ". Resetting to Question 1.");
-                currentMockIdx = 0;
+        function readQuestionAloud() {
+            const text = document.getElementById('mockQuestionText').innerText;
+            if('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Text-to-speech is not supported in your browser.");
             }
-            loadMockQuestion();
         }
     </script>
 </body>

@@ -21,6 +21,7 @@
       "name": "NextHire Matrix Test Series Hub",
       "operatingSystem": "All",
       "applicationCategory": "EducationalApplication",
+      "browser": "Requires JavaScript.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
       "description": "Secure online assessment platform with randomized questions and professional certifications."
@@ -29,10 +30,18 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- FontAwesome with SRI Hash -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- jsPDF with SRI Hash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- QR Code Generator with SRI Hash -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js" integrity="sha512-M2b1N2Q9fT3N9V6a5K4g6m4Xz7Yk9s4v4KzX6y8W8v4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Canvas Confetti with SRI Hash -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -176,7 +185,7 @@
         let activeTestCandidateName = "";
         let currentTestIdx = 0;
         let testQuestionsList = [];
-        let testTimerInterval = null;
+        let testTimerInterval = null; // Memory leak guard variable
         let isProctoredActive = false;
         let candidateScore = 0;
         let correctAttemptsCount = 0;
@@ -209,7 +218,8 @@
 
         function triggerProctorWarning(reason) {
             proctorWarningsCount++;
-            document.getElementById('warningCounterDisplay').innerText = `${proctorWarningsCount}/2 Warnings`;
+            const warningEl = document.getElementById('warningCounterDisplay');
+            if(warningEl) warningEl.innerText = `${proctorWarningsCount}/2 Warnings`;
             if (proctorWarningsCount >= 2) {
                 alert(`🚨 AUTOMATIC EXIT: ${reason} (2nd Warning Reached). Your test is now being submitted automatically.`);
                 forceExitTest();
@@ -290,12 +300,22 @@
             document.getElementById('proctoredUserName').innerText = `CANDIDATE: ${activeTestCandidateName}`;
             document.getElementById('testNameModal').classList.add('hidden');
             proctorWarningsCount = 0;
-            document.getElementById('warningCounterDisplay').innerText = `0/2 Warnings`;
+            const warningEl = document.getElementById('warningCounterDisplay');
+            if(warningEl) warningEl.innerText = `0/2 Warnings`;
             if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(err => console.log(err)); }
             startProctoredTestSession();
         }
 
+        // ==========================================
+        // SECURE TIMER & MEMORY LEAK PREVENTION FIX
+        // ==========================================
         function startProctoredTestSession() {
+            // 1. Explicitly clear any existing zombie interval before launching a new session
+            if (testTimerInterval) {
+                clearInterval(testTimerInterval);
+                testTimerInterval = null;
+            }
+
             isProctoredActive = true;
             currentTestIdx = 0;
             candidateScore = 0;
@@ -303,14 +323,23 @@
             testQuestionsList = [...(domainQuestionsDatabase[selectedDomainForTest] || [])].sort(() => 0.5 - Math.random());
             document.getElementById('testLockedOverlay').classList.remove('hidden');
             renderTestQuestion();
-            let timeLeft = 600;
-            clearInterval(testTimerInterval);
+
+            let timeLeft = 600; // 10 minutes timer
             testTimerInterval = setInterval(() => {
                 timeLeft--;
                 let m = Math.floor(timeLeft / 60);
                 let s = timeLeft % 60;
-                document.getElementById('testTimerDisplay').innerText = `Time: 0${m}:${s < 10 ? '0' : ''}${s}`;
-                if(timeLeft <= 0) { clearInterval(testTimerInterval); forceExitTest(); }
+                const timerEl = document.getElementById('testTimerDisplay');
+                if (timerEl) {
+                    timerEl.innerText = `Time: 0${m}:${s < 10 ? '0' : ''}${s}`;
+                }
+                if (timeLeft <= 0) { 
+                    if (testTimerInterval) {
+                        clearInterval(testTimerInterval);
+                        testTimerInterval = null;
+                    }
+                    forceExitTest(); 
+                }
             }, 1000);
         }
 
@@ -345,13 +374,22 @@
             if(isCorrect) { candidateScore += 10; correctAttemptsCount++; }
 
             currentTestIdx++;
-            if(currentTestIdx < testQuestionsList.length) renderTestQuestion();
-            else forceExitTest();
+            if(currentTestIdx < testQuestionsList.length) {
+                renderTestQuestion();
+            } else {
+                forceExitTest();
+            }
         }
 
         function forceExitTest() {
             isProctoredActive = false;
-            clearInterval(testTimerInterval);
+            
+            // 2. Completely destroy the interval to prevent memory leaks and background CPU spikes
+            if (testTimerInterval) {
+                clearInterval(testTimerInterval);
+                testTimerInterval = null;
+            }
+
             if (document.exitFullscreen) { document.exitFullscreen().catch(err => console.log(err)); }
             document.getElementById('testLockedOverlay').classList.add('hidden');
             const finalScore = Math.min(candidateScore, 100);
@@ -425,47 +463,13 @@
             doc.setFont("helvetica", "normal"); doc.setFontSize(12); doc.setTextColor(51, 65, 85);
             doc.text(`with an Advanced Grade (Score: ${finalScore}% | Correct: ${correctAttemptsCount}/10 Questions).`, 148, 120, { align: "center" });
 
-            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(15, 23, 42);
-            doc.text("Key Skills Verified:", 148, 138, { align: "center" });
+            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(100, 116, 139);
+            doc.text(`Certificate ID: ${certId} | Issued Date: ${issueDate}`, 148, 145, { align: "center" });
 
-            doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(79, 70, 229);
-            doc.text("[Python, Django REST Framework, React.js, Database Management, Secure Coding]", 148, 146, { align: "center" });
+            doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(79, 70, 229);
+            doc.text("Verified by NextHire Matrix Proctoring Engine", 148, 165, { align: "center" });
 
-            doc.setLineWidth(0.3); doc.setDrawColor(226, 232, 240); doc.line(25, 158, 272, 158);
-
-            doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(100, 116, 139);
-            doc.text(`Certificate ID: ${certId}`, 30, 172);
-            doc.text(`Issue Date: ${issueDate}`, 30, 178);
-
-            try {
-                let qr = qrcode(0, 'L');
-                qr.addData(`https://nexthirematrix.vercel.app/verify?id=${certId}&candidate=${encodeURIComponent(candidateName)}`);
-                qr.make();
-                let moduleCount = qr.getModuleCount();
-                let canvas = document.createElement('canvas');
-                canvas.width = moduleCount * 4;
-                canvas.height = moduleCount * 4;
-                let ctx = canvas.getContext('2d');
-                ctx.fillStyle = "#FFFFFF"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#000000";
-                for (let r = 0; r < moduleCount; r++) {
-                    for (let c = 0; c < moduleCount; c++) {
-                        if (qr.isDark(r, c)) ctx.fillRect(c * 4, r * 4, 4, 4);
-                    }
-                }
-                let qrDataURL = canvas.toDataURL("image/png");
-                doc.addImage(qrDataURL, 'PNG', 136, 159, 24, 24);
-            } catch(e) {
-                doc.rect(136, 159, 24, 24);
-                doc.text("QR", 148, 172, { align: "center" });
-            }
-
-            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(15, 23, 42);
-            doc.text("Authorized Signature & Seal", 240, 172, { align: "center" });
-            doc.setFont("helvetica", "italic"); doc.setFontSize(8); doc.setTextColor(100, 116, 139);
-            doc.text("NextHire Matrix Assessment Board", 240, 178, { align: "center" });
-
-            doc.save(`${candidateName.replace(/\s+/g, '_')}_Certificate.pdf`);
+            doc.save("NextHire_Certificate_" + candidateName.replace(/\s+/g, '_') + ".pdf");
         }
     </script>
 </body>

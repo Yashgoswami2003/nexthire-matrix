@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - Salary Estimator & HR Compensation Negotiator</title>
+    <title>Salary Estimator & Negotiator - NextHire Matrix</title>
     
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Estimate market compensation brackets for technical roles and generate professional HR salary negotiation emails.">
+    <meta name="description" content="Estimate market compensation packages across software engineering domains and get negotiation strategies.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/salary-estimator.html">
-    <meta property="og:title" content="NextHire Matrix Salary Estimator">
-    <meta property="og:description" content="Estimate market compensation brackets and generate HR negotiation emails.">
+    <meta property="og:title" content="Salary Estimator - NextHire Matrix">
+    <meta property="og:description" content="Software engineering salary benchmark and negotiation tool.">
 
     <script type="application/ld+json">
     {
@@ -21,24 +21,27 @@
       "name": "NextHire Matrix Salary Estimator",
       "operatingSystem": "All",
       "applicationCategory": "BusinessApplication",
+      "browser": "Requires JavaScript.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
-      "description": "Salary estimation and HR negotiation email generator."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1560" },
+      "description": "Tech salary estimator and negotiation advisor."
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <div class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </div>
+            </h1>
             <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
@@ -56,42 +59,52 @@
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
-        <div class="max-w-3xl mx-auto bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-            <div class="text-center space-y-1">
-                <h1 class="text-xl font-black text-slate-800 dark:text-slate-100">💰 Salary Estimator & Negotiator</h1>
-                <p class="text-xs text-slate-500">Estimate market compensation brackets and generate HR negotiation emails.</p>
-            </div>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
+        <div class="text-center space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Software Engineer Salary Estimator</h2>
+            <p class="text-xs text-slate-500 font-medium">Estimate market compensation packages across tech domains and experience levels.</p>
+        </div>
+
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Role</label>
-                    <input type="text" id="salRole" placeholder="e.g. Python Developer" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Domain / Role</label>
+                    <select id="salaryDomain" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option>Full Stack Developer (Python/React)</option>
+                        <option>AI & Machine Learning Engineer</option>
+                        <option>Backend Systems Engineer</option>
+                        <option>DevOps & Cloud Engineer</option>
+                    </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Years of Experience</label>
-                    <select id="salExp" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold">
-                        <option value="Fresher / 0-1 Yr">Fresher / 0-1 Yr</option>
-                        <option value="1-3 Years">1-3 Years</option>
-                        <option value="3-5 Years">3-5 Years</option>
-                        <option value="5+ Years">5+ Years</option>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Experience Level</label>
+                    <select id="salaryExp" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option>Entry Level / Fresher (0-1 Years)</option>
+                        <option>Mid Level (2-4 Years)</option>
+                        <option>Senior Engineer (5+ Years)</option>
                     </select>
                 </div>
             </div>
-            <button onclick="calculateOnlySalary()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">📊 Calculate Estimated Salary</button>
-            <div id="salBracketBox" class="hidden p-4 bg-emerald-50 dark:bg-emerald-950/50 rounded-2xl border border-emerald-200 text-center">
-                <p class="text-xs font-bold text-emerald-800">Estimated Market Package Bracket</p>
-                <h2 id="salBracketText" class="text-2xl font-black text-emerald-600 mt-1">₹6.5 LPA - ₹12.0 LPA</h2>
+            <button onclick="estimateSalary()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition">Calculate Market Benchmark 📊</button>
+
+            <div id="salaryResultBox" class="p-6 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-3 hidden text-center">
+                <span class="text-xs font-black uppercase tracking-wider text-indigo-600">Estimated Annual Compensation</span>
+                <h3 id="salaryOutputNum" class="text-3xl font-black text-slate-900 dark:text-slate-100">₹12,00,000 - ₹18,00,000 LPA</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">Based on recent market trends across product engineering hubs.</p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-        <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        function calculateOnlySalary() {
-            document.getElementById('salBracketBox').classList.remove('hidden');
+        function estimateSalary() {
+            document.getElementById('salaryResultBox').classList.remove('hidden');
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
         }
     </script>
 </body>

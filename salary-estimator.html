@@ -5,110 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salary Estimator & Negotiator - NextHire Matrix</title>
     
+    <link rel="canonical" href="https://www.nexthirematrix.com/salary-estimator.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
-
-    <meta name="description" content="Estimate market compensation packages across software engineering domains and get negotiation strategies.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/salary-estimator.html">
-    <meta property="og:title" content="Salary Estimator - NextHire Matrix">
-    <meta property="og:description" content="Software engineering salary benchmark and negotiation tool.">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "NextHire Matrix Salary Estimator",
-      "operatingSystem": "All",
-      "applicationCategory": "BusinessApplication",
-      "browser": "Requires JavaScript.",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1560" },
-      "description": "Tech salary estimator and negotiation advisor."
-    }
-    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
 
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
-        </div>
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 p-4 flex justify-between items-center">
+        <h1 class="text-sm font-extrabold text-indigo-600 cursor-pointer" onclick="window.location.href='index.html'">NextHire Matrix - Salary Estimator</h1>
+        <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold"><i class="fa-solid fa-moon"></i></button>
     </header>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
-            <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
-            <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
-            <a href="test-series.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-bullseye mr-1"></i> Test Series Hub</a>
-            <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
-            <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
-            <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
-        </div>
-    </div>
-
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-6">
         <div class="text-center space-y-2">
-            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Software Engineer Salary Estimator</h2>
-            <p class="text-xs text-slate-500 font-medium">Estimate market compensation packages across tech domains and experience levels.</p>
+            <h2 class="text-2xl font-black">Salary Estimator & Negotiator</h2>
+            <p class="text-xs text-slate-500">Calculate estimated industry compensation based on your role and tech stack.</p>
         </div>
 
-        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Domain / Role</label>
-                    <select id="salaryDomain" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option>Full Stack Developer (Python/React)</option>
-                        <option>AI & Machine Learning Engineer</option>
-                        <option>Backend Systems Engineer</option>
-                        <option>DevOps & Cloud Engineer</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Experience Level</label>
-                    <select id="salaryExp" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option>Entry Level / Fresher (0-1 Years)</option>
-                        <option>Mid Level (2-4 Years)</option>
-                        <option>Senior Engineer (5+ Years)</option>
-                    </select>
-                </div>
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800 space-y-5">
+            <div>
+                <label class="block text-xs font-bold mb-1.5 uppercase">Job Role / Tech Stack</label>
+                <input type="text" id="salaryRole" placeholder="e.g. Full Stack Developer" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 focus:outline-none">
             </div>
-            <button onclick="estimateSalary()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition">Calculate Market Benchmark 📊</button>
+            <div>
+                <label class="block text-xs font-bold mb-1.5 uppercase">Years of Experience</label>
+                <input type="number" id="salaryExp" placeholder="e.g. 2" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 focus:outline-none">
+            </div>
+            <button onclick="estimateSalary()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg">Estimate Salary Range 💰</button>
 
-            <div id="salaryResultBox" class="p-6 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-3 hidden text-center">
-                <span class="text-xs font-black uppercase tracking-wider text-indigo-600">Estimated Annual Compensation</span>
-                <h3 id="salaryOutputNum" class="text-3xl font-black text-slate-900 dark:text-slate-100">₹12,00,000 - ₹18,00,000 LPA</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">Based on recent market trends across product engineering hubs.</p>
+            <div id="salaryOutputBox" class="p-6 bg-slate-50 dark:bg-slate-800 rounded-2xl space-y-2 hidden text-center">
+                <h3 class="text-xs font-black uppercase text-indigo-600">Estimated Market Range</h3>
+                <p id="salaryRangeText" class="text-2xl font-black text-indigo-600">₹6 LPA – ₹12 LPA</p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
-        </div>
+    <footer class="bg-white/80 dark:bg-slate-900/80 border-t border-slate-200 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 NextHire Matrix. All rights reserved.</p>
     </footer>
 
     <script>
         function estimateSalary() {
-            document.getElementById('salaryResultBox').classList.remove('hidden');
+            const role = document.getElementById('salaryRole').value.trim();
+            if(!role) { alert("Please enter your job role!"); return; }
+            document.getElementById('salaryOutputBox').classList.remove('hidden');
             confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
         }
     </script>

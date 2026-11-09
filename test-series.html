@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextHire Matrix - Proctored Test Series & Certifications (20+ Domains)</title>
     
+    <link rel="canonical" href="https://www.nexthirematrix.com/test-series.html">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
@@ -31,16 +37,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- FontAwesome with SRI Hash -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- jsPDF with SRI Hash -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <!-- QR Code Generator with SRI Hash -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js" integrity="sha512-M2b1N2Q9fT3N9V6a5K4g6m4Xz7Yk9s4v4KzX6y8W8v4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <!-- Canvas Confetti with SRI Hash -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <style>
@@ -185,7 +183,7 @@
         let activeTestCandidateName = "";
         let currentTestIdx = 0;
         let testQuestionsList = [];
-        let testTimerInterval = null; // Memory leak guard variable
+        let testTimerInterval = null;
         let isProctoredActive = false;
         let candidateScore = 0;
         let correctAttemptsCount = 0;
@@ -306,11 +304,7 @@
             startProctoredTestSession();
         }
 
-        // ==========================================
-        // SECURE TIMER & MEMORY LEAK PREVENTION FIX
-        // ==========================================
         function startProctoredTestSession() {
-            // 1. Explicitly clear any existing zombie interval before launching a new session
             if (testTimerInterval) {
                 clearInterval(testTimerInterval);
                 testTimerInterval = null;
@@ -324,7 +318,7 @@
             document.getElementById('testLockedOverlay').classList.remove('hidden');
             renderTestQuestion();
 
-            let timeLeft = 600; // 10 minutes timer
+            let timeLeft = 600;
             testTimerInterval = setInterval(() => {
                 timeLeft--;
                 let m = Math.floor(timeLeft / 60);
@@ -383,8 +377,6 @@
 
         function forceExitTest() {
             isProctoredActive = false;
-            
-            // 2. Completely destroy the interval to prevent memory leaks and background CPU spikes
             if (testTimerInterval) {
                 clearInterval(testTimerInterval);
                 testTimerInterval = null;

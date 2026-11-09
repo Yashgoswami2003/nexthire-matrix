@@ -8,7 +8,7 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free with live preview and PDF export. No signup required.">
+    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free with live preview, feedback, memes, and PDF export. No signup required.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/index.html">
     <meta property="og:title" content="NextHire Matrix - Free ATS Resume Builder">
@@ -65,6 +65,18 @@
     </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-6">
+        <!-- Motivational Thought Banner -->
+        <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white p-4 rounded-3xl shadow-lg flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl"><i class="fa-solid fa-lightbulb"></i></span>
+                <div>
+                    <h3 class="text-xs font-black uppercase tracking-wider">Daily Motivational Thought</h3>
+                    <p id="motivationalThoughtText" class="text-xs font-medium opacity-95">"Consistency is the DNA of elite engineers. Build, deploy, repeat!"</p>
+                </div>
+            </div>
+            <button onclick="rotateMotivation()" class="text-xs bg-white/25 hover:bg-white/40 px-3 py-1.5 rounded-xl font-bold transition">New Quote</button>
+        </div>
+
         <div class="text-center">
             <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Free ATS-Optimized Resume Builder</h1>
             <p class="text-xs text-slate-500 mt-1">Create professional, keyword-optimized resumes instantly with live preview.</p>
@@ -203,18 +215,81 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Developer Meme Box -->
+                <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 text-center space-y-2">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-indigo-600">😂 Developer Meme of the Day</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 font-bold">"There are two hard things in Computer Science: cache invalidation and naming things."</p>
+                </div>
             </section>
         </div>
+
+        <!-- Feedback Section -->
+        <section class="max-w-3xl mx-auto bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-4 text-center mt-12">
+            <h2 class="text-lg font-black text-slate-800 dark:text-slate-100">💬 Leave Your Valuable Feedback</h2>
+            <p class="text-xs text-slate-500">Help us improve NextHire Matrix for engineering students & developers.</p>
+            <textarea id="userFeedbackInput" rows="3" placeholder="Type your feedback or feature request here..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium"></textarea>
+            <button onclick="submitFeedback()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Submit Feedback 🚀</button>
+            <p id="feedbackThankMsg" class="text-xs font-bold text-emerald-600 hidden">🎉 Thank you for your feedback! We appreciate it.</p>
+        </section>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    <!-- Rich Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-12 mt-16 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+            <div class="space-y-3">
+                <h3 class="font-black text-sm bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">NextHire Matrix</h3>
+                <p class="text-slate-500 leading-relaxed font-medium">Advanced AI-powered career platform and ATS resume builder designed for high-achieving engineering students.</p>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-3">Quick Tools</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400 font-medium">
+                    <li><a href="index.html" class="hover:text-indigo-600 transition">Resume Builder</a></li>
+                    <li><a href="ats-checker.html" class="hover:text-indigo-600 transition">ATS Score Checker</a></li>
+                    <li><a href="interview-prep.html" class="hover:text-indigo-600 transition">Interview Prep Hub</a></li>
+                    <li><a href="mock-interview.html" class="hover:text-indigo-600 transition">Mock HR & Tech Interviewer</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-3">Assessments</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400 font-medium">
+                    <li><a href="test-series.html" class="hover:text-indigo-600 transition">20+ Proctored Test Series</a></li>
+                    <li><a href="salary-estimator.html" class="hover:text-indigo-600 transition">Salary Estimator & Negotiator</a></li>
+                    <li><a href="cover-letter.html" class="hover:text-indigo-600 transition">Cover Letter Generator</a></li>
+                    <li><a href="job-matcher.html" class="hover:text-indigo-600 transition">Job Description Matcher</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-3">Connect & Legal</h4>
+                <p class="text-slate-500 font-medium mb-3">Built with passion by Yash Raj Goswami & team.</p>
+                <p class="text-slate-400 font-bold">© 2026 NextHire Matrix. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
         let profilePhotoBase64 = "";
+
+        const thoughts = [
+            "\"Consistency is the DNA of elite engineers. Build, deploy, repeat!\"",
+            "\"First, solve the problem. Then, write the code. — John Johnson\"",
+            "\"Code is like humor. When you have to explain it, it’s bad. — Cory House\"",
+            "\"Simplicity is prerequisite for reliability. — Edsger W. Dijkstra\"",
+            "\"Make it work, make it right, make it fast. — Kent Beck\""
+        ];
+
+        function rotateMotivation() {
+            const randomIndex = Math.floor(Math.random() * thoughts.length);
+            document.getElementById('motivationalThoughtText').innerText = thoughts[randomIndex];
+        }
+
+        function submitFeedback() {
+            const val = document.getElementById('userFeedbackInput').value.trim();
+            if(!val) { alert("Please write some feedback before submitting!"); return; }
+            document.getElementById('feedbackThankMsg').classList.remove('hidden');
+            document.getElementById('userFeedbackInput').value = '';
+            setTimeout(() => { document.getElementById('feedbackThankMsg').classList.add('hidden'); }, 4000);
+        }
 
         window.onload = function() {
             loadFromLocalStorage();
@@ -300,7 +375,6 @@
             const template = document.getElementById('templateSelector').value;
             const container = document.getElementById('previewContainer');
             
-            // Apply Template Styling Variations
             const hSummary = document.getElementById('hSummary');
             const hSkills = document.getElementById('hSkills');
             const hExp = document.getElementById('hExp');
@@ -319,7 +393,6 @@
                 container.className = "bg-amber-50/30 p-8 sm:p-10 rounded-3xl shadow-2xl border border-amber-200 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
                 hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-amber-800 border-b border-amber-300 pb-1.5";
             } else {
-                // Classic
                 container.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-200 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
                 hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5";
             }

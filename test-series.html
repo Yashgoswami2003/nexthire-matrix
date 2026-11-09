@@ -3,31 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - Test Series Hub & Certifications</title>
+    <title>NextHire Matrix - Test Series Hub & Proctored Certifications</title>
+    
+    <!-- 📊 GOOGLE ANALYTICS / GTM TRACKING TAG -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
     </script>
-    <meta name="title" content="NextHire Matrix - Test Series Hub">
-    <meta name="description" content="Take proctored online technical assessments and earn verified certificates.">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { darkMode: 'class' }</script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <!-- FontAwesome CDN for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- QRCode Generator Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-ss-mode { -webkit-user-select: none; user-select: none; }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- FULLSCREEN TEST OVERLAY -->
+    <div id="testLockedOverlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[999] hidden flex flex-col items-center justify-center p-4 no-ss-mode">
+        <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div>
+                    <h4 id="proctoredUserName" class="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase">CANDIDATE: -</h4>
+                    <span class="text-[10px] text-emerald-500 font-bold">🛡️ Secure Test Session Active (<span id="warningCounterDisplay">0/2 Warnings</span>)</span>
+                </div>
+                <span id="testTimerDisplay" class="text-xs font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 px-3.5 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800">Time: 10:00</span>
+            </div>
+            <div id="testQuestionContent" class="text-left space-y-4"></div>
+            <div class="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="nextTestQuestion()" class="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                <button onclick="forceExitTest()" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-3 rounded-2xl font-extrabold text-xs shadow-lg transition"><i class="fa-solid fa-right-from-bracket mr-1"></i> Exit & Submit Test</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEST NAME INPUT MODAL -->
+    <div id="testNameModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[990] hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 text-center">
+            <h3 class="text-lg font-black text-slate-800 dark:text-slate-100"><i class="fa-solid fa-lock text-indigo-600 mr-2"></i> Enter Name for Secure Test</h3>
+            <p class="text-xs text-slate-500">Only English alphabets are allowed (no numbers or symbols).</p>
+            <input type="text" id="rawCandidateName" placeholder="Enter Full Name (e.g. Yash Raj Goswami)" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 font-bold text-center focus:outline-none uppercase">
+            <button onclick="confirmAndLaunchTest()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Start Secured Test Session <i class="fa-solid fa-rocket ml-1"></i></button>
+        </div>
+    </div>
+
+    <!-- TEST RESULT REPORT MODAL -->
+    <div id="testResultModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[995] hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-5 text-center">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
+                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-award text-indigo-600 mr-2"></i> Official Test Performance Report</h3>
+                <button onclick="closeResultModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
+            </div>
+            <div class="bg-indigo-50/80 dark:bg-indigo-950/60 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-2">
+                <p id="resCandidateDisplay" class="text-xs font-bold text-slate-600 dark:text-slate-300">CANDIDATE: -</p>
+                <h2 id="resScoreText" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">Score: 0%</h2>
+                <p id="resAttemptStatsText" class="text-xs font-bold text-slate-700 dark:text-slate-300 bg-white/60 dark:bg-slate-900/60 py-1.5 px-3 rounded-xl border border-slate-200/50 dark:border-slate-800">Correct: 0 out of 10 Questions Attempted</p>
+                <p id="resStatusBadge" class="text-xs font-bold">STATUS</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="downloadTestCertificate()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md"><i class="fa-solid fa-download mr-1.5"></i> Download Certificate</button>
+                <button onclick="shareToLinkedIn()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md"><i class="fa-brands fa-linkedin mr-1.5"></i> Share on LinkedIn 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            <h1 onclick="window.location.href='index.html'" class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
+            <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition shadow-sm text-sm flex items-center gap-1.5 font-semibold">
+                <span id="themeIcon"><i class="fa-solid fa-moon"></i></span> <span class="hidden sm:inline">Dark</span>
+            </button>
         </div>
     </header>
 
+    <!-- Navigation Switcher -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
             <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
@@ -41,73 +109,370 @@
         </div>
     </div>
 
-    <!-- TEST MODAL -->
-    <div id="testLockedOverlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[999] hidden flex flex-col items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
-                <h4 id="proctoredUserName" class="text-xs font-black text-indigo-600 uppercase">CANDIDATE: -</h4>
-                <span id="testTimerDisplay" class="text-xs font-black bg-indigo-50 text-indigo-600 px-3.5 py-1.5 rounded-xl">Time: 10:00</span>
-            </div>
-            <div id="testQuestionContent" class="text-left space-y-4"></div>
-            <button onclick="nextTestQuestion()" class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
-        </div>
-    </div>
-
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
+        <!-- Test Series Hub -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div class="text-center space-y-1">
-                <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">🎯 Test Series Hub</h2>
+                <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">🎯 Test Series Hub (20+ Domains)</h2>
                 <p class="text-xs text-slate-500">Secure Online Assessment Platform with Randomized Questions & Professional Certification</p>
             </div>
             <div id="testGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
+
+        <!-- Wall of Achievers Leaderboard -->
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Wall of Achievers Leaderboard</h3>
+                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 dark:bg-indigo-950 px-3 py-1 rounded-xl">Live Rankings</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500">
+                            <th class="pb-2">Rank & Candidate</th>
+                            <th class="pb-2">Domain Certified</th>
+                            <th class="pb-2">Score</th>
+                            <th class="pb-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardTableBody" class="divide-y divide-slate-100 dark:divide-slate-800 font-medium"></tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs font-semibold text-slate-600 dark:text-slate-400">
-        <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        </div>
     </footer>
 
+    <!-- JavaScript Script -->
     <script>
-        const domainsList = ["Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering", "Machine Learning & AI", "DevOps & Cloud (AWS/Docker)"];
+        const domainsList = [
+            "Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering",
+            "Frontend Engineering (React/JS)", "Backend Engineering (Node/Python)", "Java & Enterprise Systems",
+            "C++ & System Programming", "Data Science & Analytics", "Machine Learning & AI",
+            "DevOps & Cloud (AWS/Docker)", "Cybersecurity & Ethical Hacking", "Mobile App Dev (Flutter/React Native)",
+            "Software Testing & QA Automation", "Data Engineering & Big Data", "Golang Backend Systems",
+            "Rust High Performance Systems", "UI/UX Design Systems", "Product Management",
+            "Agile & Scrum Project Management", "HR & Talent Acquisition"
+        ];
+
         const domainQuestionsDatabase = {};
-        domainsList.forEach(d => {
-            domainQuestionsDatabase[d] = [
-                { type: "mcq", level: "Basic", q: `Core fundamentals of ${d}?`, options: ["Proper syntax", "Random logic", "Blocking threads", "Legacy approach"], correct: "Proper syntax" }
+        domainsList.forEach(domain => {
+            domainQuestionsDatabase[domain] = [
+                { type: "mcq", level: "Basic", q: `What are the core fundamentals and syntax rules of ${domain}?`, options: ["Proper syntax and standard execution flow", "Random unstructured logic", "Blocking synchronous threads", "Legacy configuration approach"], correct: "Proper syntax and standard execution flow" },
+                { type: "mcq", level: "Basic", q: `How do you handle basic error management and debugging in ${domain}?`, options: ["Using try-catch/exception blocks & debuggers", "Ignoring exceptions", "Infinite loops", "Hardcoding outputs"], correct: "Using try-catch/exception blocks & debuggers" },
+                { type: "mcq", level: "Moderate", q: `How do you optimize runtime performance and query complexity in ${domain}?`, options: ["Minimizing loops and indexing data properly", "Increasing memory leaks", "Using blocking threads", "Disabling caches"], correct: "Minimizing loops and indexing data properly" },
+                { type: "mcq", level: "Moderate", q: `Describe how asynchronous operations or concurrency are handled in ${domain}.`, options: ["Using async/await or event loops", "Single-thread freezing", "Manual polling", "Synchronous blocking"], correct: "Using async/await or event loops" },
+                { type: "mcq", level: "Advanced", q: `Explain advanced architectural patterns and scalability strategies in ${domain}.`, options: ["Microservices and distributed caching", "Monolithic tight coupling", "Static flat files", "Local storage arrays"], correct: "Microservices and distributed caching" },
+                { type: "subjective", level: "Basic", q: `Explain your approach to writing clean, maintainable, and modular code in ${domain}.`, a: " modular design, clear variable naming, commenting complex logic, and keeping functions concise." },
+                { type: "subjective", level: "Moderate", q: `Discuss data structures and memory management mechanisms in ${domain}.`, a: " efficient memory allocation, avoiding leaks, and choosing right collections." },
+                { type: "subjective", level: "Moderate", q: `How do you write robust unit tests and ensure high code coverage in ${domain}?`, a: " using testing frameworks, mocking dependencies, and validating corner cases." },
+                { type: "subjective", level: "Advanced", q: `How do you secure applications against vulnerabilities and injection attacks in ${domain}?`, a: " sanitizing inputs, secure JWT authentication, and parameterized queries." },
+                { type: "subjective", level: "Advanced", q: `Describe a complex bottleneck you resolved in a high-traffic production system using ${domain}.`, a: " profiling with APM tools, query tuning, and Redis caching." }
             ];
         });
-        let selectedDomainForTest = "", currentTestIdx = 0, testQuestionsList = [], candidateScore = 0;
-        window.onload = function() { render20DomainsCards(); };
+
+        let selectedDomainForTest = "";
+        let activeTestCandidateName = "";
+        let currentTestIdx = 0;
+        let testQuestionsList = [];
+        let testTimerInterval = null;
+        let isProctoredActive = false;
+        let candidateScore = 0;
+        let correctAttemptsCount = 0;
+        let proctorWarningsCount = 0;
+
+        window.onload = function() {
+            render20DomainsCards();
+            renderLeaderboard();
+            setupAntiCheatingProtection();
+        };
+
+        function toggleDarkMode() { document.getElementById('htmlRoot').classList.toggle('dark'); }
+
+        function setupAntiCheatingProtection() {
+            document.addEventListener('keydown', function(e) {
+                if(!isProctoredActive) return;
+                if(e.key === 'PrintScreen' || e.keyCode === 44 || e.keyCode === 123 ||
+                   (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+                   (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 80 || e.keyCode === 83))) {
+                    e.preventDefault();
+                    triggerProctorWarning("Screenshot or Developer Tools shortcut detected!");
+                    return false;
+                }
+            });
+            document.addEventListener('contextmenu', e => {
+                if(isProctoredActive) { e.preventDefault(); triggerProctorWarning("Right-click context menu attempt detected!"); }
+            });
+            window.addEventListener('blur', function() {
+                if(isProctoredActive) { triggerProctorWarning("Tab switch or window blur detected!"); }
+            });
+        }
+
+        function triggerProctorWarning(reason) {
+            proctorWarningsCount++;
+            document.getElementById('warningCounterDisplay').innerText = `${proctorWarningsCount}/2 Warnings`;
+            if (proctorWarningsCount >= 2) {
+                alert(`🚨 AUTOMATIC EXIT: ${reason} (2nd Warning Reached). Your test is now being submitted automatically.`);
+                forceExitTest();
+            } else {
+                alert(`⚠️ PROCTORING WARNING (${proctorWarningsCount}/2): ${reason} Please stay on the test window.`);
+            }
+        }
+
         function render20DomainsCards() {
             const container = document.getElementById('testGridContainer');
-            container.innerHTML = domainsList.map(domain => `
-                <div class="p-5 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/50 dark:bg-slate-900/50 space-y-3">
-                    <h3 class="text-xs font-black text-slate-800 dark:text-slate-100">${domain}</h3>
-                    <p class="text-[11px] text-slate-500 font-medium">10 Questions | 10 Mins</p>
-                    <button onclick="promptTestName('${domain}')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-extrabold text-xs shadow-md">Start Secure Test</button>
-                </div>
+            if(!container) return;
+            container.innerHTML = '';
+            domainsList.forEach(domain => {
+                const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
+                const isCompleted = completedDomains.includes(domain);
+                const card = document.createElement('div');
+                card.className = "p-5 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/50 dark:bg-slate-900/50 space-y-3 shadow-sm";
+                card.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl">🎯</span>
+                        <h3 class="text-xs font-black text-slate-800 dark:text-slate-100">${domain}</h3>
+                    </div>
+                    <p class="text-[11px] text-slate-500 font-medium">10 Questions (MCQ + Subjective) | 10 Mins</p>
+                    ${isCompleted ? 
+                        `<button disabled class="w-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 py-2.5 rounded-xl font-extrabold text-xs cursor-not-allowed border border-emerald-300"><i class="fa-solid fa-circle-check mr-1"></i> Completed & Certified</button>` :
+                        `<button onclick="promptTestName('${domain}')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-extrabold text-xs shadow-md"><i class="fa-solid fa-lock-open mr-1"></i> Start Secure Test</button>`
+                    }
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboardTableBody');
+            if(!tbody) return;
+            const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
+            const candidateName = activeTestCandidateName || "YASH RAJ GOSWAMI";
+            
+            let dummyAchievers = [
+                { name: "RAHUL SHARMA", domain: "Full Stack Web Dev (Django+React)", score: "90%", status: "Passed 🏆" },
+                { name: "PRIYA VERMA", domain: "Machine Learning & AI", score: "80%", status: "Passed 🏆" },
+                { name: "AMIT KUMAR", domain: "DevOps & Cloud (AWS/Docker)", score: "80%", status: "Passed 🏆" }
+            ];
+
+            if(completedDomains.length > 0 && activeTestCandidateName) {
+                dummyAchievers.unshift({
+                    name: candidateName,
+                    domain: selectedDomainForTest || completedDomains[0],
+                    score: Math.min(candidateScore, 100) + "%",
+                    status: "Passed 🏆"
+                });
+            }
+
+            tbody.innerHTML = dummyAchievers.map((ach, idx) => `
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50">
+                    <td class="py-3 font-extrabold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 flex items-center justify-center text-[10px]">${idx + 1}</span>
+                        ${ach.name}
+                    </td>
+                    <td class="py-3 text-slate-600 dark:text-slate-400">${ach.domain}</td>
+                    <td class="py-3 font-black text-indigo-600">${ach.score}</td>
+                    <td class="py-3 text-emerald-600 font-bold">${ach.status}</td>
+                </tr>
             `).join('');
         }
+
         function promptTestName(domain) {
             selectedDomainForTest = domain;
-            const name = prompt("Enter Candidate Full Name:") || "YASH RAJ GOSWAMI";
-            document.getElementById('proctoredUserName').innerText = `CANDIDATE: ${name.toUpperCase()}`;
+            document.getElementById('rawCandidateName').value = '';
+            document.getElementById('testNameModal').classList.remove('hidden');
+        }
+
+        function confirmAndLaunchTest() {
+            const raw = document.getElementById('rawCandidateName').value;
+            const cleanName = raw.replace(/[^a-zA-Z\s]/g, '').trim();
+            if(!cleanName) { alert("Please enter a valid candidate name containing English alphabets only!"); return; }
+            activeTestCandidateName = cleanName.toUpperCase();
+            document.getElementById('proctoredUserName').innerText = `CANDIDATE: ${activeTestCandidateName}`;
+            document.getElementById('testNameModal').classList.add('hidden');
+            proctorWarningsCount = 0;
+            document.getElementById('warningCounterDisplay').innerText = `0/2 Warnings`;
+            if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(err => console.log(err)); }
+            startProctoredTestSession();
+        }
+
+        function startProctoredTestSession() {
+            isProctoredActive = true;
+            currentTestIdx = 0;
+            candidateScore = 0;
+            correctAttemptsCount = 0;
+            testQuestionsList = [...(domainQuestionsDatabase[selectedDomainForTest] || [])].sort(() => 0.5 - Math.random());
             document.getElementById('testLockedOverlay').classList.remove('hidden');
-            testQuestionsList = domainQuestionsDatabase[domain] || [];
-            currentTestIdx = 0; candidateScore = 0;
             renderTestQuestion();
+            let timeLeft = 600;
+            clearInterval(testTimerInterval);
+            testTimerInterval = setInterval(() => {
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                document.getElementById('testTimerDisplay').innerText = `Time: 0${m}:${s < 10 ? '0' : ''}${s}`;
+                if(timeLeft <= 0) { clearInterval(testTimerInterval); forceExitTest(); }
+            }, 1000);
         }
+
         function renderTestQuestion() {
+            const container = document.getElementById('testQuestionContent');
             const item = testQuestionsList[currentTestIdx];
-            document.getElementById('testQuestionContent').innerHTML = `
-                <h3 class="text-sm font-extrabold">${item.q}</h3>
-                <div class="space-y-2">${item.options.map(o => `<label class="block p-3 border rounded-xl cursor-pointer text-xs"><input type="radio" name="testOpt" value="${o}"> ${o}</label>`).join('')}</div>
+            container.innerHTML = `
+                <div class="flex justify-between items-center text-xs font-bold text-indigo-600">
+                    <span>Domain: ${selectedDomainForTest}</span>
+                    <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300">[${item.level} - ${item.type.toUpperCase()}] Question ${currentTestIdx + 1} of ${testQuestionsList.length}</span>
+                </div>
+                <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">${item.q}</h3>
             `;
+            if(item.type === 'mcq') {
+                const shuffledOpts = [...item.options].sort(() => 0.5 - Math.random());
+                container.innerHTML += `<div class="space-y-2 pt-2">${shuffledOpts.map(opt => `<label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 cursor-pointer text-xs font-semibold hover:border-indigo-500 transition"><input type="radio" name="testOpt" value="${opt}" class="accent-indigo-600"> <span>${opt}</span></label>`).join('')}</div>`;
+            } else {
+                container.innerHTML += `<div class="pt-2 space-y-2"><textarea id="subjectiveAnsInput" rows="4" placeholder="Write your detailed technical answer or code snippet here..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium"></textarea></div>`;
+            }
         }
+
         function nextTestQuestion() {
-            candidateScore += 50;
+            const item = testQuestionsList[currentTestIdx];
+            let isCorrect = false;
+            if(item.type === 'mcq') {
+                const selectedOpt = document.querySelector('input[name="testOpt"]:checked');
+                if(selectedOpt && selectedOpt.value === item.correct) { isCorrect = true; }
+            } else {
+                if(document.getElementById('subjectiveAnsInput').value.trim().length > 5) { isCorrect = true; }
+            }
+
+            if(isCorrect) { candidateScore += 10; correctAttemptsCount++; }
+
             currentTestIdx++;
             if(currentTestIdx < testQuestionsList.length) renderTestQuestion();
-            else { document.getElementById('testLockedOverlay').classList.add('hidden'); alert(`Test Submitted! Score: ${candidateScore}%`); }
+            else forceExitTest();
+        }
+
+        function forceExitTest() {
+            isProctoredActive = false;
+            clearInterval(testTimerInterval);
+            if (document.exitFullscreen) { document.exitFullscreen().catch(err => console.log(err)); }
+            document.getElementById('testLockedOverlay').classList.add('hidden');
+            const finalScore = Math.min(candidateScore, 100);
+            
+            document.getElementById('resCandidateDisplay').innerText = `CANDIDATE: ${activeTestCandidateName || 'USER'}`;
+            document.getElementById('resScoreText').innerText = `Score: ${finalScore}%`;
+            document.getElementById('resAttemptStatsText').innerText = `Correct: ${correctAttemptsCount} out of ${testQuestionsList.length} Questions Attempted`;
+
+            const statusBadge = document.getElementById('resStatusBadge');
+            if(finalScore >= 40) {
+                statusBadge.innerText = "PASSED 🏆"; statusBadge.className = "text-xs font-bold text-emerald-600 mt-1";
+                const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
+                if(!completedDomains.includes(selectedDomainForTest)) {
+                    completedDomains.push(selectedDomainForTest);
+                    localStorage.setItem('nexthire_completed_domains', JSON.stringify(completedDomains));
+                }
+                render20DomainsCards();
+                renderLeaderboard();
+            } else {
+                statusBadge.innerText = "FAILED ❌"; statusBadge.className = "text-xs font-bold text-rose-600 mt-1";
+            }
+            document.getElementById('testResultModal').classList.remove('hidden');
+        }
+
+        function closeResultModal() { document.getElementById('testResultModal').classList.add('hidden'); }
+
+        function shareToLinkedIn() {
+            const finalScore = Math.min(candidateScore, 100);
+            const domain = selectedDomainForTest || "Full Stack Web Dev";
+            const candidateName = activeTestCandidateName || "Yash Raj Goswami";
+            const viralCaption = `🚀 Thrilled to share that I (${candidateName}) have successfully cleared the AI-Proctored Technical Assessment in "${domain}" on NextHire Matrix with an Advanced Grade (Score: ${finalScore}%)! 💻🔥\n\nGrateful for rigorous proctored platforms pushing developer excellence. Check it out: https://nexthirematrix.vercel.app #NextHireMatrix #TechAssessment #FullStack #CareerGrowth`;
+            
+            navigator.clipboard.writeText(viralCaption).then(() => {
+                alert("📋 Viral LinkedIn Caption copied to clipboard! Opening LinkedIn share window...");
+                window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(viralCaption)}`, '_blank');
+            }).catch(() => {
+                window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(viralCaption)}`, '_blank');
+            });
+        }
+
+        function downloadTestCertificate() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('landscape');
+            const finalScore = Math.min(candidateScore, 100);
+            const candidateName = activeTestCandidateName || "YASH RAJ GOSWAMI";
+            const domainName = selectedDomainForTest || "Full Stack Web Dev (Django+React)";
+            const certId = "NHM-" + Math.floor(100000 + Math.random() * 900000);
+            const issueDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            doc.setLineWidth(1.5); doc.setDrawColor(79, 70, 229); doc.rect(12, 12, 273, 186);
+            doc.setLineWidth(0.5); doc.setDrawColor(200, 200, 200); doc.rect(15, 15, 267, 180);
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(22); doc.setTextColor(79, 70, 229);
+            doc.text("⚡ NEXTHIRE MATRIX", 148, 35, { align: "center" });
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(30, 41, 59);
+            doc.text("Certificate of Completion & Technical Proficiency", 148, 45, { align: "center" });
+
+            doc.setFont("helvetica", "italic"); doc.setFontSize(11); doc.setTextColor(100, 116, 139);
+            doc.text("This is certified that", 148, 62, { align: "center" });
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(28); doc.setTextColor(15, 23, 42);
+            doc.text(candidateName, 148, 80, { align: "center" });
+
+            doc.setFont("helvetica", "normal"); doc.setFontSize(12); doc.setTextColor(51, 65, 85);
+            doc.text("has successfully cleared the AI-proctored technical assessment in domain", 148, 96, { align: "center" });
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(15); doc.setTextColor(79, 70, 229);
+            doc.text(domainName, 148, 108, { align: "center" });
+
+            doc.setFont("helvetica", "normal"); doc.setFontSize(12); doc.setTextColor(51, 65, 85);
+            doc.text(`with an Advanced Grade (Score: ${finalScore}% | Correct: ${correctAttemptsCount}/10 Questions).`, 148, 120, { align: "center" });
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(15, 23, 42);
+            doc.text("Key Skills Verified:", 148, 138, { align: "center" });
+
+            doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(79, 70, 229);
+            doc.text("[Python, Django REST Framework, React.js, Database Management, Secure Coding]", 148, 146, { align: "center" });
+
+            doc.setLineWidth(0.3); doc.setDrawColor(226, 232, 240); doc.line(25, 158, 272, 158);
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(100, 116, 139);
+            doc.text(`Certificate ID: ${certId}`, 30, 172);
+            doc.text(`Issue Date: ${issueDate}`, 30, 178);
+
+            try {
+                let qr = qrcode(0, 'L');
+                qr.addData(`https://nexthirematrix.vercel.app/verify?id=${certId}&candidate=${encodeURIComponent(candidateName)}`);
+                qr.make();
+                let moduleCount = qr.getModuleCount();
+                let canvas = document.createElement('canvas');
+                canvas.width = moduleCount * 4;
+                canvas.height = moduleCount * 4;
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = "#FFFFFF"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#000000";
+                for (let r = 0; r < moduleCount; r++) {
+                    for (let c = 0; c < moduleCount; c++) {
+                        if (qr.isDark(r, c)) ctx.fillRect(c * 4, r * 4, 4, 4);
+                    }
+                }
+                let qrDataURL = canvas.toDataURL("image/png");
+                doc.addImage(qrDataURL, 'PNG', 136, 159, 24, 24);
+            } catch(e) {
+                doc.rect(136, 159, 24, 24);
+                doc.text("QR", 148, 172, { align: "center" });
+            }
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(15, 23, 42);
+            doc.text("Authorized Signature & Seal", 240, 172, { align: "center" });
+            doc.setFont("helvetica", "italic"); doc.setFontSize(8); doc.setTextColor(100, 116, 139);
+            doc.text("NextHire Matrix Assessment Board", 240, 178, { align: "center" });
+
+            doc.save(`${candidateName.replace(/\s+/g, '_')}_Certificate.pdf`);
         }
     </script>
 </body>

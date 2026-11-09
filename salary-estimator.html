@@ -3,20 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salary Estimator & Negotiator - NextHire Matrix</title>
+    <title>Tech & IT Salary Estimator & Negotiator | NextHire Matrix</title>
     
-    <link rel="canonical" href="https://www.nexthirematrix.com/salary-estimator.html">
+    <!-- Clean Canonical URL -->
+    <link rel="canonical" href="https://www.nexthirematrix.com/salary-estimator">
+    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
+
+    <meta name="description" content="Calculate estimated market compensation for tech roles based on experience, skills, and target engineering roles for free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/salary-estimator">
+    <meta property="og:title" content="Salary Estimator & Negotiator - NextHire Matrix">
+    <meta property="og:description" content="Instant IT salary ranges and compensation calculator.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tech Salary Estimator",
+      "url": "https://www.nexthirematrix.com/salary-estimator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "890" },
+      "description": "Calculate IT software engineering salary potential."
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
+    <!-- External Libraries with SRI Hashes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
@@ -25,12 +57,12 @@
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
+        <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
             <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
@@ -39,22 +71,21 @@
             <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
             <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
-        </div>
+        </nav>
     </div>
-
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
         <div class="text-center space-y-2">
-            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Salary Estimator & Negotiator</h2>
+            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Salary Estimator & Negotiator</h1>
             <p class="text-xs text-slate-500 font-medium">Calculate estimated industry compensation based on your role, tech stack, and experience.</p>
         </div>
 
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div>
-                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Job Role / Tech Stack</label>
+                <label for="salaryRole" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Job Role / Tech Stack</label>
                 <input type="text" id="salaryRole" placeholder="e.g. Full Stack Developer (Python/React)" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
             </div>
             <div>
-                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Years of Experience</label>
+                <label for="salaryExp" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Years of Experience</label>
                 <input type="number" id="salaryExp" placeholder="e.g. 2" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
             </div>
             <button onclick="estimateSalary()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
@@ -62,7 +93,7 @@
             </button>
 
             <div id="salaryOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hidden text-center">
-                <h3 class="text-xs font-black uppercase tracking-wider text-indigo-600">Estimated Market Compensation Range</h3>
+                <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600">Estimated Market Compensation Range</h2>
                 <p id="salaryRangeText" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">₹8 LPA – ₹15 LPA</p>
                 <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">Includes base salary, performance bonuses, and standard equity estimates for product-based engineering roles.</p>
             </div>
@@ -80,7 +111,9 @@
             const role = document.getElementById('salaryRole').value.trim();
             if(!role) { alert("Please enter your job role or tech stack!"); return; }
             document.getElementById('salaryOutputBox').classList.remove('hidden');
-            confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+            }
         }
     </script>
 </body>

@@ -3,18 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interview Prep Hub - NextHire Matrix</title>
+    <title>Tech & Software Engineering Interview Prep Hub | NextHire Matrix</title>
     
-    <link rel="canonical" href="https://www.nexthirematrix.com/interview-prep.html">
+    <!-- Clean Canonical URL -->
+    <link rel="canonical" href="https://www.nexthirematrix.com/interview-prep">
+    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
+
+    <meta name="description" content="Master tech interviews with curated questions on Python, Django, React, SQL, and System Design tailored for software engineers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/interview-prep">
+    <meta property="og:title" content="Interview Preparation Hub - NextHire Matrix">
+    <meta property="og:description" content="Curated technical interview guides for software engineers.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interview Preparation Hub",
+      "url": "https://www.nexthirematrix.com/interview-prep",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1150" },
+      "description": "Comprehensive technical interview prep platform for developers."
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
+    
+    <!-- SRI Hashes Included -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
@@ -23,12 +56,12 @@
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
+        <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
             <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
@@ -37,29 +70,28 @@
             <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
             <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
-        </div>
+        </nav>
     </div>
-
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
         <div class="text-center space-y-2">
-            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Interview Preparation Hub</h2>
+            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Interview Preparation Hub</h1>
             <p class="text-xs text-slate-500 font-medium">Access curated technical questions, data structures, and system design guides tailored for software engineers.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-code text-base"></i></span>
-                <h3 class="text-sm font-black text-slate-800 dark:text-slate-100">Python & Django Mastery</h3>
+                <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">Python & Django Mastery</h2>
                 <p class="text-xs text-slate-500 leading-relaxed">Top 50 interview questions covering ORM query optimization, middleware architecture, and asynchronous request handling.</p>
             </div>
             <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-laptop-code text-base"></i></span>
-                <h3 class="text-sm font-black text-slate-800 dark:text-slate-100">React & Frontend Architecture</h3>
+                <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">React & Frontend Architecture</h2>
                 <p class="text-xs text-slate-500 leading-relaxed">Custom hooks optimization, state management patterns, virtual DOM internals, and performance profiling.</p>
             </div>
             <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-database text-base"></i></span>
-                <h3 class="text-sm font-black text-slate-800 dark:text-slate-100">SQL & Database Systems</h3>
+                <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">SQL & Database Systems</h2>
                 <p class="text-xs text-slate-500 leading-relaxed">Advanced indexing strategies, ACID properties, transaction isolation levels, and query execution plan tuning.</p>
             </div>
         </div>

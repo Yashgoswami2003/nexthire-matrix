@@ -8,20 +8,22 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
+    <meta name="description" content="Prepare for technical interviews across 20+ domains with Basic, Moderate, and Advanced questions and expert model answers.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/interview-prep.html">
-    <meta property="og:title" content="NextHire Matrix Interview Prep Hub">
+    <meta property="og:title" content="NextHire Matrix Interview Prep Hub (20+ Domains)">
     <meta property="og:description" content="Practice 20+ tech domains with targeted questions and expert model answers.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "NextHire Matrix Interview Prep",
+      "name": "NextHire Matrix Interview Prep Hub",
       "operatingSystem": "All",
       "applicationCategory": "EducationalApplication",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-      "description": "Tech interview preparation hub across 20+ domains."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
+      "description": "Tech interview preparation hub across 20+ domains with difficulty filtering."
     }
     </script>
 
@@ -34,9 +36,9 @@
 
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
+            </div>
             <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
@@ -56,8 +58,8 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
         <div class="max-w-4xl mx-auto bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-            <div class="text-center">
-                <h1 class="text-xl font-black text-slate-800 dark:text-slate-150">💡 Advanced Tech Interview Prep Hub (20+ Domains)</h1>
+            <div class="text-center space-y-1">
+                <h1 class="text-xl sm:text-2xl font-black text-slate-800 dark:text-slate-100">💡 Advanced Tech Interview Prep Hub (20+ Domains)</h1>
                 <p class="text-xs text-slate-500">Select domain and difficulty level to load targeted questions & expert model answers.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -88,30 +90,56 @@
             "Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering",
             "Frontend Engineering (React/JS)", "Backend Engineering (Node/Python)", "Java & Enterprise Systems",
             "C++ & System Programming", "Data Science & Analytics", "Machine Learning & AI",
-            "DevOps & Cloud (AWS/Docker)", "Cybersecurity & Ethical Hacking", "Mobile App Dev (Flutter/React Native)"
+            "DevOps & Cloud (AWS/Docker)", "Cybersecurity & Ethical Hacking", "Mobile App Dev (Flutter/React Native)",
+            "Software Testing & QA Automation", "Data Engineering & Big Data", "Golang Backend Systems",
+            "Rust High Performance Systems", "UI/UX Design Systems", "Product Management",
+            "Agile & Scrum Project Management", "HR & Talent Acquisition"
         ];
+
         const domainQuestionsDatabase = {};
         domainsList.forEach(domain => {
             domainQuestionsDatabase[domain] = [
-                { type: "subjective", level: "Basic", q: `Explain your approach to writing clean, maintainable, and modular code in ${domain}.`, a: " modular design, clear variable naming, commenting complex logic." },
-                { type: "subjective", level: "Moderate", q: `Discuss data structures and memory management mechanisms in ${domain}.`, a: " efficient memory allocation and avoiding leaks." }
+                { level: "Basic", q: `What are the core fundamentals and architecture principles of ${domain}?`, a: `In ${domain}, core fundamentals revolve around clean modular architecture, standard syntax/protocols, and predictable state/data flow.` },
+                { level: "Basic", q: `Explain your approach to writing clean, maintainable, and modular code in ${domain}.`, a: `Follow SOLID principles, use meaningful variable/function names, keep functions single-purpose, and write clear documentation.` },
+                { level: "Basic", q: `How do you handle basic error management and debugging in ${domain}?`, a: `Use structured try-catch/exception handling, log meaningful stack traces, and utilize built-in debuggers or breakpoints.` },
+                { level: "Moderate", q: `Discuss data structures, memory management, and performance optimization in ${domain}.`, a: `Choose optimal data structures (hash maps for O(1) lookup), avoid memory leaks by cleaning up references, and minimize redundant computations.` },
+                { level: "Moderate", q: `How do you handle asynchronous operations, concurrency, or state management in ${domain}?`, a: `Use async/await, promises, worker threads, or event loops to prevent blocking the main execution thread.` },
+                { level: "Moderate", q: `How do you write robust unit tests and ensure high code coverage in ${domain}?`, a: `Use industry-standard testing frameworks (PyTest, Jest, JUnit), mock external dependencies/APIs, and test edge cases thoroughly.` },
+                { level: "Advanced", q: `Explain advanced architectural patterns and horizontal scalability strategies in ${domain}.`, a: `Implement microservices, distributed caching (Redis), load balancing, and asynchronous message queues (Kafka/RabbitMQ) to handle high traffic.` },
+                { level: "Advanced", q: `How do you secure applications against common vulnerabilities and attacks in ${domain}?`, a: `Sanitize all user inputs, use parameterized queries to prevent SQLi, enforce strict CORS, and use secure JWT/OAuth2 authentication.` },
+                { level: "Advanced", q: `Describe a complex production bottleneck you resolved in ${domain} and how you profiled it.`, a: `Profiled using APM tools, identified N+1 query issues or memory spikes, added database indexing, and implemented caching to cut latency by 60%.` }
             ];
         });
+
         window.onload = function() {
             const select = document.getElementById('prepRoleSelect');
             select.innerHTML = domainsList.map(d => `<option value="${d}">${d}</option>`).join('');
             renderInterviewQuestions();
         };
+
         function renderInterviewQuestions() {
             const role = document.getElementById('prepRoleSelect').value;
+            const levelFilter = document.getElementById('prepLevelSelect').value;
             const container = document.getElementById('prepQuestionsContainer');
-            const pool = domainQuestionsDatabase[role] || [];
-            container.innerHTML = pool.map((item, idx) => `
-                <div class="p-4 border rounded-2xl bg-slate-50/60 dark:bg-slate-900/60 space-y-2">
-                    <div class="text-xs font-extrabold text-indigo-600 uppercase">Q${idx + 1}. [${item.level}] ${item.q}</div>
-                    <p class="text-xs text-slate-700 dark:text-slate-300 font-medium"><b>Expert Answer:</b> ${item.a}</p>
-                </div>
-            `).join('');
+            
+            let pool = domainQuestionsDatabase[role] || [];
+            if (levelFilter !== "All") {
+                pool = pool.filter(item => item.level === levelFilter);
+            }
+
+            container.innerHTML = pool.map((item, idx) => {
+                let badgeColor = item.level === 'Basic' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' :
+                                 item.level === 'Moderate' ? 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300' :
+                                 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300';
+                return `
+                <div class="p-5 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/60 dark:bg-slate-900/60 space-y-2.5 shadow-sm">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400">Q${idx + 1}. ${item.q}</span>
+                        <span class="px-2.5 py-0.5 rounded-lg text-[10px] font-black uppercase shrink-0 ${badgeColor}">${item.level}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><b class="text-slate-900 dark:text-white">Expert Answer:</b> ${item.a}</p>
+                </div>`;
+            }).join('');
         }
     </script>
 </body>

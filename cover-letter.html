@@ -14,48 +14,78 @@
     <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
 
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 p-4 flex justify-between items-center">
-        <h1 class="text-sm font-extrabold text-indigo-600 cursor-pointer" onclick="window.location.href='index.html'">NextHire Matrix - Cover Letter</h1>
-        <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold"><i class="fa-solid fa-moon"></i></button>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
+        </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
+        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
+            <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
+            <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
+            <a href="test-series.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-bullseye mr-1"></i> Test Series Hub</a>
+            <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
+            <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
+            <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
+        </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
         <div class="text-center space-y-2">
-            <h2 class="text-2xl font-black">AI Cover Letter Generator</h2>
-            <p class="text-xs text-slate-500">Generate professional, tailored cover letters instantly for your job applications.</p>
+            <h2 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Cover Letter Generator</h2>
+            <p class="text-xs text-slate-500 font-medium">Generate professional, tailored cover letters instantly for your job applications.</p>
         </div>
 
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800 space-y-5">
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div>
-                <label class="block text-xs font-bold mb-1.5 uppercase">Candidate Name & Role</label>
-                <input type="text" id="clNameRole" placeholder="e.g. Yash Raj Goswami - Full Stack Engineer" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 focus:outline-none">
+                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Candidate Name & Target Role</label>
+                <input type="text" id="clNameRole" placeholder="e.g. Yash Raj Goswami - Full Stack Engineer" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
             </div>
             <div>
-                <label class="block text-xs font-bold mb-1.5 uppercase">Company Name & Job Description Highlights</label>
-                <textarea id="clCompanyDetails" rows="4" placeholder="Enter company name and key requirements..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 focus:outline-none"></textarea>
+                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Company Name & Job Description Highlights</label>
+                <textarea id="clCompanyDetails" rows="4" placeholder="Enter company name and key requirements..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
             </div>
-            <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg">Generate Cover Letter ✍️</button>
+            <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                <span><i class="fa-solid fa-wand-magic-sparkles"></i></span> Generate Professional Cover Letter
+            </button>
 
-            <div id="clOutputBox" class="p-6 bg-slate-50 dark:bg-slate-800 rounded-2xl space-y-3 hidden">
-                <h3 class="text-xs font-black uppercase text-indigo-600">Generated Cover Letter</h3>
-                <p id="clOutputText" class="text-xs text-slate-700 dark:text-slate-300 font-medium whitespace-pre-line">Dear Hiring Manager,\n\nI am thrilled to apply for the position...</p>
+            <div id="clOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hidden">
+                <h3 class="text-xs font-black uppercase tracking-wider text-indigo-600">Generated Cover Letter</h3>
+                <p id="clOutputText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">Dear Hiring Manager,
+
+I am writing to express my strong enthusiasm for the engineering position at your esteemed organization. With hands-on expertise in Python, Django, React, and full-stack architecture, I have successfully engineered robust web applications and scalable solutions.
+
+I look forward to contributing effectively to your team.
+
+Best regards,
+Yash Raj Goswami</p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 border-t border-slate-200 py-8 text-center text-xs text-slate-500">
-        <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
         function generateCoverLetter() {
             const val = document.getElementById('clNameRole').value.trim();
-            if(!val) { alert("Please enter your name and role!"); return; }
+            if(!val) { alert("Please enter your name and target role!"); return; }
             document.getElementById('clOutputBox').classList.remove('hidden');
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
         }
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - Free ATS Resume Builder, ATS Checker & Proctored Tech Hub</title>
+    <title>NextHire Matrix - Free ATS Resume Builder & Proctored Tech Hub</title>
     
     <!-- 📊 GOOGLE ANALYTICS / GTM TRACKING TAG -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
@@ -13,30 +13,12 @@
       gtag('js', new Date());
     </script>
 
-    <!-- 🚀 ADVANCED SEO & META TAGS FOR GOOGLE RANKING & VIRAL TRAFFIC -->
-    <meta name="title" content="NextHire Matrix - Free ATS Resume Builder, ATS Checker & Proctored Tech Hub">
-    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free, check ATS compatibility score, practice 20+ tech domains with mock interviewers, and take secure proctored exams. No signup required!">
-    <meta name="keywords" content="ATS resume builder, free resume checker, mock interviewer, tech interview prep, python test series, salary estimator, cover letter generator, job description matcher">
+    <!-- 🚀 ADVANCED SEO & META TAGS FOR GOOGLE RANKING -->
+    <meta name="title" content="NextHire Matrix - Free ATS Resume Builder & Proctored Tech Hub">
+    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free. No signup required!">
+    <meta name="keywords" content="ATS resume builder, free resume builder, professional resume creator">
     <meta name="author" content="NextHire Matrix">
     <meta name="robots" content="index, follow">
-
-    <!-- 🌐 OPEN GRAPH / SOCIAL MEDIA PREVIEW CARDS (LINKEDIN & WHATSAPP BOOSTER) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com">
-    <meta property="og:title" content="NextHire Matrix - Ultimate Free Career & Proctored Tech Hub">
-    <meta property="og:description" content="Create ATS-proof resumes, calculate ATS scores, and ace technical interviews instantly. 100% Free & Secure!">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=630&fit=crop">
-
-    <!-- 🛡️ SILENT ERROR LOGGER -->
-    <script>
-        window.onerror = function(message, source, lineno, colno, error) {
-            console.warn("Silent Background Error Tracked:", { message, source, line: `${lineno}:${colno}` });
-            return true;
-        };
-    </script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,149 +29,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- QRCode Generator Library for Real QR Codes -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .no-ss-mode { -webkit-user-select: none; user-select: none; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative selection:bg-indigo-500 selection:text-white">
-
-    <!-- FULLSCREEN TEST OVERLAY -->
-    <div id="testLockedOverlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[999] hidden flex flex-col items-center justify-center p-4 no-ss-mode">
-        <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
-                <div>
-                    <h4 id="proctoredUserName" class="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase">CANDIDATE: -</h4>
-                    <span class="text-[10px] text-emerald-500 font-bold">🛡️ Secure Test Session Active (<span id="warningCounterDisplay">0/2 Warnings</span>)</span>
-                </div>
-                <span id="testTimerDisplay" class="text-xs font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 px-3.5 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800">Time: 10:00</span>
-            </div>
-            <div id="testQuestionContent" class="text-left space-y-4"></div>
-            <div class="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="nextTestQuestion()" class="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                <button onclick="forceExitTest()" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-3 rounded-2xl font-extrabold text-xs shadow-lg transition"><i class="fa-solid fa-right-from-bracket mr-1"></i> Exit & Submit Test</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TEST NAME INPUT MODAL -->
-    <div id="testNameModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[990] hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 text-center">
-            <h3 class="text-lg font-black text-slate-800 dark:text-slate-100"><i class="fa-solid fa-lock text-indigo-600 mr-2"></i> Enter Name for Secure Test</h3>
-            <p class="text-xs text-slate-500">Only English alphabets are allowed (no numbers or symbols).</p>
-            <input type="text" id="rawCandidateName" placeholder="Enter Full Name (e.g. Yash Raj Goswami)" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-800 font-bold text-center focus:outline-none uppercase">
-            <button onclick="confirmAndLaunchTest()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Start Secured Test Session <i class="fa-solid fa-rocket ml-1"></i></button>
-        </div>
-    </div>
-
-    <!-- TEST RESULT REPORT MODAL -->
-    <div id="testResultModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[995] hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-5 text-center">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
-                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-award text-indigo-600 mr-2"></i> Official Test Performance Report</h3>
-                <button onclick="closeResultModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <div class="bg-indigo-50/80 dark:bg-indigo-950/60 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-2">
-                <p id="resCandidateDisplay" class="text-xs font-bold text-slate-600 dark:text-slate-300">CANDIDATE: -</p>
-                <h2 id="resScoreText" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">Score: 0%</h2>
-                <p id="resAttemptStatsText" class="text-xs font-bold text-slate-700 dark:text-slate-300 bg-white/60 dark:bg-slate-900/60 py-1.5 px-3 rounded-xl border border-slate-200/50 dark:border-slate-800">Correct: 0 out of 10 Questions Attempted</p>
-                <p id="resStatusBadge" class="text-xs font-bold">STATUS</p>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-3">
-                <button onclick="downloadTestCertificate()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md"><i class="fa-solid fa-download mr-1.5"></i> Download Certificate</button>
-                <button onclick="shareToLinkedIn()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md"><i class="fa-brands fa-linkedin mr-1.5"></i> Share on LinkedIn 🚀</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SOCIAL SHARE MODAL -->
-    <div id="socialShareModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[1000] hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-5 text-center">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
-                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-globe text-indigo-600 mr-2"></i> Share & Spread the Word! 🚀</h3>
-                <button onclick="closeShareModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <p class="text-xs text-slate-500">Help your friends build better ATS resumes and crack tech exams for free!</p>
-            <div class="grid grid-cols-3 gap-3 text-xs font-bold">
-                <button onclick="shareToSocial('whatsapp')" class="p-3 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 rounded-2xl hover:bg-emerald-100 transition flex flex-col items-center gap-1"><i class="fa-brands fa-whatsapp text-2xl text-emerald-600"></i> WhatsApp</button>
-                <button onclick="shareToSocial('linkedin')" class="p-3 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 rounded-2xl hover:bg-blue-100 transition flex flex-col items-center gap-1"><i class="fa-brands fa-linkedin text-2xl text-blue-600"></i> LinkedIn</button>
-                <button onclick="shareToSocial('twitter')" class="p-3 bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 text-sky-700 dark:text-sky-300 rounded-2xl hover:bg-sky-100 transition flex flex-col items-center gap-1"><i class="fa-brands fa-twitter text-2xl text-sky-500"></i> Twitter / X</button>
-                <button onclick="shareToSocial('telegram')" class="p-3 bg-cyan-50 dark:bg-cyan-950/50 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 rounded-2xl hover:bg-cyan-100 transition flex flex-col items-center gap-1"><i class="fa-brands fa-telegram text-2xl text-cyan-500"></i> Telegram</button>
-                <button onclick="shareToSocial('facebook')" class="p-3 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 rounded-2xl hover:bg-indigo-100 transition flex flex-col items-center gap-1"><i class="fa-brands fa-facebook text-2xl text-indigo-600"></i> Facebook</button>
-                <button onclick="shareToSocial('copy')" class="p-3 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-2xl hover:bg-slate-200 transition flex flex-col items-center gap-1"><i class="fa-solid fa-copy text-2xl text-slate-600 dark:text-slate-300"></i> Copy Link</button>
-            </div>
-        </div>
-    </div>
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
     <!-- Header -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 lg:hidden flex items-center justify-center shadow-sm" aria-label="Menu">
-                    <i class="fa-solid fa-bars text-base"></i>
-                </button>
-                <h1 onclick="switchTab('builder')" class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer">
+                <h1 onclick="window.location.href='index.html'" class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer">
                     <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
                 </h1>
             </div>
 
             <div class="flex items-center gap-2 sm:gap-3">
-                <span class="text-[10px] sm:text-xs bg-amber-50 dark:bg-amber-950/50 border border-amber-200/60 dark:border-amber-800/60 text-amber-800 dark:text-amber-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
+                <span class="text-[10px] sm:text-xs bg-amber-50 dark:bg-amber-950/50 border border-amber-200/60 text-amber-800 dark:text-amber-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
                     <i class="fa-solid fa-fire text-amber-500"></i> <span id="liveCounter">1,480</span> Resumes Built Today
                 </span>
-                <span class="text-xs bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200/60 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 font-semibold px-3 py-1.5 rounded-xl hidden md:inline-block shadow-sm"><i class="fa-solid fa-shield-halved mr-1"></i> 100% Free Forever</span>
-                <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition shadow-sm text-sm flex items-center gap-1.5 font-semibold">
-                    <span id="themeIcon"><i class="fa-solid fa-moon"></i></span> <span class="hidden sm:inline" id="themeText">Dark</span>
+                <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition shadow-sm text-sm flex items-center gap-1.5 font-semibold">
+                    <span id="themeIcon"><i class="fa-solid fa-moon"></i></span> <span class="hidden sm:inline">Dark</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Drawer -->
-    <div id="mobileDrawer" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[1050] hidden lg:hidden flex justify-start">
-        <div class="bg-white dark:bg-slate-900 w-80 h-full shadow-2xl p-6 flex flex-col space-y-5 overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
-                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm flex items-center gap-2"><span><i class="fa-solid fa-bolt text-indigo-600"></i></span> NextHire Menu</h3>
-                <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <div class="flex flex-col space-y-2 text-xs font-bold">
-                <button onclick="switchTab('builder'); toggleMobileMenu();" class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 text-left flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles"></i> Build New Resume</button>
-                <button onclick="switchTab('checker'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-file-arrow-up"></i> Upload & Check ATS</button>
-                <button onclick="switchTab('interviewprep'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Interview Prep Hub</button>
-                <button onclick="switchTab('mockinterview'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-robot"></i> Mock HR & Tech Interviewer</button>
-                <button onclick="switchTab('testseries'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Test Series Hub</button>
-                <button onclick="switchTab('salaryestimator'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-wallet"></i> Salary Estimator</button>
-                <button onclick="switchTab('coverletter'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-envelope-open-text"></i> Cover Letter</button>
-                <button onclick="switchTab('jobmatch'); toggleMobileMenu();" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-left flex items-center gap-2"><i class="fa-solid fa-magnifying-glass"></i> Job Matcher</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation Switcher (Desktop Tabs) -->
+    <!-- Navigation Switcher (Multi-Page Links) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm">
-            <button onclick="switchTab('builder')" id="tabBuilderBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</button>
-            <button onclick="switchTab('checker')" id="tabCheckerBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</button>
-            <button onclick="switchTab('interviewprep')" id="tabInterviewPrepBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</button>
-            <button onclick="switchTab('mockinterview')" id="tabMockBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</button>
-            <button onclick="switchTab('testseries')" id="tabTestSeriesBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-bullseye mr-1"></i> Test Series Hub</button>
-            <button onclick="switchTab('salaryestimator')" id="tabSalaryBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</button>
-            <button onclick="switchTab('coverletter')" id="tabCoverLetterBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</button>
-            <button onclick="switchTab('jobmatch')" id="tabJobMatchBtn" class="nav-tab-btn px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</button>
+        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
+            <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
+            <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
+            <a href="test-series.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-bullseye mr-1"></i> Test Series Hub</a>
+            <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
+            <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
+            <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </div>
     </div>
 
-    <!-- Main Section -->
+    <!-- Main Section: Resume Builder -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
-
-        <!-- TAB 1: RESUME BUILDER -->
-        <div id="builderSection" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <section class="lg:col-span-5 bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200/80 dark:border-slate-700/80 space-y-5 h-fit">
                 <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
                     <h2 class="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
@@ -226,14 +112,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Phone Number</label>
-                            <div class="flex gap-2">
-                                <select id="countryCode" onchange="saveAndPreview()" class="w-28 px-2 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                                    <option value="+91">🇮🇳 (+91)</option>
-                                    <option value="+1">🇺🇸 (+1)</option>
-                                    <option value="+44">🇬🇧 (+44)</option>
-                                </select>
-                                <input type="text" id="phone" placeholder="XXXXXXXXXX" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                            </div>
+                            <input type="text" id="phone" placeholder="XXXXXXXXXX" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
                         </div>
                     </div>
                     <div>
@@ -266,14 +145,6 @@
                         <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Graduation</label>
                         <input type="text" id="eduGrad" placeholder="Degree - University Name (Year)" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">12th / Senior Secondary</label>
-                        <input type="text" id="edu12th" placeholder="School Name / Board - Percentage" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">10th / Secondary School</label>
-                        <input type="text" id="edu10th" placeholder="School Name / Board - Percentage" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                    </div>
                 </div>
 
                 <div class="pt-2">
@@ -292,16 +163,11 @@
                             <p class="text-xs font-bold text-slate-500 mt-0.5">Analyzed successfully</p>
                         </div>
                         <div class="text-right bg-indigo-50 dark:bg-indigo-950/60 px-4 py-2 rounded-2xl border border-indigo-100 dark:border-indigo-900">
-                            <span id="atsScoreNum" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">0</span><span class="text-xs font-bold text-slate-400">/100</span>
+                            <span id="atsScoreNum" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">88</span><span class="text-xs font-bold text-slate-400">/100</span>
                         </div>
                     </div>
                     <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
-                        <div id="scoreBar" class="bg-gradient-to-r from-indigo-500 to-violet-600 h-full w-0 transition-all duration-500 rounded-full"></div>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-1.5">
-                        <p class="font-bold text-slate-700 dark:text-slate-300">💡 Formatting & Keyword Corrections:</p>
-                        <ul id="suggestionList" class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1"></ul>
-                        <p class="text-[10px] text-amber-600 dark:text-amber-400 italic pt-1">⚠️ Disclaimer: ATS scores and feedback are algorithmic estimations. We do not guarantee employment, interviews, or job placements.</p>
+                        <div id="scoreBar" class="bg-gradient-to-r from-indigo-500 to-violet-600 h-full w-[88%] transition-all duration-500 rounded-full"></div>
                     </div>
                 </div>
 
@@ -339,881 +205,27 @@
                         <h4 class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Education</h4>
                         <div id="prevEduBox" class="text-xs text-slate-700 space-y-1.5 font-medium">
                             <p id="prevEduGrad"><b>Graduation:</b> Degree details...</p>
-                            <p id="prevEdu12th"><b>12th:</b> School & Board...</p>
-                            <p id="prevEdu10th"><b>10th:</b> School & Board...</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
-        <!-- TAB 2: ATS CHECKER -->
-        <div id="checkerSection" class="tab-content hidden max-w-2xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6 text-center">
-                <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">📁 Upload & Check ATS Score</h2>
-                <div class="border-2 border-dashed border-indigo-300 dark:border-indigo-700 rounded-3xl p-8 bg-indigo-50/40 dark:bg-indigo-950/30 cursor-pointer hover:bg-indigo-50 transition" onclick="document.getElementById('pdfUploadInput').click()">
-                    <span class="text-4xl"><i class="fa-solid fa-file-pdf text-indigo-600"></i></span>
-                    <p class="text-sm font-bold text-slate-700 dark:text-slate-200 mt-2">Click to browse & upload resume PDF or DOCX</p>
-                    <input type="file" id="pdfUploadInput" accept=".pdf,.docx" class="hidden" onchange="handlePDFUpload(event)">
-                </div>
-                <div id="pdfResultBox" class="hidden p-5 bg-slate-50 dark:bg-slate-900 rounded-2xl text-left border border-slate-200 dark:border-slate-700 space-y-3">
-                    <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
-                        <h3 id="pdfScoreTitle" class="font-extrabold text-indigo-600 text-sm">Scanned Score: 85/100</h3>
-                        <span id="pdfFileName" class="text-[11px] font-bold text-slate-500">resume.pdf</span>
-                    </div>
-                    <div id="pdfFeedbackContent" class="text-xs text-slate-600 dark:text-slate-300 space-y-2">
-                        <p class="font-bold text-slate-700 dark:text-slate-200">💡 ATS Feedback & Recommendations:</p>
-                        <ul id="pdfSuggestionList" class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                            <li><b>Missing Keyword:</b> Add 'Docker' and 'Kubernetes' in the technical skills section.</li>
-                        </ul>
-                        <p class="text-[10px] text-amber-600 dark:text-amber-400 italic pt-1">⚠️ Disclaimer: ATS scores and feedback are algorithmic estimations. We do not guarantee employment or job placements.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3: INTERVIEW PREP HUB -->
-        <div id="interviewprepSection" class="tab-content hidden max-w-4xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-                <div class="text-center">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">💡 Advanced Tech Interview Prep Hub (20+ Domains)</h2>
-                    <p class="text-xs text-slate-500">Select domain and difficulty level to load targeted questions & expert model answers.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Domain</label>
-                        <select id="prepRoleSelect" onchange="renderInterviewQuestions()" class="w-full px-4 py-2.5 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs bg-white dark:bg-slate-900 font-bold focus:outline-none"></select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Difficulty Level</label>
-                        <select id="prepLevelSelect" onchange="renderInterviewQuestions()" class="w-full px-4 py-2.5 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs bg-white dark:bg-slate-900 font-bold focus:outline-none">
-                            <option value="All">All Levels (Basic, Moderate, Advanced)</option>
-                            <option value="Basic">Basic Level Only</option>
-                            <option value="Moderate">Moderate Level Only</option>
-                            <option value="Advanced">Advanced Level Only</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="prepQuestionsContainer" class="space-y-4"></div>
-            </div>
-        </div>
-
-        <!-- TAB 4: MOCK HR & TECH INTERVIEWER -->
-        <div id="mockinterviewSection" class="tab-content hidden max-w-3xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100"><i class="fa-solid fa-robot text-indigo-600 mr-2"></i> Mock HR & Tech Interviewer</h2>
-                    <span id="mockQuestionCounter" class="text-xs font-bold text-indigo-600">Question 1 of 10</span>
-                </div>
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Domain</label>
-                            <select id="mockRole" onchange="resetMockInterview()" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold"></select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Difficulty Level</label>
-                            <select id="mockLevelSelect" onchange="resetMockInterview()" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold">
-                                <option value="Basic">Basic Level</option>
-                                <option value="Moderate">Moderate Level</option>
-                                <option value="Advanced">Advanced Level</option>
-                                <option value="All">All Levels Mixed</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-indigo-50/50 dark:bg-indigo-950/40 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-1">
-                        <span id="mockLevelBadge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 bg-indigo-600 text-white rounded-md">Basic Level</span>
-                        <h4 class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase mt-1">Question:</h4>
-                        <p id="mockQuestionText" class="text-xs font-bold text-slate-800 dark:text-slate-100">Select a domain and click start or type your answer below.</p>
-                    </div>
-                    <div class="relative">
-                        <textarea id="mockUserAnswer" rows="4" placeholder="Type your answer or click the microphone to speak your answer..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium"></textarea>
-                        <button onclick="toggleVoiceSpeechInput()" id="micBtn" class="absolute bottom-3 right-3 bg-indigo-600 hover:bg-indigo-700 text-white p-2.5 rounded-xl text-xs shadow transition" title="Speak Answer (Voice Input)"><i class="fa-solid fa-microphone"></i></button>
-                    </div>
-                    <button onclick="submitMockAnswer()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Submit Answer & Get Detailed AI Analysis <i class="fa-solid fa-rocket ml-1"></i></button>
-                    
-                    <div id="mockEvalBox" class="hidden p-5 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
-                        <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
-                            <h3 id="mockScoreNum" class="text-base font-black text-indigo-600">Score: 85/100</h3>
-                            <span class="text-xs font-bold text-slate-500">Evaluation Report</span>
-                        </div>
-                        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-                            <p id="mockFeedbackText" class="font-medium leading-relaxed"></p>
-                            <div class="p-3 bg-indigo-50/60 dark:bg-indigo-950/50 rounded-xl border border-indigo-100 dark:border-indigo-900 space-y-1">
-                                <p class="font-bold text-indigo-700 dark:text-indigo-300">💡 Suggested Improvements & Fixes:</p>
-                                <p id="mockImprovementText" class="text-slate-600 dark:text-slate-400"></p>
-                            </div>
-                        </div>
-                        <button onclick="nextMockQuestion()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-extrabold text-xs shadow-md">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 5: TEST SERIES HUB & WALL OF ACHIEVERS (LEADERBOARD) -->
-        <div id="testseriesSection" class="tab-content hidden max-w-5xl mx-auto space-y-8">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-                <div class="text-center space-y-1">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">🎯 Test Series Hub</h2>
-                    <p class="text-xs text-slate-500">Secure Online Assessment Platform with Randomized Questions & Professional Certification</p>
-                </div>
-                <div id="testGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-            </div>
-
-            <!-- Wall of Achievers Leaderboard -->
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
-                    <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Wall of Achievers Leaderboard</h3>
-                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 dark:bg-indigo-950 px-3 py-1 rounded-xl">Live Rankings</span>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                        <thead>
-                            <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500">
-                                <th class="pb-2">Rank & Candidate</th>
-                                <th class="pb-2">Domain Certified</th>
-                                <th class="pb-2">Score</th>
-                                <th class="pb-2">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leaderboardTableBody" class="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
-                            <!-- Populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 6: SALARY ESTIMATOR -->
-        <div id="salaryestimatorSection" class="tab-content hidden max-w-3xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-                <div class="text-center space-y-1">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">💰 Salary Estimator & Negotiator</h2>
-                    <p class="text-xs text-slate-500">Estimate market compensation brackets and generate HR negotiation emails separately.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Role</label>
-                        <input type="text" id="salRole" placeholder="e.g. Python Developer" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Years of Experience</label>
-                        <select id="salExp" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold">
-                            <option value="Fresher / 0-1 Yr">Fresher / 0-1 Yr</option>
-                            <option value="1-3 Years">1-3 Years</option>
-                            <option value="3-5 Years">3-5 Years</option>
-                            <option value="5+ Years">5+ Years</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <button onclick="calculateOnlySalary()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">📊 Calculate Estimated Salary Only</button>
-                    <button onclick="generateOnlyHREmail()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">✉️ Draft HR Negotiation Email Only</button>
-                </div>
-                <div id="salBracketBox" class="hidden p-4 bg-emerald-50 dark:bg-emerald-950/50 rounded-2xl border border-emerald-200 text-center">
-                    <p class="text-xs font-bold text-emerald-800 dark:text-emerald-300">Estimated Market Package Bracket</p>
-                    <h3 id="salBracketText" class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-1">₹6.5 LPA - ₹12.0 LPA</h3>
-                </div>
-                <div id="salEmailBox" class="hidden space-y-2 pt-2">
-                    <h4 class="text-xs font-extrabold text-slate-800 dark:text-slate-100 uppercase">Generated HR Negotiation Email Draft:</h4>
-                    <textarea id="salEmailText" rows="6" class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 leading-relaxed font-medium"></textarea>
-                    <button onclick="copySalEmail()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-2xl font-bold text-xs">📋 Copy Email Draft</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 7: COVER LETTER GENERATOR -->
-        <div id="coverletterSection" class="tab-content hidden max-w-3xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
-                <div class="text-center space-y-1">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">✉️ Cover Letter Generator</h2>
-                    <p class="text-xs text-slate-500">Generate a tailored, professional cover letter instantly for any job role.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Your Full Name / Title</label>
-                        <input type="text" id="clName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Job Role / Company</label>
-                        <input type="text" id="clJob" placeholder="e.g. Software Engineer at Google" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
-                    </div>
-                </div>
-                <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Generate Cover Letter</button>
-                <div id="clResultBox" class="space-y-3 hidden pt-4 border-t border-slate-100 dark:border-slate-700">
-                    <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Your Generated Cover Letter:</h3>
-                    <textarea id="clOutput" rows="8" class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 leading-relaxed font-medium"></textarea>
-                    <button onclick="copyCoverLetter()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-2xl font-bold text-xs">📋 Copy Cover Letter</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 8: JOB MATCHER -->
-        <div id="jobmatchSection" class="tab-content hidden max-w-3xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
-                <h2 class="text-xl font-black text-slate-800 dark:text-slate-100 text-center">🔍 Job Description Keyword Matcher</h2>
-                <textarea id="jdInput" rows="5" placeholder="Paste Job Description here..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium"></textarea>
-                <button onclick="analyzeJobMatch()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Analyze Missing Keywords</button>
-                <div id="jdResultBox" class="hidden space-y-2 pt-3 border-t border-slate-100 dark:border-slate-700">
-                    <h3 id="jdMatchScoreTitle" class="text-base font-black text-indigo-600">Match Score: 88%</h3>
-                    <div id="jdMissingKeywordsBox" class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 text-[11px] font-bold rounded-xl">+ Docker</span>
-                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 text-[11px] font-bold rounded-xl">+ PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <div>
-                <p class="text-xs font-bold text-slate-700 dark:text-slate-300">© <span id="currentYear">2026</span> NextHire Matrix. All rights reserved.</p>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Ultimate Free Career & Proctored Tech Hub.</p>
-            </div>
-            <div class="flex items-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-400">
-                <button onclick="openModal('privacy')" class="hover:text-indigo-600 cursor-pointer">Privacy Policy</button>
-                <button onclick="openModal('terms')" class="hover:text-indigo-600 cursor-pointer">Terms & Conditions</button>
-                <span>🛡️ Secure SSL</span>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4 max-h-[85vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
-                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2"><i class="fa-solid fa-shield-halved text-indigo-600"></i> Privacy Policy & Data Security</h3>
-                <button onclick="closeModal('privacy')" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <div class="text-xs text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
-                <p><b>1. Introduction:</b> Welcome to NextHire Matrix. We respect your privacy and are deeply committed to protecting your personal information and resume contents.</p>
-                <p><b>2. Client-Side Processing:</b> All resume building, ATS checking, and test evaluation processes are executed 100% locally within your browser using secure client-side scripts. Your personal data, resume inputs, and career history never leave your browser or get stored on remote servers without explicit user actions.</p>
-                <p><b>3. Local Storage:</b> We utilize browser local storage solely to cache your active resume draft and saved test progress so you do not lose data on refresh.</p>
-                <p><b>4. Contact & Updates:</b> If you have any questions regarding our data practices, please reach out via our support feedback channel.</p>
-            </div>
-            <button onclick="closeModal('privacy')" class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md">Close Policy</button>
-        </div>
-    </div>
-
-    <!-- Terms & Conditions Modal -->
-    <div id="termsModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4 max-h-[85vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
-                <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2"><i class="fa-solid fa-file-contract text-indigo-600"></i> Terms & Conditions (T&C)</h3>
-                <button onclick="closeModal('terms')" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <div class="text-xs text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
-                <p><b>1. Acceptance of Terms:</b> By accessing and utilizing NextHire Matrix, you agree to comply with and be legally bound by these Terms & Conditions.</p>
-                <p><b>2. Algorithmic Estimations & Disclaimer:</b> All ATS compatibility scores, resume analysis reports, interview feedback, and salary estimations provided on this platform are generated via heuristic algorithms and algorithmic estimations for guidance and educational purposes only.</p>
-                <p><b>3. No Employment Guarantee:</b> NextHire Matrix does not guarantee employment, job placements, interview callbacks, or specific hiring outcomes from employers. Users acknowledge that hiring decisions rest solely with individual companies.</p>
-                <p><b>4. Limitation of Liability:</b> NextHire Matrix and its creators shall not be held liable for any direct, indirect, incidental, or consequential damages arising from the use of tools, test series, or generated documents on this website.</p>
-            </div>
-            <button onclick="closeModal('terms')" class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-extrabold text-xs shadow-md">Close Terms</button>
-        </div>
-    </div>
-
-    <!-- Floating Feedback Buttons -->
-    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-2.5">
-        <button onclick="openFeedbackPopup('bug')" class="bg-rose-600 hover:bg-rose-700 text-white p-3.5 rounded-2xl shadow-xl shadow-rose-600/30 transition-all transform hover:scale-110 flex items-center justify-center text-lg" title="Report a Bug / Issue"><i class="fa-solid fa-bug"></i></button>
-        <button onclick="openFeedbackPopup('love')" class="bg-indigo-600 hover:bg-indigo-700 text-white p-3.5 rounded-2xl shadow-xl shadow-indigo-600/30 transition-all transform hover:scale-110 flex items-center justify-center text-lg" title="Send Love / Suggestion"><i class="fa-solid fa-heart"></i></button>
-    </div>
-
-    <!-- Floating Feedback Modal -->
-    <div id="floatingFeedbackModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
-                <h3 id="feedbackModalTitle" class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">🛠️ Report Bug or Suggestion</h3>
-                <button onclick="closeFloatingFeedback()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">×</button>
-            </div>
-            <p id="feedbackModalDesc" class="text-xs text-slate-500">Send your suggestions or feedback directly to us!</p>
-            <textarea id="floatingFeedbackInput" rows="3" placeholder="Describe the bug or feature request..." class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 focus:outline-none"></textarea>
-            <button onclick="submitFloatingFeedback()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-2xl font-extrabold text-xs shadow-lg transition">Send Feedback</button>
-        </div>
-    </div>
-
-    <!-- Post Download Meme & Motivational Popup Modal -->
-    <div id="feedbackModal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4 text-center">
-            <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base">🎉 Resume Downloaded Successfully!</h3>
-            <div id="memeBox" class="bg-indigo-50 dark:bg-indigo-950 p-4 rounded-2xl text-xs text-indigo-700 dark:text-indigo-300 font-bold leading-relaxed">
-                "Badhai ho! Aapka resume ab ATS software ke darr se nahi bhagega. 😎🚀"
-            </div>
-            <div class="flex gap-2">
-                <button onclick="openShareModal()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold text-xs"><i class="fa-solid fa-share-nodes mr-1.5"></i> Share Achievement</button>
-                <button onclick="closeFeedbackModal()" class="flex-1 bg-indigo-600 text-white py-2.5 rounded-xl font-bold text-xs">Awesome!</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Master Script -->
+    <!-- JavaScript Core Script -->
     <script>
-        const domainsList = [
-            "Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering",
-            "Frontend Engineering (React/JS)", "Backend Engineering (Node/Python)", "Java & Enterprise Systems",
-            "C++ & System Programming", "Data Science & Analytics", "Machine Learning & AI",
-            "DevOps & Cloud (AWS/Docker)", "Cybersecurity & Ethical Hacking", "Mobile App Dev (Flutter/React Native)",
-            "Software Testing & QA Automation", "Data Engineering & Big Data", "Golang Backend Systems",
-            "Rust High Performance Systems", "UI/UX Design Systems", "Product Management",
-            "Agile & Scrum Project Management", "HR & Talent Acquisition"
-        ];
-
-        const domainQuestionsDatabase = {};
-        domainsList.forEach(domain => {
-            domainQuestionsDatabase[domain] = [
-                { type: "mcq", level: "Basic", q: `What are the core fundamentals and syntax rules of ${domain}?`, options: ["Proper syntax and standard execution flow", "Random unstructured logic", "Blocking synchronous threads", "Legacy configuration approach"], correct: "Proper syntax and standard execution flow" },
-                { type: "mcq", level: "Basic", q: `How do you handle basic error management and debugging in ${domain}?`, options: ["Using try-catch/exception blocks & debuggers", "Ignoring exceptions", "Infinite loops", "Hardcoding outputs"], correct: "Using try-catch/exception blocks & debuggers" },
-                { type: "mcq", level: "Moderate", q: `How do you optimize runtime performance and query complexity in ${domain}?`, options: ["Minimizing loops and indexing data properly", "Increasing memory leaks", "Using blocking threads", "Disabling caches"], correct: "Minimizing loops and indexing data properly" },
-                { type: "mcq", level: "Moderate", q: `Describe how asynchronous operations or concurrency are handled in ${domain}.`, options: ["Using async/await or event loops", "Single-thread freezing", "Manual polling", "Synchronous blocking"], correct: "Using async/await or event loops" },
-                { type: "mcq", level: "Advanced", q: `Explain advanced architectural patterns and scalability strategies in ${domain}.`, options: ["Microservices and distributed caching", "Monolithic tight coupling", "Static flat files", "Local storage arrays"], correct: "Microservices and distributed caching" },
-                { type: "subjective", level: "Basic", q: `Explain your approach to writing clean, maintainable, and modular code in ${domain}.`, a: " modular design, clear variable naming, commenting complex logic, and keeping functions concise." },
-                { type: "subjective", level: "Moderate", q: `Discuss data structures and memory management mechanisms in ${domain}.`, a: " efficient memory allocation, avoiding leaks, and choosing right collections." },
-                { type: "subjective", level: "Moderate", q: `How do you write robust unit tests and ensure high code coverage in ${domain}?`, a: " using testing frameworks, mocking dependencies, and validating corner cases." },
-                { type: "subjective", level: "Advanced", q: `How do you secure applications against vulnerabilities and injection attacks in ${domain}?`, a: " sanitizing inputs, secure JWT authentication, and parameterized queries." },
-                { type: "subjective", level: "Advanced", q: `Describe a complex bottleneck you resolved in a high-traffic production system using ${domain}.`, a: " profiling with APM tools, query tuning, and Redis caching." }
-            ];
-        });
-
-        let selectedDomainForTest = "";
-        let activeTestCandidateName = "";
-        let currentTestIdx = 0;
-        let testQuestionsList = [];
-        let testTimerInterval = null;
-        let isProctoredActive = false;
-        let candidateScore = 0;
-        let correctAttemptsCount = 0;
-        let proctorWarningsCount = 0;
-        let uploadedPhotoData = null;
-
-        let mockCurrentIdx = 0;
-        let mockFilteredPool = [];
-        let currentFeedbackType = 'bug';
-
         window.onload = function() {
-            render20DomainsCards();
-            renderPrepDomainDropdown();
-            renderMockDomainDropdown();
-            renderLeaderboard();
-            setupAntiCheatingProtection();
             addExperienceField();
             updatePreview();
-            
-            // Dynamic Footer Year Update
-            const yearElem = document.getElementById('currentYear');
-            if(yearElem) yearElem.innerText = new Date().getFullYear();
         };
 
-        function setupAntiCheatingProtection() {
-            document.addEventListener('keydown', function(e) {
-                if(!isProctoredActive) return;
-                if(e.key === 'PrintScreen' || e.keyCode === 44 || e.keyCode === 123 ||
-                   (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
-                   (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 80 || e.keyCode === 83))) {
-                    e.preventDefault();
-                    triggerProctorWarning("Screenshot or Developer Tools shortcut detected!");
-                    return false;
-                }
-            });
-            document.addEventListener('contextmenu', e => {
-                if(isProctoredActive) { e.preventDefault(); triggerProctorWarning("Right-click context menu attempt detected!"); }
-            });
-            window.addEventListener('blur', function() {
-                if(isProctoredActive) { triggerProctorWarning("Tab switch or window blur detected!"); }
-            });
-        }
-
-        function triggerProctorWarning(reason) {
-            proctorWarningsCount++;
-            document.getElementById('warningCounterDisplay').innerText = `${proctorWarningsCount}/2 Warnings`;
-            if (proctorWarningsCount >= 2) {
-                alert(`🚨 AUTOMATIC EXIT: ${reason} (2nd Warning Reached). Your test is now being submitted automatically.`);
-                forceExitTest();
-            } else {
-                alert(`⚠️ PROCTORING WARNING (${proctorWarningsCount}/2): ${reason} Please stay on the test window.`);
-            }
-        }
-
-        function render20DomainsCards() {
-            const container = document.getElementById('testGridContainer');
-            if(!container) return;
-            container.innerHTML = '';
-            domainsList.forEach(domain => {
-                const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
-                const isCompleted = completedDomains.includes(domain);
-                const card = document.createElement('div');
-                card.className = "p-5 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/50 dark:bg-slate-900/50 space-y-3 shadow-sm";
-                card.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <span class="text-xl">🎯</span>
-                        <h3 class="text-xs font-black text-slate-800 dark:text-slate-100">${domain}</h3>
-                    </div>
-                    <p class="text-[11px] text-slate-500 font-medium">10 Questions (MCQ + Subjective) | 10 Mins</p>
-                    ${isCompleted ? 
-                        `<button disabled class="w-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 py-2.5 rounded-xl font-extrabold text-xs cursor-not-allowed border border-emerald-300"><i class="fa-solid fa-circle-check mr-1"></i> Completed & Certified</button>` :
-                        `<button onclick="promptTestName('${domain}')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-extrabold text-xs shadow-md"><i class="fa-solid fa-lock-open mr-1"></i> Start Secure Test</button>`
-                    }
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // 🏆 Wall of Achievers Leaderboard Rendering
-        function renderLeaderboard() {
-            const tbody = document.getElementById('leaderboardTableBody');
-            if(!tbody) return;
-            const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
-            const candidateName = activeTestCandidateName || "YASH RAJ GOSWAMI";
-            
-            let dummyAchievers = [
-                { name: "RAHUL SHARMA", domain: "Full Stack Web Dev (Django+React)", score: "90%", status: "Passed 🏆" },
-                { name: "PRIYA VERMA", domain: "Machine Learning & AI", score: "80%", status: "Passed 🏆" },
-                { name: "AMIT KUMAR", domain: "DevOps & Cloud (AWS/Docker)", score: "80%", status: "Passed 🏆" }
-            ];
-
-            if(completedDomains.length > 0 && activeTestCandidateName) {
-                dummyAchievers.unshift({
-                    name: candidateName,
-                    domain: selectedDomainForTest || completedDomains[0],
-                    score: Math.min(candidateScore, 100) + "%",
-                    status: "Passed 🏆"
-                });
-            }
-
-            tbody.innerHTML = dummyAchievers.map((ach, idx) => `
-                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50">
-                    <td class="py-3 font-extrabold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                        <span class="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 flex items-center justify-center text-[10px]">${idx + 1}</span>
-                        ${ach.name}
-                    </td>
-                    <td class="py-3 text-slate-600 dark:text-slate-400">${ach.domain}</td>
-                    <td class="py-3 font-black text-indigo-600">${ach.score}</td>
-                    <td class="py-3 text-emerald-600 font-bold">${ach.status}</td>
-                </tr>
-            `).join('');
-        }
-
-        function renderPrepDomainDropdown() {
-            const select = document.getElementById('prepRoleSelect');
-            if(!select) return;
-            select.innerHTML = domainsList.map(d => `<option value="${d}">${d}</option>`).join('');
-            renderInterviewQuestions();
-        }
-
-        function renderInterviewQuestions() {
-            const role = document.getElementById('prepRoleSelect').value;
-            const levelFilter = document.getElementById('prepLevelSelect').value;
-            const container = document.getElementById('prepQuestionsContainer');
-            if(!container) return;
-            let pool = domainQuestionsDatabase[role] || [];
-            if(levelFilter !== 'All') {
-                pool = pool.filter(item => item.level.toLowerCase() === levelFilter.toLowerCase());
-            }
-            if(pool.length === 0) {
-                container.innerHTML = `<p class="text-xs text-slate-500 text-center py-4">No questions found for this level selection.</p>`;
-                return;
-            }
-            container.innerHTML = pool.map((item, idx) => `
-                <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/60 dark:bg-slate-900/60 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-extrabold text-indigo-600 uppercase">Q${idx + 1}. [${item.level}] ${item.q}</span>
-                        <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">${item.level}</span>
-                    </div>
-                    <p class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><b>Expert Answer:</b> ${item.a || item.correct}</p>
-                </div>
-            `).join('');
-        }
-
-        function renderMockDomainDropdown() {
-            const select = document.getElementById('mockRole');
-            if(!select) return;
-            select.innerHTML = domainsList.map(d => `<option value="${d}">${d}</option>`).join('');
-            resetMockInterview();
-        }
-
-        function resetMockInterview() {
-            const role = document.getElementById('mockRole').value;
-            const levelFilter = document.getElementById('mockLevelSelect').value;
-            let pool = domainQuestionsDatabase[role] || [];
-            if(levelFilter !== 'All') {
-                pool = pool.filter(item => item.level.toLowerCase() === levelFilter.toLowerCase());
-            }
-            mockFilteredPool = pool.length > 0 ? pool : (domainQuestionsDatabase[role] || []);
-            mockCurrentIdx = 0;
-            loadMockQuestion();
-        }
-
-        function loadMockQuestion() {
-            if(mockCurrentIdx >= mockFilteredPool.length) mockCurrentIdx = 0;
-            const item = mockFilteredPool[mockCurrentIdx];
-            document.getElementById('mockQuestionCounter').innerText = `Question ${mockCurrentIdx + 1} of ${mockFilteredPool.length}`;
-            document.getElementById('mockLevelBadge').innerText = `${item.level.toUpperCase()} LEVEL`;
-            document.getElementById('mockQuestionText').innerText = item.q;
-            document.getElementById('mockUserAnswer').value = '';
-            document.getElementById('mockEvalBox').classList.add('hidden');
-        }
-
-        // 🎙️ Web Speech API Integration for Mock Interview Voice Input
-        function toggleVoiceSpeechInput() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                alert("Speech Recognition API is not supported in your browser. Please use Google Chrome.");
-                return;
-            }
-            const recognition = new SpeechRecognition();
-            recognition.lang = 'en-US';
-            recognition.interimResults = false;
-            
-            const micBtn = document.getElementById('micBtn');
-            micBtn.classList.add('bg-rose-600', 'animate-pulse');
-            
-            recognition.onresult = function(event) {
-                const speechToText = event.results[0][0].transcript;
-                const textarea = document.getElementById('mockUserAnswer');
-                textarea.value += (textarea.value ? " " : "") + speechToText;
-                micBtn.classList.remove('bg-rose-600', 'animate-pulse');
-            };
-
-            recognition.onerror = function() {
-                micBtn.classList.remove('bg-rose-600', 'animate-pulse');
-                alert("Voice recognition error or permission denied.");
-            };
-
-            recognition.onend = function() {
-                micBtn.classList.remove('bg-rose-600', 'animate-pulse');
-            };
-
-            recognition.start();
-        }
-
-        function submitMockAnswer() {
-            const ans = document.getElementById('mockUserAnswer').value.trim();
-            if(!ans) { alert("Please type or speak your answer before submitting!"); return; }
-            const item = mockFilteredPool[mockCurrentIdx];
-            const lowerAns = ans.toLowerCase();
-            const isGibberish = ans.length < 10 || lowerAns.includes("ni btaonga") || lowerAns.includes("dont know");
-            let score = isGibberish ? 35 : 85 + Math.floor(Math.random() * 14);
-            let feedback = isGibberish ? "Response lacks sufficient technical depth." : "Strong technical articulation and structured rationale.";
-            let improvement = `Reference Answer: ${item.a || item.correct}`;
-            document.getElementById('mockScoreNum').innerText = `Score: ${score}/100`;
-            document.getElementById('mockFeedbackText').innerText = feedback;
-            document.getElementById('mockImprovementText').innerText = improvement;
-            document.getElementById('mockEvalBox').classList.remove('hidden');
-        }
-
-        function nextMockQuestion() {
-            mockCurrentIdx++;
-            if(mockCurrentIdx < mockFilteredPool.length) { loadMockQuestion(); }
-            else { alert("🎉 You have completed all filtered mock questions for this selection!"); mockCurrentIdx = 0; loadMockQuestion(); }
-        }
-
-        function promptTestName(domain) {
-            selectedDomainForTest = domain;
-            document.getElementById('rawCandidateName').value = '';
-            document.getElementById('testNameModal').classList.remove('hidden');
-        }
-
-        function confirmAndLaunchTest() {
-            const raw = document.getElementById('rawCandidateName').value;
-            const cleanName = raw.replace(/[^a-zA-Z\s]/g, '').trim();
-            if(!cleanName) { alert("Please enter a valid candidate name containing English alphabets only!"); return; }
-            activeTestCandidateName = cleanName.toUpperCase();
-            document.getElementById('proctoredUserName').innerText = `CANDIDATE: ${activeTestCandidateName}`;
-            document.getElementById('testNameModal').classList.add('hidden');
-            proctorWarningsCount = 0;
-            document.getElementById('warningCounterDisplay').innerText = `0/2 Warnings`;
-            if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(err => console.log(err)); }
-            startProctoredTestSession();
-        }
-
-        function startProctoredTestSession() {
-            isProctoredActive = true;
-            currentTestIdx = 0;
-            candidateScore = 0;
-            correctAttemptsCount = 0;
-            testQuestionsList = [...(domainQuestionsDatabase[selectedDomainForTest] || [])].sort(() => 0.5 - Math.random());
-            document.getElementById('testLockedOverlay').classList.remove('hidden');
-            renderTestQuestion();
-            let timeLeft = 600;
-            clearInterval(testTimerInterval);
-            testTimerInterval = setInterval(() => {
-                timeLeft--;
-                let m = Math.floor(timeLeft / 60);
-                let s = timeLeft % 60;
-                document.getElementById('testTimerDisplay').innerText = `Time: 0${m}:${s < 10 ? '0' : ''}${s}`;
-                if(timeLeft <= 0) { clearInterval(testTimerInterval); forceExitTest(); }
-            }, 1000);
-        }
-
-        function renderTestQuestion() {
-            const container = document.getElementById('testQuestionContent');
-            const item = testQuestionsList[currentTestIdx];
-            container.innerHTML = `
-                <div class="flex justify-between items-center text-xs font-bold text-indigo-600">
-                    <span>Domain: ${selectedDomainForTest}</span>
-                    <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300">[${item.level} - ${item.type.toUpperCase()}] Question ${currentTestIdx + 1} of ${testQuestionsList.length}</span>
-                </div>
-                <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">${item.q}</h3>
-            `;
-            if(item.type === 'mcq') {
-                const shuffledOpts = [...item.options].sort(() => 0.5 - Math.random());
-                container.innerHTML += `<div class="space-y-2 pt-2">${shuffledOpts.map(opt => `<label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 cursor-pointer text-xs font-semibold hover:border-indigo-500 transition"><input type="radio" name="testOpt" value="${opt}" class="accent-indigo-600"> <span>${opt}</span></label>`).join('')}</div>`;
-            } else {
-                container.innerHTML += `<div class="pt-2 space-y-2"><textarea id="subjectiveAnsInput" rows="4" placeholder="Write your detailed technical answer or code snippet here..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium"></textarea></div>`;
-            }
-        }
-
-        function nextTestQuestion() {
-            const item = testQuestionsList[currentTestIdx];
-            let isCorrect = false;
-            if(item.type === 'mcq') {
-                const selectedOpt = document.querySelector('input[name="testOpt"]:checked');
-                if(selectedOpt && selectedOpt.value === item.correct) {
-                    isCorrect = true;
-                }
-            } else {
-                if(document.getElementById('subjectiveAnsInput').value.trim().length > 5) {
-                    isCorrect = true;
-                }
-            }
-
-            if(isCorrect) {
-                candidateScore += 10;
-                correctAttemptsCount++;
-            }
-
-            currentTestIdx++;
-            if(currentTestIdx < testQuestionsList.length) renderTestQuestion();
-            else forceExitTest();
-        }
-
-        function forceExitTest() {
-            isProctoredActive = false;
-            clearInterval(testTimerInterval);
-            if (document.exitFullscreen) { document.exitFullscreen().catch(err => console.log(err)); }
-            document.getElementById('testLockedOverlay').classList.add('hidden');
-            const finalScore = Math.min(candidateScore, 100);
-            
-            document.getElementById('resCandidateDisplay').innerText = `CANDIDATE: ${activeTestCandidateName || 'USER'}`;
-            document.getElementById('resScoreText').innerText = `Score: ${finalScore}%`;
-            document.getElementById('resAttemptStatsText').innerText = `Correct: ${correctAttemptsCount} out of ${testQuestionsList.length} Questions Attempted`;
-
-            const statusBadge = document.getElementById('resStatusBadge');
-            if(finalScore >= 40) {
-                statusBadge.innerText = "PASSED 🏆"; statusBadge.className = "text-xs font-bold text-emerald-600 mt-1";
-                const completedDomains = JSON.parse(localStorage.getItem('nexthire_completed_domains') || '[]');
-                if(!completedDomains.includes(selectedDomainForTest)) {
-                    completedDomains.push(selectedDomainForTest);
-                    localStorage.setItem('nexthire_completed_domains', JSON.stringify(completedDomains));
-                }
-                render20DomainsCards();
-                renderLeaderboard();
-            } else {
-                statusBadge.innerText = "FAILED ❌"; statusBadge.className = "text-xs font-bold text-rose-600 mt-1";
-            }
-            document.getElementById('testResultModal').classList.remove('hidden');
-        }
-
-        function closeResultModal() { document.getElementById('testResultModal').classList.add('hidden'); }
-        function openShareModal() { document.getElementById('socialShareModal').classList.remove('hidden'); }
-        function closeShareModal() { document.getElementById('socialShareModal').classList.add('hidden'); }
-
-        // 🚀 One-Click LinkedIn Viral Share with Pre-Written Caption
-        function shareToLinkedIn() {
-            const finalScore = Math.min(candidateScore, 100);
-            const domain = selectedDomainForTest || "Full Stack Web Dev";
-            const candidateName = activeTestCandidateName || "Yash Raj Goswami";
-            
-            const viralCaption = `🚀 Thrilled to share that I (${candidateName}) have successfully cleared the AI-Proctored Technical Assessment in "${domain}" on NextHire Matrix with an Advanced Grade (Score: ${finalScore}%)! 💻🔥\n\nGrateful for rigorous proctored platforms pushing developer excellence. Check it out: https://nexthirematrix.vercel.app #NextHireMatrix #TechAssessment #FullStack #WebDevelopment #CareerGrowth`;
-            
-            navigator.clipboard.writeText(viralCaption).then(() => {
-                alert("📋 Viral LinkedIn Caption copied to clipboard! Opening LinkedIn share window...");
-                window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(viralCaption)}`, '_blank');
-            }).catch(() => {
-                window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(viralCaption)}`, '_blank');
-            });
-        }
-
-        function shareToSocial(platform) {
-            const finalScore = Math.min(candidateScore, 100);
-            const text = encodeURIComponent(`I scored ${finalScore}% in the ${selectedDomainForTest} Test on NextHire Matrix! Check it out.`);
-            const url = encodeURIComponent(window.location.href);
-            if(platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-            else if(platform === 'linkedin') shareToLinkedIn();
-            else if(platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-            else if(platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
-            else if(platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-            else if(platform === 'copy') { navigator.clipboard.writeText(`I scored ${finalScore}% in ${selectedDomainForTest} on NextHire Matrix!`); alert("Score copied!"); closeShareModal(); }
-        }
-
-        // 🏆 PROFESSIONAL CERTIFICATE GENERATOR WITH REAL GENERATED QR CODE
-        function downloadTestCertificate() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('landscape');
-            const finalScore = Math.min(candidateScore, 100);
-            const candidateName = activeTestCandidateName || "YASH RAJ GOSWAMI";
-            const domainName = selectedDomainForTest || "Full Stack Web Dev (Django+React)";
-            const certId = "NHM-" + Math.floor(100000 + Math.random() * 900000);
-            const issueDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-
-            // Outer Border Frame
-            doc.setLineWidth(1.5); 
-            doc.setDrawColor(79, 70, 229); 
-            doc.rect(12, 12, 273, 186);
-
-            doc.setLineWidth(0.5);
-            doc.setDrawColor(200, 200, 200);
-            doc.rect(15, 15, 267, 180);
-
-            // 1. Top Header
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(22); 
-            doc.setTextColor(79, 70, 229);
-            doc.text("⚡ NEXTHIRE MATRIX", 148, 35, { align: "center" });
-
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(14); 
-            doc.setTextColor(30, 41, 59);
-            doc.text("Certificate of Completion & Technical Proficiency", 148, 45, { align: "center" });
-
-            // 2. Sub-header
-            doc.setFont("helvetica", "italic"); 
-            doc.setFontSize(11); 
-            doc.setTextColor(100, 116, 139);
-            doc.text("This is certified that", 148, 62, { align: "center" });
-
-            // 3. Candidate Name (Bold, Elegant)
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(28); 
-            doc.setTextColor(15, 23, 42);
-            doc.text(candidateName, 148, 80, { align: "center" });
-
-            // 4. Body Text
-            doc.setFont("helvetica", "normal"); 
-            doc.setFontSize(12); 
-            doc.setTextColor(51, 65, 85);
-            doc.text("has successfully cleared the AI-proctored technical assessment in domain", 148, 96, { align: "center" });
-
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(15); 
-            doc.setTextColor(79, 70, 229);
-            doc.text(domainName, 148, 108, { align: "center" });
-
-            doc.setFont("helvetica", "normal"); 
-            doc.setFontSize(12); 
-            doc.setTextColor(51, 65, 85);
-            doc.text(`with an Advanced Grade (Score: ${finalScore}% | Correct: ${correctAttemptsCount}/10 Questions).`, 148, 120, { align: "center" });
-
-            // 5. Key Skills Verified
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(10); 
-            doc.setTextColor(15, 23, 42);
-            doc.text("Key Skills Verified:", 148, 138, { align: "center" });
-
-            doc.setFont("helvetica", "normal"); 
-            doc.setFontSize(10); 
-            doc.setTextColor(79, 70, 229);
-            doc.text("[Python, Django REST Framework, React.js, Database Management, Secure Coding]", 148, 146, { align: "center" });
-
-            // Divider Line for Footer
-            doc.setLineWidth(0.3);
-            doc.setDrawColor(226, 232, 240);
-            doc.line(25, 158, 272, 158);
-
-            // 6. Footer Section
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(9); 
-            doc.setTextColor(100, 116, 139);
-            doc.text(`Certificate ID: ${certId}`, 30, 172);
-            doc.text(`Issue Date: ${issueDate}`, 30, 178);
-
-            // Generate Real Scannable QR Code using qrcode-generator library
-            try {
-                let qr = qrcode(0, 'L');
-                qr.addData(`https://nexthirematrix.vercel.app/verify?id=${certId}&candidate=${encodeURIComponent(candidateName)}`);
-                qr.make();
-                let moduleCount = qr.getModuleCount();
-                let canvas = document.createElement('canvas');
-                canvas.width = moduleCount * 4;
-                canvas.height = moduleCount * 4;
-                let ctx = canvas.getContext('2d');
-                ctx.fillStyle = "#FFFFFF";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#000000";
-                for (let r = 0; r < moduleCount; r++) {
-                    for (let c = 0; c < moduleCount; c++) {
-                        if (qr.isDark(r, c)) {
-                            ctx.fillRect(c * 4, r * 4, 4, 4);
-                        }
-                    }
-                }
-                let qrDataURL = canvas.toDataURL("image/png");
-                doc.addImage(qrDataURL, 'PNG', 136, 159, 24, 24);
-            } catch(e) {
-                doc.rect(136, 159, 24, 24);
-                doc.text("QR", 148, 172, { align: "center" });
-            }
-
-            // Right: Authorized Signature & Seal
-            doc.setFont("helvetica", "bold"); 
-            doc.setFontSize(10); 
-            doc.setTextColor(15, 23, 42);
-            doc.text("Authorized Signature & Seal", 240, 172, { align: "center" });
-            doc.setFont("helvetica", "italic");
-            doc.setFontSize(8);
-            doc.setTextColor(100, 116, 139);
-            doc.text("NextHire Matrix Assessment Board", 240, 178, { align: "center" });
-
-            doc.save(`${candidateName.replace(/\s+/g, '_')}_Certificate.pdf`);
-        }
-
-        function generateCoverLetter() {
-            const name = document.getElementById('clName').value.trim() || "Candidate Name";
-            const job = document.getElementById('clJob').value.trim() || "Software Engineer";
-            document.getElementById('clOutput').value = `Dear Hiring Manager,\n\nI am writing to express my strong enthusiasm for the ${job} position. With a solid foundation in software engineering, I bring hands-on experience building efficient, user-centric systems.\n\nSincerely,\n${name}`;
-            document.getElementById('clResultBox').classList.remove('hidden');
-        }
-
-        function copyCoverLetter() {
-            document.getElementById('clOutput').select();
-            document.execCommand('copy');
-            alert("Cover Letter copied!");
-        }
-
-        function calculateOnlySalary() {
-            const exp = document.getElementById('salExp').value;
-            let low = 6.0, high = 10.0;
-            if(exp === '1-3 Years') { low = 9.0; high = 15.0; }
-            else if(exp === '3-5 Years') { low = 15.0; high = 24.0; }
-            else if(exp === '5+ Years') { low = 24.0; high = 40.0; }
-            document.getElementById('salBracketText').innerText = `₹${low.toFixed(1)} LPA - ₹${high.toFixed(1)} LPA`;
-            document.getElementById('salBracketBox').classList.remove('hidden');
-        }
-
-        function generateOnlyHREmail() {
-            const role = document.getElementById('salRole').value.trim() || "Software Developer";
-            document.getElementById('salEmailText').value = `Subject: Discussion Regarding Compensation Package for ${role}\n\nDear HR Team,\n\nThank you for sharing the offer details. Based on market benchmarks, I would like to request reviewing the base package.\n\nBest regards,\nCandidate`;
-            document.getElementById('salEmailBox').classList.remove('hidden');
-        }
-
-        function copySalEmail() {
-            document.getElementById('salEmailText').select();
-            document.execCommand('copy');
-            alert("HR negotiation email copied!");
-        }
-
-        function switchTab(tab) {
-            const tabs = ['builder', 'checker', 'interviewprep', 'mockinterview', 'testseries', 'salaryestimator', 'coverletter', 'jobmatch'];
-            tabs.forEach(t => {
-                const sec = document.getElementById(t + 'Section');
-                if(sec) { sec.classList.add('hidden'); }
-            });
-            const targetSec = document.getElementById(tab + 'Section');
-            if(targetSec) { targetSec.classList.remove('hidden'); }
-        }
-
-        function toggleMobileMenu() { document.getElementById('mobileDrawer').classList.toggle('hidden'); }
         function toggleDarkMode() { document.getElementById('htmlRoot').classList.toggle('dark'); }
 
         function addExperienceField() {
@@ -1226,15 +238,8 @@
                     <span class="text-[11px] font-extrabold text-indigo-600">Experience / Project #${index + 1}</span>
                     ${index > 0 ? `<button onclick="this.closest('.exp-item').remove(); saveAndPreview();" class="text-xs font-bold text-rose-500 hover:underline">Remove</button>` : ''}
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <input type="text" class="exp-title w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-900 font-semibold" placeholder="Job Title / Project Name" oninput="saveAndPreview()">
-                    <input type="text" class="exp-company w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-900 font-semibold" placeholder="Company / Organization" oninput="saveAndPreview()">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <input type="text" class="exp-start w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-900 font-medium" placeholder="Start Date" oninput="saveAndPreview()">
-                    <input type="text" class="exp-end w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-900 font-medium" placeholder="End Date" oninput="saveAndPreview()">
-                </div>
-                <textarea rows="2" class="exp-desc w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-900 font-medium resize-none" placeholder="Key responsibilities..." oninput="saveAndPreview()"></textarea>
+                <input type="text" class="exp-title w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-semibold" placeholder="Job Title / Project Name" oninput="saveAndPreview()">
+                <textarea rows="2" class="exp-desc w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-medium resize-none" placeholder="Key responsibilities..." oninput="saveAndPreview()"></textarea>
             `;
             container.appendChild(div);
         }
@@ -1245,9 +250,6 @@
             items.forEach(item => {
                 list.push({
                     title: item.querySelector('.exp-title').value.trim(),
-                    company: item.querySelector('.exp-company').value.trim(),
-                    start: item.querySelector('.exp-start').value.trim(),
-                    end: item.querySelector('.exp-end').value.trim(),
                     desc: item.querySelector('.exp-desc').value.trim()
                 });
             });
@@ -1258,7 +260,7 @@
 
         function updatePreview() {
             document.getElementById('prevName').innerText = document.getElementById('fullName').value || "Your Name";
-            document.getElementById('prevContact').innerText = (document.getElementById('email').value || "email@example.com") + " | " + (document.getElementById('phone').value || "Phone") + (document.getElementById('links').value ? " | " + document.getElementById('links').value : "");
+            document.getElementById('prevContact').innerText = (document.getElementById('email').value || "email@example.com") + " | " + (document.getElementById('phone').value || "Phone");
             document.getElementById('prevSummary').innerText = document.getElementById('summary').value || "Summary details...";
             document.getElementById('prevSkills').innerText = document.getElementById('skills').value || "Skills list...";
             
@@ -1267,80 +269,33 @@
             const exps = getExperiencesData();
             let hasValidExp = false;
             exps.forEach(exp => {
-                if(exp.title || exp.company || exp.desc) {
+                if(exp.title || exp.desc) {
                     hasValidExp = true;
                     const div = document.createElement('div');
                     div.className = "space-y-0.5";
                     div.innerHTML = `
-                        <div class="flex justify-between items-center text-xs font-bold text-slate-900">
-                            <span>${exp.title}${exp.company ? ' — ' + exp.company : ''}</span>
-                            <span class="text-slate-500 font-normal text-[11px]">${exp.start}${exp.end ? ' - ' + exp.end : ''}</span>
-                        </div>
+                        <div class="text-xs font-bold text-slate-900">${exp.title}</div>
                         <p class="text-xs text-slate-700 font-medium leading-relaxed">${exp.desc}</p>
                     `;
                     expContainer.appendChild(div);
                 }
             });
             if(!hasValidExp) { expContainer.innerHTML = `<p class="text-xs text-slate-400 italic">Your projects and experience will appear here...</p>`; }
-
             document.getElementById('prevEduGrad').innerHTML = `<b>Graduation:</b> ${document.getElementById('eduGrad').value || 'Degree details...'}`;
-            document.getElementById('prevEdu12th').innerHTML = `<b>12th:</b> ${document.getElementById('edu12th').value || '12th details...'}`;
-            document.getElementById('prevEdu10th').innerHTML = `<b>10th:</b> ${document.getElementById('edu10th').value || '10th details...'}`;
-            applyTemplateStyles(document.getElementById('templateSelector').value);
-        }
-
-        function applyTemplateStyles(template) {
-            const previewBox = document.getElementById('previewContainer');
-            if(template === 'classic') previewBox.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-200/80 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
-            else if(template === 'modern') previewBox.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border-t-8 border-indigo-600 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
-            else if(template === 'executive') previewBox.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border-2 border-slate-800 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
-            else if(template === 'creative') previewBox.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border-l-8 border-indigo-600 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
-            else if(template === 'academic') previewBox.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-stone-300 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto font-serif";
-        }
-
-        async function sendFormToMyEmail(formData) {
-            try {
-                let response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                    body: JSON.stringify({ apikey: "a87235ca-05ef-406c-a0c1-c83def14c7c0", ...formData })
-                });
-                let json = await response.json();
-                return json.success;
-            } catch (err) {
-                console.error("Web3Forms Error:", err);
-                return false;
-            }
         }
 
         function submitAndAnalyze() {
             document.getElementById('atsAnalysisBox').classList.remove('hidden');
             document.getElementById('downloadActionBar').classList.remove('hidden');
             document.getElementById('downloadActionBar').classList.add('flex');
-            document.getElementById('atsScoreNum').innerText = "88";
-            document.getElementById('scoreBar').style.width = "88%";
-            sendFormToMyEmail({
-                subject: "New Resume Form Submission",
-                name: document.getElementById('fullName').value || "N/A",
-                email: document.getElementById('email').value || "N/A",
-                phone: document.getElementById('phone').value || "N/A",
-                skills: document.getElementById('skills').value || "N/A"
-            });
         }
 
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-            const memeQuotes = [
-                "“Badhai ho! Aapka resume ab ATS software ke darr se nahi bhagega. 😎🚀”",
-                "“Code likhna aur resume banana—dono me dimaag lagta hai, par tune kar dikhaya! 💻🔥”"
-            ];
-            document.getElementById('memeBox').innerText = memeQuotes[Math.floor(Math.random() * memeQuotes.length)];
             const doc = new jsPDF();
-            doc.setFont("helvetica", "bold");
             doc.text(document.getElementById('prevName').innerText, 20, 20);
             doc.save("NextHire_ATS_Resume.pdf");
-            document.getElementById('feedbackModal').classList.remove('hidden');
         }
 
         function handlePhoto(e) {
@@ -1348,101 +303,15 @@
             if(file) {
                 const reader = new FileReader();
                 reader.onload = function(evt) {
-                    uploadedPhotoData = evt.target.result;
                     const img = document.getElementById('prevPhoto');
-                    img.src = uploadedPhotoData;
+                    img.src = evt.target.result;
                     img.classList.remove('hidden');
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        async function handlePDFUpload(event) {
-            const file = event.target.files[0];
-            const resultBox = document.getElementById('pdfResultBox');
-            const scoreTitle = document.getElementById('pdfScoreTitle');
-            if (!file) return;
-
-            // Strict File Type Validation (.pdf and .docx only)
-            const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-            if (!allowedTypes.includes(file.type)) {
-                alert("❌ Error: Sirf PDF ya DOCX file allow hai! MP3, Image, ya Notepad file ATS par nahi chalegi.");
-                event.target.value = "";
-                resultBox.classList.add('hidden');
-                return;
-            }
-
-            resultBox.classList.remove('hidden');
-            document.getElementById('pdfFileName').innerText = file.name;
-            scoreTitle.innerText = "Scanned Score: 85/100 (ATS Optimized)";
-        }
-
-        function analyzeJobMatch() {
-            const jdText = document.getElementById('jdInput').value.trim();
-            if (!jdText) { alert("Please paste Job Description!"); return; }
-            document.getElementById('jdResultBox').classList.remove('hidden');
-            document.getElementById('jdMatchScoreTitle').innerText = "Match Score: 88% (ATS Optimized)";
-        }
-
         function clearLocalStorage() { localStorage.clear(); location.reload(); }
-        
-        function openModal(type) {
-            if(type === 'privacy') document.getElementById('privacyModal').classList.remove('hidden');
-            if(type === 'terms') document.getElementById('termsModal').classList.remove('hidden');
-        }
-        function closeModal(type) {
-            if(type === 'privacy') document.getElementById('privacyModal').classList.add('hidden');
-            if(type === 'terms') document.getElementById('termsModal').classList.add('hidden');
-        }
-        
-        function openFeedbackPopup(type) {
-            currentFeedbackType = type;
-            const titleElem = document.getElementById('feedbackModalTitle');
-            const descElem = document.getElementById('feedbackModalDesc');
-            const inputElem = document.getElementById('floatingFeedbackInput');
-            inputElem.value = '';
-
-            if (type === 'bug') {
-                titleElem.innerHTML = '🛠️ Report a Bug / Issue';
-                descElem.innerHTML = 'Describe the bug you encountered so we can fix it instantly:';
-                inputElem.placeholder = 'e.g. Button is not responding...';
-            } else {
-                titleElem.innerHTML = '❤️ Send Love / Suggestion';
-                descElem.innerHTML = 'Share your thoughts, feedback or feature ideas:';
-                inputElem.placeholder = 'e.g. Add dark mode toggle or new templates...';
-            }
-            document.getElementById('floatingFeedbackModal').classList.remove('hidden');
-        }
-
-        function closeFloatingFeedback() { 
-            document.getElementById('floatingFeedbackModal').classList.add('hidden'); 
-        }
-
-        async function submitFloatingFeedback() {
-            const text = document.getElementById('floatingFeedbackInput').value.trim();
-            const lowerText = text.toLowerCase();
-            const isGibberish = text.length < 10 || /^[asdfghjklqwertyuiopzxcvbnm\s]+$/.test(lowerText) || text === "ksakfsaf";
-
-            if (!text || isGibberish) {
-                alert("❌ Error: Please enter a meaningful message or bug description (at least 10 characters with proper words)!");
-                return;
-            }
-            
-            const success = await sendFormToMyEmail({
-                subject: currentFeedbackType === 'bug' ? "🚨 Bug Report - NextHire Matrix" : "❤️ User Feedback / Suggestion",
-                feedback_type: currentFeedbackType,
-                message: text
-            });
-
-            if (success !== false) {
-                alert(currentFeedbackType === 'bug' ? "✅ Bug report sent successfully!" : "✅ Thank you for your valuable feedback!");
-            } else {
-                alert("⚠️ Error: Failed to send email via Web3Forms API. Please check your Web3Forms access key.");
-            }
-            closeFloatingFeedback();
-        }
-
-        function closeFeedbackModal() { document.getElementById('feedbackModal').classList.add('hidden'); }
     </script>
 </body>
 </html>

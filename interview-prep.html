@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextHire Matrix - Interview Prep Hub (20+ Domains)</title>
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
+    <meta name="title" content="NextHire Matrix - Interview Prep Hub">
+    <meta name="description" content="Practice top technical interview questions and model answers across 20+ domains.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
+        <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
+            <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
+            <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
+            <a href="test-series.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-bullseye mr-1"></i> Test Series Hub</a>
+            <a href="salary-estimator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> Salary Estimator</a>
+            <a href="cover-letter.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-envelope-open-text mr-1"></i> Cover Letter</a>
+            <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">💡 Advanced Tech Interview Prep Hub (20+ Domains)</h2>
+                    <p class="text-xs text-slate-500">Select domain and difficulty level to load targeted questions & expert model answers.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Domain</label>
+                        <select id="prepRoleSelect" onchange="renderInterviewQuestions()" class="w-full px-4 py-2.5 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs bg-white dark:bg-slate-900 font-bold focus:outline-none"></select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Select Difficulty Level</label>
+                        <select id="prepLevelSelect" onchange="renderInterviewQuestions()" class="w-full px-4 py-2.5 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs bg-white dark:bg-slate-900 font-bold focus:outline-none">
+                            <option value="All">All Levels (Basic, Moderate, Advanced)</option>
+                            <option value="Basic">Basic Level Only</option>
+                            <option value="Moderate">Moderate Level Only</option>
+                            <option value="Advanced">Advanced Level Only</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="prepQuestionsContainer" class="space-y-4"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs font-semibold text-slate-600 dark:text-slate-400">
+        <p>© 2026 NextHire Matrix. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const domainsList = [
+            "Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering",
+            "Frontend Engineering (React/JS)", "Backend Engineering (Node/Python)", "Java & Enterprise Systems",
+            "C++ & System Programming", "Data Science & Analytics", "Machine Learning & AI",
+            "DevOps & Cloud (AWS/Docker)", "Cybersecurity & Ethical Hacking", "Mobile App Dev (Flutter/React Native)",
+            "Software Testing & QA Automation", "Data Engineering & Big Data", "Golang Backend Systems",
+            "Rust High Performance Systems", "UI/UX Design Systems", "Product Management",
+            "Agile & Scrum Project Management", "HR & Talent Acquisition"
+        ];
+        const domainQuestionsDatabase = {};
+        domainsList.forEach(domain => {
+            domainQuestionsDatabase[domain] = [
+                { type: "subjective", level: "Basic", q: `Explain your approach to writing clean, maintainable, and modular code in ${domain}.`, a: " modular design, clear variable naming, commenting complex logic, and keeping functions concise." },
+                { type: "subjective", level: "Moderate", q: `Discuss data structures and memory management mechanisms in ${domain}.`, a: " efficient memory allocation, avoiding leaks, and choosing right collections." },
+                { type: "subjective", level: "Advanced", q: `How do you secure applications against vulnerabilities and injection attacks in ${domain}?`, a: " sanitizing inputs, secure JWT authentication, and parameterized queries." }
+            ];
+        });
+        window.onload = function() {
+            const select = document.getElementById('prepRoleSelect');
+            select.innerHTML = domainsList.map(d => `<option value="${d}">${d}</option>`).join('');
+            renderInterviewQuestions();
+        };
+        function renderInterviewQuestions() {
+            const role = document.getElementById('prepRoleSelect').value;
+            const levelFilter = document.getElementById('prepLevelSelect').value;
+            const container = document.getElementById('prepQuestionsContainer');
+            let pool = domainQuestionsDatabase[role] || [];
+            if(levelFilter !== 'All') { pool = pool.filter(item => item.level.toLowerCase() === levelFilter.toLowerCase()); }
+            container.innerHTML = pool.map((item, idx) => `
+                <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/60 dark:bg-slate-900/60 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-indigo-600 uppercase">Q${idx + 1}. [${item.level}] ${item.q}</span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">${item.level}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><b>Expert Answer:</b> ${item.a}</p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

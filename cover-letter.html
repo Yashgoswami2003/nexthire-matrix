@@ -4,25 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextHire Matrix - Cover Letter Generator</title>
+    
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/cover-letter.html">
+    <meta property="og:title" content="NextHire Matrix Cover Letter Generator">
+    <meta property="og:description" content="Generate a tailored, professional cover letter instantly for any job role.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "NextHire Matrix Cover Letter Generator",
+      "operatingSystem": "All",
+      "applicationCategory": "BusinessApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "description": "Professional cover letter generator tool."
+    }
     </script>
-    <meta name="title" content="NextHire Matrix - Cover Letter Generator">
-    <meta name="description" content="Generate tailored, professional cover letters instantly for any job role.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
 
@@ -40,40 +55,38 @@
     </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
-        <div class="max-w-3xl mx-auto">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
-                <div class="text-center space-y-1">
-                    <h2 class="text-xl font-black text-slate-800 dark:text-slate-100">✉️ Cover Letter Generator</h2>
-                    <p class="text-xs text-slate-500">Generate a tailored, professional cover letter instantly for any job role.</p>
+        <div class="max-w-3xl mx-auto bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
+            <div class="text-center space-y-1">
+                <h1 class="text-xl font-black text-slate-800 dark:text-slate-100">✉️ Cover Letter Generator</h1>
+                <p class="text-xs text-slate-500">Generate a tailored, professional cover letter instantly for any job role.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Your Full Name / Title</label>
+                    <input type="text" id="clName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Your Full Name / Title</label>
-                        <input type="text" id="clName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border rounded-2xl text-xs bg-slate-50 dark:bg-slate-900">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Job Role / Company</label>
-                        <input type="text" id="clJob" placeholder="e.g. Software Engineer" class="w-full px-3.5 py-2.5 border rounded-2xl text-xs bg-slate-50 dark:bg-slate-900">
-                    </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Target Job Role / Company</label>
+                    <input type="text" id="clJob" placeholder="e.g. Software Engineer at Google" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium">
                 </div>
-                <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg">Generate Cover Letter</button>
-                <div id="clResultBox" class="space-y-3 hidden pt-4 border-t">
-                    <h3 class="font-extrabold text-sm">Your Generated Cover Letter:</h3>
-                    <textarea id="clOutput" rows="7" class="w-full p-3 border rounded-2xl text-xs bg-slate-50 dark:bg-slate-900"></textarea>
-                </div>
+            </div>
+            <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition">Generate Cover Letter</button>
+            <div id="clResultBox" class="space-y-3 hidden pt-4 border-t border-slate-100 dark:border-slate-700">
+                <h2 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Your Generated Cover Letter:</h2>
+                <textarea id="clOutput" rows="8" class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 leading-relaxed font-medium"></textarea>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs font-semibold text-slate-600 dark:text-slate-400">
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
         <p>© 2026 NextHire Matrix. All rights reserved.</p>
     </footer>
 
     <script>
         function generateCoverLetter() {
-            const name = document.getElementById('clName').value || "Candidate";
-            const job = document.getElementById('clJob').value || "Software Engineer";
-            document.getElementById('clOutput').value = `Dear Hiring Manager,\n\nI am writing to express my strong enthusiasm for the ${job} position. With solid hands-on engineering experience, I bring efficient problem-solving skills.\n\nSincerely,\n${name}`;
+            const name = document.getElementById('clName').value.trim() || "Candidate Name";
+            const job = document.getElementById('clJob').value.trim() || "Software Engineer";
+            document.getElementById('clOutput').value = `Dear Hiring Manager,\n\nI am writing to express my strong enthusiasm for the ${job} position.\n\nSincerely,\n${name}`;
             document.getElementById('clResultBox').classList.remove('hidden');
         }
     </script>

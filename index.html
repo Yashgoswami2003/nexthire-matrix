@@ -3,31 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - Free ATS Resume Builder & Proctored Tech Hub</title>
+    <title>NextHire Matrix - Free ATS Resume Builder & Career Platform</title>
     
-    <!-- 📊 GOOGLE ANALYTICS / GTM TRACKING TAG -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    </script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <!-- 🚀 ADVANCED SEO & META TAGS FOR GOOGLE RANKING -->
-    <meta name="title" content="NextHire Matrix - Free ATS Resume Builder & Proctored Tech Hub">
-    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free. No signup required!">
-    <meta name="keywords" content="ATS resume builder, free resume builder, professional resume creator">
-    <meta name="author" content="NextHire Matrix">
-    <meta name="robots" content="index, follow">
-
-    <!-- 🌐 OPEN GRAPH / SOCIAL MEDIA PREVIEW CARDS -->
+    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free with live preview and PDF export. No signup required.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/index.html">
     <meta property="og:title" content="NextHire Matrix - Free ATS Resume Builder">
     <meta property="og:description" content="Create ATS-proof resumes instantly. 100% Free & Secure!">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=630&fit=crop">
 
-    <!-- 🚀 SOFTWARE APPLICATION JSON-LD SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,41 +21,22 @@
       "name": "NextHire Matrix Resume Builder",
       "operatingSystem": "All",
       "applicationCategory": "BusinessApplication",
-      "browser": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1480"
-      },
+      "browser": "Requires JavaScript.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
       "description": "Free ATS Resume Builder and Career Platform."
     }
     </script>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
-    <!-- FontAwesome CDN for Icons -->
+    <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
-    <!-- Header -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
@@ -79,14 +46,11 @@
                 <span class="text-[10px] sm:text-xs bg-amber-50 dark:bg-amber-950/50 border border-amber-200/60 text-amber-800 dark:text-amber-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
                     <i class="fa-solid fa-fire text-amber-500"></i> <span id="liveCounter">1,480</span> Resumes Built Today
                 </span>
-                <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition shadow-sm text-sm flex items-center gap-1.5 font-semibold">
-                    <span id="themeIcon"><i class="fa-solid fa-moon"></i></span> <span class="hidden sm:inline">Dark</span>
-                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Switcher -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
             <a href="index.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
@@ -100,7 +64,6 @@
         </div>
     </div>
 
-    <!-- Main Section with Canonical H1 Tag -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-6">
         <div class="text-center">
             <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Free ATS-Optimized Resume Builder</h1>
@@ -222,19 +185,19 @@
                         </div>
                     </div>
                     <div class="space-y-1.5">
-                        <h3 class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Professional Summary</h3>
+                        <h3 id="hSummary" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Professional Summary</h3>
                         <p id="prevSummary" class="text-xs text-slate-700 leading-relaxed font-medium">Your summary here...</p>
                     </div>
                     <div class="space-y-1.5">
-                        <h3 class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Technical Skills</h3>
+                        <h3 id="hSkills" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Technical Skills</h3>
                         <p id="prevSkills" class="text-xs text-slate-700 leading-relaxed font-medium">Your skills here...</p>
                     </div>
                     <div class="space-y-1.5">
-                        <h3 class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Projects & Experience</h3>
+                        <h3 id="hExp" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Projects & Experience</h3>
                         <div id="prevExpContainer" class="space-y-3"><p class="text-xs text-slate-400 italic">Your projects will appear here...</p></div>
                     </div>
                     <div class="space-y-1.5">
-                        <h3 class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Education</h3>
+                        <h3 id="hEdu" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Education</h3>
                         <div id="prevEduBox" class="text-xs text-slate-700 space-y-1.5 font-medium">
                             <p id="prevEduGrad"><b>Graduation:</b> Degree details...</p>
                         </div>
@@ -244,23 +207,24 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
             <p>© 2026 NextHire Matrix. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript Core Script -->
     <script>
+        let profilePhotoBase64 = "";
+
         window.onload = function() {
-            addExperienceField();
+            loadFromLocalStorage();
+            if(document.getElementById('experienceContainer').children.length === 0) {
+                addExperienceField();
+            }
             updatePreview();
         };
 
-        function toggleDarkMode() { document.getElementById('htmlRoot').classList.toggle('dark'); }
-
-        function addExperienceField() {
+        function addExperienceField(title = "", desc = "") {
             const container = document.getElementById('experienceContainer');
             const index = container.children.length;
             const div = document.createElement('div');
@@ -268,10 +232,10 @@
             div.innerHTML = `
                 <div class="flex justify-between items-center">
                     <span class="text-[11px] font-extrabold text-indigo-600">Experience / Project #${index + 1}</span>
-                    ${index > 0 ? `<button onclick="this.closest('.exp-item').remove(); saveAndPreview();" class="text-xs font-bold text-rose-500 hover:underline">Remove</button>` : ''}
+                    <button onclick="this.closest('.exp-item').remove(); saveAndPreview();" class="text-xs font-bold text-rose-500 hover:underline">Remove</button>
                 </div>
-                <input type="text" class="exp-title w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-semibold" placeholder="Job Title / Project Name" oninput="saveAndPreview()">
-                <textarea rows="2" class="exp-desc w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-medium resize-none" placeholder="Key responsibilities..." oninput="saveAndPreview()"></textarea>
+                <input type="text" class="exp-title w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-semibold" placeholder="Job Title / Project Name" value="${title}" oninput="saveAndPreview()">
+                <textarea rows="2" class="exp-desc w-full px-3 py-2 border rounded-xl text-xs bg-white dark:bg-slate-900 font-medium resize-none" placeholder="Key responsibilities & tech stack..." oninput="saveAndPreview()">${desc}</textarea>
             `;
             container.appendChild(div);
         }
@@ -288,13 +252,82 @@
             return list;
         }
 
-        function saveAndPreview() { updatePreview(); }
+        function saveAndPreview() {
+            const data = {
+                template: document.getElementById('templateSelector').value,
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                links: document.getElementById('links').value,
+                summary: document.getElementById('summary').value,
+                skills: document.getElementById('skills').value,
+                eduGrad: document.getElementById('eduGrad').value,
+                experiences: getExperiencesData(),
+                photo: profilePhotoBase64
+            };
+            localStorage.setItem('nexthire_resume_data', JSON.stringify(data));
+            updatePreview();
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('nexthire_resume_data');
+            if(!saved) return;
+            try {
+                const data = JSON.parse(saved);
+                if(data.template) document.getElementById('templateSelector').value = data.template;
+                if(data.fullName) document.getElementById('fullName').value = data.fullName;
+                if(data.email) document.getElementById('email').value = data.email;
+                if(data.phone) document.getElementById('phone').value = data.phone;
+                if(data.links) document.getElementById('links').value = data.links;
+                if(data.summary) document.getElementById('summary').value = data.summary;
+                if(data.skills) document.getElementById('skills').value = data.skills;
+                if(data.eduGrad) document.getElementById('eduGrad').value = data.eduGrad;
+                if(data.photo) {
+                    profilePhotoBase64 = data.photo;
+                    const img = document.getElementById('prevPhoto');
+                    img.src = profilePhotoBase64;
+                    img.classList.remove('hidden');
+                }
+                if(data.experiences && data.experiences.length > 0) {
+                    const container = document.getElementById('experienceContainer');
+                    container.innerHTML = '';
+                    data.experiences.forEach(exp => addExperienceField(exp.title, exp.desc));
+                }
+            } catch(e) { console.error(e); }
+        }
 
         function updatePreview() {
+            const template = document.getElementById('templateSelector').value;
+            const container = document.getElementById('previewContainer');
+            
+            // Apply Template Styling Variations
+            const hSummary = document.getElementById('hSummary');
+            const hSkills = document.getElementById('hSkills');
+            const hExp = document.getElementById('hExp');
+            const hEdu = document.getElementById('hEdu');
+
+            if(template === 'modern') {
+                container.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border-t-8 border-indigo-600 min-h-[700px] text-slate-900 space-y-6 overflow-x-auto";
+                hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg";
+            } else if(template === 'executive') {
+                container.className = "bg-slate-50 p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-300 min-h-[700px] text-slate-900 space-y-4 overflow-x-auto";
+                hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-slate-800 border-b-2 border-slate-800 pb-1";
+            } else if(template === 'creative') {
+                container.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border-l-8 border-pink-600 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
+                hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-pink-600 border-b border-pink-200 pb-1.5";
+            } else if(template === 'academic') {
+                container.className = "bg-amber-50/30 p-8 sm:p-10 rounded-3xl shadow-2xl border border-amber-200 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
+                hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-amber-800 border-b border-amber-300 pb-1.5";
+            } else {
+                // Classic
+                container.className = "bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-200 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto";
+                hSummary.className = hSkills.className = hExp.className = hEdu.className = "text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5";
+            }
+
             document.getElementById('prevName').innerText = document.getElementById('fullName').value || "Your Name";
-            document.getElementById('prevContact').innerText = (document.getElementById('email').value || "email@example.com") + " | " + (document.getElementById('phone').value || "Phone");
-            document.getElementById('prevSummary').innerText = document.getElementById('summary').value || "Summary details...";
-            document.getElementById('prevSkills').innerText = document.getElementById('skills').value || "Skills list...";
+            document.getElementById('prevContact').innerText = (document.getElementById('email').value || "email@example.com") + " | " + (document.getElementById('phone').value || "Phone") + (document.getElementById('links').value ? " | " + document.getElementById('links').value : "");
+            document.getElementById('prevSummary').innerText = document.getElementById('summary').value || "Professional summary details will appear here...";
+            document.getElementById('prevSkills').innerText = document.getElementById('skills').value || "Python, JavaScript, React, SQL...";
             
             const expContainer = document.getElementById('prevExpContainer');
             expContainer.innerHTML = '';
@@ -316,34 +349,107 @@
             document.getElementById('prevEduGrad').innerHTML = `<b>Graduation:</b> ${document.getElementById('eduGrad').value || 'Degree details...'}`;
         }
 
-        function submitAndAnalyze() {
-            document.getElementById('atsAnalysisBox').classList.remove('hidden');
-            document.getElementById('downloadActionBar').classList.remove('hidden');
-            document.getElementById('downloadActionBar').classList.add('flex');
-        }
-
-        function downloadPDF() {
-            const { jsPDF } = window.jspdf;
-            confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-            const doc = new jsPDF();
-            doc.text(document.getElementById('prevName').innerText, 20, 20);
-            doc.save("NextHire_ATS_Resume.pdf");
-        }
-
         function handlePhoto(e) {
             const file = e.target.files[0];
             if(file) {
                 const reader = new FileReader();
                 reader.onload = function(evt) {
+                    profilePhotoBase64 = evt.target.result;
                     const img = document.getElementById('prevPhoto');
-                    img.src = evt.target.result;
+                    img.src = profilePhotoBase64;
                     img.classList.remove('hidden');
+                    saveAndPreview();
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        function clearLocalStorage() { localStorage.clear(); location.reload(); }
+        function submitAndAnalyze() {
+            document.getElementById('atsAnalysisBox').classList.remove('hidden');
+            document.getElementById('downloadActionBar').classList.remove('hidden');
+            document.getElementById('downloadActionBar').classList.add('flex');
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
+            const doc = new jsPDF();
+            
+            const name = document.getElementById('prevName').innerText;
+            const contact = document.getElementById('prevContact').innerText;
+            const summary = document.getElementById('prevSummary').innerText;
+            const skills = document.getElementById('prevSkills').innerText;
+            const edu = document.getElementById('prevEduGrad').innerText;
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(20);
+            doc.setTextColor(79, 70, 229);
+            doc.text(name, 20, 20);
+
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text(contact, 20, 28);
+
+            doc.setLineWidth(0.5);
+            doc.setDrawColor(200, 200, 200);
+            doc.line(20, 33, 190, 33);
+
+            let cursorY = 42;
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(30, 41, 59);
+            doc.text("PROFESSIONAL SUMMARY", 20, cursorY);
+            
+            cursorY += 6;
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            let splitSummary = doc.splitTextToSize(summary, 170);
+            doc.text(splitSummary, 20, cursorY);
+
+            cursorY += (splitSummary.length * 6) + 6;
+            doc.setFont("helvetica", "bold");
+            doc.text("TECHNICAL SKILLS", 20, cursorY);
+            
+            cursorY += 6;
+            doc.setFont("helvetica", "normal");
+            let splitSkills = doc.splitTextToSize(skills, 170);
+            doc.text(splitSkills, 20, cursorY);
+
+            cursorY += (splitSkills.length * 6) + 6;
+            doc.setFont("helvetica", "bold");
+            doc.text("EXPERIENCE & PROJECTS", 20, cursorY);
+
+            cursorY += 6;
+            doc.setFont("helvetica", "normal");
+            const exps = getExperiencesData();
+            exps.forEach(exp => {
+                if(exp.title || exp.desc) {
+                    doc.setFont("helvetica", "bold");
+                    doc.text("• " + exp.title, 20, cursorY);
+                    cursorY += 5;
+                    doc.setFont("helvetica", "normal");
+                    let splitDesc = doc.splitTextToSize(exp.desc, 165);
+                    doc.text(splitDesc, 25, cursorY);
+                    cursorY += (splitDesc.length * 5) + 4;
+                }
+            });
+
+            cursorY += 4;
+            doc.setFont("helvetica", "bold");
+            doc.text("EDUCATION", 20, cursorY);
+            cursorY += 6;
+            doc.setFont("helvetica", "normal");
+            doc.text(edu, 20, cursorY);
+
+            doc.save("NextHire_ATS_Resume.pdf");
+        }
+
+        function clearLocalStorage() {
+            localStorage.clear();
+            location.reload();
+        }
     </script>
 </body>
 </html>

@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix - Test Series Hub & Proctored Certifications</title>
+    <title>NextHire Matrix - Proctored Test Series & Certifications (20+ Domains)</title>
     
-    <!-- 📊 GOOGLE ANALYTICS / GTM TRACKING TAG -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    </script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <!-- 🌐 OPEN GRAPH / SOCIAL MEDIA PREVIEW CARDS -->
+    <meta name="description" content="Take secure, AI-proctored technical assessments across 20+ domains and download professional verifiable PDF certificates.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/test-series.html">
     <meta property="og:title" content="NextHire Matrix Test Series Hub">
     <meta property="og:description" content="Secure Online Assessment Platform with 20+ Domains and Professional Certification.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop">
 
-    <!-- 🚀 SOFTWARE APPLICATION JSON-LD SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,33 +21,17 @@
       "name": "NextHire Matrix Test Series Hub",
       "operatingSystem": "All",
       "applicationCategory": "EducationalApplication",
-      "browser": "Requires JavaScript.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1480"
-      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
       "description": "Secure online assessment platform with randomized questions and professional certifications."
     }
     </script>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
-    <!-- FontAwesome CDN for Icons -->
+    <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- QRCode Generator Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-    <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
@@ -65,7 +42,6 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
-    <!-- FULLSCREEN TEST OVERLAY -->
     <div id="testLockedOverlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[999] hidden flex flex-col items-center justify-center p-4 no-ss-mode">
         <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -83,7 +59,6 @@
         </div>
     </div>
 
-    <!-- TEST NAME INPUT MODAL -->
     <div id="testNameModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[990] hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 text-center">
             <h3 class="text-lg font-black text-slate-800 dark:text-slate-100"><i class="fa-solid fa-lock text-indigo-600 mr-2"></i> Enter Name for Secure Test</h3>
@@ -93,7 +68,6 @@
         </div>
     </div>
 
-    <!-- TEST RESULT REPORT MODAL -->
     <div id="testResultModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[995] hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-5 text-center">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -113,19 +87,15 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition shadow-sm text-sm flex items-center gap-1.5 font-semibold">
-                <span id="themeIcon"><i class="fa-solid fa-moon"></i></span> <span class="hidden sm:inline">Dark</span>
-            </button>
+            </div>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold"><i class="fa-solid fa-moon"></i></button>
         </div>
     </header>
 
-    <!-- Navigation Switcher -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <div class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
             <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
@@ -139,7 +109,6 @@
         </div>
     </div>
 
-    <!-- Main Content with Canonical H1 Tag -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div class="text-center space-y-1">
@@ -149,7 +118,6 @@
             <div id="testGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
 
-        <!-- Wall of Achievers Leaderboard -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-4">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
                 <h2 class="font-extrabold text-slate-800 dark:text-slate-100 text-base"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Wall of Achievers Leaderboard</h2>
@@ -171,14 +139,12 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
             <p>© 2026 NextHire Matrix. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript Script -->
     <script>
         const domainsList = [
             "Python & Data Structures", "Full Stack Web Dev (Django+React)", "SQL & Database Engineering",
@@ -221,8 +187,6 @@
             renderLeaderboard();
             setupAntiCheatingProtection();
         };
-
-        function toggleDarkMode() { document.getElementById('htmlRoot').classList.toggle('dark'); }
 
         function setupAntiCheatingProtection() {
             document.addEventListener('keydown', function(e) {

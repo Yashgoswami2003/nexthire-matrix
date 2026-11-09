@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "nosniff": true },
+        { "key": "X-Frame-Options", "DENY": true },
+        { "key": "X-XSS-Protection", "1; mode=block" }
+      ]
+    }
+  ]
+}

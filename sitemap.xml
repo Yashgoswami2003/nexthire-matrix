@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 1. Home Page -->
+
+  <!-- 1. Central Suite Dashboard -->
   <url>
     <loc>https://www.nexthirematrix.com/index.html</loc>
     <lastmod>2026-11-10</lastmod>
@@ -8,59 +9,84 @@
     <priority>1.00</priority>
   </url>
 
-  <!-- 2. ATS Resume Checker -->
+  <!-- 2. ATS Resume Scanner -->
   <url>
     <loc>https://www.nexthirematrix.com/ats-checker.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
   </url>
 
-  <!-- 3. Real-Time Voice Mock Interviewer -->
+  <!-- 3. Voice Speech & Fluency Analyzer -->
   <url>
-    <loc>https://www.nexthirematrix.com/mock-interview.html</loc>
+    <loc>https://www.nexthirematrix.com/voice-analyzer.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- 4. Test Series Hub -->
+  <!-- 4. Verified PDF Certificate & Resume Builder -->
   <url>
-    <loc>https://www.nexthirematrix.com/test-series.html</loc>
+    <loc>https://www.nexthirematrix.com/certificate-builder.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- 5. Technical Interview Prep Hub -->
+  <!-- 5. ESOP & Tax Split Salary Simulator -->
   <url>
-    <loc>https://www.nexthirematrix.com/interview-prep.html</loc>
+    <loc>https://www.nexthirematrix.com/salary-simulator.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 6. Side-by-Side Job Offer Duel Engine -->
+  <url>
+    <loc>https://www.nexthirematrix.com/offer-comparator.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. 6-Second Recruiter Eye-Tracking Skim Simulator -->
+  <url>
+    <loc>https://www.nexthirematrix.com/recruiter-skim.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 8. ATS Formatting & Font Bug Auditor -->
+  <url>
+    <loc>https://www.nexthirematrix.com/format-auditor.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- 6. AI Salary Estimator -->
+  <!-- 9. 500+ Offline Tech Speed Recall Flashcards -->
   <url>
-    <loc>https://www.nexthirematrix.com/salary-estimator.html</loc>
+    <loc>https://www.nexthirematrix.com/tech-flashcards.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- 7. Cover Letter Generator -->
+  <!-- 10. Action-Verb & Metric Bullet Enhancer -->
   <url>
-    <loc>https://www.nexthirematrix.com/cover-letter.html</loc>
+    <loc>https://www.nexthirematrix.com/bullet-enhancer.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- 8. Job Description Matcher -->
+  <!-- 11. AST Big-O & Client Code Bug Inspector -->
   <url>
-    <loc>https://www.nexthirematrix.com/job-matcher.html</loc>
+    <loc>https://www.nexthirematrix.com/code-inspector.html</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
+
 </urlset>

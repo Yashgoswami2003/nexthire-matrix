@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online ATS Resume Checker & Scanner | NextHire Matrix</title>
+    <title>Free Online ATS Resume Checker & Score Scanner | NextHire Matrix</title>
     
     <!-- Clean Canonical URL -->
     <link rel="canonical" href="https://www.nexthirematrix.com/ats-checker">
@@ -17,11 +17,11 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Scan your resume against target job descriptions for free. Get instant ATS compatibility score, keyword recommendations, and formatting feedback.">
+    <meta name="description" content="Scan your resume against target job descriptions for free. Get instant ATS compatibility score meter, missing keyword analysis, and PDF audit reports.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/ats-checker">
     <meta property="og:title" content="AI ATS Resume Score Scanner - NextHire Matrix">
-    <meta property="og:description" content="Free instant ATS resume scanner & job match analysis.">
+    <meta property="og:description" content="Free instant ATS resume scanner & job match analysis with PDF audit export.">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -32,18 +32,24 @@
       "url": "https://www.nexthirematrix.com/ats-checker",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1240" },
-      "description": "Free online AI ATS resume scanner and match calculator."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1240" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- SRI Hashes Added -->
+    <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -52,18 +58,27 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
+    <!-- Nav Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -73,12 +88,23 @@
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </nav>
     </div>
+
+    <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI ATS Resume Score Scanner</h1>
-            <p class="text-xs text-slate-500 font-medium">Paste your resume text and target job description to get instant ATS compatibility scoring and keyword breakdown.</p>
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI ATS Resume Score Scanner</h1>
+            <p class="text-xs text-slate-500 font-medium max-w-xl mx-auto">Paste your resume content and target job description to run a comprehensive ATS algorithm scan with interactive progress heatmaps.</p>
         </div>
 
+        <!-- ATS Tool Console -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div>
                 <label for="resumeInputText" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Paste Resume Content</label>
@@ -89,41 +115,200 @@
                 <textarea id="jdInputText" rows="5" placeholder="Paste target job description here..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
             </div>
 
-            <button onclick="runAtsScan()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
-                <span><i class="fa-solid fa-microchip"></i></span> Run ATS Compatibility Scan
+            <button id="scanBtn" onclick="runAtsScan()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-microchip"></i> <span>Run High-Accuracy ATS Audit</span>
             </button>
 
-            <div id="atsScanResultBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hidden">
-                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <div>
-                        <h2 class="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-100">ATS Scan Compatibility Report</h2>
-                        <p class="text-[11px] text-slate-500">Keyword density & formatting verified</p>
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Scanning keyword density & matching against ATS filters...</p>
+            </div>
+
+            <!-- Scan Output & Animated Progress Meter -->
+            <div id="atsScanResultBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-6 hidden">
+                
+                <!-- Score Gauge Header -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200">ATS Match Heatmap Meter</span>
+                        <span id="scoreTextDisplay" class="text-xl font-black text-indigo-600 dark:text-indigo-400">0%</span>
                     </div>
-                    <span id="scanScoreDisplay" class="text-2xl font-black text-indigo-600 dark:text-indigo-400">88% Match</span>
+                    <!-- Visual Progress Bar -->
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div id="scoreMeterFill" class="h-full bg-indigo-600 transition-all duration-1000 w-0"></div>
+                    </div>
                 </div>
-                <div class="space-y-2">
-                    <h3 class="text-xs font-bold text-slate-700 dark:text-slate-300">💡 AI Recommendations:</h3>
-                    <p id="scanFeedbackDisplay" class="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Your resume aligns well with core technical keywords. Recommended: Include quantifiable project impact metrics (e.g., 'improved query performance by 40%') and ensure standard single-column layout.</p>
+
+                <!-- Action Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h2 class="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-100">Detailed AI Analysis Report</h2>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="copyOutput()" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy
+                        </button>
+                        <button onclick="downloadPdfReport()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> PDF Report
+                        </button>
+                        <button onclick="shareOnLinkedIn()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-brands fa-linkedin mr-1"></i> Share Score
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div id="scanFeedbackDisplay" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-2"></div>
                 </div>
             </div>
         </div>
+
+        <!-- Organic SEO Content Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">How NextHire Matrix AI ATS Checker Enhances Your Resume</h2>
+            <p>
+                Applicant Tracking Systems evaluate resume compatibility based on keyword density, formatting simplicity, and skills taxonomy matching. Created by <strong>Yash Raj Goswami</strong>, NextHire Matrix uses robust multi-key AI failover algorithms to parse your target job description and pinpoint missing critical keywords, action verbs, and quantifiable metrics.
+            </p>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Built by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        function runAtsScan() {
+        let rawAiFeedbackText = "";
+        let extractedScore = 0;
+
+        async function runAtsScan() {
             const res = document.getElementById('resumeInputText').value.trim();
             const jd = document.getElementById('jdInputText').value.trim();
-            if(!res || !jd) { alert("Please paste both resume content and job description!"); return; }
-            document.getElementById('atsScanResultBox').classList.remove('hidden');
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+            
+            if(!res || !jd) { 
+                alert("Please paste both your resume content and job description!"); 
+                return; 
             }
+
+            const scanBtn = document.getElementById('scanBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const resultBox = document.getElementById('atsScanResultBox');
+            const feedbackDisplay = document.getElementById('scanFeedbackDisplay');
+            const scoreMeterFill = document.getElementById('scoreMeterFill');
+            const scoreTextDisplay = document.getElementById('scoreTextDisplay');
+
+            scanBtn.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            resultBox.classList.add('hidden');
+
+            const structuredPrompt = `
+You are an expert ATS (Applicant Tracking System) Scanner & Resume Auditor.
+Analyze the following Resume against the Job Description (JD).
+
+IMPORTANT INSTRUCTION:
+Start your response with a dedicated line containing ONLY the score integer in this format: "SCORE: [number]" (e.g., SCORE: 85).
+
+Followed by structured Markdown:
+### 1. High-Value Matched Keywords
+### 2. Missing Critical JD Keywords
+### 3. Formatting & Bullet Point Improvements (Include quantifiable metrics)
+
+--- RESUME TEXT ---
+${res}
+
+--- JOB DESCRIPTION ---
+${jd}
+            `;
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: structuredPrompt })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    rawAiFeedbackText = data.result;
+
+                    // Extract Score
+                    const scoreMatch = data.result.match(/SCORE:\s*(\d+)/i);
+                    extractedScore = scoreMatch ? parseInt(scoreMatch[1]) : 75;
+
+                    // Update UI Progress Meter
+                    scoreTextDisplay.innerText = `${extractedScore}% Match`;
+                    scoreMeterFill.style.width = `${extractedScore}%`;
+                    if(extractedScore < 60) {
+                        scoreMeterFill.className = "h-full transition-all duration-1000 bg-red-500";
+                    } else if(extractedScore < 80) {
+                        scoreMeterFill.className = "h-full transition-all duration-1000 bg-amber-500";
+                    } else {
+                        scoreMeterFill.className = "h-full transition-all duration-1000 bg-emerald-500";
+                    }
+
+                    // Clean text and Render Markdown
+                    const cleanedMarkdown = data.result.replace(/SCORE:\s*\d+/i, '').trim();
+                    feedbackDisplay.innerHTML = marked.parse(cleanedMarkdown);
+                    resultBox.classList.remove('hidden');
+
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                    }
+                } else {
+                    alert("Error processing ATS scan: " + (data.error || "Server issue"));
+                }
+            } catch (err) {
+                alert("Network error while scanning resume. Please check your connection.");
+            } finally {
+                scanBtn.disabled = false;
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        function copyOutput() {
+            if (!rawAiFeedbackText) return;
+            navigator.clipboard.writeText(rawAiFeedbackText).then(() => {
+                alert("ATS Scan Report copied to clipboard!");
+            });
+        }
+
+        function shareOnLinkedIn() {
+            const shareText = `I just evaluated my resume using NextHire Matrix ATS Score Scanner by Yash Raj Goswami and scored ${extractedScore}%! Try it for free at https://www.nexthirematrix.com/ats-checker`;
+            const linkedinUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(shareText)}`;
+            window.open(linkedinUrl, '_blank');
+        }
+
+        function downloadPdfReport() {
+            if (!rawAiFeedbackText) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text(`NextHire Matrix - ATS Audit Score: ${extractedScore}%`, 14, 20);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Engineered by Yash Raj Goswami | nexthirematrix.com", 14, 28);
+            doc.line(14, 32, 196, 32);
+
+            const cleanText = rawAiFeedbackText.replace(/[#*`_]/g, ""); 
+            const splitLines = doc.splitTextToSize(cleanText, 180);
+
+            let cursorY = 40;
+            splitLines.forEach(line => {
+                if (cursorY > 280) {
+                    doc.addPage();
+                    cursorY = 20;
+                }
+                doc.text(line, 14, cursorY);
+                cursorY += 6;
+            });
+
+            doc.save(`ATS_Resume_Audit_${extractedScore}Percent.pdf`);
         }
     </script>
 </body>

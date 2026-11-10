@@ -2,64 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- 1. Home Page -->
   <url>
-    <loc>https://www.nexthirematrix.com/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/index.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
   <!-- 2. ATS Resume Checker -->
   <url>
-    <loc>https://www.nexthirematrix.com/ats-checker</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/ats-checker.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- 3. Mock Interviewer -->
+  <!-- 3. Real-Time Voice Mock Interviewer -->
   <url>
-    <loc>https://www.nexthirematrix.com/mock-interview</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/mock-interview.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <!-- 4. Test Series Hub -->
   <url>
-    <loc>https://www.nexthirematrix.com/test-series</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/test-series.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- 5. Interview Prep Hub -->
+  <!-- 5. Technical Interview Prep Hub -->
   <url>
-    <loc>https://www.nexthirematrix.com/interview-prep</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/interview-prep.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- 6. Salary Estimator -->
+  <!-- 6. AI Salary Estimator -->
   <url>
-    <loc>https://www.nexthirematrix.com/salary-estimator</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/salary-estimator.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <!-- 7. Cover Letter Generator -->
   <url>
-    <loc>https://www.nexthirematrix.com/cover-letter</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/cover-letter.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- 8. Job Matcher -->
+  <!-- 8. Job Description Matcher -->
   <url>
-    <loc>https://www.nexthirematrix.com/job-matcher</loc>
-    <lastmod>2026-11-09</lastmod>
+    <loc>https://www.nexthirematrix.com/job-matcher.html</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>

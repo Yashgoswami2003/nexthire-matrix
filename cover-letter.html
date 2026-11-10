@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free AI Cover Letter Generator | NextHire Matrix</title>
+    <title>Free AI Cover Letter Generator & Export Suite | NextHire Matrix</title>
     
     <!-- Clean Canonical URL -->
     <link rel="canonical" href="https://www.nexthirematrix.com/cover-letter">
@@ -17,11 +17,11 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Generate professional, tailored cover letters instantly with AI for free. Stand out in job applications with customized engineering cover letters.">
+    <meta name="description" content="Generate high-converting, ATS-friendly cover letters tailored to your target job role in seconds. Download in PDF or DOCX format for free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/cover-letter">
     <meta property="og:title" content="AI Cover Letter Generator - NextHire Matrix">
-    <meta property="og:description" content="Create ATS-optimized professional cover letters instantly.">
+    <meta property="og:description" content="Create executive, ATS-optimized cover letters instantly with one-click export tools.">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -32,18 +32,24 @@
       "url": "https://www.nexthirematrix.com/cover-letter",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "980" },
-      "description": "Free instant AI cover letter builder for tech and professional jobs."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "980" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- SRI Attributes Added -->
+    <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -52,18 +58,27 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
+    <!-- Nav Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -73,53 +88,191 @@
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </nav>
     </div>
+
+    <!-- Main Content Container -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Cover Letter Generator</h1>
-            <p class="text-xs text-slate-500 font-medium">Generate professional, tailored cover letters instantly for your job applications.</p>
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Smart Cover Letter Generator</h1>
+            <p class="text-xs text-slate-500 font-medium max-w-xl mx-auto">Generate a high-converting 3-paragraph executive cover letter tailored to your skills, experience level, and target job description.</p>
         </div>
 
+        <!-- Form Tool Console -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
             <div>
                 <label for="clNameRole" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Candidate Name & Target Role</label>
-                <input type="text" id="clNameRole" placeholder="e.g. Yash Raj Goswami - Full Stack Engineer" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                <input type="text" id="clNameRole" placeholder="e.g. Yash Raj Goswami - Senior Full Stack Engineer" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
             </div>
             <div>
-                <label for="clCompanyDetails" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Company Name & Job Description Highlights</label>
-                <textarea id="clCompanyDetails" rows="4" placeholder="Enter company name and key requirements..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
+                <label for="clCompanyDetails" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Company Name & Target Job Description / Top Skills</label>
+                <textarea id="clCompanyDetails" rows="5" placeholder="Enter target company name, key role responsibilities, or skills to highlight (e.g. Python, React, Microservices)..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
             </div>
-            <button onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
-                <span><i class="fa-solid fa-wand-magic-sparkles"></i></span> Generate Professional Cover Letter
+            
+            <button id="genBtn" onclick="generateCoverLetter()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Generate Bespoke Cover Letter</span>
             </button>
 
-            <div id="clOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hidden">
-                <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600">Generated Cover Letter</h2>
-                <p id="clOutputText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">Dear Hiring Manager,
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Synthesizing tailored cover letter structure using AI rotation pipeline...</p>
+            </div>
 
-I am writing to express my strong enthusiasm for the engineering position at your esteemed organization. With hands-on expertise in Python, Django, React, and full-stack architecture, I have successfully engineered robust web applications and scalable solutions.
+            <!-- Output Display Console -->
+            <div id="clOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 dark:border-slate-800 pb-3 gap-2">
+                    <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Generated Executive Cover Letter</h2>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="copyOutput()" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy
+                        </button>
+                        <button onclick="downloadDocx()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-word mr-1"></i> Download .docx
+                        </button>
+                        <button onclick="downloadPdf()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
 
-I look forward to contributing effectively to your team.
-
-Best regards,
-Yash Raj Goswami</p>
+                <div id="clOutputText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-3 whitespace-pre-line"></div>
             </div>
         </div>
+
+        <!-- Organic SEO Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Why Customized Cover Letters Boost Recruiter Callbacks</h2>
+            <p>
+                Sending a standard application without a tailored cover letter reduces interview callback rates by up to 45%. The NextHire Matrix Cover Letter Suite, developed by <strong>Yash Raj Goswami</strong>, uses AI prompt engineering to map candidate skills directly to target employer criteria in a clean 3-paragraph structure.
+            </p>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Built by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        function generateCoverLetter() {
-            const val = document.getElementById('clNameRole').value.trim();
-            if(!val) { alert("Please enter your name and target role!"); return; }
-            document.getElementById('clOutputBox').classList.remove('hidden');
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+        let rawCoverLetter = "";
+
+        async function generateCoverLetter() {
+            const nameRole = document.getElementById('clNameRole').value.trim();
+            const companyDetails = document.getElementById('clCompanyDetails').value.trim();
+            
+            if(!nameRole || !companyDetails) { 
+                alert("Please fill in candidate role and target company details!"); 
+                return; 
             }
+
+            const genBtn = document.getElementById('genBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const outputBox = document.getElementById('clOutputBox');
+            const outputText = document.getElementById('clOutputText');
+
+            genBtn.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            outputBox.classList.add('hidden');
+
+            const structuredPrompt = `
+You are a top executive HR recruiter and career coach. Write a persuasive, 3-paragraph tailored cover letter:
+
+- Candidate Info: ${nameRole}
+- Target Employer & Requirements: ${companyDetails}
+
+Structure Instructions:
+Paragraph 1: Clear hook referencing the target position, expressing enthusiasm, and introducing candidate background.
+Paragraph 2: Detailed core achievements linking skills to employer requirements.
+Paragraph 3: Confident call-to-action requesting an interview, thanking recruiter, and signing off professionally.
+`;
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: structuredPrompt })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    rawCoverLetter = data.result;
+                    outputText.innerHTML = marked.parse(data.result);
+                    outputBox.classList.remove('hidden');
+
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                    }
+                } else {
+                    alert("Error generating cover letter: " + (data.error || "Server issue"));
+                }
+            } catch (err) {
+                alert("Network error while generating cover letter. Please try again.");
+            } finally {
+                genBtn.disabled = false;
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        function copyOutput() {
+            if (!rawCoverLetter) return;
+            navigator.clipboard.writeText(rawCoverLetter).then(() => {
+                alert("Cover letter copied to clipboard!");
+            });
+        }
+
+        function downloadDocx() {
+            if (!rawCoverLetter) return;
+            const cleanText = rawCoverLetter.replace(/[#*`_]/g, "");
+            const blob = new Blob([cleanText], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Cover_Letter_NextHire.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadPdf() {
+            if (!rawCoverLetter) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("Executive Cover Letter - NextHire Matrix", 14, 20);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Engineered by Yash Raj Goswami | nexthirematrix.com", 14, 28);
+            doc.line(14, 32, 196, 32);
+
+            const cleanText = rawCoverLetter.replace(/[#*`_]/g, "");
+            const splitLines = doc.splitTextToSize(cleanText, 180);
+
+            let cursorY = 40;
+            splitLines.forEach(line => {
+                if (cursorY > 280) {
+                    doc.addPage();
+                    cursorY = 20;
+                }
+                doc.text(line, 14, cursorY);
+                cursorY += 6;
+            });
+
+            doc.save("Cover_Letter_NextHire.pdf");
         }
     </script>
 </body>

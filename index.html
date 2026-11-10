@@ -3,44 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free ATS Resume Builder & Career Platform | NextHire Matrix</title>
+    <title>NextHire Matrix - Free AI Career, ATS Checker & Interview Toolkit</title>
+    <meta name="description" content="Accelerate your job search with NextHire Matrix. Free AI ATS Resume Checker, Cover Letter Builder, Real-time Voice Mock Interviews, and Salary Estimator.">
     <link rel="canonical" href="https://www.nexthirematrix.com/">
-    
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
+    <!-- External Scripts & Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <meta name="description" content="Build 100% ATS-optimized resumes instantly for free with live preview, feedback, and instant PDF export. No signup required.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/">
-    <meta property="og:title" content="NextHire Matrix - Free ATS Resume Builder">
-    <meta property="og:description" content="Create ATS-proof resumes instantly. 100% Free & Secure!">
-
+    <!-- Schema.org SEO Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Resume Builder",
-      "url": "https://www.nexthirematrix.com/",
-      "operatingSystem": "All",
-      "applicationCategory": "BusinessApplication",
-      "browser": "Requires JavaScript.",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1480" },
-      "description": "Free ATS Resume Builder and Career Platform."
+      "name": "NextHire Matrix",
+      "url": "https://www.nexthirematrix.com",
+      "applicationCategory": "Career & HR Tools",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "description": "Comprehensive AI platform offering ATS scanning, cover letter generation, mock interviews, and career estimation."
     }
     </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { darkMode: 'class' }</script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -49,23 +38,27 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation Bar -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <div class="flex items-center gap-2 sm:gap-3">
-                <span class="text-[10px] sm:text-xs bg-amber-50 dark:bg-amber-950/50 border border-amber-200/60 text-amber-800 dark:text-amber-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-fire text-amber-500"></i> <span id="liveCounter">1,480</span> Resumes Built Today
-                </span>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Horizontal Navigation Tabs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -76,164 +69,171 @@
         </nav>
     </div>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-6">
-        <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white p-4 rounded-3xl shadow-lg flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl"><i class="fa-solid fa-lightbulb"></i></span>
-                <div>
-                    <h3 class="text-xs font-black uppercase tracking-wider">Daily Motivational Thought</h3>
-                    <p id="motivationalThoughtText" class="text-xs font-medium opacity-95">"Consistency is the DNA of elite engineers. Build, deploy, repeat!"</p>
-                </div>
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-4">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1.5 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
             </div>
-            <button onclick="rotateMotivation()" class="text-xs bg-white/25 hover:bg-white/40 px-3 py-1.5 rounded-xl font-bold transition">New Quote</button>
+            <h1 class="text-3xl sm:text-5xl font-black bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">
+                Supercharge Your Career with AI Matrix
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                Unlock instant ATS resume compatibility scores, generate tailored cover letters, practice real-time voice interviews, and calculate accurate tech compensation packages.
+            </p>
         </div>
 
-        <div class="text-center">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Free ATS-Optimized Resume Builder</h1>
-            <p class="text-xs text-slate-500 mt-1">Create professional, keyword-optimized resumes instantly with live preview.</p>
+        <!-- Dynamic Multi-Tool AI Console -->
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Universal Career AI Assistant</h2>
+                    <p class="text-[11px] text-slate-500">Ask any career, coding, or interview question below</p>
+                </div>
+                <span class="text-[11px] bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-xl font-bold">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Auto-Rotated Key Engine Active
+                </span>
+            </div>
+
+            <form id="aiHomeForm" class="space-y-4">
+                <textarea id="homePrompt" rows="5" placeholder="e.g., Provide 3 bullet points to describe Python ORM optimization on a resume with metrics..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none" required></textarea>
+                
+                <button type="submit" id="homeSubmitBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Execute AI Request</span>
+                </button>
+            </form>
+
+            <!-- Loading Spinner -->
+            <div id="homeSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Processing request across 6-key failover serverless pipeline...</p>
+            </div>
+
+            <!-- Output Container -->
+            <div id="homeOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hidden">
+                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <span class="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">AI Response Output</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyHomeOutput()" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy
+                        </button>
+                        <button onclick="downloadHomeTxt()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-download mr-1"></i> Save (.txt)
+                        </button>
+                    </div>
+                </div>
+                <div id="homeOutputText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-2"></div>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <section class="lg:col-span-5 bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200/80 dark:border-slate-700/80 space-y-5 h-fit">
-                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
-                    <h2 class="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                        <span><i class="fa-solid fa-pen-nib text-indigo-600"></i></span> Enter Your Details
-                    </h2>
-                    <button onclick="clearLocalStorage()" class="text-xs font-semibold text-rose-500 hover:underline">Clear History</button>
-                </div>
+        <!-- SEO Article & Content Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-8 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-base font-extrabold text-slate-800 dark:text-slate-100">Why NextHire Matrix is the Ultimate Career Engine in 2026</h2>
+            <p>
+                In today's competitive job landscape, over 80% of resumes are filtered out by automated Applicant Tracking Systems (ATS) before ever reaching a hiring manager. NextHire Matrix was built by <strong>Yash Raj Goswami</strong> to bridge this gap by offering high-speed, free AI tools that empower developers, engineers, and professionals to optimize their application materials.
+            </p>
+            <p>
+                Whether you need a instant ATS Resume Compatibility Audit, an executive 3-paragraph Cover Letter, real-time Voice Mock Interview practice, or realistic Tech Salary breakdowns, NextHire Matrix delivers high-accuracy insights built on a zero-downtime, multi-key failover serverless architecture.
+            </p>
+        </article>
 
-                <div>
-                    <label for="templateSelector" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Choose Resume Template</label>
-                    <select id="templateSelector" onchange="updatePreview()" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option value="classic">Classic ATS (Single Column, High Score)</option>
-                        <option value="modern">Modern Tech (Clean Divider Style)</option>
-                        <option value="executive">Executive Minimal (Compact & Sharp)</option>
-                        <option value="creative">Creative Developer (Stylish Accent Bar)</option>
-                        <option value="academic">Academic / Researcher (Formal Layout)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="photoInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Upload Profile Photo</label>
-                    <input type="file" id="photoInput" accept="image/*" onchange="handlePhoto(event)" class="w-full text-xs text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-600 cursor-pointer">
-                </div>
-
-                <div class="space-y-3.5">
-                    <div>
-                        <label for="fullName" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Full Name</label>
-                        <input type="text" id="fullName" placeholder="e.g. Yash Raj Goswami" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label for="email" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Email</label>
-                            <input type="email" id="email" placeholder="name@example.com" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Phone Number</label>
-                            <input type="text" id="phone" placeholder="XXXXXXXXXX" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="links" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">LinkedIn / Portfolio</label>
-                        <input type="text" id="links" placeholder="linkedin.com/in/username" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                    </div>
-                </div>
-
-                <div>
-                    <label for="summary" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Professional Summary</label>
-                    <textarea id="summary" rows="2" placeholder="Brief summary about yourself..." class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none resize-none" oninput="saveAndPreview()"></textarea>
-                </div>
-
-                <div>
-                    <label for="skills" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Technical / Core Skills</label>
-                    <input type="text" id="skills" placeholder="Python, JavaScript, React, SQL" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                </div>
-
-                <div class="border-t border-slate-100 dark:border-slate-700 pt-4 space-y-3">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Work Experience / Projects</h3>
-                        <button onclick="addExperienceField()" class="text-xs bg-indigo-50 dark:bg-indigo-950 text-indigo-600 font-bold px-3 py-1.5 rounded-xl hover:bg-indigo-100 transition">+ Add More</button>
-                    </div>
-                    <div id="experienceContainer" class="space-y-3"></div>
-                </div>
-
-                <div class="border-t border-slate-100 dark:border-slate-700 pt-4 space-y-3">
-                    <h3 class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Education Details</h3>
-                    <div>
-                        <label for="eduGrad" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Graduation</label>
-                        <input type="text" id="eduGrad" placeholder="Degree - University Name (Year)" class="w-full px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm bg-slate-50/30 dark:bg-slate-900/30 focus:outline-none" oninput="saveAndPreview()">
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <button onclick="submitAndAnalyze()" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3.5 rounded-2xl font-extrabold text-sm shadow-lg transition flex items-center justify-center gap-2">
-                        <span><i class="fa-solid fa-rocket"></i></span> Submit, Analyze ATS & Download Resume
-                    </button>
-                </div>
-            </section>
-            <!-- Preview Section -->
-            <section class="lg:col-span-7 flex flex-col gap-5">
-                <div id="atsAnalysisBox" class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-4 hidden">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-base">ATS Scanner Score Report</h3>
-                            <p class="text-xs font-bold text-slate-500 mt-0.5">Analyzed successfully</p>
-                        </div>
-                        <div class="text-right bg-indigo-50 dark:bg-indigo-950/60 px-4 py-2 rounded-2xl border border-indigo-100 dark:border-indigo-900">
-                            <span id="atsScoreNum" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">88</span><span class="text-xs font-bold text-slate-400">/100</span>
-                        </div>
-                    </div>
-                    <div class="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
-                        <div id="scoreBar" class="bg-gradient-to-r from-indigo-500 to-violet-600 h-full w-[88%] transition-all duration-500 rounded-full"></div>
-                    </div>
-                </div>
-
-                <div id="downloadActionBar" class="flex-col sm:flex-row justify-between items-center gap-3 bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-5 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl hidden">
-                    <div>
-                        <h3 class="font-extrabold text-slate-800 dark:text-slate-100 text-sm">Ready to Export</h3>
-                        <p class="text-xs text-slate-500">Download ATS-optimized PDF resume.</p>
-                    </div>
-                    <button onclick="downloadPDF()" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-6 py-3 rounded-2xl font-bold text-xs shadow-lg transition flex items-center justify-center gap-2">
-                        <span><i class="fa-solid fa-download"></i></span> Download PDF
-                    </button>
-                </div>
-
-                <div id="previewContainer" class="bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-200 min-h-[700px] text-slate-900 space-y-5 overflow-x-auto">
-                    <div id="previewHeader" class="flex flex-col sm:flex-row items-center gap-5 border-b pb-5 text-center sm:text-left">
-                        <img id="prevPhoto" class="w-20 h-20 object-cover rounded-2xl border-2 border-slate-200 shadow-md hidden" alt="User Profile Photo Placeholder" />
-                        <div class="space-y-1.5 w-full">
-                            <h2 id="prevName" class="text-2xl font-black uppercase tracking-wider text-slate-900">Your Name</h2>
-                            <p id="prevContact" class="text-xs font-medium text-slate-600 break-words">email@example.com | Phone</p>
-                        </div>
-                    </div>
-                    <div class="space-y-1.5">
-                        <h3 id="hSummary" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Professional Summary</h3>
-                        <p id="prevSummary" class="text-xs text-slate-700 leading-relaxed font-medium">Your summary here...</p>
-                    </div>
-                    <div class="space-y-1.5">
-                        <h3 id="hSkills" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Technical Skills</h3>
-                        <p id="prevSkills" class="text-xs text-slate-700 leading-relaxed font-medium">Your skills here...</p>
-                    </div>
-                    <div class="space-y-1.5">
-                        <h3 id="hExp" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Projects & Experience</h3>
-                        <div id="prevExpContainer" class="space-y-3"><p class="text-xs text-slate-400 italic">Your projects will appear here...</p></div>
-                    </div>
-                    <div class="space-y-1.5">
-                        <h3 id="hEdu" class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 border-b border-indigo-200 pb-1.5">Education</h3>
-                        <div id="prevEduBox" class="text-xs text-slate-700 space-y-1.5 font-medium">
-                            <p id="prevEduGrad"><b>Graduation:</b> Degree details...</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- FAQs Accordion Section -->
+        <div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-8 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-4">
+            <h3 class="text-sm font-black uppercase text-indigo-600 dark:text-indigo-400 tracking-wider mb-4">Frequently Asked Questions</h3>
+            <div class="space-y-3 text-xs">
+                <details class="group border border-slate-200 dark:border-slate-700 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center">
+                        Is NextHire Matrix completely free to use?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 leading-relaxed">Yes! All 7 career tools on NextHire Matrix are 100% free for job seekers, software developers, and professionals worldwide.</p>
+                </details>
+                <details class="group border border-slate-200 dark:border-slate-700 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center">
+                        How does the ATS Resume Scanner work?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 leading-relaxed">The AI parses your resume text against target Job Descriptions (JD), extracting missing keywords, analyzing formatting alignment, and delivering a downloadable PDF audit report.</p>
+                </details>
+            </div>
         </div>
+
     </main>
 
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved. Free ATS Resume Platform.</p>
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Built & Maintained by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
+    <!-- JS Logic -->
+    <script>
+        let rawHomeResult = "";
+
+        document.getElementById('aiHomeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const prompt = document.getElementById('homePrompt').value.trim();
+            if (!prompt) return;
+
+            const submitBtn = document.getElementById('homeSubmitBtn');
+            const spinner = document.getElementById('homeSpinner');
+            const outputBox = document.getElementById('homeOutputBox');
+            const outputText = document.getElementById('homeOutputText');
+
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            outputBox.classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    rawHomeResult = data.result;
+                    outputText.innerHTML = marked.parse(data.result);
+                    outputBox.classList.remove('hidden');
+                    if (typeof confetti === 'function') confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+                } else {
+                    outputText.innerHTML = `<p class="text-red-500 font-bold">Error: ${data.error || 'Failed to fetch response'}</p>`;
+                    outputBox.classList.remove('hidden');
+                }
+            } catch (err) {
+                outputText.innerHTML = `<p class="text-red-500 font-bold">Connection error. Please try again.</p>`;
+                outputBox.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                spinner.classList.add('hidden');
+            }
+        });
+
+        function copyHomeOutput() {
+            if (!rawHomeResult) return;
+            navigator.clipboard.writeText(rawHomeResult).then(() => alert('Result copied to clipboard!'));
+        }
+
+        function downloadHomeTxt() {
+            if (!rawHomeResult) return;
+            const blob = new Blob([rawHomeResult.replace(/[#*`_]/g, "")], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'NextHire_Matrix_Result.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>

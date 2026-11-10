@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Mock HR & Technical Interview Simulator | NextHire Matrix</title>
+    <title>AI Voice & Interactive Mock Interviewer | NextHire Matrix</title>
     
     <!-- Clean Canonical URL -->
     <link rel="canonical" href="https://www.nexthirematrix.com/mock-interview">
@@ -17,59 +17,72 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Practice interactive mock interviews with simulated AI HR and technical interviewers. Get instant feedback and score reports for free.">
+    <meta name="description" content="Practice turn-by-turn AI voice and text mock interviews for HR, Technical, and System Design roles. Get real-time voice feedback, performance scoring, and PDF reports.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/mock-interview">
-    <meta property="og:title" content="AI Mock Interviewer - NextHire Matrix">
-    <meta property="og:description" content="Simulated AI mock interview sessions for developers and engineering students.">
+    <meta property="og:title" content="AI Voice Mock Interview Simulator - NextHire Matrix">
+    <meta property="og:description" content="Turn-by-turn interactive AI voice interviewer for developers and job seekers.">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Mock Interviewer",
+      "name": "AI Voice Mock Interviewer",
       "url": "https://www.nexthirematrix.com/mock-interview",
-      "operatingSystem": "All",
       "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1780" },
-      "description": "Interactive mock technical and HR interview simulator."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1410" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- External Libraries with SRI Hashes -->
+    <!-- External Assets & SRI Hashes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mic-active { animation: pulse 1.5s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <div class="flex items-center gap-2 sm:gap-3">
-                <span class="text-[10px] sm:text-xs bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200/60 text-indigo-800 dark:text-indigo-300 font-bold px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-robot text-indigo-600"></i> AI Interview Simulator
-                </span>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
                 <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
     </header>
 
+    <!-- Nav Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -79,157 +92,342 @@
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </nav>
     </div>
+
+    <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">AI Mock HR & Technical Interviewer</h1>
-            <p class="text-xs text-slate-500 font-medium">Choose your interview track and difficulty level, answer simulated questions, and receive instant AI feedback.</p>
+        
+        <!-- Hero Title Header -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Real-Time AI Voice Mock Interviewer</h1>
+            <p class="text-xs text-slate-500 font-medium max-w-xl mx-auto">Practice turn-by-turn simulated interviews. Speak your answers using voice recognition or type them out for instant AI evaluation.</p>
         </div>
 
+        <!-- Simulator Console -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label for="interviewTrack" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Select Interview Track</label>
-                    <select id="interviewTrack" onchange="loadNewQuestion()" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option value="tech">Full Stack Technical Round (Python/Django/React)</option>
-                        <option value="hr">HR & Behavioral Round (STAR Method)</option>
-                        <option value="system">System Design & Scalability Round</option>
-                    </select>
+            
+            <!-- Setup Inputs -->
+            <div id="setupSection" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Target Role / Stack</label>
+                        <input type="text" id="targetRole" placeholder="e.g. Senior Full Stack Engineer (Python/React)" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Interview Round</label>
+                        <select id="interviewType" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                            <option value="Technical Engineering Round">Technical Deep-Dive Round</option>
+                            <option value="HR & Behavioral Culture Fit">HR & Behavioral STAR Round</option>
+                            <option value="System Design & Architecture">System Architecture Round</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label for="interviewDifficulty" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Difficulty Level</label>
-                    <select id="interviewDifficulty" onchange="loadNewQuestion()" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
-                        <option value="Basic">Basic Level</option>
-                        <option value="Moderate">Moderate Level</option>
-                        <option value="Advanced">Advanced Level</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="p-5 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-2">
-                <div class="flex justify-between items-center">
-                    <span id="questionBadgeLabel" class="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400">Interviewer AI Question [BASIC]</span>
-                    <button onclick="readQuestionAloud()" class="text-xs bg-white dark:bg-slate-900 px-3 py-1 rounded-xl font-bold shadow-sm text-indigo-600 hover:bg-indigo-50 transition"><i class="fa-solid fa-volume-high mr-1"></i> Listen</button>
-                </div>
-                <p id="mockQuestionText" class="text-sm font-bold text-slate-800 dark:text-slate-100">"What are the core fundamentals and syntax rules of Python & Django?"</p>
-            </div>
-
-            <div>
-                <label for="candidateAnswerInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Your Answer / Response</label>
-                <textarea id="candidateAnswerInput" rows="4" placeholder="Type your structured answer here (mention technologies, actions taken, and measurable impact)..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium resize-none focus:outline-none"></textarea>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-3">
-                <button onclick="submitMockAnswer()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
-                    <span><i class="fa-solid fa-paper-plane"></i></span> Submit Answer & Get AI Feedback
-                </button>
-                <button onclick="loadNewQuestion()" class="sm:w-auto bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3.5 rounded-2xl font-bold text-xs hover:bg-slate-200 transition">
-                    Next Question ➜
+                <button id="startBtn" onclick="startSession()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play"></i> <span>Launch AI Interview Session</span>
                 </button>
             </div>
-
-            <div id="mockFeedbackBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 hidden">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xs font-black uppercase tracking-wider text-emerald-600 flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> AI Evaluation Report</h2>
-                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 px-3 py-1 rounded-xl">Score: 9/10</span>
+            <!-- Active Interview Terminal -->
+            <div id="terminalSection" class="space-y-6 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 dark:border-slate-800 pb-3 gap-2">
+                    <div>
+                        <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-headset mr-1"></i> Live Interview Terminal</h2>
+                        <p class="text-[11px] text-slate-500" id="roundTag">Technical Engineering Round</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="toggleVoiceOutput()" id="speechToggleBtn" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-solid fa-volume-high mr-1"></i> Voice: ON
+                        </button>
+                        <button onclick="endSession()" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-stop mr-1"></i> End Session & Audit
+                        </button>
+                    </div>
                 </div>
-                <p id="feedbackContentText" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Strong structural clarity. Recommended enhancement: Mention specific edge cases and code modularity principles.</p>
+
+                <!-- Live Chat & Transcript Container -->
+                <div id="chatHistory" class="space-y-4 max-h-[350px] overflow-y-auto p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <!-- Dynamic Transcript Messages Will Append Here -->
+                </div>
+
+                <!-- Input Controls -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <textarea id="userAnswerText" rows="2" placeholder="Type your answer here or click the microphone to speak..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
+                        
+                        <!-- Web Speech API Microphone Button -->
+                        <button id="micBtn" onclick="toggleSpeechRecognition()" class="p-4 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-600 hover:text-white rounded-2xl text-indigo-600 transition flex items-center justify-center">
+                            <i class="fa-solid fa-microphone text-lg" id="micIcon"></i>
+                        </button>
+                    </div>
+
+                    <button id="sendAnswerBtn" onclick="submitUserAnswer()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> <span>Submit Answer for AI Evaluation</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Interviewer is evaluating response & forming follow-up...</p>
+            </div>
+
+            <!-- Session Audit Report Box -->
+            <div id="auditReportBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hidden">
+                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Interview Session Audit Report</h2>
+                    <div class="flex items-center gap-2">
+                        <button onclick="downloadAuditPdf()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> Export PDF Audit
+                        </button>
+                    </div>
+                </div>
+                <div id="auditContent" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-3"></div>
             </div>
         </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Master Live Engineering & HR Interviews</h2>
+            <p>
+                Practicing under real interview conditions builds confidence and eliminates speaking pauses. Engineered by <strong>Yash Raj Goswami</strong>, the NextHire Matrix Voice Mock Interviewer utilizes browser Speech-to-Text and Speech Synthesis to simulate real interviewer turn-taking.
+            </p>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Built by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        const questionPool = {
-            tech: {
-                Basic: [
-                    "What are the core fundamentals and syntax rules of Python and Django?",
-                    "How do you handle basic error management and debugging in web applications?",
-                    "What is the difference between HTML semantic tags and standard div elements?"
-                ],
-                Moderate: [
-                    "How do you optimize runtime performance and database query complexity in Django ORM?",
-                    "Describe how asynchronous operations or concurrency are handled in modern web frameworks.",
-                    "How do you manage state and side effects effectively using React hooks?"
-                ],
-                Advanced: [
-                    "Explain advanced architectural patterns and microservices scalability strategies in high-traffic systems.",
-                    "How do you secure web applications against SQL injection, CSRF, and JWT vulnerabilities?",
-                    "Describe a complex production bottleneck you resolved using APM tools and caching layers."
-                ]
-            },
-            hr: {
-                Basic: [
-                    "Tell me about yourself and your primary technical skill set.",
-                    "Why do you want to join our engineering team as an intern or developer?",
-                    "What is your greatest strength when working in a team environment?"
-                ],
-                Moderate: [
-                    "Describe a situation where you had a strong disagreement with a team member regarding a technical decision.",
-                    "Tell me about a time when a project deadline was shifted unexpectedly. How did you adapt?",
-                    "How do you handle constructive criticism during code reviews?"
-                ],
-                Advanced: [
-                    "Describe a time you took ownership of a failing project and successfully turned it around.",
-                    "How do you mentor junior developers while managing your own high-priority deliverables?",
-                    "Where do you see your technical leadership and career trajectory in the next 5 years?"
-                ]
-            },
-            system: {
-                Basic: [
-                    "What is the difference between SQL relational databases and NoSQL databases?",
-                    "What is the role of a load balancer in web architecture?",
-                    "Why do we use caching (like Redis) in web applications?"
-                ],
-                Moderate: [
-                    "How would you design a scalable notification service for millions of active users?",
-                    "Explain database indexing and how it speeds up query execution.",
-                    "What are the trade-offs between horizontal scaling and vertical scaling?"
-                ],
-                Advanced: [
-                    "How would you design a global video streaming platform like YouTube or Netflix?",
-                    "Explain eventual consistency vs strong consistency in distributed database systems.",
-                    "How do you design a rate limiter to protect public APIs against DDoS attacks?"
-                ]
-            }
-        };
+        let conversationLog = [];
+        let isVoiceOutputEnabled = true;
+        let isRecording = false;
+        let recognition = null;
+        let activeRole = "";
+        let activeRound = "";
 
-        let currentQIdx = 0;
+        // Web Speech API Initialization
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
 
-        function loadNewQuestion() {
-            const track = document.getElementById('interviewTrack').value;
-            const diff = document.getElementById('interviewDifficulty').value;
-            const pool = questionPool[track]?.[diff] || questionPool.tech.Basic;
-            currentQIdx = (currentQIdx + 1) % pool.length;
-            
-            document.getElementById('questionBadgeLabel').innerText = `Interviewer AI Question [${diff.toUpperCase()}]`;
-            document.getElementById('mockQuestionText').innerText = `"${pool[currentQIdx]}"`;
-            document.getElementById('candidateAnswerInput').value = '';
-            document.getElementById('mockFeedbackBox').classList.add('hidden');
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('userAnswerText').value = transcript;
+                stopMicUI();
+            };
+
+            recognition.onerror = function() {
+                stopMicUI();
+            };
+
+            recognition.onend = function() {
+                stopMicUI();
+            };
         }
 
-        function submitMockAnswer() {
-            const ans = document.getElementById('candidateAnswerInput').value.trim();
-            if(!ans) { alert("Please type your answer before submitting!"); return; }
-            document.getElementById('mockFeedbackBox').classList.remove('hidden');
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+        function toggleSpeechRecognition() {
+            if (!recognition) {
+                alert("Speech recognition is not supported in your browser. Please type your response.");
+                return;
             }
-        }
-
-        function readQuestionAloud() {
-            const text = document.getElementById('mockQuestionText').innerText;
-            if('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                window.speechSynthesis.speak(utterance);
+            if (isRecording) {
+                recognition.stop();
+                stopMicUI();
             } else {
-                alert("Text-to-speech is not supported in your browser.");
+                recognition.start();
+                isRecording = true;
+                const micBtn = document.getElementById('micBtn');
+                micBtn.classList.add('mic-active', 'bg-red-600', 'text-white');
             }
+        }
+
+        function stopMicUI() {
+            isRecording = false;
+            const micBtn = document.getElementById('micBtn');
+            micBtn.classList.remove('mic-active', 'bg-red-600', 'text-white');
+        }
+
+        function toggleVoiceOutput() {
+            isVoiceOutputEnabled = !isVoiceOutputEnabled;
+            document.getElementById('speechToggleBtn').innerText = `Voice: ${isVoiceOutputEnabled ? 'ON' : 'OFF'}`;
+        }
+
+        function speakText(text) {
+            if (!isVoiceOutputEnabled || !('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const cleanText = text.replace(/[#*`_]/g, "");
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.rate = 1.0;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        async function startSession() {
+            activeRole = document.getElementById('targetRole').value.trim();
+            activeRound = document.getElementById('interviewType').value;
+
+            if (!activeRole) {
+                alert("Please enter target role or tech stack!");
+                return;
+            }
+
+            document.getElementById('setupSection').classList.add('hidden');
+            document.getElementById('terminalSection').classList.remove('hidden');
+            document.getElementById('roundTag').innerText = `${activeRole} — ${activeRound}`;
+
+            conversationLog = [];
+            const initialPrompt = `You are a strict, professional AI Interviewer conducting a ${activeRound} for the role of ${activeRole}. Ask the FIRST single interview question to begin the interview session. Keep it direct and natural.`;
+
+            await fetchAiResponse(initialPrompt);
+        }
+
+        async function submitUserAnswer() {
+            const answerInput = document.getElementById('userAnswerText');
+            const answer = answerInput.value.trim();
+            if (!answer) return;
+
+            appendMessage('Candidate', answer);
+            conversationLog.push({ role: 'Candidate', content: answer });
+            answerInput.value = '';
+
+            const turnPrompt = `
+You are the AI Interviewer for ${activeRole} (${activeRound}).
+The candidate answered: "${answer}"
+
+Task:
+1. Provide a 1-sentence quick evaluation/critique of their answer.
+2. Ask the NEXT logical follow-up question.
+`;
+            await fetchAiResponse(turnPrompt);
+        }
+
+        async function fetchAiResponse(promptText) {
+            const spinner = document.getElementById('loadingSpinner');
+            spinner.classList.remove('hidden');
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: promptText })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    appendMessage('Interviewer', data.result);
+                    conversationLog.push({ role: 'Interviewer', content: data.result });
+                    speakText(data.result);
+                } else {
+                    alert("Error fetching AI question: " + (data.error || "Server issue"));
+                }
+            } catch (err) {
+                alert("Connection error. Please try again.");
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const chatHistory = document.getElementById('chatHistory');
+            const isAI = sender === 'Interviewer';
+            
+            const msgHtml = `
+                <div class="flex flex-col ${isAI ? 'items-start' : 'items-end'} space-y-1">
+                    <span class="text-[10px] font-extrabold uppercase text-slate-500">${sender}</span>
+                    <div class="p-3.5 rounded-2xl text-xs max-w-[85%] ${isAI ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100'}">
+                        ${marked.parse(text)}
+                    </div>
+                </div>
+            `;
+            chatHistory.innerHTML += msgHtml;
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        async function endSession() {
+            if (conversationLog.length === 0) return;
+
+            document.getElementById('terminalSection').classList.add('hidden');
+            const spinner = document.getElementById('loadingSpinner');
+            const auditReportBox = document.getElementById('auditReportBox');
+            const auditContent = document.getElementById('auditContent');
+
+            spinner.classList.remove('hidden');
+
+            const summaryPrompt = `
+You are a Lead HR & Senior Engineering Manager. 
+Review the following complete Interview Session transcript for ${activeRole} (${activeRound}):
+
+Transcript Log:
+${JSON.stringify(conversationLog)}
+
+Provide a final Performance Evaluation:
+1. Overall Performance Score (0-100%)
+2. Candidate Strengths Demonstrated
+3. Areas for Improvement
+4. Final Hiring Verdict & Recommendation
+`;
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: summaryPrompt })
+                });
+
+                const data = await response.json();
+                if (response.ok && data.result) {
+                    auditContent.innerHTML = marked.parse(data.result);
+                    auditReportBox.classList.remove('hidden');
+                    if (typeof confetti === 'function') confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                }
+            } catch (err) {
+                alert("Error generating audit report.");
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        }
+
+        function downloadAuditPdf() {
+            const auditContent = document.getElementById('auditContent').innerText;
+            if (!auditContent) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("NextHire Matrix - Mock Interview Audit Report", 14, 20);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Engineered by Yash Raj Goswami | nexthirematrix.com", 14, 28);
+            doc.line(14, 32, 196, 32);
+
+            const splitLines = doc.splitTextToSize(auditContent, 180);
+
+            let cursorY = 40;
+            splitLines.forEach(line => {
+                if (cursorY > 280) {
+                    doc.addPage();
+                    cursorY = 20;
+                }
+                doc.text(line, 14, cursorY);
+                cursorY += 6;
+            });
+
+            doc.save("Mock_Interview_Audit_Report.pdf");
         }
     </script>
 </body>

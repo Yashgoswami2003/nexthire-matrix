@@ -17,11 +17,11 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Master tech interviews with curated questions on Python, Django, React, SQL, and System Design tailored for software engineers.">
+    <meta name="description" content="Master tech interviews with AI-generated curated questions, STAR method answers, system design guides, and code breakdowns tailored for software engineers.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/interview-prep">
     <meta property="og:title" content="Interview Preparation Hub - NextHire Matrix">
-    <meta property="og:description" content="Curated technical interview guides for software engineers.">
+    <meta property="og:description" content="Curated technical interview guides & real-time question generator for developers.">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -32,17 +32,24 @@
       "url": "https://www.nexthirematrix.com/interview-prep",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1150" },
-      "description": "Comprehensive technical interview prep platform for developers."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1150" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- SRI Hashes Included -->
+    <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -51,18 +58,27 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation Bar -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
+    <!-- Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -72,35 +88,230 @@
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </nav>
     </div>
+
+    <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Interview Preparation Hub</h1>
-            <p class="text-xs text-slate-500 font-medium">Access curated technical questions, data structures, and system design guides tailored for software engineers.</p>
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Interview Preparation Hub</h1>
+            <p class="text-xs text-slate-500 font-medium max-w-xl mx-auto">Generate dynamic technical interview prep guides, production-ready code examples, and STAR method answers across major tech stacks.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
+        <!-- Quick Prep Category Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3 cursor-pointer hover:border-indigo-500 transition" onclick="quickPrep('Python & Django ORM Query Optimization')">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-code text-base"></i></span>
                 <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">Python & Django Mastery</h2>
-                <p class="text-xs text-slate-500 leading-relaxed">Top 50 interview questions covering ORM query optimization, middleware architecture, and asynchronous request handling.</p>
+                <p class="text-xs text-slate-500 leading-relaxed">ORM query tuning, middleware execution order, async handlers, and memory management.</p>
             </div>
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
+            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3 cursor-pointer hover:border-indigo-500 transition" onclick="quickPrep('React Custom Hooks and State Optimization')">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-laptop-code text-base"></i></span>
                 <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">React & Frontend Architecture</h2>
-                <p class="text-xs text-slate-500 leading-relaxed">Custom hooks optimization, state management patterns, virtual DOM internals, and performance profiling.</p>
+                <p class="text-xs text-slate-500 leading-relaxed">Custom hooks optimization, virtual DOM reconciliation, state management, and SSR patterns.</p>
             </div>
-            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3">
+            <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-3 cursor-pointer hover:border-indigo-500 transition" onclick="quickPrep('SQL Indexing Strategies and Execution Tuning')">
                 <span class="p-2.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-2xl text-indigo-600 inline-block"><i class="fa-solid fa-database text-base"></i></span>
                 <h2 class="text-sm font-black text-slate-800 dark:text-slate-100">SQL & Database Systems</h2>
-                <p class="text-xs text-slate-500 leading-relaxed">Advanced indexing strategies, ACID properties, transaction isolation levels, and query execution plan tuning.</p>
+                <p class="text-xs text-slate-500 leading-relaxed">B-tree indexing strategies, ACID guarantees, isolation levels, and query execution plan tuning.</p>
             </div>
         </div>
+        <!-- AI Generator Tool Console -->
+        <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-6">
+            <h2 class="text-sm font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-microchip"></i> Generate Custom AI Technical Prep Kit
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Select Tech Stack</label>
+                    <select id="prepDomain" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option value="Python & Django Full-Stack">Python & Django</option>
+                        <option value="React.js & Frontend Web Development">React & Frontend Architecture</option>
+                        <option value="SQL Databases & Query Tuning">SQL & Database Systems</option>
+                        <option value="System Design & Microservices">System Design & Microservices</option>
+                        <option value="Data Structures & Algorithms (DSA)">Data Structures & Algorithms</option>
+                        <option value="Java & Spring Boot Development">Java & Spring Boot</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Target Role Level</label>
+                    <select id="prepLevel" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option value="Junior / Entry Level (0-2 YOE)">Junior / Entry Level (0-2 YOE)</option>
+                        <option value="Mid-Level Engineer (2-5 YOE)" selected>Mid-Level Engineer (2-5 YOE)</option>
+                        <option value="Senior / Lead Architect (5+ YOE)">Senior / Lead Architect (5+ YOE)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Question Category</label>
+                    <select id="prepType" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+                        <option value="Technical Deep Dive & Code Solutions">Technical Deep Dive + Code</option>
+                        <option value="Behavioral Questions with STAR Answers">Behavioral STAR Answers</option>
+                        <option value="System Architecture Scenario & Diagram Breakdown">System Architecture Scenario</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label for="prepCustomInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase">Specific Focus / Key Concepts (Optional)</label>
+                <input type="text" id="prepCustomInput" placeholder="e.g. Focus on Redux Toolkit, WebSockets, or PostgreSQL indexing" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-semibold focus:outline-none">
+            </div>
+
+            <button id="prepGenBtn" onclick="generatePrepKit()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Generate Complete Interview Kit</span>
+            </button>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Querying 6-key AI engine for tailored interview solutions...</p>
+            </div>
+
+            <!-- Output Box -->
+            <div id="prepOutputBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 dark:border-slate-800 pb-3 gap-2">
+                    <h2 class="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Generated Technical Prep Kit</h2>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyPrepOutput()" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy Kit
+                        </button>
+                        <button onclick="downloadPrepPdf()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> Export PDF Guide
+                        </button>
+                    </div>
+                </div>
+
+                <div id="prepOutputContent" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-3"></div>
+            </div>
+        </div>
+
+        <!-- Organic SEO Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Master Software Engineering Interviews with NextHire Matrix</h2>
+            <p>
+                Technical interviews require a balance of conceptual clarity, clean code syntax, and structured communication. Built by <strong>Yash Raj Goswami</strong>, the NextHire Matrix Prep Hub empowers developers to generate high-frequency questions, model answers, and architectural breakdowns on demand.
+            </p>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Built by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
+
+    <!-- Logic Script -->
+    <script>
+        let rawPrepResult = "";
+
+        function quickPrep(topic) {
+            document.getElementById('prepCustomInput').value = topic;
+            generatePrepKit();
+        }
+
+        async function generatePrepKit() {
+            const domain = document.getElementById('prepDomain').value;
+            const level = document.getElementById('prepLevel').value;
+            const type = document.getElementById('prepType').value;
+            const custom = document.getElementById('prepCustomInput').value.trim();
+
+            const btn = document.getElementById('prepGenBtn');
+            const spinner = document.getElementById('loadingSpinner');
+            const outputBox = document.getElementById('prepOutputBox');
+            const outputContent = document.getElementById('prepOutputContent');
+
+            btn.disabled = true;
+            spinner.classList.remove('hidden');
+            outputBox.classList.add('hidden');
+
+            const structuredPrompt = `
+You are a Principal Software Engineer & Senior Technical Recruiter.
+Create a comprehensive, production-grade Technical Interview Preparation Guide for:
+
+- Stack / Domain: ${domain}
+- Role Experience Level: ${level}
+- Prep Focus Type: ${type}
+${custom ? `- Specific Focus Topics: ${custom}` : ''}
+
+Structure Requirements:
+1. **Top 5 High-Frequency Questions**: Ranging from core fundamentals to complex scenarios.
+2. **Model Solutions & Code Snippets**: Detailed explanations including clean code or architectural steps where relevant.
+3. **Common Pitfalls & Key Trait Checklist**: What top tech interviewers look for.
+`;
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: structuredPrompt })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    rawPrepResult = data.result;
+                    outputContent.innerHTML = marked.parse(data.result);
+                    outputBox.classList.remove('hidden');
+
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                    }
+                } else {
+                    alert("Error: " + (data.error || "Failed to generate interview kit."));
+                }
+            } catch (err) {
+                alert("Network error. Please check your connection and try again.");
+            } finally {
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+            }
+        }
+
+        function copyPrepOutput() {
+            if (!rawPrepResult) return;
+            navigator.clipboard.writeText(rawPrepResult).then(() => {
+                alert("Interview Prep Guide copied to clipboard!");
+            });
+        }
+
+        function downloadPrepPdf() {
+            if (!rawPrepResult) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("NextHire Matrix - Interview Preparation Guide", 14, 20);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Engineered by Yash Raj Goswami | nexthirematrix.com", 14, 28);
+            doc.line(14, 32, 196, 32);
+
+            const cleanText = rawPrepResult.replace(/[#*`_]/g, "");
+            const splitLines = doc.splitTextToSize(cleanText, 180);
+
+            let cursorY = 40;
+            splitLines.forEach(line => {
+                if (cursorY > 280) {
+                    doc.addPage();
+                    cursorY = 20;
+                }
+                doc.text(line, 14, cursorY);
+                cursorY += 6;
+            });
+
+            doc.save("Interview_Prep_Guide_NextHire.pdf");
+        }
+    </script>
 </body>
 </html>

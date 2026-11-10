@@ -1,9 +1,19 @@
+// Rate limiting map with basic automatic memory cleanup
 const rateLimitMap = new Map();
 
 function isRateLimited(ip) {
   const now = Date.now();
   const windowMs = 60 * 1000; // 1 minute window
   const maxRequests = 5; // 5 requests per minute limit
+
+  // Periodically clean up old IPs to prevent memory leaks (every 100 requests)
+  if (rateLimitMap.size > 1000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (now - value.startTime > windowMs) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
 
   const userRecord = rateLimitMap.get(ip) || { count: 0, startTime: now };
 
@@ -40,7 +50,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
-  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+  // Get true Client IP on Vercel/Reverse Proxies
+  const rawIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+  const clientIp = typeof rawIp === 'string' ? rawIp.split(',')[0].trim() : 'unknown';
 
   if (isRateLimited(clientIp)) {
     return res.status(429).json({
@@ -49,10 +61,14 @@ export default async function handler(req, res) {
     });
   }
 
-  const apiKey = process.env.WEB3FORMS_KEY || "a87235ca-05ef-406c-a0c1-c83def14c7c0";
+  // Purely fetch key from Environment Variables
+  const apiKey = process.env.WEB3FORMS_KEY;
 
   if (!apiKey) {
-    return res.status(500).json({ success: false, message: 'Server configuration error: Missing API Key' });
+    return res.status(500).json({ 
+      success: false, 
+      message: 'Server configuration error: Missing WEB3FORMS_KEY environment variable.' 
+    });
   }
 
   try {
@@ -72,9 +88,9 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    return res.status(200).json(data);
+    return res.status(response.status).json(data);
   } catch (error) {
-    console.error("Secure API Route Error:", error);
+    console.error("Secure Send Email API Route Error:", error);
     return res.status(500).json({ success: false, message: 'Failed to send email securely.' });
   }
 }

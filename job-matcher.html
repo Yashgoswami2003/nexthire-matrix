@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Job Description Keyword Matcher | NextHire Matrix</title>
+    <title>AI Job Description Keyword Matcher & Outreach Suite | NextHire Matrix</title>
     
     <!-- Clean Canonical URL -->
     <link rel="canonical" href="https://www.nexthirematrix.com/job-matcher">
@@ -17,7 +17,7 @@
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
 
-    <meta name="description" content="Match your resume against any job description to discover missing keywords and optimize your application for free.">
+    <meta name="description" content="Match your resume against any target job description. Extract missing keywords, calculate alignment scores, and generate recruiter outreach messages for free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/job-matcher">
     <meta property="og:title" content="Job Description Matcher - NextHire Matrix">
@@ -32,18 +32,24 @@
       "url": "https://www.nexthirematrix.com/job-matcher",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1310" },
-      "description": "AI job description resume keyword matcher."
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1310" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <!-- External Assets with SRI Hashes -->
+    <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha512-H2hDLxAUzyC63n0JvazGDF98DJCWFnVgyjFZSeAZhxww7gWJSIuVmjqNHDtLRvGB9hV0xPqJirO57jkOoWXCWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -52,18 +58,25 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
 
+    <!-- Header Navigation -->
     <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
             <h1 class="text-sm sm:text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
                 <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            <div class="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition text-sm font-semibold" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            </div>
         </div>
     </header>
 
+    <!-- Nav Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
         <nav class="flex justify-start lg:justify-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Build Resume</a>
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Home</a>
             <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Checker</a>
             <a href="interview-prep.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-lightbulb mr-1"></i> Interview Prep Hub</a>
             <a href="mock-interview.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-robot mr-1"></i> Mock HR & Tech Interviewer</a>
@@ -73,51 +86,212 @@
             <a href="job-matcher.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-magnifying-glass mr-1"></i> Job Matcher</a>
         </nav>
     </div>
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
-        <div class="text-center space-y-2">
-            <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Job Description Keyword Matcher</h1>
-            <p class="text-xs text-slate-500 font-medium">Paste the job description and your resume text to compute keyword alignment score.</p>
-        </div>
 
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-8">
+        
+        <!-- Hero Section -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                <span>🚀 Engineered by</span>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Job Description Keyword Matcher</h1>
+            <p class="text-xs text-slate-500 font-medium max-w-xl mx-auto">Compare target job descriptions against your resume content. Discover missing skill tags and receive a custom recruiter outreach message.</p>
+        </div>
+        <!-- Matcher Console -->
         <div class="bg-white/90 dark:bg-slate-800/95 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 space-y-5">
             <div>
-                <label for="jobDescInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Paste Job Description</label>
-                <textarea id="jobDescInput" rows="4" placeholder="Paste job description requirements here..." class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium resize-none"></textarea>
+                <label for="jobDescInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Paste Target Job Description (JD)</label>
+                <textarea id="jobDescInput" rows="5" placeholder="Paste job description requirements, responsibilities, and required stack here..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
             </div>
             <div>
-                <label for="resumeContentInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Paste Resume Content / Skills</label>
-                <textarea id="resumeContentInput" rows="4" placeholder="Paste your resume skills & experience..." class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium resize-none"></textarea>
+                <label for="resumeContentInput" class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5 uppercase tracking-wider">Paste Resume Content / Skills Summary</label>
+                <textarea id="resumeContentInput" rows="5" placeholder="Paste your resume skills, tech stack, and experience bullets..." class="w-full p-4 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs bg-slate-50 dark:bg-slate-900 font-medium focus:outline-none resize-none"></textarea>
             </div>
-            <button onclick="matchJobKeywords()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition">Compute Match Score 🎯</button>
 
-            <div id="matchResultBox" class="p-6 bg-indigo-50/80 dark:bg-indigo-950/60 rounded-2xl border border-indigo-100 dark:border-indigo-900 space-y-3 hidden">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-100">Keyword Match Analysis</h2>
-                    <span id="matchScoreNum" class="text-2xl font-black text-indigo-600 dark:text-indigo-400">89% Match</span>
+            <button id="matchBtn" onclick="matchJobKeywords()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bullseye"></i> <span>Compute AI Keyword Alignment</span>
+            </button>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-6 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-indigo-600"></i>
+                <p class="text-xs text-slate-500 font-bold">Matching skills taxonomy & generating outreach pitch...</p>
+            </div>
+
+            <!-- Match Result Box -->
+            <div id="matchResultBox" class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-6 hidden">
+                
+                <!-- Score Meter Gauge -->
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200">Keyword Alignment Gauge</span>
+                        <span id="matchScoreDisplay" class="text-xl font-black text-indigo-600 dark:text-indigo-400">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div id="matchMeterFill" class="h-full bg-indigo-600 transition-all duration-1000 w-0"></div>
+                    </div>
                 </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">Your resume aligns well with key requirements. Add missing technical keywords to reach 98%.</p>
+
+                <!-- Action Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h2 class="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-100">Matching Breakdown Report</h2>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyMatchReport()" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy
+                        </button>
+                        <button onclick="downloadMatchPdf()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-[11px] font-bold transition shadow-sm">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> PDF Audit
+                        </button>
+                    </div>
+                </div>
+
+                <div id="matchReportDisplay" class="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed space-y-3"></div>
             </div>
         </div>
+
+        <!-- SEO Article Section -->
+        <article class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-sm font-extrabold text-slate-800 dark:text-slate-100">Optimize Your Job Application Strategy with NextHire Matrix</h2>
+            <p>
+                Recruiters spend less than 7 seconds reviewing an application. Built by <strong>Yash Raj Goswami</strong>, the NextHire Matrix Job Matcher ensures your resume mirrors the target Job Description by highlighting missing tech keywords, offering exact placement advice, and drafting personalized recruiter connection messages.
+            </p>
+        </article>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold">
-            <p>© 2026 NextHire Matrix. All rights reserved.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Built by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        function matchJobKeywords() {
+        let rawMatchText = "";
+        let extractedMatchScore = 0;
+
+        async function matchJobKeywords() {
             const jd = document.getElementById('jobDescInput').value.trim();
             const res = document.getElementById('resumeContentInput').value.trim();
-            if(!jd || !res) {
-                alert("Please paste both job description and resume content!");
-                return;
+            
+            if(!jd || !res) { 
+                alert("Please paste both the job description and your resume content!"); 
+                return; 
             }
-            document.getElementById('matchResultBox').classList.remove('hidden');
-            if (typeof confetti === 'function') {
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+
+            const matchBtn = document.getElementById('matchBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const resultBox = document.getElementById('matchResultBox');
+            const matchReportDisplay = document.getElementById('matchReportDisplay');
+            const matchScoreDisplay = document.getElementById('matchScoreDisplay');
+            const matchMeterFill = document.getElementById('matchMeterFill');
+
+            matchBtn.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            resultBox.classList.add('hidden');
+
+            const structuredPrompt = `
+You are an expert Talent Acquisition Strategist.
+Compare the given Resume against the Job Description (JD).
+
+IMPORTANT: Start your response with exact line: "SCORE: [number]" (e.g. SCORE: 88).
+
+Followed by structured Markdown:
+### 1. High-Priority Matched Skills & Keywords
+### 2. Missing Critical Skills (Add these to reach 95%+)
+### 3. Recruiter LinkedIn Outreach Message (Short, personalized 3-sentence message to send to HR)
+
+--- JOB DESCRIPTION ---
+${jd}
+
+--- RESUME CONTENT ---
+${res}
+`;
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: structuredPrompt })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.result) {
+                    rawMatchText = data.result;
+
+                    // Extract Score
+                    const scoreMatch = data.result.match(/SCORE:\s*(\d+)/i);
+                    extractedMatchScore = scoreMatch ? parseInt(scoreMatch[1]) : 82;
+
+                    // Update UI Meter
+                    matchScoreDisplay.innerText = `${extractedMatchScore}% Match`;
+                    matchMeterFill.style.width = `${extractedMatchScore}%`;
+                    if(extractedMatchScore < 60) {
+                        matchMeterFill.className = "h-full transition-all duration-1000 bg-red-500";
+                    } else if(extractedMatchScore < 80) {
+                        matchMeterFill.className = "h-full transition-all duration-1000 bg-amber-500";
+                    } else {
+                        matchMeterFill.className = "h-full transition-all duration-1000 bg-emerald-500";
+                    }
+
+                    const cleanedMarkdown = data.result.replace(/SCORE:\s*\d+/i, '').trim();
+                    matchReportDisplay.innerHTML = marked.parse(cleanedMarkdown);
+                    resultBox.classList.remove('hidden');
+
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 110, spread: 75, origin: { y: 0.6 } });
+                    }
+                } else {
+                    alert("Error processing keyword match: " + (data.error || "Server issue"));
+                }
+            } catch (err) {
+                alert("Network error while comparing keywords. Please try again.");
+            } finally {
+                matchBtn.disabled = false;
+                loadingSpinner.classList.add('hidden');
             }
+        }
+
+        function copyMatchReport() {
+            if (!rawMatchText) return;
+            navigator.clipboard.writeText(rawMatchText).then(() => {
+                alert("Match Report & Recruiter Pitch copied to clipboard!");
+            });
+        }
+
+        function downloadMatchPdf() {
+            if (!rawMatchText) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text(`NextHire Matrix - Job Keyword Match: ${extractedMatchScore}%`, 14, 20);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text("Engineered by Yash Raj Goswami | nexthirematrix.com", 14, 28);
+            doc.line(14, 32, 196, 32);
+
+            const cleanText = rawMatchText.replace(/[#*`_]/g, "");
+            const splitLines = doc.splitTextToSize(cleanText, 180);
+
+            let cursorY = 40;
+            splitLines.forEach(line => {
+                if (cursorY > 280) {
+                    doc.addPage();
+                    cursorY = 20;
+                }
+                doc.text(line, 14, cursorY);
+                cursorY += 6;
+            });
+
+            doc.save(`Job_Matcher_Report_${extractedMatchScore}Percent.pdf`);
         }
     </script>
 </body>

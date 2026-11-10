@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix | 100% Free Pure Client-Side AI Career & Tech Suite</title>
+    <title>NextHire Matrix | High-Performance Zero-API Career Suite</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/index.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5F25WV57"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());</script>
-
-    <meta name="description" content="NextHire Matrix is a zero-latency, 100% private client-side browser suite. Free instant ATS scanner, voice fluency analyzer, certificate generator, ESOP calculator, and recruiter skim simulator.">
+    <meta name="description" content="100% Free Privacy-First Career Computation Suite. ATS Scanners, Recruiter Skim Simulators, ESOP Calculators & Code Inspectors operating 100% in browser RAM.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/">
-    <meta property="og:title" content="NextHire Matrix - 100% Free Pure Client-Side AI Career Suite">
-    <meta property="og:description" content="Instant browser-native ATS auditing, voice fluency evaluation, PDF certificate generation, and compensation calculators with zero server latency.">
+    <meta property="og:url" content="https://www.nexthirematrix.com/index.html">
+    <meta property="og:title" content="NextHire Matrix - Zero-API Career Suite">
+    <meta property="og:description" content="High-performance client-side career tools with 0s latency and complete privacy guarantees.">
 
-    <!-- Schema.org Rich Structured Data -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "NextHire Matrix",
-      "url": "https://www.nexthirematrix.com/",
-      "applicationCategory": "Career & Engineering Application",
+      "url": "https://www.nexthirematrix.com/index.html",
+      "applicationCategory": "Career Utility Suite",
       "operatingSystem": "All Browsers",
       "creator": {
         "@type": "Person",
@@ -44,29 +37,43 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        /* Premium Glowing Gradient Text */
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        /* Glassmorphism Cards */
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        /* Modern Hover Cards */
+        .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tool-card:hover { transform: translateY(-6px); border-color: #6366f1; box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.2); }
+        
+        /* Background Glow Blobs */
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+
+    <!-- Decorative Mesh Background Glows -->
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-pink-500 rounded-full top-1/3 -right-20"></div>
 
     <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-2 text-xs font-black text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition bg-slate-100 dark:bg-slate-800 px-3 py-2 rounded-xl">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Yash Raj Goswami
                 </a>
                 <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
@@ -75,243 +82,242 @@
         </div>
     </header>
 
-    <!-- Top Navigation Bar -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
-    <!-- Main Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-12">
+    <!-- Main Workspace -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-grow w-full space-y-12">
         
-        <!-- Hero Title Banner -->
+        <!-- Hero Section -->
         <div class="text-center space-y-4 max-w-3xl mx-auto">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1.5 rounded-full text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 100% Browser-Native • Zero API Latency • Complete Privacy
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full text-xs font-black text-indigo-600 dark:text-indigo-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>100% Free Open-Source Beta • Zero Server Latency</span>
             </div>
-            <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
-                Supercharge Your Career with <span class="gradient-text">Zero-API Client Tools</span>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                High-Performance Client-Side <br><span class="gradient-text">Career Computation Suite</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
-                Instant ATS resume audits, voice speech analysis, verified certificate creation, offer duel engines, and offline flashcards — all computed directly inside your browser. No API keys, no server lags, 100% free forever.
+            <p class="text-xs sm:text-base text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
+                Execute heavy ATS audits, 6-second eye-tracking skims, salary simulators, and AST code inspections 100% inside your local browser memory. Zero data uploads guaranteed.
             </p>
         </div>
 
-        <!-- HERO INSTANT WIDGET: Browser-Native PDF/Text Drag & Drop Quick Audit -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl max-w-4xl mx-auto space-y-6">
-            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+        <!-- Trust & Privacy Security Banner -->
+        <div class="glass-card border-l-4 border-l-emerald-500 rounded-3xl p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="space-y-0.5">
+                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-400">Why Is NextHire Matrix 100% Free?</h3>
+                    <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                        Zero Server Uploads • Zero Cookies • No Account Creation Needed
+                    </p>
+                    <p class="text-[11px] text-slate-500 font-medium">All text parsing and PDF processing is executed locally on your machine's CPU/RAM via Browser APIs.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <span class="px-3 py-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-black rounded-xl text-[10px] uppercase"><i class="fa-solid fa-lock mr-1"></i> GDPR Compliant</span>
+                <span class="px-3 py-1.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-black rounded-xl text-[10px] uppercase"><i class="fa-solid fa-memory mr-1"></i> Local Memory Only</span>
+            </div>
+        </div>
+
+        <!-- 10 Interactive Tool Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Tool 1: ATS Scanner -->
+            <div onclick="window.location.href='ats-checker.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                </div>
                 <div>
-                    <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
-                        <i class="fa-solid fa-bolt text-indigo-600 dark:text-indigo-400"></i> Instant 0s Browser ATS Audit Widget
-                    </h2>
-                    <p class="text-[11px] font-semibold text-slate-500">Drop your resume file or text for immediate local browser parsing</p>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">ATS Resume Scanner</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Audit keyword match density, structural parseability, and JD alignment with 0s latency.</p>
                 </div>
-                <span class="text-[10px] font-black uppercase px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 rounded-lg">Client-Side Secure</span>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
             </div>
 
-            <!-- Drag & Drop Zone -->
-            <div id="dropZone" onclick="document.getElementById('quickFileInput').click()" class="border-2 border-dashed border-indigo-300 dark:border-indigo-700/60 hover:border-indigo-500 bg-indigo-50/40 dark:bg-indigo-950/20 p-8 rounded-2xl text-center cursor-pointer transition space-y-3">
-                <input type="file" id="quickFileInput" accept=".pdf,.txt" class="hidden" onchange="handleFileSelect(event)">
-                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center mx-auto text-xl shadow-inner">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+            <!-- Tool 2: Voice Analyzer -->
+            <div onclick="window.location.href='voice-analyzer.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-purple-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-microphone"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Click to upload or drag & drop PDF / TXT Resume</p>
-                    <p class="text-[10px] font-medium text-slate-400 mt-1">Processed 100% locally in your browser memory. Never uploaded to any server.</p>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Voice Fluency Analyzer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Real-time Web Speech WPM calculation, silence detection, and speech clarity scoring.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 3: PDF Builder -->
+            <div onclick="window.location.href='certificate-builder.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Verified PDF Builder</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Generate crisp ATS-compliant resumes and verified certificates with embedded hash checksums.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 4: Salary Simulator -->
+            <div onclick="window.location.href='salary-simulator.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-amber-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">ESOP & Tax Simulator</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Break down in-hand CTC, ESOP vesting schedules, tax slabs, and take-home pay split.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 5: Offer Duel -->
+            <div onclick="window.location.href='offer-comparator.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-rose-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Job Offer Duel Engine</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Compare competing job offers side-by-side using weighted equity and lifestyle scoring.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-rose-600 dark:text-rose-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <!-- Tool 6: Recruiter Skim -->
+            <div onclick="window.location.href='recruiter-skim.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-sky-500/10 text-sky-600 dark:text-sky-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-sky-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">6-Second Skim Simulator</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Simulate recruiter F-pattern eye-tracking heatmaps to test visual anchor points.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 7: Format Auditor -->
+            <div onclick="window.location.href='format-auditor.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-teal-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-table-columns"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Format & Font Auditor</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Detect multi-column text overlaps, bad glyphs, and ATS table breakdown risks.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 8: Bullet Enhancer -->
+            <div onclick="window.location.href='bullet-enhancer.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-fuchsia-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Metric Bullet Enhancer</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Transform weak work experience bullets into metric-driven high-impact sentences.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-fuchsia-600 dark:text-fuchsia-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 9: Code Inspector -->
+            <div onclick="window.location.href='code-inspector.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group">
+                <div class="w-12 h-12 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-cyan-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">AST Code Bug Inspector</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Audit JavaScript & Python code for Big-O time complexity penalties and memory leaks.</p>
+                </div>
+                <span class="inline-flex items-center gap-1 text-xs font-black text-cyan-600 dark:text-cyan-400 group-hover:translate-x-1 transition">Open Tool <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <!-- Tool 10: Tech Flashcards -->
+            <div onclick="window.location.href='tech-flashcards.html'" class="glass-card tool-card p-6 rounded-3xl space-y-4 cursor-pointer relative overflow-hidden group md:col-span-2 lg:col-span-3">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-indigo-600 group-hover:text-white transition shrink-0">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-black text-slate-900 dark:text-white">500+ Tech Speed Recall Flashcards</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">Master DSA, React, SQL, Python, and System Design interview patterns completely offline in browser memory.</p>
+                        </div>
+                    </div>
+                    <span class="inline-flex items-center gap-1 text-xs font-black text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition shrink-0">Launch Practice Engine <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <!-- Alternative Text Area -->
-            <div class="space-y-2">
-                <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Or Paste Raw Resume Text</label>
-                <textarea id="quickText" rows="3" placeholder="Paste your resume text here..." class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
-            </div>
+        </div>
 
-            <button onclick="runQuickAudit()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-gauge-high"></i> Run Instant Client Audit
+        <!-- Social Flex & LinkedIn Viral Card -->
+        <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-indigo-500/20">
+            <div class="space-y-1 text-center md:text-left">
+                <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Share With Your Tech Community</span>
+                <h2 class="text-lg font-black">Building in Public or Job Hunting? Flex your Privacy-First Audit Score.</h2>
+                <p class="text-xs text-indigo-100 font-semibold">Help other engineering candidates audit resumes without uploading sensitive data to cloud servers.</p>
+            </div>
+            <button onclick="shareToLinkedIn()" class="w-full md:w-auto px-6 py-3.5 bg-white text-indigo-900 hover:bg-slate-100 rounded-2xl text-xs font-black flex items-center justify-center gap-2 transition shadow-xl shrink-0">
+                <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Badge on LinkedIn
             </button>
-
-            <!-- Audit Output Result Box -->
-            <div id="quickAuditResult" class="hidden p-5 bg-slate-900 text-white rounded-2xl space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-xs font-bold text-slate-400">ATS Health Score</span>
-                    <span id="quickScoreVal" class="text-2xl font-black text-emerald-400">0 / 100</span>
-                </div>
-                <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
-                    <div class="p-2.5 bg-slate-800/80 rounded-xl">
-                        <span class="block text-slate-400">Word Count</span>
-                        <strong id="quickWordCount" class="text-white font-bold">0</strong>
-                    </div>
-                    <div class="p-2.5 bg-slate-800/80 rounded-xl">
-                        <span class="block text-slate-400">Action Verbs</span>
-                        <strong id="quickActionCount" class="text-indigo-400 font-bold">0</strong>
-                    </div>
-                    <div class="p-2.5 bg-slate-800/80 rounded-xl">
-                        <span class="block text-slate-400">Quantified Numbers</span>
-                        <strong id="quickNumCount" class="text-pink-400 font-bold">0</strong>
-                    </div>
-                </div>
-                <div id="quickTips" class="text-[11px] text-slate-300 space-y-1"></div>
-            </div>
-        </div>
-        <!-- Pure Client-Side 10 "Boom" Tools Showcase Grid -->
-        <div class="space-y-6">
-            <div class="text-center space-y-1">
-                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Explore 10 Zero-API Client Tools</h2>
-                <p class="text-xs text-slate-500 font-semibold">Instant browser-computed engines with 0% latency and 100% data privacy.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                
-                <!-- Tool 1 -->
-                <div onclick="window.location.href='ats-checker.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-file-arrow-up"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 transition">Instant ATS Keyword Matrix</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">High-speed Regex Tokenizer & TF-IDF keyword match auditor.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-indigo-600 dark:text-indigo-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 2 -->
-                <div onclick="window.location.href='voice-analyzer.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-pink-50 dark:bg-pink-950/80 text-pink-600 dark:text-pink-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-microphone"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-pink-600 transition">Voice Speech & Fluency Engine</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Browser Speech Recognition with WPM and filler word counter.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-pink-600 dark:text-pink-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 3 -->
-                <div onclick="window.location.href='certificate-builder.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 transition">Verified PDF Certificate Builder</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Generate high-resolution PDF credentials & ATS resumes on Canvas.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-emerald-600 dark:text-emerald-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 4 -->
-                <div onclick="window.location.href='salary-simulator.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-amber-600 transition">ESOP, Equity & Tax Payout Calculator</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Local math engine for 4-year stock vesting & net in-hand salary models.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-amber-600 dark:text-amber-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 5 -->
-                <div onclick="window.location.href='offer-comparator.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-purple-600 transition">Job Offer Duel & Financial Matcher</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Side-by-side financial, perk, and remote work valuation engine.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-purple-600 dark:text-purple-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 6 -->
-                <div onclick="window.location.href='recruiter-skim.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-rose-50 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-rose-600 transition">6-Second Recruiter Skim Simulator</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Simulates eye-tracking visual focus areas across resume layouts.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-rose-600 dark:text-rose-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 7 -->
-                <div onclick="window.location.href='format-auditor.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-sky-50 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-table-columns"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-sky-600 transition">ATS Format & Font Bug Auditor</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Identifies multi-column structures, font issues, and parser blocks.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-sky-600 dark:text-sky-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 8 -->
-                <div onclick="window.location.href='tech-flashcards.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-cyan-50 dark:bg-cyan-950/80 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 transition">Tech Recall Flashcards (500+)</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Offline stored flashcards for DSA, Python, React, SQL, and Architecture.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-cyan-600 dark:text-cyan-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 9 -->
-                <div onclick="window.location.href='bullet-enhancer.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-violet-50 dark:bg-violet-950/80 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-bolt-lightning"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-violet-600 transition">Action-Verb & Metric Enhancer</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Transforms passive bullets into strong, quantified achievement metrics.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-violet-600 dark:text-violet-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-                <!-- Tool 10 -->
-                <div onclick="window.location.href='code-inspector.html'" class="glass-card p-5 rounded-3xl hover:border-indigo-500 hover:shadow-lg transition cursor-pointer space-y-3 group">
-                    <div class="w-10 h-10 rounded-2xl bg-orange-50 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-bug"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-orange-600 transition">AST Code Bug & Complexity Inspector</h3>
-                        <p class="text-[11px] text-slate-500 font-medium mt-1">Local static analysis engine for code syntax, scope, and Big-O estimation.</p>
-                    </div>
-                    <span class="inline-flex items-center text-[11px] font-black text-orange-600 dark:text-orange-400">Launch Tool <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
-                </div>
-
-            </div>
         </div>
 
-        <!-- SEO Article & FAQ Section -->
+        <!-- SEO Article & FAQs Section -->
         <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Why Pure Client-Side Architecture is the Future of Developer Utilities</h2>
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Why NextHire Matrix Operates 100% Client-Side</h2>
             <p>
-                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix transitions away from server-side API dependencies to leverage modern browser web engines (Web Speech API, PDF.js, Canvas, and LocalStorage). This guarantees instant execution, zero API costs, zero rate-limit blocks, and absolute privacy for your personal data.
+                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix is built to eliminate data privacy concerns associated with cloud resume parsers. By executing heavy algorithms (PDF text coordinate extraction, speech recognition, AST code parsing, and salary calculations) directly in client browser RAM, your job search credentials remain strictly on your personal device.
             </p>
             <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
                 <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
                     <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Is my resume or voice data uploaded to any remote server?
+                        Is NextHire Matrix free forever?
                         <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
                     </summary>
-                    <p class="mt-2 text-slate-500">No. All computations, text parsing, PDF rendering, and speech transcriptions happen 100% locally within your browser memory.</p>
+                    <p class="mt-2 text-slate-500">Yes! The suite is designed as an open-source client-side application requiring zero server infrastructure costs, making it free for job seekers forever.</p>
                 </details>
             </div>
         </article>
     </main>
+
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found a bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+            </div>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="ats_issue">📄 ATS Parsing Issue</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the issue or idea..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -320,88 +326,12 @@
         </div>
     </footer>
 
-    <!-- Pure JS Instant Quick Audit Script Engine -->
+    <!-- Global Client Script -->
     <script>
-        const ACTION_VERBS = ["built", "designed", "engineered", "scaled", "optimized", "developed", "architected", "implemented", "reduced", "increased", "spearheaded", "created", "refactored", "automated", "launched"];
-
-        function handleFileSelect(evt) {
-            const file = evt.target.files[0];
-            if (!file) return;
-
-            if (file.type === "application/pdf") {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const typedarray = new Uint8Array(e.target.result);
-                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
-                        let maxPages = pdf.numPages;
-                        let countPromises = [];
-                        for (let j = 1; j <= maxPages; j++) {
-                            countPromises.push(pdf.getPage(j).then(page => {
-                                return page.getTextContent().then(textContent => {
-                                    return textContent.items.map(item => item.str).join(" ");
-                                });
-                            }));
-                        }
-                        return Promise.all(countPromises);
-                    }).then(texts => {
-                        document.getElementById('quickText').value = texts.join(" ");
-                        runQuickAudit();
-                    });
-                };
-                reader.readAsArrayBuffer(file);
-            } else {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('quickText').value = e.target.result;
-                    runQuickAudit();
-                };
-                reader.readAsText(file);
-            }
-        }
-
-        function runQuickAudit() {
-            const text = document.getElementById('quickText').value.trim();
-            if (!text) {
-                alert("Please paste resume text or drop a file first!");
-                return;
-            }
-
-            const words = text.toLowerCase().match(/\b[a-z0-9]+\b/g) || [];
-            const wordCount = words.length;
-
-            let actionCount = 0;
-            words.forEach(w => {
-                if (ACTION_VERBS.includes(w)) actionCount++;
-            });
-
-            const numberMatches = text.match(/\b\d+(?:\.\d+)?%?\b/g) || [];
-            const numCount = numberMatches.length;
-
-            let score = 50;
-            if (wordCount >= 300 && wordCount <= 700) score += 20;
-            else if (wordCount > 150) score += 10;
-
-            if (actionCount >= 5) score += 15;
-            else score += actionCount * 3;
-
-            if (numCount >= 4) score += 15;
-            else score += numCount * 3;
-
-            score = Math.min(100, score);
-
-            document.getElementById('quickScoreVal').innerText = `${score} / 100`;
-            document.getElementById('quickWordCount').innerText = wordCount;
-            document.getElementById('quickActionCount').innerText = actionCount;
-            document.getElementById('quickNumCount').innerText = numCount;
-
-            const tipsBox = document.getElementById('quickTips');
-            tipsBox.innerHTML = "";
-            if (wordCount < 300) tipsBox.innerHTML += `<p class="text-amber-400">⚠️ Resume length is brief (${wordCount} words). Aim for 400-600 words.</p>`;
-            if (actionCount < 5) tipsBox.innerHTML += `<p class="text-amber-400">⚠️ Low action verb density (${actionCount} found). Use verbs like 'Engineered', 'Optimized'.</p>`;
-            if (numCount < 3) tipsBox.innerHTML += `<p class="text-amber-400">⚠️ Few metric numbers detected (${numCount} found). Add quantifiable results (e.g., 'Improved latency by 40%').</p>`;
-            if (tipsBox.innerHTML === "") tipsBox.innerHTML = `<p class="text-emerald-400">✨ Great baseline structure! Use dedicated tools below for deep ATS keyword scanning.</p>`;
-
-            document.getElementById('quickAuditResult').classList.remove('hidden');
+        function shareToLinkedIn() {
+            const text = encodeURIComponent("I just audited my career suite privacy-first using NextHire Matrix! Zero server data uploads, instant ATS & code analysis.");
+            const url = encodeURIComponent("https://www.nexthirematrix.com/index.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
         }
     </script>
 </body>

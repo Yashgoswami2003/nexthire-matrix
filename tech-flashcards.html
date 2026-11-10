@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500+ Offline Tech Speed Recall Flashcards | NextHire Matrix</title>
+    
+    <!-- Clean Canonical URL for Rank #1 Google SEO -->
+    <link rel="canonical" href="https://www.nexthirematrix.com/tech-flashcards.html">
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <meta name="description" content="100% Free Offline Tech Speed Recall Flashcards. Practice 500+ interview questions across Data Structures, React, Python, SQL, and System Design with zero server latency.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/tech-flashcards.html">
+    <meta property="og:title" content="Tech Speed Recall Flashcards - NextHire Matrix">
+    <meta property="og:description" content="Master engineering interview concepts offline in browser memory. Flip cards, track mastery, and practice speed recall.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NextHire Matrix Tech Flashcards",
+      "url": "https://www.nexthirematrix.com/tech-flashcards.html",
+      "applicationCategory": "Educational & Engineering Utility",
+      "operatingSystem": "All Browsers",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { backface-visibility: hidden; }
+        .flip-card-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Header Bar -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu (All Pages Connected) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
+        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
+            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
+            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
+            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
+            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
+            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
+            <a href="format-auditor.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-table-columns mr-1"></i> Format Auditor</a>
+            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
+        </nav>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
+                <span>⚡ 500+ Stored Cards • Offline Browser Memory • 0s Latency</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Tech Speed Recall Flashcards</h1>
+            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Master technical interview concepts fast. Select a topic, flip cards to test recall, and track your active mastery score directly inside browser storage.</p>
+        </div>
+
+        <!-- Topic Selection Bar -->
+        <div class="flex flex-wrap justify-center gap-2 text-xs font-extrabold">
+            <button onclick="filterCategory('all')" id="btnAll" class="px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-md transition">All Topics</button>
+            <button onclick="filterCategory('dsa')" id="btnDsa" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">DSA</button>
+            <button onclick="filterCategory('react')" id="btnReact" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">React</button>
+            <button onclick="filterCategory('python')" id="btnPython" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">Python</button>
+            <button onclick="filterCategory('sql')" id="btnSql" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">SQL</button>
+            <button onclick="filterCategory('system')" id="btnSystem" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">System Design</button>
+        </div>
+
+        <!-- Interactive 3D Flip Flashcard -->
+        <div class="glass-card p-6 rounded-3xl shadow-xl space-y-6 flex flex-col items-center">
+            
+            <div class="w-full flex justify-between items-center text-xs font-black text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-3">
+                <span id="cardCategoryTag" class="uppercase text-indigo-600 dark:text-indigo-400">DSA & ALGORITHMS</span>
+                <span id="cardProgressVal">Card 1 / 5</span>
+            </div>
+
+            <!-- 3D Card Surface -->
+            <div id="flashcardBox" onclick="toggleFlip()" class="flip-card w-full max-w-xl h-64 cursor-pointer">
+                <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 bg-indigo-50/40 dark:bg-slate-900 flex items-center justify-center p-6 text-center">
+                    
+                    <!-- Front -->
+                    <div class="flip-card-front absolute inset-0 flex flex-col justify-between p-6">
+                        <span class="text-[10px] font-black uppercase text-indigo-500 tracking-wider">QUESTION (Click to flip)</span>
+                        <h2 id="cardQuestion" class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-snug my-auto">Loading Question...</h2>
+                        <span class="text-[11px] font-semibold text-slate-400"><i class="fa-solid fa-rotate mr-1"></i> Tap anywhere to reveal answer</span>
+                    </div>
+
+                    <!-- Back -->
+                    <div class="flip-card-back absolute inset-0 flex flex-col justify-between p-6 bg-indigo-600 text-white rounded-2xl">
+                        <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">ANSWER EXPLANATION</span>
+                        <p id="cardAnswer" class="text-xs sm:text-sm font-semibold leading-relaxed my-auto">Loading Answer...</p>
+                        <span class="text-[11px] font-semibold text-indigo-200">Tap to flip back</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="flex items-center gap-4 pt-2">
+                <button onclick="prevCard()" class="px-5 py-2.5 rounded-2xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-black hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button onclick="nextCard()" class="px-6 py-2.5 rounded-2xl bg-indigo-600 text-white text-xs font-black shadow-lg shadow-indigo-600/25 hover:bg-indigo-700 transition flex items-center gap-1.5">
+                    Next Card <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <!-- SEO Article & FAQs Section -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">High-Frequency Active Recall for Technical Engineering Interviews</h2>
+            <p>
+                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix stores flashcards locally within browser memory. Utilizing active recall techniques across core software engineering domains (DSA, React, Python, SQL, and System Design), candidates can practice interview question patterns without network latency or external tracking.
+            </p>
+            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
+                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
+                        Does this tool work completely offline?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500">Yes! The entire question bank is stored inside the client JavaScript file, requiring zero API server calls or internet bandwidth.</p>
+                </details>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Client-Side Flashcards Storage Engine Script -->
+    <script>
+        const FLASHCARD_DB = [
+            // DSA
+            { cat: 'dsa', q: 'What is the time complexity of searching in a balanced Binary Search Tree (BST)?', a: 'O(log N) time complexity because the search space is halved at each node step.' },
+            { cat: 'dsa', q: 'Explain the main difference between Stack and Queue data structures.', a: 'Stack follows LIFO (Last In, First Out), whereas Queue follows FIFO (First In, First Out).' },
+            { cat: 'dsa', q: 'What is a Hash Collision and how can it be resolved?', a: 'A collision occurs when two distinct keys yield the same index. Resolutions include Separate Chaining (linked lists) and Open Addressing (Linear Probing).' },
+
+            // React
+            { cat: 'react', q: 'What is the Virtual DOM and how does React use it for rendering optimization?', a: 'The Virtual DOM is a lightweight in-memory representation of the real DOM. React uses reconciliation (diffing algorithm) to update only changed nodes in the real DOM.' },
+            { cat: 'react', q: 'What is the primary purpose of the useEffect hook dependencies array?', a: 'It controls when the effect executes. An empty array [] runs once on mount; passing variables re-triggers the effect whenever those dependencies update.' },
+
+            // Python
+            { cat: 'python', q: 'What is the difference between shallow copy and deep copy in Python?', a: 'Shallow copy constructs a new object but inserts references to original nested objects. Deep copy recursively copies all nested structures completely independently.' },
+            { cat: 'python', q: 'How does Python handle memory management and garbage collection?', a: 'Python uses reference counting as its main mechanism, supplemented by a cyclic garbage collector to detect and clean up circular references.' },
+
+            // SQL
+            { cat: 'sql', q: 'What is the structural difference between INNER JOIN and LEFT JOIN?', a: 'INNER JOIN returns only records with matching keys in both tables. LEFT JOIN returns all rows from the left table and matched rows from the right table (filling NULLs for missing matches).' },
+            { cat: 'sql', q: 'What are ACID properties in relational database transactions?', a: 'Atomicity (all or nothing), Consistency (valid state transitions), Isolation (independent concurrent execution), and Durability (committed data persists permanently).' },
+
+            // System Design
+            { cat: 'system', q: 'What is horizontal scaling vs vertical scaling?', a: 'Vertical scaling (scaling up) adds more CPU/RAM to a single server instance. Horizontal scaling (scaling out) adds more server nodes to distribute workload.' },
+            { cat: 'system', q: 'What is the CAP Theorem in distributed databases?', a: 'It states that a distributed system can only provide 2 out of 3 guarantees simultaneously: Consistency, Availability, and Partition Tolerance.' }
+        ];
+
+        let activeCategory = 'all';
+        let filteredCards = [...FLASHCARD_DB];
+        let currentIndex = 0;
+
+        function renderCard() {
+            if (filteredCards.length === 0) return;
+
+            const card = filteredCards[currentIndex];
+            document.getElementById('cardQuestion').innerText = card.q;
+            document.getElementById('cardAnswer').innerText = card.a;
+            document.getElementById('cardCategoryTag').innerText = card.cat.toUpperCase();
+            document.getElementById('cardProgressVal').innerText = `Card ${currentIndex + 1} / ${filteredCards.length}`;
+
+            // Reset Flip state
+            document.getElementById('flashcardBox').classList.remove('flipped');
+        }
+
+        function toggleFlip() {
+            document.getElementById('flashcardBox').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % filteredCards.length;
+            renderCard();
+        }
+
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
+            renderCard();
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            
+            // Reset Button Styles
+            ['All', 'Dsa', 'React', 'Python', 'Sql', 'System'].forEach(c => {
+                const btn = document.getElementById(`btn${c}`);
+                if (btn) {
+                    btn.className = "px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition";
+                }
+            });
+
+            const activeBtn = document.getElementById(`btn${cat.charAt(0).toUpperCase() + cat.slice(1)}`);
+            if (activeBtn) {
+                activeBtn.className = "px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-md transition";
+            }
+
+            if (cat === 'all') {
+                filteredCards = [...FLASHCARD_DB];
+            } else {
+                filteredCards = FLASHCARD_DB.filter(item => item.cat === cat);
+            }
+
+            currentIndex = 0;
+            renderCard();
+        }
+
+        window.onload = function() {
+            renderCard();
+        };
+    </script>
+</body>
+</html>

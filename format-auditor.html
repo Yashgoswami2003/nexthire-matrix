@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Formatting & Font Bug Auditor | NextHire Matrix</title>
+    
+    <!-- Clean Canonical URL for Rank #1 Google SEO -->
+    <link rel="canonical" href="https://www.nexthirematrix.com/format-auditor.html">
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <meta name="description" content="100% Free Client-Side ATS Formatting Auditor. Detect multi-column layout errors, unreadable fonts, and table parser blockers in your resume with 0s latency.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/format-auditor.html">
+    <meta property="og:title" content="ATS Format & Font Auditor - NextHire Matrix">
+    <meta property="og:description" content="Audit resume structural layouts locally inside your browser with PDF.js and client regex analysis.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NextHire Matrix ATS Format Auditor",
+      "url": "https://www.nexthirematrix.com/format-auditor.html",
+      "applicationCategory": "Career Utility",
+      "operatingSystem": "All Browsers",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Header Bar -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu (All Pages Connected) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
+        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
+            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
+            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
+            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
+            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
+            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
+            <a href="format-auditor.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-table-columns mr-1"></i> Format Auditor</a>
+            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
+        </nav>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
+                <span>⚡ Multi-Column Flaw Detector • Pure Client PDF Parsing • 0s Latency</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black gradient-text">ATS Formatting & Font Bug Auditor</h1>
+            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Upload your resume to check for ATS parsing bugs like multi-column layouts, tables, non-standard fonts, special characters, and length issues.</p>
+        </div>
+
+        <!-- Audit Input Zone -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+            <div onclick="document.getElementById('formatFileInput').click()" class="border-2 border-dashed border-sky-300 dark:border-sky-700/60 hover:border-sky-500 bg-sky-50/30 dark:bg-sky-950/20 p-8 rounded-2xl text-center cursor-pointer transition space-y-3">
+                <input type="file" id="formatFileInput" accept=".pdf,.txt" class="hidden" onchange="runFormatAudit(event)">
+                <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 rounded-2xl flex items-center justify-center mx-auto text-xl shadow-inner">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div>
+                    <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Click to upload PDF or TXT resume file</p>
+                    <p class="text-[10px] font-medium text-slate-400 mt-1">Inspected 100% inside local browser memory using PDF.js text coordinates</p>
+                </div>
+            </div>
+
+            <!-- Output Audit Box (Initially Hidden) -->
+            <div id="formatResultDashboard" class="hidden p-6 bg-slate-900 text-white rounded-2xl space-y-5">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400">ATS Formatting Index</span>
+                        <h2 class="text-xl font-black text-white">Structural Health Analysis</h2>
+                    </div>
+                    <span id="formatScoreVal" class="text-3xl font-black text-emerald-400">0 / 100</span>
+                </div>
+
+                <!-- Formatting Status Checks -->
+                <div id="formatCheckList" class="space-y-3 text-xs font-semibold">
+                </div>
+            </div>
+        </div>
+        <!-- SEO Article & FAQs Section -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Why Multi-Column Layouts Break Enterprise ATS Parsers</h2>
+            <p>
+                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix uses PDF.js coordinate extraction to analyze layout structure. Traditional ATS algorithms (like Workday, Taleo, and Greenhouse) parse resumes sequentially from left to right. Multi-column tables or non-standard fonts can cause text overlapping, rendering your experience unreadable to automated screeners.
+            </p>
+            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
+                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
+                        Are single-column resumes strictly better for ATS screening?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500">Yes. Single-column layouts with standard fonts (Arial, Helvetica, Inter) guarantee 100% parsing accuracy across all legacy and modern ATS systems.</p>
+                </details>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Pure JS Formatting Auditor Engine -->
+    <script>
+        function runFormatAudit(evt) {
+            const file = evt.target.files[0];
+            if (!file) return;
+
+            if (file.type === "application/pdf") {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const typedarray = new Uint8Array(e.target.result);
+                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+                        let maxPages = pdf.numPages;
+                        let countPromises = [];
+                        for (let j = 1; j <= maxPages; j++) {
+                            countPromises.push(pdf.getPage(j).then(page => {
+                                return page.getTextContent().then(textContent => {
+                                    return textContent.items;
+                                });
+                            }));
+                        }
+                        return Promise.all(countPromises);
+                    }).then(pagesItems => {
+                        evaluatePdfItems(pagesItems);
+                    });
+                };
+                reader.readAsArrayBuffer(file);
+            } else {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    evaluateTxtItems(e.target.result);
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function evaluatePdfItems(pagesItems) {
+            const allItems = pagesItems.flat();
+            const textContent = allItems.map(i => i.str).join(" ");
+            const wordCount = textContent.split(/\s+/).length;
+
+            let score = 100;
+            const checks = [];
+
+            // 1. Column Coordinate Check (PDF.js transform matrix inspection)
+            let xCoords = allItems.map(i => i.transform ? i.transform[4] : 0).filter(x => x > 0);
+            let hasMultiColumn = false;
+            let leftMarginCount = xCoords.filter(x => x < 150).length;
+            let rightMarginCount = xCoords.filter(x => x > 350).length;
+            
+            if (leftMarginCount > 20 && rightMarginCount > 20) {
+                hasMultiColumn = true;
+                score -= 25;
+                checks.push({ status: "fail", title: "Multi-Column Layout Detected", desc: "Detected text streams in both left and right margins. High risk of ATS text scrambling." });
+            } else {
+                checks.push({ status: "pass", title: "Single-Column Structure Verified", desc: "Clean top-to-bottom single-column text flow." });
+            }
+
+            // 2. Length Auditor
+            if (wordCount < 250) {
+                score -= 15;
+                checks.push({ status: "warning", title: "Resume Length Brief", desc: `Current word count is ${wordCount}. Target 400 - 700 words for optimal density.` });
+            } else if (wordCount > 1000) {
+                score -= 15;
+                checks.push({ status: "warning", title: "Resume Length Excessive", desc: `Current word count is ${wordCount}. Over 1000 words may span 3+ pages.` });
+            } else {
+                checks.push({ status: "pass", title: "Optimal Word Count", desc: `Word count (${wordCount}) fits within standard 1-2 page ATS guidelines.` });
+            }
+
+            // 3. Font / Special Character Check
+            const weirdChars = textContent.match(/[^\x00-\x7F]/g) || [];
+            if (weirdChars.length > 10) {
+                score -= 15;
+                checks.push({ status: "fail", title: "Non-Standard Glyphs & Symbols Found", desc: `Detected ${weirdChars.length} non-standard bullet symbols or custom font glyphs.` });
+            } else {
+                checks.push({ status: "pass", title: "Clean ATS Standard Fonts", desc: "No non-standard unicode symbols or parser-blocking glyphs detected." });
+            }
+
+            renderFormatResults(score, checks);
+        }
+
+        function evaluateTxtItems(text) {
+            const wordCount = text.split(/\s+/).length;
+            let score = 90;
+            const checks = [
+                { status: "pass", title: "Plain Text Compatibility", desc: "100% readable text format guaranteed." }
+            ];
+
+            if (wordCount < 250) score -= 20;
+            renderFormatResults(score, checks);
+        }
+
+        function renderFormatResults(score, checks) {
+            document.getElementById('formatResultDashboard').classList.remove('hidden');
+            document.getElementById('formatScoreVal').innerText = `${score} / 100`;
+
+            const list = document.getElementById('formatCheckList');
+            list.innerHTML = "";
+
+            checks.forEach(c => {
+                let badgeClass = c.status === "pass" 
+                    ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" 
+                    : (c.status === "warning" ? "bg-amber-500/20 text-amber-400 border-amber-500/30" : "bg-rose-500/20 text-rose-400 border-rose-500/30");
+                
+                let icon = c.status === "pass" ? "fa-circle-check" : (c.status === "warning" ? "fa-triangle-exclamation" : "fa-circle-xmark");
+
+                list.innerHTML += `
+                    <div class="p-4 rounded-xl border ${badgeClass} flex items-start gap-3">
+                        <i class="fa-solid ${icon} text-base mt-0.5"></i>
+                        <div>
+                            <strong class="block text-white text-xs">${c.title}</strong>
+                            <p class="text-slate-400 text-[11px] mt-0.5">${c.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

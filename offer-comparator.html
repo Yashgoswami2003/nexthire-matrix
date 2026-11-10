@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side-by-Side Job Offer Duel & Financial Matcher | NextHire Matrix</title>
+    
+    <!-- Clean Canonical URL for Rank #1 Google SEO -->
+    <link rel="canonical" href="https://www.nexthirematrix.com/offer-comparator.html">
+    
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <meta name="description" content="100% Free Client-Side Job Offer Comparison Engine. Compare 2 competing tech offers side-by-side on Base Pay, ESOPs, Remote Perks, and Benefits with 0s latency.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/offer-comparator.html">
+    <meta property="og:title" content="Job Offer Duel & Financial Matcher - NextHire Matrix">
+    <meta property="og:description" content="Evaluate competing software engineering job offers instantly in your browser with zero server data storage.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NextHire Matrix Job Offer Comparator",
+      "url": "https://www.nexthirematrix.com/offer-comparator.html",
+      "applicationCategory": "Financial & Career Utility",
+      "operatingSystem": "All Browsers",
+      "creator": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Header Bar -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </h1>
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shared Navigation Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
+        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
+            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
+            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
+            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
+            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
+            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
+            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
+            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
+            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
+        </nav>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
+                <span>⚔️ Pure Client Duel Algorithm • Real-Time Scoring • 0s Latency</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Side-by-Side Job Offer Duel Engine</h1>
+            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Compare two job offers side-by-side. Our local mathematical model weighs base salary, annual stocks, joining bonuses, and work flexibility to declare the winning offer.</p>
+        </div>
+
+        <!-- Offer Duel Inputs Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Offer A Card -->
+            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-indigo-600">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <span class="text-sm font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-wider"><i class="fa-solid fa-building mr-1"></i> Offer A (e.g. Product MNC)</span>
+                    <span id="badgeA" class="text-[10px] font-extrabold px-2.5 py-1 bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 rounded-lg">Contender</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Company Name / Role</label>
+                        <input type="text" id="nameA" value="Tech Corp - Senior Engineer" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Annual Base Fixed Pay ($ / ₹)</label>
+                        <input type="number" id="baseA" value="2800000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Yearly Stocks / ESOP Value ($ / ₹)</label>
+                        <input type="number" id="stockA" value="400000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Joining Bonus ($ / ₹)</label>
+                        <input type="number" id="bonusA" value="200000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Work Flexibility</label>
+                        <select id="remoteA" onchange="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <option value="10">100% Remote (Save Travel & Rent)</option>
+                            <option value="7" selected>Hybrid (2-3 Days Office)</option>
+                            <option value="3">Full Office (5 Days Onsite)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer B Card -->
+            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-purple-600">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <span class="text-sm font-black text-purple-600 dark:text-purple-400 uppercase tracking-wider"><i class="fa-solid fa-rocket mr-1"></i> Offer B (e.g. High-Growth Startup)</span>
+                    <span id="badgeB" class="text-[10px] font-extrabold px-2.5 py-1 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-lg">Contender</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Company Name / Role</label>
+                        <input type="text" id="nameB" value="Scaleup AI - Tech Lead" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Annual Base Fixed Pay ($ / ₹)</label>
+                        <input type="number" id="baseB" value="3200000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Yearly Stocks / ESOP Value ($ / ₹)</label>
+                        <input type="number" id="stockB" value="800000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Joining Bonus ($ / ₹)</label>
+                        <input type="number" id="bonusB" value="100000" oninput="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Work Flexibility</label>
+                        <select id="remoteB" onchange="runOfferDuel()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                            <option value="10" selected>100% Remote (Save Travel & Rent)</option>
+                            <option value="7">Hybrid (2-3 Days Office)</option>
+                            <option value="3">Full Office (5 Days Onsite)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Duel Winner Result Dashboard -->
+        <div id="duelResultDashboard" class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-4 gap-4">
+                <div>
+                    <h2 class="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-trophy text-amber-500"></i> Financial & Perk Duel Winner
+                    </h2>
+                    <p class="text-xs font-semibold text-slate-500">Calculated locally using weighted compensation metrics</p>
+                </div>
+                <div class="text-right">
+                    <span class="block text-[10px] font-black uppercase text-slate-400">Winning Offer</span>
+                    <span id="winnerTitle" class="text-2xl font-black text-emerald-500">Evaluating...</span>
+                </div>
+            </div>
+
+            <!-- Side-by-Side Breakdown Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Offer A Score -->
+                <div class="p-5 bg-indigo-50/50 dark:bg-indigo-950/30 rounded-2xl border border-indigo-200 dark:border-indigo-800 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 id="resTitleA" class="font-extrabold text-xs text-indigo-900 dark:text-indigo-200">Offer A</h3>
+                        <span id="scoreA" class="text-xl font-black text-indigo-600 dark:text-indigo-400">0 pts</span>
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 font-semibold">
+                        <div class="flex justify-between"><span>Year 1 Total Pay:</span><strong id="year1A" class="text-slate-900 dark:text-white">₹0</strong></div>
+                        <div class="flex justify-between"><span>Base Ratio:</span><strong id="baseRatioA" class="text-slate-900 dark:text-white">0%</strong></div>
+                    </div>
+                </div>
+
+                <!-- Offer B Score -->
+                <div class="p-5 bg-purple-50/50 dark:bg-purple-950/30 rounded-2xl border border-purple-200 dark:border-purple-800 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 id="resTitleB" class="font-extrabold text-xs text-purple-900 dark:text-purple-200">Offer B</h3>
+                        <span id="scoreB" class="text-xl font-black text-purple-600 dark:text-purple-400">0 pts</span>
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 font-semibold">
+                        <div class="flex justify-between"><span>Year 1 Total Pay:</span><strong id="year1B" class="text-slate-900 dark:text-white">₹0</strong></div>
+                        <div class="flex justify-between"><span>Base Ratio:</span><strong id="baseRatioB" class="text-slate-900 dark:text-white">0%</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insight Advice Box -->
+            <div id="duelInsightBox" class="p-4 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 rounded-2xl text-xs font-semibold text-emerald-900 dark:text-emerald-200">
+            </div>
+        </div>
+
+        <!-- SEO Article & FAQs Section -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How Pure Client Weighted Algorithms Evaluate Job Offers</h2>
+            <p>
+                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix evaluates competing job offers using real-time browser mathematical calculations. By scoring base pay stability, equity growth potential, joining bonuses, and remote lifestyle savings without external servers, you get instant career clarity.
+            </p>
+            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
+                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
+                        Is my confidential job offer details saved anywhere?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500">No. All offer data remains 100% private inside your local browser memory.</p>
+                </details>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
+            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Pure JS Offer Duel Engine -->
+    <script>
+        function runOfferDuel() {
+            const nameA = document.getElementById('nameA').value || "Offer A";
+            const baseA = parseFloat(document.getElementById('baseA').value) || 0;
+            const stockA = parseFloat(document.getElementById('stockA').value) || 0;
+            const bonusA = parseFloat(document.getElementById('bonusA').value) || 0;
+            const remoteA = parseFloat(document.getElementById('remoteA').value) || 0;
+
+            const nameB = document.getElementById('nameB').value || "Offer B";
+            const baseB = parseFloat(document.getElementById('baseB').value) || 0;
+            const stockB = parseFloat(document.getElementById('stockB').value) || 0;
+            const bonusB = parseFloat(document.getElementById('bonusB').value) || 0;
+            const remoteB = parseFloat(document.getElementById('remoteB').value) || 0;
+
+            const year1A = baseA + stockA + bonusA;
+            const year1B = baseB + stockB + bonusB;
+
+            // Scoring Formula
+            const scoreAVal = Math.round((baseA * 0.4) + (stockA * 0.3) + (bonusA * 0.1) + (remoteA * 50000)) / 10000;
+            const scoreBVal = Math.round((baseB * 0.4) + (stockB * 0.3) + (bonusB * 0.1) + (remoteB * 50000)) / 10000;
+
+            document.getElementById('resTitleA').innerText = nameA;
+            document.getElementById('resTitleB').innerText = nameB;
+            document.getElementById('scoreA').innerText = `${scoreAVal.toFixed(1)} pts`;
+            document.getElementById('scoreB').innerText = `${scoreBVal.toFixed(1)} pts`;
+            document.getElementById('year1A').innerText = `₹${year1A.toLocaleString()}`;
+            document.getElementById('year1B').innerText = `₹${year1B.toLocaleString()}`;
+
+            document.getElementById('baseRatioA').innerText = `${Math.round((baseA / (year1A || 1)) * 100)}%`;
+            document.getElementById('baseRatioB').innerText = `${Math.round((baseB / (year1B || 1)) * 100)}%`;
+
+            const badgeA = document.getElementById('badgeA');
+            const badgeB = document.getElementById('badgeB');
+            const winnerTitle = document.getElementById('winnerTitle');
+            const insight = document.getElementById('duelInsightBox');
+
+            if (scoreAVal > scoreBVal) {
+                winnerTitle.innerText = nameA;
+                winnerTitle.className = "text-2xl font-black text-indigo-600 dark:text-indigo-400";
+                badgeA.innerText = "🏆 WINNER";
+                badgeA.className = "text-[10px] font-black px-2.5 py-1 bg-emerald-500 text-white rounded-lg animate-pulse";
+                badgeB.innerText = "CONTENDER";
+                badgeB.className = "text-[10px] font-extrabold px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 rounded-lg";
+                insight.innerHTML = `✨ <strong>Recommendation:</strong> <strong>${nameA}</strong> wins overall value score due to higher guaranteed cash and perk stability.`;
+            } else if (scoreBVal > scoreAVal) {
+                winnerTitle.innerText = nameB;
+                winnerTitle.className = "text-2xl font-black text-purple-600 dark:text-purple-400";
+                badgeB.innerText = "🏆 WINNER";
+                badgeB.className = "text-[10px] font-black px-2.5 py-1 bg-emerald-500 text-white rounded-lg animate-pulse";
+                badgeA.innerText = "CONTENDER";
+                badgeA.className = "text-[10px] font-extrabold px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 rounded-lg";
+                insight.innerHTML = `✨ <strong>Recommendation:</strong> <strong>${nameB}</strong> wins overall value score due to superior financial upside and stock weighting.`;
+            } else {
+                winnerTitle.innerText = "Tie Match";
+                winnerTitle.className = "text-2xl font-black text-amber-500";
+                insight.innerHTML = `⚖️ Both offers yield equivalent value. Choose based on company culture & tech stack preferences.`;
+            }
+        }
+
+        window.onload = function() {
+            runOfferDuel();
+        };
+    </script>
+</body>
+</html>

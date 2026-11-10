@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Voice Speech & Fluency Analyzer | NextHire Matrix</title>
+    <title>Voice Fluency Analyzer | NextHire Matrix</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/voice-analyzer.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Free Client-Side Speech Recognition & Voice Fluency Analyzer. Track real-time Words Per Minute (WPM), filler words ('um', 'like'), and speech clarity with 0s latency.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/voice-analyzer.html">
-    <meta property="og:title" content="Browser Voice Speech & Fluency Engine - NextHire Matrix">
-    <meta property="og:description" content="Instant browser-native speech evaluation. Practice interview answers with live WPM, filler word detection, and zero server processing.">
+    <meta name="description" content="100% Client-Side Voice Speech Analyzer. Calculate Words Per Minute (WPM), silence detection, and speech clarity offline in local browser memory.">
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Voice Fluency Analyzer",
+      "name": "Voice Fluency Analyzer",
       "url": "https://www.nexthirematrix.com/voice-analyzer.html",
-      "applicationCategory": "Career & Engineering Utility",
+      "applicationCategory": "Interview Practice Utility",
       "operatingSystem": "All Browsers",
-      "creator": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -42,136 +30,157 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <div class="glow-blob w-96 h-96 bg-purple-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> Hub
                 </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu (All Pages Connected) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
     <!-- Main Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <!-- Hero Header -->
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                <span>⚡ Browser Speech API • Live WPM Audit • Zero Server Audio Storage</span>
+            <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full text-xs font-black text-purple-600 dark:text-purple-400">
+                <i class="fa-solid fa-microphone"></i> Web Speech API • Zero Audio Uploads
             </div>
-            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Voice Speech & Fluency Analyzer</h1>
-            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Practice your pitch or interview answers. The browser engine transcribes your speech live, calculates speaking pace (WPM), and detects filler word crutches.</p>
-        </div>
-
-        <!-- Real-Time Recording Card -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
-            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-                <div class="flex items-center gap-3">
-                    <button id="micBtn" onclick="toggleSpeech()" class="w-12 h-12 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center text-xl shadow-lg shadow-indigo-600/30 transition">
-                        <i id="micIcon" class="fa-solid fa-microphone"></i>
-                    </button>
-                    <div>
-                        <h2 id="micStatusText" class="text-sm font-black text-slate-800 dark:text-slate-100">Click Microphone to Start</h2>
-                        <p class="text-[11px] font-semibold text-slate-400">Speech recognition will process audio directly in browser memory</p>
-                    </div>
-                </div>
-                <div class="text-right">
-                    <span class="block text-[10px] font-black uppercase text-slate-400">Duration</span>
-                    <span id="timerVal" class="text-xl font-black text-indigo-600 dark:text-indigo-400">00:00</span>
-                </div>
-            </div>
-
-            <!-- Speech Transcript Box -->
-            <div class="space-y-2">
-                <label class="block text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">Live Speech Transcript</label>
-                <div id="transcriptBox" class="w-full min-h-[160px] p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 leading-relaxed overflow-y-auto">
-                    <span class="text-slate-400 italic">Your spoken transcript will appear here in real-time as you talk...</span>
-                </div>
-            </div>
-
-            <!-- Metrics Real-Time Dashboard -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Speaking Pace</span>
-                    <span id="wpmVal" class="text-lg font-black text-indigo-600 dark:text-indigo-400">0 WPM</span>
-                </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Total Words</span>
-                    <span id="wordCountVal" class="text-lg font-black text-emerald-500">0</span>
-                </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Filler Words</span>
-                    <span id="fillerCountVal" class="text-lg font-black text-rose-500">0</span>
-                </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Fluency Score</span>
-                    <span id="fluencyScoreVal" class="text-lg font-black text-purple-500">100%</span>
-                </div>
-            </div>
-            <!-- Detected Filler Words Detail Box -->
-            <div class="space-y-3 pt-2">
-                <h3 class="text-xs font-black uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Detected Speech Crutches & Filler Words
-                </h3>
-                <div id="fillerWordsBox" class="flex flex-wrap gap-2 p-4 bg-rose-50/40 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 rounded-2xl min-h-[60px]">
-                    <span class="text-xs text-slate-400 italic">No filler words detected yet. Start speaking to run instant audit.</span>
-                </div>
-            </div>
-
-            <div id="voiceFeedbackAdvice" class="p-4 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs font-semibold text-indigo-900 dark:text-indigo-200">
-                ✨ <strong>Fluency Tip:</strong> Aim for a pace between 130 – 160 WPM during behavioral and technical interview responses.
-            </div>
-        </div>
-
-        <!-- SEO Article & FAQs Section -->
-        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How Browser-Native Web Speech API Enables Instant Fluency Audits</h2>
-            <p>
-                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix uses the native browser Web Speech API (`webkitSpeechRecognition`) to process audio locally. This guarantees zero audio latency, eliminates cloud transcription costs, and ensures your spoken answers are never recorded or saved to remote databases.
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+                AI Voice & <span class="gradient-text">Speech Fluency Analyzer</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Test your interview speaking pace in real-time. Measures Words Per Minute (WPM), filler word counts, and articulation clarity.
             </p>
-            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
-                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
-                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Is my voice data sent to any third-party server?
-                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                    </summary>
-                    <p class="mt-2 text-slate-500">No. Audio recognition and text processing run 100% locally within your device's browser memory.</p>
-                </details>
+        </div>
+
+        <!-- Trust Security Banner -->
+        <div class="glass-card border-l-4 border-l-purple-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Audio Privacy Guaranteed</strong>
+                    <span class="text-slate-500">Voice stream is processed instantly using Web Speech API in browser RAM. No audio files saved or sent.</span>
+                </div>
             </div>
-        </article>
-    </main>
+            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-black rounded-lg text-[10px] uppercase shrink-0">Local Processing</span>
+        </div>
+
+        <!-- Recording Console Card -->
+        <div class="glass-card p-8 rounded-3xl text-center space-y-6 shadow-xl relative overflow-hidden">
+            <div class="space-y-2">
+                <div id="statusIndicator" class="text-xs font-black uppercase tracking-wider text-slate-400">Ready To Record</div>
+                <div id="timerDisplay" class="text-4xl font-black text-slate-800 dark:text-white">00:00</div>
+            </div>
+
+            <!-- Record Button -->
+            <button id="recordBtn" onclick="toggleRecording()" class="w-24 h-24 rounded-full gradient-bg text-white text-3xl shadow-2xl shadow-purple-500/40 hover:scale-105 transition transform flex items-center justify-center mx-auto">
+                <i id="recordIcon" class="fa-solid fa-microphone"></i>
+            </button>
+
+            <!-- Live Speech Output -->
+            <div class="p-4 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 min-h-[100px] text-xs font-medium text-slate-600 dark:text-slate-300 text-left" id="transcriptBox">
+                Your spoken transcript will appear here in real-time...
+            </div>
+        </div>
+
+        <!-- Output Analytics Cards -->
+        <div id="resultsContainer" class="hidden space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Pace (WPM)</span>
+                    <div id="wpmVal" class="text-3xl font-black gradient-text">0</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Total Words</span>
+                    <div id="wordCountVal" class="text-3xl font-black text-indigo-500">0</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Fluency Score</span>
+                    <div id="fluencyVal" class="text-3xl font-black text-emerald-500">0%</div>
+                </div>
+            </div>
+
+            <!-- Social Flex LinkedIn Card -->
+            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Speech Fluency</span>
+                    <h4 class="text-sm font-black">Practiced your interview pitch? Share your fluency score badge!</h4>
+                </div>
+                <button onclick="shareSpeechToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Fluency Badge
+                </button>
+            </div>
+        </div>
+        </main>
+
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found a voice recognition bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+            </div>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="voice_issue">🎙️ Voice Speech / WPM Bug</option>
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the speech analyzer issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -180,129 +189,104 @@
         </div>
     </footer>
 
-    <!-- Pure Client Speech Engine Script -->
+    <!-- Web Speech API Client Logic -->
     <script>
-        const FILLER_WORDS = ["um", "uh", "like", "actually", "basically", "literally", "you know", "i mean", "right", "so"];
-        
-        let recognition = null;
         let isRecording = false;
+        let recognition = null;
         let startTime = null;
         let timerInterval = null;
-        let finalTranscript = "";
+        let secondsElapsed = 0;
+        let finalTranscript = '';
+        let currentWpm = 0;
 
         if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
             recognition.continuous = true;
             recognition.interimResults = true;
-            recognition.lang = 'en-US';
 
-            recognition.onresult = function(event) {
-                let interimTranscript = '';
+            recognition.onresult = (event) => {
+                let interim = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
                         finalTranscript += event.results[i][0].transcript + ' ';
                     } else {
-                        interimTranscript += event.results[i][0].transcript;
+                        interim += event.results[i][0].transcript;
                     }
                 }
-                const fullText = finalTranscript + interimTranscript;
-                document.getElementById('transcriptBox').innerText = fullText || "Listening...";
-                analyzeMetrics(fullText);
+                document.getElementById('transcriptBox').innerText = finalTranscript + interim;
             };
 
-            recognition.onerror = function(event) {
-                console.error("Speech Recognition Error:", event.error);
-                stopSpeech();
-            };
-
-            recognition.onend = function() {
-                if (isRecording) recognition.start();
+            recognition.onerror = (e) => {
+                console.error("Speech Recognition Error:", e);
+                stopRecording();
             };
         } else {
-            alert("Web Speech API is not supported in this browser. Please use Google Chrome or Edge.");
+            alert("Web Speech API is not supported in this browser. Please use Google Chrome or MS Edge.");
         }
 
-        function toggleSpeech() {
+        function toggleRecording() {
             if (!recognition) return;
-            if (isRecording) {
-                stopSpeech();
+            if (!isRecording) {
+                startRecording();
             } else {
-                startSpeech();
+                stopRecording();
             }
         }
 
-        function startSpeech() {
+        function startRecording() {
             isRecording = true;
-            finalTranscript = "";
-            startTime = Date.now();
-            
-            document.getElementById('micBtn').classList.remove('bg-indigo-600');
-            document.getElementById('micBtn').classList.add('bg-rose-600', 'animate-pulse');
-            document.getElementById('micIcon').className = 'fa-solid fa-square';
-            document.getElementById('micStatusText').innerText = "Recording Live Voice Speech...";
-            
+            finalTranscript = '';
+            secondsElapsed = 0;
+            document.getElementById('transcriptBox').innerText = 'Listening... Speak now.';
+            document.getElementById('recordIcon').className = 'fa-solid fa-stop';
+            document.getElementById('statusIndicator').innerText = 'Recording Live Speech...';
+            document.getElementById('statusIndicator').classList.add('text-rose-500');
+
             recognition.start();
-            
+            startTime = Date.now();
             timerInterval = setInterval(() => {
-                const elapsedSec = Math.floor((Date.now() - startTime) / 1000);
-                const mins = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
-                const secs = String(elapsedSec % 60).padStart(2, '0');
-                document.getElementById('timerVal').innerText = `${mins}:${secs}`;
+                secondsElapsed++;
+                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                const secs = String(secondsElapsed % 60).padStart(2, '0');
+                document.getElementById('timerDisplay').innerText = `${mins}:${secs}`;
             }, 1000);
+
+            document.getElementById('resultsContainer').classList.add('hidden');
         }
 
-        function stopSpeech() {
+        function stopRecording() {
+            if (!isRecording) return;
             isRecording = false;
+            recognition.stop();
             clearInterval(timerInterval);
-            if (recognition) recognition.stop();
 
-            document.getElementById('micBtn').classList.remove('bg-rose-600', 'animate-pulse');
-            document.getElementById('micBtn').classList.add('bg-indigo-600');
-            document.getElementById('micIcon').className = 'fa-solid fa-microphone';
-            document.getElementById('micStatusText').innerText = "Click Microphone to Resume";
+            document.getElementById('recordIcon').className = 'fa-solid fa-microphone';
+            document.getElementById('statusIndicator').innerText = 'Analysis Complete';
+            document.getElementById('statusIndicator').classList.remove('text-rose-500');
+
+            // Analytics Calculation
+            const words = finalTranscript.trim().split(/\s+/).filter(w => w.length > 0);
+            const wordCount = words.length;
+            const minutes = Math.max(secondsElapsed / 60, 0.1);
+            currentWpm = Math.round(wordCount / minutes);
+
+            // Optimal speaking pace is 120-160 WPM
+            let fluency = 100;
+            if (currentWpm < 100) fluency = Math.max(50, Math.round((currentWpm / 120) * 100));
+            else if (currentWpm > 170) fluency = Math.max(50, Math.round((160 / currentWpm) * 100));
+
+            document.getElementById('wpmVal').innerText = currentWpm;
+            document.getElementById('wordCountVal').innerText = wordCount;
+            document.getElementById('fluencyVal').innerText = `${fluency}%`;
+
+            document.getElementById('resultsContainer').classList.remove('hidden');
         }
 
-        function analyzeMetrics(text) {
-            if (!text.trim()) return;
-
-            const words = text.toLowerCase().match(/\b[a-z0-9']+\b/g) || [];
-            const wordCount = words.length;
-            const elapsedMinutes = Math.max((Date.now() - startTime) / 60000, 0.05);
-            const wpm = Math.round(wordCount / elapsedMinutes);
-
-            let detectedFillers = {};
-            let totalFillers = 0;
-
-            words.forEach(w => {
-                if (FILLER_WORDS.includes(w)) {
-                    detectedFillers[w] = (detectedFillers[w] || 0) + 1;
-                    totalFillers++;
-                }
-            });
-
-            const fluencyScore = Math.max(0, Math.round(100 - (totalFillers * 4)));
-
-            document.getElementById('wpmVal').innerText = `${wpm} WPM`;
-            document.getElementById('wordCountVal').innerText = wordCount;
-            document.getElementById('fillerCountVal').innerText = totalFillers;
-            document.getElementById('fluencyScoreVal').innerText = `${fluencyScore}%`;
-
-            const fillersBox = document.getElementById('fillerWordsBox');
-            fillersBox.innerHTML = totalFillers > 0 ? "" : "<span class='text-xs text-slate-400 italic'>No filler words detected. Smooth delivery!</span>";
-            
-            for (const [word, count] of Object.entries(detectedFillers)) {
-                fillersBox.innerHTML += `<span class="px-2.5 py-1 bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 rounded-xl text-[11px] font-bold">${word}: ${count}</span>`;
-            }
-
-            const feedback = document.getElementById('voiceFeedbackAdvice');
-            if (wpm < 110) {
-                feedback.innerHTML = `⚠️ <strong>Pace Warning (${wpm} WPM):</strong> Speaking pace is slightly slow. Try increasing momentum.`;
-            } else if (wpm > 175) {
-                feedback.innerHTML = `⚠️ <strong>Pace Warning (${wpm} WPM):</strong> Speaking pace is fast. Pause between key points to improve clarity.`;
-            } else {
-                feedback.innerHTML = `✨ <strong>Optimal Speaking Pace (${wpm} WPM):</strong> Excellent cadence and clear interview speed!`;
-            }
+        function shareSpeechToLinkedIn() {
+            const text = encodeURIComponent(`I scored a ${currentWpm} WPM speaking pace on my interview fluency test using NextHire Matrix! Audit speech clarity 100% in-browser.`);
+            const url = encodeURIComponent("https://www.nexthirematrix.com/voice-analyzer.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
         }
     </script>
 </body>

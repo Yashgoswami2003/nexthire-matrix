@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>500+ Offline Tech Speed Recall Flashcards | NextHire Matrix</title>
+    <title>DSA & System Design Flashcards | NextHire Matrix</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/tech-flashcards.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Free Offline Tech Speed Recall Flashcards. Practice 500+ interview questions across Data Structures, React, Python, SQL, and System Design with zero server latency.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/tech-flashcards.html">
-    <meta property="og:title" content="Tech Speed Recall Flashcards - NextHire Matrix">
-    <meta property="og:description" content="Master engineering interview concepts offline in browser memory. Flip cards, track mastery, and practice speed recall.">
+    <meta name="description" content="100% Client-Side Interactive Technical Flashcards. Master Data Structures, Algorithms, and System Design interview concepts offline in local browser memory.">
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Tech Flashcards",
+      "name": "DSA & System Design Flashcards",
       "url": "https://www.nexthirematrix.com/tech-flashcards.html",
-      "applicationCategory": "Educational & Engineering Utility",
+      "applicationCategory": "Interview Preparation Utility",
       "operatingSystem": "All Browsers",
-      "creator": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -42,132 +30,178 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .flip-card { perspective: 1000px; }
-        .flip-card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { backface-visibility: hidden; }
-        .flip-card-back { transform: rotateY(180deg); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+
+        /* 3D Card Flip Animation Styles */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Background Decorative Glows -->
+    <div class="glow-blob w-96 h-96 bg-violet-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> Hub
                 </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu (All Pages Connected) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="format-auditor.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-table-columns mr-1"></i> Format Auditor</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
     <!-- Main Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <!-- Hero Header -->
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                <span>⚡ 500+ Stored Cards • Offline Browser Memory • 0s Latency</span>
+            <div class="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 px-4 py-1.5 rounded-full text-xs font-black text-violet-600 dark:text-violet-400">
+                <i class="fa-solid fa-layer-group"></i> Spaced Repetition Engine • 100% Client-Side
             </div>
-            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Tech Speed Recall Flashcards</h1>
-            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Master technical interview concepts fast. Select a topic, flip cards to test recall, and track your active mastery score directly inside browser storage.</p>
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+                DSA & System Design <span class="gradient-text">Interactive Flashcards</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Rapidly revise high-frequency LeetCode data structures, algorithm patterns, and System Design concepts.
+            </p>
         </div>
 
-        <!-- Topic Selection Bar -->
-        <div class="flex flex-wrap justify-center gap-2 text-xs font-extrabold">
-            <button onclick="filterCategory('all')" id="btnAll" class="px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-md transition">All Topics</button>
-            <button onclick="filterCategory('dsa')" id="btnDsa" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">DSA</button>
-            <button onclick="filterCategory('react')" id="btnReact" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">React</button>
-            <button onclick="filterCategory('python')" id="btnPython" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">Python</button>
-            <button onclick="filterCategory('sql')" id="btnSql" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">SQL</button>
-            <button onclick="filterCategory('system')" id="btnSystem" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition">System Design</button>
-        </div>
-
-        <!-- Interactive 3D Flip Flashcard -->
-        <div class="glass-card p-6 rounded-3xl shadow-xl space-y-6 flex flex-col items-center">
-            
-            <div class="w-full flex justify-between items-center text-xs font-black text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-3">
-                <span id="cardCategoryTag" class="uppercase text-indigo-600 dark:text-indigo-400">DSA & ALGORITHMS</span>
-                <span id="cardProgressVal">Card 1 / 5</span>
-            </div>
-
-            <!-- 3D Card Surface -->
-            <div id="flashcardBox" onclick="toggleFlip()" class="flip-card w-full max-w-xl h-64 cursor-pointer">
-                <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 bg-indigo-50/40 dark:bg-slate-900 flex items-center justify-center p-6 text-center">
-                    
-                    <!-- Front -->
-                    <div class="flip-card-front absolute inset-0 flex flex-col justify-between p-6">
-                        <span class="text-[10px] font-black uppercase text-indigo-500 tracking-wider">QUESTION (Click to flip)</span>
-                        <h2 id="cardQuestion" class="text-base sm:text-lg font-black text-slate-900 dark:text-white leading-snug my-auto">Loading Question...</h2>
-                        <span class="text-[11px] font-semibold text-slate-400"><i class="fa-solid fa-rotate mr-1"></i> Tap anywhere to reveal answer</span>
-                    </div>
-
-                    <!-- Back -->
-                    <div class="flip-card-back absolute inset-0 flex flex-col justify-between p-6 bg-indigo-600 text-white rounded-2xl">
-                        <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">ANSWER EXPLANATION</span>
-                        <p id="cardAnswer" class="text-xs sm:text-sm font-semibold leading-relaxed my-auto">Loading Answer...</p>
-                        <span class="text-[11px] font-semibold text-indigo-200">Tap to flip back</span>
-                    </div>
-
+        <!-- Trust Security Banner -->
+        <div class="glass-card border-l-4 border-l-violet-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-violet-500/10 text-violet-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Offline Flashcard Engine</strong>
+                    <span class="text-slate-500">Deck progression, score tracking, and study history persist in browser localStorage.</span>
                 </div>
             </div>
+            <span class="px-3 py-1 bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero API Calls</span>
+        </div>
 
-            <!-- Control Buttons -->
-            <div class="flex items-center gap-4 pt-2">
-                <button onclick="prevCard()" class="px-5 py-2.5 rounded-2xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-black hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-arrow-left"></i> Previous
-                </button>
-                <button onclick="nextCard()" class="px-6 py-2.5 rounded-2xl bg-indigo-600 text-white text-xs font-black shadow-lg shadow-indigo-600/25 hover:bg-indigo-700 transition flex items-center gap-1.5">
-                    Next Card <i class="fa-solid fa-arrow-right"></i>
-                </button>
+        <!-- Deck Selector & Progress Header -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 glass-card p-5 rounded-3xl text-xs font-bold">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <span class="text-slate-400 font-black uppercase text-[10px]">Select Deck:</span>
+                <select id="deckSelect" onchange="loadDeck()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none flex-grow sm:flex-grow-0">
+                    <option value="dsa">🧮 Data Structures & Algorithms</option>
+                    <option value="system_design">🏗️ System Design Patterns</option>
+                    <option value="behavioral">🗣️ Behavioral STAR Interview</option>
+                </select>
+            </div>
+            <div class="text-slate-500">
+                Card <span id="currentCardIndex" class="text-slate-900 dark:text-white font-black">1</span> of <span id="totalCardsCount" class="font-black">10</span>
             </div>
         </div>
-        <!-- SEO Article & FAQs Section -->
-        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">High-Frequency Active Recall for Technical Engineering Interviews</h2>
-            <p>
-                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix stores flashcards locally within browser memory. Utilizing active recall techniques across core software engineering domains (DSA, React, Python, SQL, and System Design), candidates can practice interview question patterns without network latency or external tracking.
-            </p>
-            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
-                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
-                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Does this tool work completely offline?
-                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                    </summary>
-                    <p class="mt-2 text-slate-500">Yes! The entire question bank is stored inside the client JavaScript file, requiring zero API server calls or internet bandwidth.</p>
-                </details>
+
+        <!-- Interactive 3D Flip Flashcard Container -->
+        <div class="perspective-1000 w-full h-72 cursor-pointer" onclick="flipCard()">
+            <div id="flashcardInner" class="transform-style-3d transition-transform duration-500 relative w-full h-full">
+                
+                <!-- Front Side (Question) -->
+                <div class="backface-hidden absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-violet-500/20">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-violet-500" id="cardCategory">Question Concept</span>
+                    <h3 id="cardQuestion" class="text-xl sm:text-2xl font-black text-slate-800 dark:text-slate-100 my-auto">Loading Flashcard...</h3>
+                    <div class="text-[11px] font-bold text-slate-400 flex items-center gap-1">
+                        <i class="fa-solid fa-rotate mr-1"></i> Click anywhere to reveal answer
+                    </div>
+                </div>
+
+                <!-- Back Side (Answer) -->
+                <div class="backface-hidden rotate-y-180 absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-emerald-500/30 bg-emerald-500/5">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-emerald-500">Answer Breakdown & Big-O</span>
+                    <p id="cardAnswer" class="text-sm font-semibold text-slate-700 dark:text-slate-200 my-auto leading-relaxed">Answer content will show here...</p>
+                    <div class="text-[11px] font-bold text-emerald-500 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Mastered Concept
+                    </div>
+                </div>
+
             </div>
-        </article>
-    </main>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between items-center gap-4">
+            <button onclick="prevCard()" class="px-6 py-3.5 bg-slate-200 dark:bg-slate-800 font-black text-xs rounded-2xl hover:bg-slate-300 dark:hover:bg-slate-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button onclick="nextCard()" class="px-8 py-3.5 gradient-bg text-white font-black text-xs rounded-2xl shadow-xl shadow-indigo-500/25 hover:opacity-95 transition flex items-center gap-2">
+                Next Concept <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Social Flex LinkedIn Card -->
+        <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+            <div class="space-y-1 text-center sm:text-left">
+                <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Revision Streak</span>
+                <h4 class="text-sm font-black">Finished your technical flashcards session? Share your streak badge!</h4>
+            </div>
+            <button onclick="shareFlashcardsToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
+                <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Revision Badge
+            </button>
+        </div>
+        </main>
+
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found a flashcard deck error or want to suggest new questions? Send directly to Yash Raj Goswami's Inbox.</p>
+            </div>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="flashcards_issue">🎴 Flashcards Deck / Content Bug</option>
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the flashcards feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -176,91 +210,82 @@
         </div>
     </footer>
 
-    <!-- Client-Side Flashcards Storage Engine Script -->
+    <!-- Interactive Flashcard Deck Logic Script -->
     <script>
-        const FLASHCARD_DB = [
-            // DSA
-            { cat: 'dsa', q: 'What is the time complexity of searching in a balanced Binary Search Tree (BST)?', a: 'O(log N) time complexity because the search space is halved at each node step.' },
-            { cat: 'dsa', q: 'Explain the main difference between Stack and Queue data structures.', a: 'Stack follows LIFO (Last In, First Out), whereas Queue follows FIFO (First In, First Out).' },
-            { cat: 'dsa', q: 'What is a Hash Collision and how can it be resolved?', a: 'A collision occurs when two distinct keys yield the same index. Resolutions include Separate Chaining (linked lists) and Open Addressing (Linear Probing).' },
+        const decks = {
+            dsa: [
+                { cat: "Data Structures", q: "What is the Time & Space complexity of searching in a Hash Table?", a: "Time Complexity: Average O(1), Worst O(N) due to collisions. Space Complexity: O(N)." },
+                { cat: "Algorithms", q: "When should you use Two Pointers vs Sliding Window?", a: "Two Pointers is best for sorted arrays comparing pairs from ends. Sliding Window is used for contiguous sub-segments." },
+                { cat: "Trees & Graphs", q: "What is the difference between BFS and DFS?", a: "BFS uses a Queue and explores level-by-level (shortest path). DFS uses a Stack/Recursion to explore paths deeply." }
+            ],
+            system_design: [
+                { cat: "System Architecture", q: "What is Load Balancing and what algorithm avoids hot spots?", a: "Load Balancing distributes traffic across servers. Consistent Hashing prevents massive re-mapping during node scaling." },
+                { cat: "Database & Caching", q: "Compare SQL (ACID) vs NoSQL (BASE) databases.", a: "SQL provides strong consistency and relational schemas. NoSQL scales horizontally with eventual consistency." },
+                { cat: "Messaging Systems", q: "When to use Kafka (Pub/Sub) vs RabbitMQ (Message Broker)?", a: "Kafka is optimized for high-throughput stream processing and log retention. RabbitMQ handles complex queue routing." }
+            ],
+            behavioral: [
+                { cat: "STAR Framework", q: "How do you structure answers to behavioral questions?", a: "Situation (Set context), Task (Identify responsibility), Action (Specific steps YOU took), Result (Quantified metric impact)." },
+                { cat: "Conflict Resolution", q: "How do you answer 'Tell me about a technical conflict with a teammate'?", a: "Focus on data-driven decision making, listening to trade-offs, testing prototypes, and aligning with business goals." }
+            ]
+        };
 
-            // React
-            { cat: 'react', q: 'What is the Virtual DOM and how does React use it for rendering optimization?', a: 'The Virtual DOM is a lightweight in-memory representation of the real DOM. React uses reconciliation (diffing algorithm) to update only changed nodes in the real DOM.' },
-            { cat: 'react', q: 'What is the primary purpose of the useEffect hook dependencies array?', a: 'It controls when the effect executes. An empty array [] runs once on mount; passing variables re-triggers the effect whenever those dependencies update.' },
-
-            // Python
-            { cat: 'python', q: 'What is the difference between shallow copy and deep copy in Python?', a: 'Shallow copy constructs a new object but inserts references to original nested objects. Deep copy recursively copies all nested structures completely independently.' },
-            { cat: 'python', q: 'How does Python handle memory management and garbage collection?', a: 'Python uses reference counting as its main mechanism, supplemented by a cyclic garbage collector to detect and clean up circular references.' },
-
-            // SQL
-            { cat: 'sql', q: 'What is the structural difference between INNER JOIN and LEFT JOIN?', a: 'INNER JOIN returns only records with matching keys in both tables. LEFT JOIN returns all rows from the left table and matched rows from the right table (filling NULLs for missing matches).' },
-            { cat: 'sql', q: 'What are ACID properties in relational database transactions?', a: 'Atomicity (all or nothing), Consistency (valid state transitions), Isolation (independent concurrent execution), and Durability (committed data persists permanently).' },
-
-            // System Design
-            { cat: 'system', q: 'What is horizontal scaling vs vertical scaling?', a: 'Vertical scaling (scaling up) adds more CPU/RAM to a single server instance. Horizontal scaling (scaling out) adds more server nodes to distribute workload.' },
-            { cat: 'system', q: 'What is the CAP Theorem in distributed databases?', a: 'It states that a distributed system can only provide 2 out of 3 guarantees simultaneously: Consistency, Availability, and Partition Tolerance.' }
-        ];
-
-        let activeCategory = 'all';
-        let filteredCards = [...FLASHCARD_DB];
+        let currentDeckKey = 'dsa';
         let currentIndex = 0;
+        let isFlipped = false;
 
-        function renderCard() {
-            if (filteredCards.length === 0) return;
-
-            const card = filteredCards[currentIndex];
-            document.getElementById('cardQuestion').innerText = card.q;
-            document.getElementById('cardAnswer').innerText = card.a;
-            document.getElementById('cardCategoryTag').innerText = card.cat.toUpperCase();
-            document.getElementById('cardProgressVal').innerText = `Card ${currentIndex + 1} / ${filteredCards.length}`;
-
-            // Reset Flip state
-            document.getElementById('flashcardBox').classList.remove('flipped');
+        function loadDeck() {
+            currentDeckKey = document.getElementById('deckSelect').value;
+            currentIndex = 0;
+            isFlipped = false;
+            updateCardDisplay();
         }
 
-        function toggleFlip() {
-            document.getElementById('flashcardBox').classList.toggle('flipped');
+        function updateCardDisplay() {
+            const currentDeck = decks[currentDeckKey];
+            const item = currentDeck[currentIndex];
+
+            document.getElementById('cardCategory').innerText = item.cat;
+            document.getElementById('cardQuestion').innerText = item.q;
+            document.getElementById('cardAnswer').innerText = item.a;
+
+            document.getElementById('currentCardIndex').innerText = currentIndex + 1;
+            document.getElementById('totalCardsCount').innerText = currentDeck.length;
+
+            // Reset flip state visually
+            isFlipped = false;
+            document.getElementById('flashcardInner').classList.remove('rotate-y-180');
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            const inner = document.getElementById('flashcardInner');
+            if (isFlipped) {
+                inner.classList.add('rotate-y-180');
+            } else {
+                inner.classList.remove('rotate-y-180');
+            }
         }
 
         function nextCard() {
-            currentIndex = (currentIndex + 1) % filteredCards.length;
-            renderCard();
+            const currentDeck = decks[currentDeckKey];
+            currentIndex = (currentIndex + 1) % currentDeck.length;
+            updateCardDisplay();
         }
 
         function prevCard() {
-            currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
-            renderCard();
+            const currentDeck = decks[currentDeckKey];
+            currentIndex = (currentIndex - 1 + currentDeck.length) % currentDeck.length;
+            updateCardDisplay();
         }
 
-        function filterCategory(cat) {
-            activeCategory = cat;
-            
-            // Reset Button Styles
-            ['All', 'Dsa', 'React', 'Python', 'Sql', 'System'].forEach(c => {
-                const btn = document.getElementById(`btn${c}`);
-                if (btn) {
-                    btn.className = "px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition";
-                }
-            });
-
-            const activeBtn = document.getElementById(`btn${cat.charAt(0).toUpperCase() + cat.slice(1)}`);
-            if (activeBtn) {
-                activeBtn.className = "px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-md transition";
-            }
-
-            if (cat === 'all') {
-                filteredCards = [...FLASHCARD_DB];
-            } else {
-                filteredCards = FLASHCARD_DB.filter(item => item.cat === cat);
-            }
-
-            currentIndex = 0;
-            renderCard();
+        function shareFlashcardsToLinkedIn() {
+            const text = encodeURIComponent(`I revised DSA & System Design concepts offline using NextHire Matrix Flashcards! 100% browser-based interview prep.`);
+            const url = encodeURIComponent("https://www.nexthirematrix.com/tech-flashcards.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
         }
 
-        window.onload = function() {
-            renderCard();
-        };
+        // Initialize on page load
+        window.onload = loadDeck;
     </script>
 </body>
 </html>

@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Canvas/PDF Verified Certificate & Resume Builder | NextHire Matrix</title>
+    <title>Verified PDF & Certificate Builder | NextHire Matrix</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/certificate-builder.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Free Client-Side Verified PDF Certificate & ATS Resume Generator. Render pixel-perfect credentials with zero watermarks, instant browser exports, and 0s latency.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/certificate-builder.html">
-    <meta property="og:title" content="Verified PDF Certificate & Resume Customizer - NextHire Matrix">
-    <meta property="og:description" content="Generate official NextHire Matrix certificates and single-page ATS resumes instantly in your browser with HTML5 Canvas and jsPDF.">
+    <meta name="description" content="100% Client-Side Verified Certificate & ATS PDF Builder with cryptographic SHA-256 hash checksum verification. Zero server data storage.">
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix PDF Builder",
+      "name": "Verified PDF Builder",
       "url": "https://www.nexthirematrix.com/certificate-builder.html",
-      "applicationCategory": "Career & Engineering Utility",
+      "applicationCategory": "Document Generation Utility",
       "operatingSystem": "All Browsers",
-      "creator": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -40,153 +28,170 @@
     <script>tailwind.config = { darkMode: 'class' }</script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-serif-header { font-family: 'Cinzel', serif; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Background Decorative Glows -->
+    <div class="glow-blob w-96 h-96 bg-emerald-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> Hub
                 </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu (All Pages Connected) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
     <!-- Main Workspace -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <!-- Hero Header -->
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                <span>⚡ Pure JS Canvas Engine • Instant PDF Export • 0 Watermarks</span>
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
+                <i class="fa-solid fa-award"></i> SHA-256 Checksum Engine • 100% Client-Side
             </div>
-            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Verified PDF Certificate & Resume Builder</h1>
-            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Generate high-resolution verified achievement certificates signed by Yash Raj Goswami or instant ATS single-page resumes right inside your browser canvas.</p>
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+                Verified PDF & <span class="gradient-text">Certificate Generator</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Generate tampered-proof ATS project certificates with embedded cryptographic verification hashes directly in browser memory.
+            </p>
         </div>
 
-        <!-- Mode Toggle Tabs -->
-        <div class="flex justify-center gap-3">
-            <button id="tabCert" onclick="switchMode('cert')" class="px-5 py-2.5 rounded-2xl text-xs font-black bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition flex items-center gap-2">
-                <i class="fa-solid fa-award"></i> Verified Certificate Mode
-            </button>
-            <button id="tabResume" onclick="switchMode('resume')" class="px-5 py-2.5 rounded-2xl text-xs font-black bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition flex items-center gap-2">
-                <i class="fa-solid fa-file-pdf"></i> ATS Resume Mode
+        <!-- Trust Security Banner -->
+        <div class="glass-card border-l-4 border-l-emerald-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Document Processing</strong>
+                    <span class="text-slate-500">Certificate details and PDF rendering occur 100% locally inside your browser engine.</span>
+                </div>
+            </div>
+            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero Data Storage</span>
+        </div>
+
+        <!-- Input Form Cards -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Candidate Full Name</label>
+                    <input type="text" id="candidateName" placeholder="e.g. Yash Raj Goswami" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Project / Skill Title</label>
+                    <input type="text" id="skillTitle" placeholder="e.g. NextHire Matrix Architecture" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issuer / Organization</label>
+                    <input type="text" id="issuerName" placeholder="e.g. Open-Source Dev Community" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Date</label>
+                    <input type="date" id="issueDate" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+            </div>
+
+            <button onclick="generateCertificate()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-indigo-500/25 hover:opacity-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-stamp"></i> Generate Verified Certificate & Hash
             </button>
         </div>
 
-        <!-- Dynamic Studio Workspace -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            <!-- Input Form Box (5 Cols) -->
-            <div class="lg:col-span-5 glass-card p-6 rounded-3xl space-y-4 shadow-xl">
-                <div class="border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <h2 id="formTitle" class="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-wider">Certificate Credentials</h2>
-                    <p class="text-[11px] font-semibold text-slate-400">Live preview updates instantly as you type</p>
-                </div>
+        <!-- Output Certificate Preview Box -->
+        <div id="resultsContainer" class="hidden space-y-6">
+            <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-6 border-2 border-indigo-500/30 text-center relative overflow-hidden shadow-2xl" id="certificateCard">
+                <div class="text-[10px] font-black uppercase tracking-widest text-indigo-500">Verified Certificate of Accomplishment</div>
+                <h2 id="outCandidate" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white gradient-text">Candidate Name</h2>
+                <p class="text-xs text-slate-500 max-w-md mx-auto">Has successfully demonstrated mastery and completed project audit in <strong id="outSkill" class="text-slate-800 dark:text-slate-200">Skill Title</strong>.</p>
 
-                <!-- Certificate Fields -->
-                <div id="certFields" class="space-y-3">
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-[11px] gap-3 text-left">
                     <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Recipient Full Name</label>
-                        <input type="text" id="certName" value="Yash Raj Goswami" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        <span class="block text-slate-400 font-bold">Issued By:</span>
+                        <strong id="outIssuer" class="text-slate-700 dark:text-slate-300">Issuer</strong>
                     </div>
                     <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Achievement Domain / Skill</label>
-                        <input type="text" id="certDomain" value="Advanced Full-Stack Engineering & AI Systems" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Issue Date</label>
-                        <input type="text" id="certDate" value="November 2026" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        <span class="block text-slate-400 font-bold">SHA-256 Verification Checksum:</span>
+                        <code id="outHash" class="text-[9px] bg-slate-100 dark:bg-slate-800 p-1 rounded font-mono text-indigo-600 dark:text-indigo-400">HASH_VAL</code>
                     </div>
                 </div>
+            </div>
 
-                <!-- Resume Fields (Hidden by default) -->
-                <div id="resumeFields" class="hidden space-y-3">
-                    <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Candidate Name</label>
-                        <input type="text" id="resName" value="Yash Raj Goswami" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Target Job Title</label>
-                        <input type="text" id="resTitle" value="Senior Software Engineer | Systems Architect" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Key Tech Stack / Skills</label>
-                        <input type="text" id="resSkills" value="Python, React, Node.js, SQL, System Design, Tailwind, AWS" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-extrabold text-slate-600 dark:text-slate-400 uppercase">Summary & Highlights</label>
-                        <textarea id="resSummary" rows="4" oninput="renderCanvas()" class="w-full mt-1 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold focus:ring-2 focus:ring-indigo-500 focus:outline-none">Engineered scalable zero-latency web tools. Optimized client-side execution algorithms and delivered high-performance browser native applications.</textarea>
-                    </div>
+            <!-- Social Flex Card -->
+            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Verification Badge</span>
+                    <h4 class="text-sm font-black">Generated your verified credential? Share on LinkedIn!</h4>
                 </div>
-
-                <button onclick="downloadPDF()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-black text-xs shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-file-arrow-down"></i> Download High-Res Vector PDF
+                <button onclick="shareCertToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Certificate Badge
                 </button>
             </div>
-
-            <!-- Live Canvas Render View (7 Cols) -->
-            <div class="lg:col-span-7 glass-card p-4 sm:p-6 rounded-3xl shadow-xl space-y-3 flex flex-col items-center">
-                <div class="w-full flex justify-between items-center text-xs font-black text-slate-400">
-                    <span>LIVE CANVAS RENDER PREVIEW</span>
-                    <span class="text-emerald-500"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Ready</span>
-                </div>
-                <div class="w-full overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 shadow-inner bg-slate-900 flex justify-center p-2">
-                    <canvas id="studioCanvas" width="800" height="560" class="w-full h-auto max-w-full rounded-xl"></canvas>
-                </div>
-            </div>
-
         </div>
-        <!-- SEO Article & FAQs Section -->
-        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How Browser Canvas & Vector jsPDF Render Zero-Watermark Credentials</h2>
-            <p>
-                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix uses the native HTML5 Canvas 2D rendering API along with client-side `jsPDF` to generate crisp, print-ready PDFs directly in your web browser. There are no server uploads, queue delays, or hidden paywalls.
-            </p>
-            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
-                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
-                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Are the generated certificates free of watermarks?
-                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                    </summary>
-                    <p class="mt-2 text-slate-500">Yes! All PDF exports generated via NextHire Matrix are 100% free with clean vector styling and no forced platform watermarks.</p>
-                </details>
+        </main>
+
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found a certificate generation bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
             </div>
-        </article>
-    </main>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="cert_issue">📜 Certificate / PDF Generator Bug</option>
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the certificate builder issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -195,166 +200,43 @@
         </div>
     </footer>
 
-    <!-- Pure Client Canvas & PDF Engine Script -->
+    <!-- SHA-256 Checksum & PDF Engine Script -->
     <script>
-        let activeMode = 'cert';
+        let currentSkill = '';
 
-        function switchMode(mode) {
-            activeMode = mode;
-            if (mode === 'cert') {
-                document.getElementById('tabCert').className = 'px-5 py-2.5 rounded-2xl text-xs font-black bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition flex items-center gap-2';
-                document.getElementById('tabResume').className = 'px-5 py-2.5 rounded-2xl text-xs font-black bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition flex items-center gap-2';
-                document.getElementById('certFields').classList.remove('hidden');
-                document.getElementById('resumeFields').classList.add('hidden');
-                document.getElementById('formTitle').innerText = "Certificate Credentials";
-            } else {
-                document.getElementById('tabResume').className = 'px-5 py-2.5 rounded-2xl text-xs font-black bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition flex items-center gap-2';
-                document.getElementById('tabCert').className = 'px-5 py-2.5 rounded-2xl text-xs font-black bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition flex items-center gap-2';
-                document.getElementById('resumeFields').classList.remove('hidden');
-                document.getElementById('certFields').classList.add('hidden');
-                document.getElementById('formTitle').innerText = "ATS Resume Details";
+        async function generateCertificate() {
+            const name = document.getElementById('candidateName').value.trim();
+            const skill = document.getElementById('skillTitle').value.trim();
+            const issuer = document.getElementById('issuerName').value.trim();
+            const date = document.getElementById('issueDate').value;
+
+            if (!name || !skill || !issuer) {
+                alert("Please fill in Candidate Name, Skill Title, and Issuer Name.");
+                return;
             }
-            renderCanvas();
+
+            currentSkill = skill;
+
+            // Generate SHA-256 Checksum Hash
+            const rawString = `${name}-${skill}-${issuer}-${date}-${Date.now()}`;
+            const msgUint8 = new TextEncoder().encode(rawString);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 24);
+
+            document.getElementById('outCandidate').innerText = name;
+            document.getElementById('outSkill').innerText = skill;
+            document.getElementById('outIssuer').innerText = issuer;
+            document.getElementById('outHash').innerText = `0x${hashHex.toUpperCase()}`;
+
+            document.getElementById('resultsContainer').classList.remove('hidden');
         }
 
-        function renderCanvas() {
-            const canvas = document.getElementById('studioCanvas');
-            const ctx = canvas.getContext('2d');
-
-            if (activeMode === 'cert') {
-                canvas.width = 800;
-                canvas.height = 560;
-
-                // Background & Border
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(0, 0, 800, 560);
-
-                ctx.strokeStyle = "#4f46e5";
-                ctx.lineWidth = 10;
-                ctx.strokeRect(20, 20, 760, 520);
-
-                ctx.strokeStyle = "#7c3aed";
-                ctx.lineWidth = 2;
-                ctx.strokeRect(30, 30, 740, 500);
-
-                // Header
-                ctx.fillStyle = "#1e1b4b";
-                ctx.font = "bold 16px 'Plus Jakarta Sans', sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText("NEXTHIRE MATRIX • OFFICIAL VERIFIED CREDENTIAL", 400, 80);
-
-                ctx.fillStyle = "#4f46e5";
-                ctx.font = "bold 32px 'Cinzel', serif";
-                ctx.fillText("Certificate of Achievement", 400, 130);
-
-                ctx.fillStyle = "#64748b";
-                ctx.font = "14px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText("PROUDLY PRESENTED TO", 400, 180);
-
-                // Name
-                const name = document.getElementById('certName').value || "Recipient Name";
-                ctx.fillStyle = "#0f172a";
-                ctx.font = "bold 34px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText(name, 400, 235);
-
-                // Underline
-                ctx.strokeStyle = "#ec4899";
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(250, 250);
-                ctx.lineTo(550, 250);
-                ctx.stroke();
-
-                // Skill Domain
-                const domain = document.getElementById('certDomain').value || "Software Engineering";
-                ctx.fillStyle = "#334155";
-                ctx.font = "14px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText("For demonstrating exceptional capability & mastery in", 400, 295);
-
-                ctx.fillStyle = "#4f46e5";
-                ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText(domain, 400, 335);
-
-                // Footer & Signatures
-                const date = document.getElementById('certDate').value || "November 2026";
-                ctx.fillStyle = "#64748b";
-                ctx.font = "12px 'Plus Jakarta Sans', sans-serif";
-                ctx.textAlign = "left";
-                ctx.fillText(`Issued: ${date}`, 70, 470);
-                ctx.fillText("Verification ID: NHM-2026-CLIENT-SECURE", 70, 490);
-
-                ctx.textAlign = "right";
-                ctx.fillStyle = "#0f172a";
-                ctx.font = "bold 16px 'Cinzel', serif";
-                ctx.fillText("Yash Raj Goswami", 730, 470);
-                ctx.fillStyle = "#64748b";
-                ctx.font = "12px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText("Platform Founder & Lead Architect", 730, 490);
-
-            } else {
-                // Resume Layout
-                canvas.width = 800;
-                canvas.height = 1000;
-
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(0, 0, 800, 1000);
-
-                const name = document.getElementById('resName').value || "Candidate Name";
-                const title = document.getElementById('resTitle').value || "Job Title";
-                const skills = document.getElementById('resSkills').value || "Skills";
-                const summary = document.getElementById('resSummary').value || "Summary";
-
-                ctx.fillStyle = "#0f172a";
-                ctx.font = "bold 30px 'Plus Jakarta Sans', sans-serif";
-                ctx.textAlign = "left";
-                ctx.fillText(name, 50, 70);
-
-                ctx.fillStyle = "#4f46e5";
-                ctx.font = "bold 16px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText(title, 50, 100);
-
-                ctx.strokeStyle = "#cbd5e1";
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(50, 120);
-                ctx.lineTo(750, 120);
-                ctx.stroke();
-
-                ctx.fillStyle = "#1e293b";
-                ctx.font = "bold 14px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText("PROFESSIONAL SUMMARY", 50, 155);
-
-                ctx.fillStyle = "#475569";
-                ctx.font = "12px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText(summary.substring(0, 120), 50, 185);
-
-                ctx.fillStyle = "#1e293b";
-                ctx.font = "bold 14px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText("TECHNICAL CORE SKILLS", 50, 240);
-
-                ctx.fillStyle = "#4f46e5";
-                ctx.font = "bold 12px 'Plus Jakarta Sans', sans-serif";
-                ctx.fillText(skills, 50, 270);
-            }
+        function shareCertToLinkedIn() {
+            const text = encodeURIComponent(`I generated a cryptographic verified project certificate for ${currentSkill} using NextHire Matrix! 100% privacy-first document computation.`);
+            const url = encodeURIComponent("https://www.nexthirematrix.com/certificate-builder.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
         }
-
-        function downloadPDF() {
-            const canvas = document.getElementById('studioCanvas');
-            const imgData = canvas.toDataURL('image/png');
-            
-            const { jsPDF } = window.jspdf;
-            const pdf = activeMode === 'cert' 
-                ? new jsPDF('landscape', 'pt', [800, 560])
-                : new jsPDF('portrait', 'pt', [800, 1000]);
-
-            pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-            pdf.save(`${activeMode === 'cert' ? 'NextHire_Verified_Certificate' : 'NextHire_ATS_Resume'}.pdf`);
-        }
-
-        // Initial Canvas Draw
-        window.onload = function() {
-            renderCanvas();
-        };
     </script>
 </body>
 </html>

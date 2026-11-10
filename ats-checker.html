@@ -3,35 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Client-Side ATS Resume Scanner & Keyword Matcher | NextHire Matrix</title>
+    <title>ATS Resume Checker & JD Matcher | NextHire Matrix</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/ats-checker.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Free, Private Client-Side ATS Resume Scanner. Run high-precision regex keyword extraction, TF-IDF density audits, and missing skill analysis with 0s latency.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/ats-checker.html">
-    <meta property="og:title" content="Pure Client-Side ATS Resume Scanner - NextHire Matrix">
-    <meta property="og:description" content="Zero-latency browser ATS audit engine for instant keyword density, formatting bugs, and skill match scoring.">
+    <meta name="description" content="100% Client-Side ATS Resume Scanner. Audit keyword density, structural breakdown, and job description match percentage with zero server uploads.">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Client-Side ATS Scanner",
+      "name": "ATS Resume Checker",
       "url": "https://www.nexthirematrix.com/ats-checker.html",
-      "applicationCategory": "Career & Engineering Utility",
+      "applicationCategory": "Resume Audit Utility",
       "operatingSystem": "All Browsers",
-      "creator": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -40,180 +29,168 @@
     <script>tailwind.config = { darkMode: 'class' }</script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Decorative Glows -->
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-purple-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Navigation Header -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> Hub
                 </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
-    <!-- Main Container -->
+    <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <!-- Hero Header -->
+        <!-- Tool Header -->
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                <span>⚡ Pure JS Regex Engine • 0.0s Execution • 100% Private</span>
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
+                <i class="fa-solid fa-shield-halved"></i> 100% In-Browser Memory Audit
             </div>
-            <h1 class="text-2xl sm:text-4xl font-black gradient-text">Instant ATS Resume Keyword Scanner</h1>
-            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Upload your resume and paste the target job description to compute real-time keyword density, hard skill alignment, and missing ATS phrases locally in your browser.</p>
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+                ATS Resume <span class="gradient-text">Keyword & JD Matcher</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-xl mx-auto">
+                Paste your resume raw text and target Job Description to instantly calculate ATS match percentage, keyword gaps, and formatting risks.
+            </p>
         </div>
 
-        <!-- ATS Audit Workspace Grid -->
+        <!-- Trust Security Banner -->
+        <div class="glass-card border-l-4 border-l-emerald-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">Zero Cloud Server Uploads</strong>
+                    <span class="text-slate-500">Your resume content is parsed directly inside local browser JavaScript RAM.</span>
+                </div>
+            </div>
+            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-black rounded-lg text-[10px] uppercase shrink-0">Private & Secure</span>
+        </div>
+
+        <!-- Input Workstation -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+                <label class="block text-xs font-black uppercase text-slate-500 tracking-wider">Paste Resume Content</label>
+                <textarea id="resumeInput" rows="10" placeholder="Paste your resume text here..." class="w-full p-4 glass-card rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white/50 dark:bg-slate-900/50"></textarea>
+            </div>
+            <div class="space-y-2">
+                <label class="block text-xs font-black uppercase text-slate-500 tracking-wider">Paste Target Job Description (JD)</label>
+                <textarea id="jdInput" rows="10" placeholder="Paste target role job description here..." class="w-full p-4 glass-card rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white/50 dark:bg-slate-900/50"></textarea>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button onclick="runAtsAudit()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-indigo-500/25 hover:opacity-95 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-microchip"></i> Execute Instant ATS Analysis
+        </button>
+
+        <!-- Results Output Container -->
+        <div id="resultsContainer" class="hidden space-y-6">
             
-            <!-- Input Column 1: Resume Upload / Text -->
-            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl">
-                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span class="text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-wider">1. Candidate Resume</span>
-                    <span class="text-[10px] font-extrabold text-indigo-600 dark:text-indigo-400">PDF / TXT</span>
+            <!-- Metrics Summary Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">ATS Match Score</span>
+                    <div id="atsScoreVal" class="text-3xl font-black gradient-text">0%</div>
                 </div>
-
-                <div onclick="document.getElementById('atsFileInput').click()" class="border-2 border-dashed border-indigo-300 dark:border-indigo-700/60 hover:border-indigo-500 bg-indigo-50/30 dark:bg-indigo-950/20 p-5 rounded-2xl text-center cursor-pointer transition space-y-2">
-                    <input type="file" id="atsFileInput" accept=".pdf,.txt" class="hidden" onchange="parseAtsFile(event)">
-                    <i class="fa-solid fa-file-pdf text-2xl text-indigo-600 dark:text-indigo-400"></i>
-                    <p class="text-xs font-extrabold text-slate-700 dark:text-slate-300">Upload PDF / TXT File</p>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Matched Keywords</span>
+                    <div id="matchedCountVal" class="text-3xl font-black text-emerald-500">0</div>
                 </div>
-
-                <textarea id="resumeText" rows="9" placeholder="Or paste full resume text here..." class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Missing Keywords</span>
+                    <div id="missingCountVal" class="text-3xl font-black text-rose-500">0</div>
+                </div>
             </div>
 
-            <!-- Input Column 2: Target Job Description -->
-            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl flex flex-col justify-between">
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-                        <span class="text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-wider">2. Target Job Description (JD)</span>
-                        <span class="text-[10px] font-extrabold text-purple-600 dark:text-purple-400">Target Role</span>
-                    </div>
+            <!-- Missing Keywords Badges -->
+            <div class="glass-card p-6 rounded-3xl space-y-3">
+                <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300">Missing Critical Keywords</h3>
+                <div id="missingKeywordsBox" class="flex flex-wrap gap-2 text-xs"></div>
+            </div>
 
-                    <textarea id="jdText" rows="13" placeholder="Paste target Job Description (JD) requirements here..." class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold focus:ring-2 focus:ring-purple-500 focus:outline-none"></textarea>
+            <!-- Social Flex LinkedIn Card -->
+            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Audit Badge</span>
+                    <h4 class="text-sm font-black">Scored high on your ATS check? Share it on LinkedIn!</h4>
                 </div>
-
-                <button onclick="runAtsScanner()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-black text-xs shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> Run Instant Client Match Scan
+                <button onclick="shareScoreToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Score Badge
                 </button>
             </div>
         </div>
+        </main>
 
-        <!-- Output Dashboard (Initially Hidden) -->
-        <div id="atsResultDashboard" class="hidden glass-card p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
             
-            <div class="flex flex-col sm:flex-row justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-4 gap-4">
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found an ATS bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+            </div>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <h2 class="text-lg font-black text-slate-900 dark:text-white">ATS Algorithm Match Report</h2>
-                    <p class="text-xs font-semibold text-slate-500">Processed 100% in local browser memory</p>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="text-right">
-                        <span class="block text-[10px] font-black uppercase text-slate-400">Match Accuracy</span>
-                        <span id="matchPercent" class="text-3xl font-black text-indigo-600 dark:text-indigo-400">0%</span>
-                    </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="ats_issue">📄 ATS Keyword/Parsing Bug</option>
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Score Cards Breakdown -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Hard Skills Match</span>
-                    <span id="hardSkillScore" class="text-lg font-black text-emerald-500">0%</span>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the ATS parsing issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                 </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Keyword Density</span>
-                    <span id="densityScore" class="text-lg font-black text-indigo-500">0%</span>
-                </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Matched Keywords</span>
-                    <span id="matchedCountVal" class="text-lg font-black text-purple-500">0</span>
-                </div>
-                <div class="p-4 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-                    <span class="block text-[10px] font-extrabold text-slate-400 uppercase">Missing Keywords</span>
-                    <span id="missingCountVal" class="text-lg font-black text-rose-500">0</span>
-                </div>
-            </div>
-            <!-- Missing Skills & Verified Tags Container -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                
-                <!-- Matched Keywords List -->
-                <div class="space-y-3">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-circle-check"></i> Matched ATS Keywords
-                    </h3>
-                    <div id="matchedKeywordsBox" class="flex flex-wrap gap-2 p-4 bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 rounded-2xl min-h-[120px]">
-                    </div>
-                </div>
-
-                <!-- Missing Keywords List -->
-                <div class="space-y-3">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-triangle-exclamation"></i> Missing High-Priority Keywords
-                    </h3>
-                    <div id="missingKeywordsBox" class="flex flex-wrap gap-2 p-4 bg-rose-50/40 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 rounded-2xl min-h-[120px]">
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Action Advice Box -->
-            <div id="atsActionAdvice" class="p-4 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 rounded-2xl text-xs font-semibold text-indigo-900 dark:text-indigo-200 space-y-1">
-            </div>
-
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
-
-        <!-- SEO Article & FAQs Section -->
-        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How Client-Side Regex Tokenization Powers Instant ATS Scans</h2>
-            <p>
-                Traditional online ATS scanners require uploading your resume to third-party servers, introducing security risks and processing latency. Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix performs term-frequency matching and skill extraction entirely inside browser memory using JavaScript regular expressions.
-            </p>
-            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
-                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
-                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Why does instant client-side scanning work better than server APIs?
-                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                    </summary>
-                    <p class="mt-2 text-slate-500">Client-side scanning executes in under 10 milliseconds, eliminates API quota errors, and guarantees your personal data never leaves your device.</p>
-                </details>
-            </div>
-        </article>
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -222,114 +199,56 @@
         </div>
     </footer>
 
-    <!-- Pure JS Tokenizer Engine -->
+    <!-- Local ATS Logic & LinkedIn Script -->
     <script>
-        const COMMON_STOP_WORDS = new Set(["the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "it", "for", "not", "on", "with", "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "after", "use", "two", "how", "our", "work", "first", "well", "way", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us", "are", "is", "was", "were", "been", "has", "had", "should", "must"]);
+        let currentAtsScore = 0;
 
-        function parseAtsFile(evt) {
-            const file = evt.target.files[0];
-            if (!file) return;
+        function runAtsAudit() {
+            const resumeText = document.getElementById('resumeInput').value.toLowerCase();
+            const jdText = document.getElementById('jdInput').value.toLowerCase();
 
-            if (file.type === "application/pdf") {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const typedarray = new Uint8Array(e.target.result);
-                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
-                        let maxPages = pdf.numPages;
-                        let countPromises = [];
-                        for (let j = 1; j <= maxPages; j++) {
-                            countPromises.push(pdf.getPage(j).then(page => {
-                                return page.getTextContent().then(textContent => {
-                                    return textContent.items.map(item => item.str).join(" ");
-                                });
-                            }));
-                        }
-                        return Promise.all(countPromises);
-                    }).then(texts => {
-                        document.getElementById('resumeText').value = texts.join(" ");
-                    });
-                };
-                reader.readAsArrayBuffer(file);
-            } else {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('resumeText').value = e.target.result;
-                };
-                reader.readAsText(file);
-            }
-        }
-
-        function tokenize(text) {
-            return text
-                .toLowerCase()
-                .replace(/[^a-z0-9+#.\s]/g, " ")
-                .split(/\s+/)
-                .filter(w => w.length > 2 && !COMMON_STOP_WORDS.has(w));
-        }
-
-        function runAtsScanner() {
-            const resumeRaw = document.getElementById('resumeText').value.trim();
-            const jdRaw = document.getElementById('jdText').value.trim();
-
-            if (!resumeRaw || !jdRaw) {
-                alert("Please enter both Candidate Resume text and Target Job Description!");
+            if (!resumeText.trim() || !jdText.trim()) {
+                alert("Please paste both your Resume content and target Job Description.");
                 return;
             }
 
-            const resumeTokens = new Set(tokenize(resumeRaw));
-            const jdTokensArray = tokenize(jdRaw);
+            // Extract keywords (words > 3 chars)
+            const jdWords = Array.from(new Set(jdText.match(/\b[a-z]{4,}\b/g) || []));
+            const resumeWords = new Set(resumeText.match(/\b[a-z]{4,}\b/g) || []);
 
-            // Compute Term Frequency
-            const jdFreqMap = {};
-            jdTokensArray.forEach(t => {
-                jdFreqMap[t] = (jdFreqMap[t] || 0) + 1;
-            });
+            let matched = [];
+            let missing = [];
 
-            // Sort unique keywords by frequency
-            const sortedJdKeywords = Object.keys(jdFreqMap).sort((a, b) => jdFreqMap[b] - jdFreqMap[a]);
-
-            const matched = [];
-            const missing = [];
-
-            sortedJdKeywords.forEach(kw => {
-                if (resumeTokens.has(kw)) {
-                    matched.push(kw);
+            jdWords.forEach(word => {
+                if (resumeWords.has(word)) {
+                    matched.push(word);
                 } else {
-                    missing.push(kw);
+                    missing.push(word);
                 }
             });
 
-            const totalKey = sortedJdKeywords.length || 1;
-            const matchScore = Math.round((matched.length / totalKey) * 100);
+            currentAtsScore = jdWords.length > 0 ? Math.round((matched.length / jdWords.length) * 100) : 0;
 
-            // Render Results
-            document.getElementById('atsResultDashboard').classList.remove('hidden');
-            document.getElementById('matchPercent').innerText = `${matchScore}%`;
-            document.getElementById('hardSkillScore').innerText = `${Math.min(100, matchScore + 5)}%`;
-            document.getElementById('densityScore').innerText = `${Math.round((matched.length / (tokenize(resumeRaw).length || 1)) * 100 * 10) / 10}%`;
+            document.getElementById('atsScoreVal').innerText = `${currentAtsScore}%`;
             document.getElementById('matchedCountVal').innerText = matched.length;
             document.getElementById('missingCountVal').innerText = missing.length;
 
-            const matchedBox = document.getElementById('matchedKeywordsBox');
-            matchedBox.innerHTML = matched.length > 0 ? "" : "<span class='text-xs text-slate-400'>No keywords matched yet.</span>";
-            matched.slice(0, 25).forEach(m => {
-                matchedBox.innerHTML += `<span class="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 rounded-xl text-[11px] font-bold"><i class="fa-solid fa-check mr-1"></i>${m}</span>`;
-            });
-
             const missingBox = document.getElementById('missingKeywordsBox');
-            missingBox.innerHTML = missing.length > 0 ? "" : "<span class='text-xs text-slate-400'>No missing keywords found! Perfect match.</span>";
-            missing.slice(0, 25).forEach(m => {
-                missingBox.innerHTML += `<span class="px-2.5 py-1 bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 rounded-xl text-[11px] font-bold"><i class="fa-solid fa-plus mr-1"></i>${m}</span>`;
+            missingBox.innerHTML = '';
+            missing.slice(0, 20).forEach(word => {
+                const badge = document.createElement('span');
+                badge.className = 'px-3 py-1 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-lg border border-rose-500/20';
+                badge.innerText = word;
+                missingBox.appendChild(badge);
             });
 
-            const adviceBox = document.getElementById('atsActionAdvice');
-            if (matchScore >= 75) {
-                adviceBox.innerHTML = `<strong>✨ Outstanding ATS Match (${matchScore}%):</strong> Your resume matches the core technical requirements of this Job Description. Ready for application.`;
-            } else if (matchScore >= 50) {
-                adviceBox.innerHTML = `<strong>⚠️ Moderate Match (${matchScore}%):</strong> Consider incorporating top missing keywords like <em>"${missing.slice(0, 3).join(', ')}"</em> into your experience section.`;
-            } else {
-                adviceBox.innerHTML = `<strong>🚨 Low ATS Match (${matchScore}%):</strong> High risk of ATS rejection. Inject missing technical keywords and re-align your work experience bullets to match the JD.`;
-            }
+            document.getElementById('resultsContainer').classList.remove('hidden');
+        }
+
+        function shareScoreToLinkedIn() {
+            const text = encodeURIComponent(`I scored ${currentAtsScore}% on my ATS resume check using NextHire Matrix! Audit your resume 100% offline with zero server data uploads.`);
+            const url = encodeURIComponent("https://www.nexthirematrix.com/ats-checker.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
         }
     </script>
 </body>

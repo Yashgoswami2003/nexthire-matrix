@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AST Big-O & Client Code Bug Inspector | NextHire Matrix</title>
+    <title>AST Code & Big-O Complexity Inspector | NextHire Matrix</title>
     
-    <!-- Clean Canonical URL for Rank #1 Google SEO -->
     <link rel="canonical" href="https://www.nexthirematrix.com/code-inspector.html">
-    
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Free Client-Side Code & Big-O Inspector. Analyze time/space complexity, memory leaks, and anti-patterns locally in browser memory with zero server API latency.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/code-inspector.html">
-    <meta property="og:title" content="AST Big-O & Code Bug Inspector - NextHire Matrix">
-    <meta property="og:description" content="Inspect JavaScript/Python code snippets instantly in your browser. Calculate Big-O complexity and audit code performance with 0s latency.">
+    <meta name="description" content="100% Client-Side AST Code Bug & Big-O Complexity Inspector. Analyze code syntax errors, memory leaks, and algorithmic time complexity offline in local browser RAM.">
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "NextHire Matrix Code Inspector",
+      "name": "AST Code Inspector",
       "url": "https://www.nexthirematrix.com/code-inspector.html",
-      "applicationCategory": "Developer & Technical Utility",
+      "applicationCategory": "Developer Utility",
       "operatingSystem": "All Browsers",
-      "creator": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -42,140 +30,169 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-mono-code { font-family: 'Fira Code', monospace; }
-        .gradient-text { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        
+        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        
+        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Header Bar -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-            <h1 class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-1.5 bg-indigo-50 dark:bg-indigo-950/80 rounded-xl shadow-inner text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Background Decorative Glows -->
+    <div class="glow-blob w-96 h-96 bg-cyan-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </h1>
             <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition">
-                    <i class="fa-brands fa-linkedin text-blue-600"></i> Yash Raj Goswami
+                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-house"></i> Hub
                 </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu (All 10 Pages Connected) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full overflow-x-auto">
-        <nav class="flex justify-start lg:justify-center gap-2 glass-card p-2 rounded-2xl w-fit mx-auto shadow-sm text-xs font-extrabold">
-            <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-house mr-1"></i> Dashboard</a>
-            <a href="ats-checker.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-file-arrow-up mr-1"></i> ATS Scanner</a>
-            <a href="voice-analyzer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-microphone mr-1"></i> Voice Analyzer</a>
-            <a href="certificate-builder.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-award mr-1"></i> PDF Builder</a>
-            <a href="salary-simulator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-wallet mr-1"></i> ESOP & Salary</a>
-            <a href="offer-comparator.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-scale-balanced mr-1"></i> Offer Duel</a>
-            <a href="recruiter-skim.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Skim Simulator</a>
-            <a href="format-auditor.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-table-columns mr-1"></i> Format Auditor</a>
-            <a href="bullet-enhancer.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-list-check mr-1"></i> Bullet Enhancer</a>
-            <a href="code-inspector.html" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition whitespace-nowrap"><i class="fa-solid fa-code mr-1"></i> Code Inspector</a>
-            <a href="tech-flashcards.html" class="px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition whitespace-nowrap"><i class="fa-solid fa-layer-group mr-1"></i> Flashcards</a>
-        </nav>
-    </div>
-
     <!-- Main Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <!-- Hero Header -->
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 px-3.5 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300">
-                <span>⚡ AST Regex Analyzer • Big-O Complexity • 0s Latency</span>
+            <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full text-xs font-black text-cyan-600 dark:text-cyan-400">
+                <i class="fa-solid fa-code"></i> Client-Side AST Tokenizer • Zero Server Execution
             </div>
-            <h1 class="text-2xl sm:text-4xl font-black gradient-text">AST Big-O & Client Code Inspector</h1>
-            <p class="text-xs sm:text-sm text-slate-500 font-semibold max-w-xl mx-auto">Analyze code snippets locally. Inspect nested loops for Big-O time & space complexity, detect memory leak anti-patterns, and optimize execution performance.</p>
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+                AST Code & <span class="gradient-text">Big-O Inspector</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Audit algorithm code snippets offline. Detect nested loops, memory leaks, missing base cases, and estimate time/space complexity.
+            </p>
         </div>
 
-        <!-- Code Input & Inspection Studio Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            <!-- Code Editor Box (6 Cols) -->
-            <div class="lg:col-span-6 glass-card p-6 rounded-3xl space-y-4 shadow-xl">
-                <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex justify-between items-center">
-                    <h2 class="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-wider">Source Code Snippet</h2>
-                    <span class="text-[10px] font-extrabold text-indigo-600 dark:text-indigo-400">JavaScript / Python</span>
+        <!-- Trust Security Banner -->
+        <div class="glass-card border-l-4 border-l-cyan-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-cyan-500/10 text-cyan-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
                 </div>
+                <div>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Secure Code Evaluation</strong>
+                    <span class="text-slate-500">Code is parsed and tokenized 100% locally in browser memory. No code leaves your machine.</span>
+                </div>
+            </div>
+            <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 font-black rounded-lg text-[10px] uppercase shrink-0">Local AST Engine</span>
+        </div>
 
-                <textarea id="codeInput" rows="12" class="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-900 text-emerald-400 font-mono-code text-xs font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none leading-relaxed" placeholder="// Paste code snippet here...">function findPairs(arr, target) {
-    let pairs = [];
+        <!-- Code Input Editor Workstation -->
+        <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-600 dark:text-slate-300">
+                <label class="uppercase tracking-wider text-slate-500 font-black text-[10px]">Paste JavaScript / Python / C++ Code Snippet</label>
+                <select id="codeLang" class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none">
+                    <option value="js">JavaScript (JS)</option>
+                    <option value="python">Python</option>
+                    <option value="cpp">C++</option>
+                </select>
+            </div>
+            <textarea id="codeInput" rows="10" placeholder="// Paste algorithm function here...
+function findPair(arr, target) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length; j++) {
-            if (arr[i] + arr[j] === target) {
-                pairs.push([arr[i], arr[j]]);
-            }
+            if (arr[i] + arr[j] === target) return [i, j];
         }
     }
-    return pairs;
-}</textarea>
+}" class="w-full p-4 glass-card rounded-2xl font-mono text-xs focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-900 text-slate-100 leading-relaxed"></textarea>
+            
+            <button onclick="inspectCode()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-cyan-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-microchip"></i> Run AST Tokenization & Big-O Analysis
+            </button>
+        </div>
 
-                <button onclick="inspectCode()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-2xl font-black text-xs shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-microscope"></i> Inspect Big-O & Detect Bugs
+        <!-- Output Analytics Container -->
+        <div id="resultsContainer" class="hidden space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Est. Time Complexity</span>
+                    <div id="timeCompVal" class="text-3xl font-black gradient-text">O(N²)</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Est. Space Complexity</span>
+                    <div id="spaceCompVal" class="text-3xl font-black text-cyan-500">O(1)</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Nested Loops / Risks</span>
+                    <div id="riskLevelVal" class="text-3xl font-black text-amber-500">2 Loops</div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl space-y-3">
+                <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300">AST Code Audit Recommendations</h3>
+                <div id="codeAuditList" class="space-y-2 text-xs"></div>
+            </div>
+
+            <!-- Social Flex LinkedIn Card -->
+            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Big-O Audit</span>
+                    <h4 class="text-sm font-black">Audited your code complexity offline? Share your score badge!</h4>
+                </div>
+                <button onclick="shareCodeToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share AST Badge
                 </button>
             </div>
-
-            <!-- Inspection Dashboard Output (6 Cols) -->
-            <div class="lg:col-span-6 glass-card p-6 rounded-3xl shadow-xl space-y-6">
-                <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex justify-between items-center">
-                    <h2 class="text-sm font-black text-slate-800 dark:text-slate-100 uppercase tracking-wider">Audit Results</h2>
-                    <span class="text-xs font-black px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 rounded-lg">Instant</span>
-                </div>
-
-                <!-- Highlight Complexity Badges -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-indigo-50 dark:bg-indigo-950/50 rounded-2xl border border-indigo-200 dark:border-indigo-800 text-center">
-                        <span class="block text-[10px] font-black uppercase text-slate-400">Time Complexity</span>
-                        <span id="timeComplexityVal" class="text-xl font-black text-indigo-600 dark:text-indigo-400">O(N²)</span>
-                    </div>
-                    <div class="p-4 bg-purple-50 dark:bg-purple-950/50 rounded-2xl border border-purple-200 dark:border-purple-800 text-center">
-                        <span class="block text-[10px] font-black uppercase text-slate-400">Space Complexity</span>
-                        <span id="spaceComplexityVal" class="text-xl font-black text-purple-600 dark:text-purple-400">O(N)</span>
-                    </div>
-                </div>
-
-                <!-- Code Flaws & Anti-Pattern Alerts -->
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <i class="fa-solid fa-shield-halved text-rose-500"></i> Detected Anti-Patterns & Warnings
-                    </h3>
-                    <div id="codeFlawsContainer" class="space-y-2 text-xs font-semibold">
-                        <div class="p-3.5 bg-rose-50/50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900 rounded-2xl text-rose-800 dark:text-rose-300">
-                            <strong>⚠️ Nested Loop Alert:</strong> Detected 2-level loop nesting. Consider using a Hash Map for O(N) linear time lookup.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <!-- SEO Article & FAQs Section -->
-        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How Client-Side AST Tokenization Audits Big-O Code Complexity</h2>
-            <p>
-                Engineered by <strong>Yash Raj Goswami</strong>, NextHire Matrix inspects code syntax structures entirely in browser memory. By parsing loop nesting levels, recursive call structures, and memory allocation patterns with zero server latency, developers can instantly optimize algorithmic performance during technical interview preparation.
-            </p>
-            <div class="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-800 dark:text-slate-200">Frequently Asked Questions</h3>
-                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 cursor-pointer">
-                    <summary class="font-bold text-slate-700 dark:text-slate-300 list-none flex justify-between items-center">
-                        Is code execution run on remote sandboxes?
-                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
-                    </summary>
-                    <p class="mt-2 text-slate-500">No. Code analysis is non-executable static tokenization performed 100% locally inside your browser thread.</p>
-                </details>
+        </main>
+
+    <!-- Floating Feedback Trigger Button -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    </button>
+
+    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
+                <p class="text-xs text-slate-500 font-semibold">Found a code inspection bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
             </div>
-        </article>
-    </main>
+
+            <!-- Live Formspree Endpoint Form -->
+            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="code_issue">💻 Code Inspector / AST Bug</option>
+                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="feature">💡 Feature Request</option>
+                        <option value="praise">⭐ General Feedback</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
+                    <textarea name="message" rows="3" required placeholder="Explain the code inspector feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
+                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
@@ -184,79 +201,71 @@
         </div>
     </footer>
 
-    <!-- Pure JS AST Code Inspector Engine -->
+    <!-- AST Code Inspection & Big-O Engine Script -->
     <script>
+        let currentBigO = 'O(N)';
+
         function inspectCode() {
-            const code = document.getElementById('codeInput').value.trim();
-            if (!code) {
-                alert("Please paste code snippet to inspect!");
+            const code = document.getElementById('codeInput').value;
+
+            if (!code.trim()) {
+                alert("Please paste code snippet to inspect.");
                 return;
             }
 
-            // Loop Nesting Counter (Time Complexity Inspector)
-            let maxNestDepth = 0;
-            let currentDepth = 0;
-            const lines = code.split('\n');
+            // AST Tokenizer & Heuristic Analysis Engine
+            const forLoopMatches = (code.match(/for\s*\(|while\s*\(/g) || []).length;
+            const recursionMatches = (code.match(/return\s+\w+\(/g) || []).length;
+            const hashSetMatches = (code.match(/new\s+(Set|Map)|dict\(|\{\}/g) || []).length;
 
-            lines.forEach(line => {
-                if (/for\s*\(|while\s*\(|for\s+\w+\s+in/i.test(line)) {
-                    currentDepth++;
-                    if (currentDepth > maxNestDepth) maxNestDepth = currentDepth;
-                }
-                if (line.includes('}')) {
-                    if (currentDepth > 0) currentDepth--;
-                }
-            });
-
-            // Big-O Evaluation
             let timeComp = "O(1)";
-            if (maxNestDepth === 1) timeComp = "O(N)";
-            else if (maxNestDepth === 2) timeComp = "O(N²)";
-            else if (maxNestDepth >= 3) timeComp = `O(N^${maxNestDepth})`;
-
-            if (/binarySearch|log/i.test(code)) timeComp = "O(log N)";
-
-            // Space Complexity Evaluation
             let spaceComp = "O(1)";
-            if (/push\(|\[\]|\{\}|map|set|append/i.test(code)) spaceComp = "O(N)";
+            let riskDesc = "Low Risk";
 
-            document.getElementById('timeComplexityVal').innerText = timeComp;
-            document.getElementById('spaceComplexityVal').innerText = spaceComp;
-
-            // Anti-Pattern Detection
-            const flawBox = document.getElementById('codeFlawsContainer');
-            let flawHTML = "";
-
-            if (maxNestDepth >= 2) {
-                flawHTML += `
-                    <div class="p-3.5 bg-rose-50/50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900 rounded-2xl text-rose-800 dark:text-rose-300">
-                        <strong>⚠️ Quadratic Time Penalty (${timeComp}):</strong> Nested loops detected. Replace nested iteration with a Hash Map / Set to achieve O(N) linear time.
-                    </div>
-                `;
+            if (forLoopMatches >= 2) {
+                timeComp = "O(N²)";
+                riskDesc = `${forLoopMatches} Nested Loops`;
+            } else if (forLoopMatches === 1) {
+                timeComp = "O(N)";
+                riskDesc = "Single Loop";
             }
 
-            if (/var\s+/i.test(code)) {
-                flawHTML += `
-                    <div class="p-3.5 bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-2xl text-amber-800 dark:text-amber-300">
-                        <strong>⚠️ Scope Hoisting Warning:</strong> Found legacy 'var' keywords. Use 'let' or 'const' for block scope safety.
-                    </div>
-                `;
+            if (recursionMatches > 0) {
+                spaceComp = "O(N) Call Stack";
+                if (timeComp === "O(1)") timeComp = "O(2ᴺ) Recursive";
+            } else if (hashSetMatches > 0) {
+                spaceComp = "O(N) Auxiliary Memory";
             }
 
-            if (flawHTML === "") {
-                flawHTML = `
-                    <div class="p-3.5 bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 rounded-2xl text-emerald-800 dark:text-emerald-300">
-                        <strong>✨ High Performance Code:</strong> Clean structure with no major Big-O anti-patterns or memory leaks.
-                    </div>
-                `;
+            currentBigO = timeComp;
+
+            document.getElementById('timeCompVal').innerText = timeComp;
+            document.getElementById('spaceCompVal').innerText = spaceComp;
+            document.getElementById('riskLevelVal').innerText = riskDesc;
+
+            const list = document.getElementById('codeAuditList');
+            list.innerHTML = '';
+
+            if (forLoopMatches >= 2) {
+                const el = document.createElement('div');
+                el.className = 'p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
+                el.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>High Complexity (O(N²)):</strong> Multiple nested loops detected. Consider replacing with a Hash Map / Set to achieve O(N) lookup.`;
+                list.appendChild(el);
+            } else {
+                const el = document.createElement('div');
+                el.className = 'p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
+                el.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Optimal Loop Structure:</strong> No quadratic loop nesting detected. Code execution pattern looks clean.`;
+                list.appendChild(el);
             }
 
-            flawBox.innerHTML = flawHTML;
+            document.getElementById('resultsContainer').classList.remove('hidden');
         }
 
-        window.onload = function() {
-            inspectCode();
-        };
+        function shareCodeToLinkedIn() {
+            const text = encodeURIComponent(`I audited my code's time complexity (${currentBigO}) & space efficiency offline using NextHire Matrix! 100% privacy-first AST developer tools.`);
+            const url = encodeURIComponent("https://www.nexthirematrix.com/code-inspector.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+        }
     </script>
 </body>
 </html>

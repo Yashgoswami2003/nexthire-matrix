@@ -13,10 +13,12 @@
     <meta name="description" content="Check how ATS software parses your PDF resume against job descriptions. Find missing keywords, test formatting, and boost match score for free.">
     <meta name="keywords" content="ATS resume scanner free, check resume match score, missing ATS keywords finder, PDF resume parser online">
     
+    <!-- Dynamic OpenGraph & Meta Tags for High Referral Traffic -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/ats-checker.html">
-    <meta property="og:title" content="Free ATS Resume Checker & Keyword Matcher | NextHire Matrix">
-    <meta property="og:description" content="Check how well your resume matches any job description. Find missing ATS keywords and score your resume instantly. 100% free with no sign-up.">
+    <meta property="og:title" content="Free ATS Resume Matcher & Keyword Scanner | NextHire Matrix">
+    <meta property="og:description" content="Audit missing keywords, test ATS formatting safety, and score your PDF resume against any job description 100% free.">
+    <meta property="og:image" content="https://www.nexthirematrix.com/assets/ats-scanner-og.png">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
@@ -170,7 +172,7 @@
     <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-6">
         
-        <!-- Tool Title & Subtitle (Upgraded Copy) -->
+        <!-- Tool Title & Subtitle -->
         <div class="text-center space-y-3 max-w-3xl mx-auto">
             <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
                 <span>⚡ Free ATS Match Checker • No Sign-Up</span>
@@ -183,7 +185,7 @@
             </p>
         </div>
 
-        <!-- Clean Privacy Guard Card (Upgraded High-Trust Copy) -->
+        <!-- Clean Privacy Guard Card -->
         <div class="glass-card border-l-4 border-l-emerald-500 rounded-3xl p-4 shadow-md flex items-center gap-3 text-xs max-w-3xl mx-auto">
             <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
                 <i class="fa-solid fa-shield-halved"></i>
@@ -191,6 +193,21 @@
             <div>
                 <strong class="block text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider">🔒 100% Safe & Private</strong>
                 <span class="text-slate-500 dark:text-slate-400 font-medium">Your PDF file stays on your phone/laptop. Never stored on any server.</span>
+            </div>
+        </div>
+
+        <!-- Error Card for Invalid / Non-Resume PDF Files -->
+        <div id="validationErrorCard" class="hidden glass-card border-l-4 border-l-rose-500 rounded-3xl p-4 shadow-lg text-xs max-w-3xl mx-auto bg-rose-500/10">
+            <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-rose-500/20 text-rose-600 dark:text-rose-400 rounded-xl flex items-center justify-center text-base shrink-0 mt-0.5">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="space-y-1">
+                    <strong class="block text-rose-700 dark:text-rose-400 font-black text-xs uppercase tracking-wider">Invalid Resume Document</strong>
+                    <p id="validationErrorReason" class="text-rose-600 dark:text-rose-300 font-semibold leading-relaxed">
+                        Please upload a valid Resume/CV PDF containing standard sections (Skills, Experience, Education).
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -220,19 +237,29 @@
                     <div id="fileLoadedBadge" class="hidden space-y-2">
                         <span class="p-3 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xl inline-block"><i class="fa-solid fa-circle-check"></i></span>
                         <p id="fileNameText" class="text-xs font-black text-slate-800 dark:text-slate-100 truncate max-w-[200px] mx-auto"></p>
-                        <span class="text-[10px] bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded-full">PDF Loaded Successfully</span>
+                        <span class="text-[10px] bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded-full">PDF Loaded & Validated</span>
                     </div>
+                </div>
+
+                <!-- Feature A: PDF Text Extraction Collapsible Preview Box -->
+                <div id="parsedPreviewCard" class="hidden glass-card rounded-2xl p-3 border border-slate-200 dark:border-slate-800">
+                    <details class="group">
+                        <summary class="text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer flex justify-between items-center list-none">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-eye text-emerald-500"></i> View Parsed Text Preview</span>
+                            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400 text-xs"></i>
+                        </summary>
+                        <div id="parsedTextContent" class="mt-2 text-[10px] text-slate-500 max-h-32 overflow-y-auto p-2 bg-slate-100 dark:bg-slate-900 rounded-xl font-mono whitespace-pre-wrap leading-relaxed"></div>
+                    </details>
                 </div>
             </div>
 
-            <!-- Step 2: Target Job Description Area (With Repositioned Sample JD Button) -->
+            <!-- Step 2: Target Job Description Area -->
             <div class="space-y-2">
                 <div class="flex justify-between items-center">
                     <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
                         Step 2: Paste Job Description (JD)
                     </label>
                     
-                    <!-- Repositioned Compact Button in Top Right Corner -->
                     <button onclick="fillSampleData()" class="px-2.5 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-black rounded-lg text-[11px] transition flex items-center gap-1 border border-emerald-500/30">
                         ⚡ Try Sample JD
                     </button>
@@ -246,12 +273,12 @@
         <button onclick="runAtsAudit()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-emerald-500/20 hover:opacity-95 transition flex items-center justify-center gap-2 transform hover:scale-[1.01]">
             🔍 Check ATS Match Score
         </button>
-        <!-- Results Output Container (4 Visual Interactive Cards) -->
+        <!-- Results Output Container (Visual Interactive Cards) -->
         <div id="resultsContainer" class="hidden space-y-6 pt-4">
             
-            <!-- CARD A: Overall Match Score Gauge & Risk Status -->
+            <!-- CARD A: Match Score Gauge & Role-Based ATS Benchmark -->
             <div class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-2 flex-1">
+                <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3 flex-1">
                     <span id="scoreRiskBadge" class="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
                         Score Assessment
                     </span>
@@ -261,6 +288,16 @@
                     <p id="scoreStatusDesc" class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed max-w-md">
                         Your score is calculated based on keyword alignment, technical term density, and JD requirements.
                     </p>
+
+                    <!-- Feature C: Role-Based ATS Benchmark Target Indicator -->
+                    <div class="pt-2 border-t border-slate-200 dark:border-slate-800 w-full space-y-1 text-[11px] font-bold">
+                        <span class="text-slate-400 uppercase tracking-wider text-[10px]">Target Score Benchmarks:</span>
+                        <div class="flex flex-wrap gap-3 text-slate-600 dark:text-slate-300">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> &lt;60% High Risk</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span> 60-75% Average Match</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> 75%+ Shortlist Guaranteed</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Circular Visual Radial Meter -->
@@ -273,26 +310,30 @@
                 </div>
             </div>
 
-            <!-- CARD B: Keyword Gap Breakdown (2 Column Cards) -->
+            <!-- CARD B: Keyword Gap Breakdown (With Viral Copy Missing Keywords Button) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Column 1: Matched Keywords -->
                 <div class="glass-card p-6 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800">
                     <div class="flex justify-between items-center border-b pb-3 border-slate-200 dark:border-slate-800">
                         <h3 class="text-xs font-black uppercase text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check"></i> Matched Keywords (Found in Resume)
+                            <i class="fa-solid fa-circle-check"></i> Matched Keywords
                         </h3>
                         <span id="matchedCountVal" class="text-xs font-black px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full">0</span>
                     </div>
                     <div id="matchedKeywordsBox" class="flex flex-wrap gap-2 text-xs"></div>
                 </div>
 
-                <!-- Column 2: Missing Keywords -->
+                <!-- Column 2: Missing Keywords with 1-Click Copy Button -->
                 <div class="glass-card p-6 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800">
                     <div class="flex justify-between items-center border-b pb-3 border-slate-200 dark:border-slate-800">
                         <h3 class="text-xs font-black uppercase text-rose-500 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-xmark"></i> Missing Keywords (Found in JD)
+                            <i class="fa-solid fa-circle-xmark"></i> Missing Keywords
                         </h3>
-                        <span id="missingCountVal" class="text-xs font-black px-2.5 py-1 bg-rose-500/10 text-rose-500 rounded-full">0</span>
+                        
+                        <!-- Feature B: 1-Click Copy Missing Keywords Button -->
+                        <button onclick="copyMissingKeywords()" class="px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 font-black rounded-xl text-[10px] transition border border-rose-500/20 flex items-center gap-1">
+                            <i class="fa-solid fa-copy"></i> Copy All Missing
+                        </button>
                     </div>
                     <div id="missingKeywordsBox" class="flex flex-wrap gap-2 text-xs"></div>
                 </div>
@@ -325,9 +366,30 @@
                         <span id="contactIcon" class="text-amber-500 text-base"><i class="fa-solid fa-triangle-exclamation"></i></span>
                         <div>
                             <strong class="block text-slate-900 dark:text-white font-bold">Contact Info</strong>
-                            <span id="contactStatus" class="text-[11px] text-slate-500">Phone & Email summary</span>
+                            <span id="contactStatus" class="text-[11px] text-slate-500">Phone / Email summary</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Quick ATS Optimization Interactive Checklist Widget -->
+            <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200 dark:border-slate-800">
+                <h3 class="text-xs font-black uppercase text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                    <i class="fa-solid fa-square-check text-emerald-500"></i> Quick ATS Optimization Checklist
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
+                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900">
+                        <input type="checkbox" checked class="rounded text-emerald-500 focus:ring-emerald-500"> Clean Standard Fonts Used (Arial, Calibri, Inter)
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900">
+                        <input type="checkbox" checked class="rounded text-emerald-500 focus:ring-emerald-500"> No Tables or Multi-Column Layouts
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900">
+                        <input type="checkbox" checked class="rounded text-emerald-500 focus:ring-emerald-500"> Contact Info in Body (Not Header/Footer)
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900">
+                        <input type="checkbox" checked class="rounded text-emerald-500 focus:ring-emerald-500"> File Saved as Text-Searchable PDF
+                    </label>
                 </div>
             </div>
 
@@ -357,6 +419,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- Result Page Structured SEO Content (Rank #1 Google Hack) -->
+        <section class="seo-explanation-section glass-card p-6 sm:p-8 rounded-3xl space-y-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed border border-slate-200 dark:border-slate-800">
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">How ATS Resume Checkers Filter Your Resume</h2>
+            <p>
+                Applicant Tracking Systems (ATS) scan PDF resumes for specific job description keywords, technical stack relevance, and clean formatting. If your resume lacks primary job keywords, automated filters reject your application before a recruiter ever sees it.
+            </p>
+
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 pt-2">Tips to Boost Your ATS Match Score Above 80%:</h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Use Standard Headings:</strong> Stick to simple section names like "Work Experience", "Education", and "Skills".</li>
+                <li><strong>Match Technical Keywords Exactly:</strong> Include both acronyms and full terms (e.g., "AWS / Amazon Web Services", "CI/CD").</li>
+                <li><strong>Avoid Complex Graphics:</strong> Tables, multi-column text boxes, and embedded images can fail ATS text parsing.</li>
+            </ul>
+        </section>
     </main>
     <!-- Static Bottom Feedback Trigger Button -->
     <div class="flex justify-center pt-4 pb-6">
@@ -400,7 +477,7 @@
         </div>
     </div>
 
-    <!-- Footer Section with Required Legal Links -->
+    <!-- Footer Section -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
             <div class="flex justify-center items-center gap-6 font-bold text-slate-700 dark:text-slate-300">
@@ -414,10 +491,34 @@
         </div>
     </footer>
 
-    <!-- Client-Side PDF Parsing & 4-Card ATS Audit Engine -->
+    <!-- Client-Side PDF Parsing & Resume Validation Engine -->
     <script>
         let parsedPdfText = "";
         let currentAtsScore = 0;
+        let globalMissingKeywords = [];
+
+        // Validation Rules: Stop words and Resume Anchors
+        const RESUME_ANCHORS = ['experience', 'education', 'skills', 'projects', 'summary', 'work', 'profile', 'contact', 'qualification', 'certifications'];
+        const STOP_WORDS = new Set(['with', 'using', 'looking', 'have', 'from', 'this', 'that', 'were', 'been', 'their', 'which', 'about', 'would', 'there', 'what', 'also', 'more']);
+
+        // Resume Validation Logic Engine
+        function isValidResume(pdfText) {
+            const textLower = pdfText.toLowerCase();
+            const wordCount = pdfText.trim().split(/\s+/).length;
+            
+            // Check 1: Length Validation
+            if (wordCount < 40) {
+                return { valid: false, reason: "Uploaded PDF content is too short to be a resume. (Minimum 40 words required)" };
+            }
+
+            // Check 2: Key Section Anchor Check
+            const anchorCount = RESUME_ANCHORS.filter(keyword => textLower.includes(keyword)).length;
+            if (anchorCount < 2) {
+                return { valid: false, reason: "Uploaded document does not appear to be a resume. Please upload a valid CV/Resume containing standard sections (Skills, Experience, Education)." };
+            }
+
+            return { valid: true };
+        }
 
         // PDF Drag & Drop Handlers
         const dropzone = document.getElementById('dropzone');
@@ -445,8 +546,10 @@
             }
         }
 
-        // Local In-Browser PDF Parsing using PDF.js
+        // PDF Parsing with PDF.js and Resume Validation Check
         function processPdfFile(file) {
+            document.getElementById('validationErrorCard').classList.add('hidden');
+            
             const fileReader = new FileReader();
             fileReader.onload = function() {
                 const typedarray = new Uint8Array(this.result);
@@ -462,10 +565,28 @@
                     }
                     return Promise.all(countPromises);
                 }).then(pagesText => {
-                    parsedPdfText = pagesText.join(' ');
+                    const extractedText = pagesText.join(' ');
+                    
+                    // Run Resume Validation Engine
+                    const validation = isValidResume(extractedText);
+                    if (!validation.valid) {
+                        document.getElementById('validationErrorReason').innerText = validation.reason;
+                        document.getElementById('validationErrorCard').classList.remove('hidden');
+                        document.getElementById('dropzoneContent').classList.remove('hidden');
+                        document.getElementById('fileLoadedBadge').classList.add('hidden');
+                        document.getElementById('parsedPreviewCard').classList.add('hidden');
+                        parsedPdfText = "";
+                        return;
+                    }
+
+                    parsedPdfText = extractedText;
                     document.getElementById('dropzoneContent').classList.add('hidden');
                     document.getElementById('fileLoadedBadge').classList.remove('hidden');
                     document.getElementById('fileNameText').innerText = file.name;
+
+                    // Render Collapsible Text Preview
+                    document.getElementById('parsedTextContent').innerText = parsedPdfText;
+                    document.getElementById('parsedPreviewCard').classList.remove('hidden');
                 }).catch(err => {
                     alert("Error reading PDF file. Please ensure it is an unencrypted PDF.");
                 });
@@ -473,49 +594,76 @@
             fileReader.readAsArrayBuffer(file);
         }
 
-        // Auto-Fill Sample Data Button Handler
+        // Auto-Fill Sample Data Handler
         function fillSampleData() {
-            parsedPdfText = "Experienced Software Engineer skilled in React.js, Node.js, JavaScript, Python, REST APIs, SQL, Docker, Tailwind CSS, Git, and Web Performance optimization.";
+            document.getElementById('validationErrorCard').classList.add('hidden');
+            parsedPdfText = "Experienced Software Engineer skilled in React.js, Node.js, JavaScript, Python, REST APIs, SQL, Docker, Tailwind CSS, Git, and Web Performance optimization. Professional Experience at Tech Systems. Education in Computer Science.";
             document.getElementById('jdInput').value = "Looking for a Senior Full Stack Engineer with strong expertise in React, Node.js, TypeScript, PostgreSQL, Docker, Kubernetes, AWS, GraphQL, and CI/CD pipelines.";
             
             document.getElementById('dropzoneContent').classList.add('hidden');
             document.getElementById('fileLoadedBadge').classList.remove('hidden');
             document.getElementById('fileNameText').innerText = "sample_developer_resume.pdf";
+
+            document.getElementById('parsedTextContent').innerText = parsedPdfText;
+            document.getElementById('parsedPreviewCard').classList.remove('hidden');
             
             runAtsAudit();
         }
 
-        // 4 Visual Cards Calculation Engine
+        // Multi-Word Stacks & Stop Words Filtered ATS Audit Engine
         function runAtsAudit() {
+            document.getElementById('validationErrorCard').classList.add('hidden');
             const jdText = document.getElementById('jdInput').value.toLowerCase();
 
             if (!parsedPdfText.trim()) {
                 alert("Please upload a PDF Resume first (or click '⚡ Try Sample JD').");
                 return;
             }
+
+            // Re-validate prior to execution
+            const validation = isValidResume(parsedPdfText);
+            if (!validation.valid) {
+                document.getElementById('validationErrorReason').innerText = validation.reason;
+                document.getElementById('validationErrorCard').classList.remove('hidden');
+                return;
+            }
+
             if (!jdText.trim()) {
                 alert("Please paste the target Job Description (JD).");
                 return;
             }
 
-            const jdWords = Array.from(new Set(jdText.match(/\b[a-z]{4,}\b/g) || []));
+            // Tech Stack & Multi-word phrase preserves
+            const multiWordPhrases = ['node.js', 'react.js', 'rest api', 'rest apis', 'ci/cd', 'system design', 'web performance', 'full stack'];
+            let foundMultiWords = [];
+            
+            multiWordPhrases.forEach(phrase => {
+                if (jdText.includes(phrase)) {
+                    foundMultiWords.push(phrase);
+                }
+            });
+
+            const rawJdWords = jdText.match(/\b[a-z]{3,}\b/g) || [];
+            const filteredJdWords = Array.from(new Set(rawJdWords.filter(word => !STOP_WORDS.has(word))));
+            const allJdTokens = Array.from(new Set([...foundMultiWords, ...filteredJdWords]));
+
             const resumeTextLower = parsedPdfText.toLowerCase();
-            const resumeWords = new Set(resumeTextLower.match(/\b[a-z]{4,}\b/g) || []);
 
             let matched = [];
             let missing = [];
 
-            jdWords.forEach(word => {
-                if (resumeWords.has(word)) {
-                    matched.push(word);
+            allJdTokens.forEach(token => {
+                if (resumeTextLower.includes(token)) {
+                    matched.push(token);
                 } else {
-                    missing.push(word);
+                    missing.push(token);
                 }
             });
 
-            currentAtsScore = jdWords.length > 0 ? Math.round((matched.length / jdWords.length) * 100) : 0;
+            globalMissingKeywords = missing;
+            currentAtsScore = allJdTokens.length > 0 ? Math.round((matched.length / allJdTokens.length) * 100) : 0;
 
-            // 1. CARD A: Score Gauge & Color Risk Status
+            // Render Results & Score Radial
             const scoreVal = document.getElementById('atsScoreVal');
             const scorePath = document.getElementById('scoreCirclePath');
             const riskBadge = document.getElementById('scoreRiskBadge');
@@ -525,7 +673,7 @@
             scoreVal.innerText = `${currentAtsScore}%`;
             scorePath.setAttribute('stroke-dasharray', `${currentAtsScore}, 100`);
 
-            if (currentAtsScore < 50) {
+            if (currentAtsScore < 60) {
                 scorePath.setAttribute('class', 'text-rose-500 stroke-current transition-all duration-1000 ease-out');
                 riskBadge.className = 'text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400';
                 riskBadge.innerText = '🔴 Low Match Score (High Risk of Rejection)';
@@ -534,58 +682,40 @@
             } else if (currentAtsScore <= 75) {
                 scorePath.setAttribute('class', 'text-amber-500 stroke-current transition-all duration-1000 ease-out');
                 riskBadge.className = 'text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400';
-                riskBadge.innerText = '🟡 Moderate Match (Add Missing Keywords)';
+                riskBadge.innerText = '🟡 60-75% Average Match (Good)';
                 statusHeading.innerText = 'Good Foundation';
                 statusDesc.innerText = 'You cover many key skills, but incorporating missing technical terms will boost your ranking.';
             } else {
                 scorePath.setAttribute('class', 'text-emerald-500 stroke-current transition-all duration-1000 ease-out');
                 riskBadge.className = 'text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
-                riskBadge.innerText = '🟢 High ATS Pass Rate (Ready to Apply)';
+                riskBadge.innerText = '🟢 75%+ Shortlist Guaranteed Range';
                 statusHeading.innerText = 'Excellent Match!';
                 statusDesc.innerText = 'Your resume aligns strongly with this job description. You are ready to apply!';
             }
 
-            // 2. CARD B: 2-Column Keywords Render
+            // Keyword Chips
             document.getElementById('matchedCountVal').innerText = matched.length;
             document.getElementById('missingCountVal').innerText = missing.length;
 
             const matchedBox = document.getElementById('matchedKeywordsBox');
             matchedBox.innerHTML = '';
-            if (matched.length === 0) {
-                matchedBox.innerHTML = '<span class="text-slate-400 text-[11px]">No matching terms found.</span>';
-            } else {
-                matched.slice(0, 30).forEach(word => {
-                    const badge = document.createElement('span');
-                    badge.className = 'px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
-                    badge.innerText = word;
-                    matchedBox.appendChild(badge);
-                });
-            }
+            matched.slice(0, 30).forEach(word => {
+                const badge = document.createElement('span');
+                badge.className = 'px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
+                badge.innerText = word;
+                matchedBox.appendChild(badge);
+            });
 
             const missingBox = document.getElementById('missingKeywordsBox');
             missingBox.innerHTML = '';
-            if (missing.length === 0) {
-                missingBox.innerHTML = '<span class="text-emerald-500 text-[11px] font-bold">Awesome! Zero critical keywords missing.</span>';
-            } else {
-                missing.slice(0, 30).forEach(word => {
-                    const badge = document.createElement('span');
-                    badge.className = 'px-3 py-1 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
-                    badge.innerText = word;
-                    missingBox.appendChild(badge);
-                });
-            }
+            missing.slice(0, 30).forEach(word => {
+                const badge = document.createElement('span');
+                badge.className = 'px-3 py-1 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
+                badge.innerText = word;
+                missingBox.appendChild(badge);
+            });
 
-            // 3. CARD C: Formatting & Header Check Heuristics
-            const hasSectionHeaders = /experience|education|skills|projects/i.test(parsedPdfText);
-            const hasContact = /\d{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/i.test(parsedPdfText);
-
-            document.getElementById('sectionHeaderIcon').className = hasSectionHeaders ? 'text-emerald-500 text-base' : 'text-amber-500 text-base';
-            document.getElementById('sectionHeaderStatus').innerText = hasSectionHeaders ? 'Standard headings detected' : 'Check section headings';
-
-            document.getElementById('contactIcon').className = hasContact ? 'text-emerald-500 text-base' : 'text-amber-500 text-base';
-            document.getElementById('contactStatus').innerText = hasContact ? 'Phone / Email detected' : 'Ensure email/phone is included';
-
-            // 4. CARD D: Dynamic Actionable Improvement Tip
+            // Actionable Tip
             const topMissing = missing.slice(0, 3).join(', ');
             const tipBox = document.getElementById('improvementTipText');
             if (missing.length > 0) {
@@ -596,11 +726,24 @@
 
             document.getElementById('resultsContainer').classList.remove('hidden');
 
-            // Fire Clarity Analytics Event
             if (typeof clarity === "function") {
                 clarity("set", "ats_scan_executed", "true");
                 clarity("event", "ats_score_generated");
             }
+        }
+
+        // Copy Missing Keywords Feature
+        function copyMissingKeywords() {
+            if (!globalMissingKeywords.length) {
+                alert("No missing keywords to copy!");
+                return;
+            }
+            const copyText = globalMissingKeywords.join(', ');
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert(`Copied ${globalMissingKeywords.length} missing keywords to clipboard!`);
+            }).catch(err => {
+                alert("Failed to copy. Please manually select keywords.");
+            });
         }
 
         function shareScoreToWhatsApp() {

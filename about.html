@@ -1,64 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - NextHire Matrix</title>
+    <title>About Us | NextHire Matrix - Privacy-First Career Tools</title>
+    <meta name="description" content="Learn about NextHire Matrix, our mission to build 100% private, client-side career tools, engineered by Yash Raj Goswami.">
+    <meta name="keywords" content="About NextHire Matrix, private career tools, Yash Raj Goswami, client-side ATS scanner">
+    <link rel="canonical" href="https://www.nexthirematrix.com/about.html">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    
+    <!-- Google AdSense & Search Schema Engine -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NextHire Matrix",
+      "url": "https://www.nexthirematrix.com",
+      "logo": "https://www.nexthirematrix.com/assets/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "description": "Provider of 100% free, private, client-side career tools, ATS resume scanners, and interview preparation utilities."
+    }
+    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
-    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-emerald-400">NextHire Matrix</a>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white">← Back to Tools</a>
+            <a href="index.html" class="text-xl font-black text-emerald-400 flex items-center gap-2">
+                <span class="p-1.5 bg-emerald-500 text-slate-950 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">← Back to Tools</a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="text-slate-400 hover:text-emerald-400 transition text-sm">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow">
-        <div class="max-w-3xl">
-            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded-full">Our Mission</span>
-            <h1 class="text-3xl font-extrabold text-white mt-4 mb-6">Empowering Job Seekers with Free, Privacy-First Utilities</h1>
+    <!-- Main Content Workspace -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow w-full">
+        <div class="max-w-3xl space-y-8">
+            <div>
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/80 border border-emerald-800/80 px-3 py-1.5 rounded-full inline-block mb-3">Our Mission</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Empowering Job Seekers with Free, Privacy-First Utilities</h1>
+            </div>
             
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                 NextHire Matrix was built out of a simple necessity: Job hunting and interview preparation should not require expensive subscriptions or sacrificing your personal data privacy.
             </p>
             
-            <p class="text-slate-300 text-sm leading-relaxed mb-8">
+            <p class="text-slate-300 text-sm leading-relaxed">
                 Most career tools require users to register, pay recurring fees, or upload sensitive resumes to third-party cloud servers. NextHire Matrix breaks this mold by running <strong>100% client-side in your web browser</strong>. Your resumes, code snippets, audio recordings, and salary numbers never leave your device.
             </p>
 
-            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 mb-8">
-                <h2 class="text-base font-bold text-white mb-3">Core Platform Pillars:</h2>
+            <!-- Core Platform Pillars Card -->
+            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-4">
+                <h2 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-emerald-400"></i> Core Platform Pillars:
+                </h2>
                 <ul class="space-y-3 text-sm text-slate-300">
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400">⚡</span>
-                        <span><strong>100% Free Forever:</strong> High-utility tools built for students, software engineers, and job candidates worldwide.</span>
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-400 mt-0.5">⚡</span>
+                        <span><strong>100% Free Forever:</strong> High-utility tools built for students, software engineers, and job candidates worldwide with zero paywalls.</span>
                     </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400">🔒</span>
-                        <span><strong>Privacy By Design:</strong> All parsing and computations execute locally in browser RAM without server upload.</span>
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-400 mt-0.5">🔒</span>
+                        <span><strong>Privacy By Design:</strong> All parsing and computations execute locally in browser RAM without server uploads or database logging.</span>
                     </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-400">🚀</span>
-                        <span><strong>Zero Signup Barrier:</strong> Use any tool instantly without entering emails, creating passwords, or viewing intrusive paywalls.</span>
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-400 mt-0.5">🚀</span>
+                        <span><strong>Zero Signup Barrier:</strong> Use any tool instantly without entering emails, creating passwords, or viewing intrusive ads.</span>
                     </li>
                 </ul>
             </div>
 
-            <div class="border-t border-slate-800 pt-8">
-                <h2 class="text-lg font-bold text-white mb-2">Created By</h2>
-                <p class="text-slate-300 text-sm">
-                    <strong>Yash Raj Goswami</strong> — Full Stack & Product Builder dedicated to building open, high-performance career web tools.
+            <!-- AdSense Content Requirement: Platform Utilities Showcase -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold text-white">Our Free Utility Suite</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
+                        <strong class="text-emerald-400 block font-bold mb-0.5">📄 ATS Resume Checker</strong>
+                        <span class="text-slate-400">Scans PDF text against JDs to calculate match score and missing keywords.</span>
+                    </div>
+                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
+                        <strong class="text-amber-400 block font-bold mb-0.5">💰 In-Hand Salary Simulator</strong>
+                        <span class="text-slate-400">Calculates precise take-home salary after CTC tax deductions.</span>
+                    </div>
+                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
+                        <strong class="text-sky-400 block font-bold mb-0.5">👁️ 6-Second Skim Auditor</strong>
+                        <span class="text-slate-400">Simulates recruiter eye-tracking attention on resume bullet layout.</span>
+                    </div>
+                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
+                        <strong class="text-purple-400 block font-bold mb-0.5">🎙️ Speech & Voice Coach</strong>
+                        <span class="text-slate-400">Analyzes interview speech pace, pitch, and filler words locally.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal Safety & Data Protection Guarantee Block -->
+            <div class="p-5 bg-emerald-950/30 border border-emerald-800/50 rounded-2xl text-xs text-slate-300 space-y-2">
+                <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i> Legal Data Protection Guarantee
+                </h3>
+                <p class="leading-relaxed">
+                    NextHire Matrix operates under strict client-side data isolation. We do not store, process, monetize, or transmit any user-submitted PDF files, text content, or audio input to external API servers. Users maintain complete ownership of their career data.
                 </p>
-                <div class="mt-4 flex gap-4">
-                    <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-semibold text-xs px-4 py-2 rounded-lg transition">Explore All 10 Free Tools →</a>
+            </div>
+
+            <!-- Creator & Contact Block -->
+            <div class="border-t border-slate-800 pt-8 space-y-4">
+                <div class="space-y-1">
+                    <h2 class="text-lg font-bold text-white">Engineered By</h2>
+                    <p class="text-slate-300 text-sm">
+                        <strong>Yash Raj Goswami</strong> — Full Stack Developer & Product Builder dedicated to building open, high-performance career web tools.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20">
+                        Explore All 10 Free Tools →
+                    </a>
+                    <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-4 py-2.5 rounded-xl border border-slate-700 transition">
+                        <i class="fa-brands fa-linkedin text-blue-400"></i> Connect on LinkedIn
+                    </a>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        © 2026 NextHire Matrix. All rights reserved. | <a href="privacy.html" class="underline hover:text-slate-300">Privacy Policy</a> | <a href="terms.html" class="underline hover:text-slate-300">Terms of Service</a>
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500 space-y-2">
+        <div class="flex justify-center items-center gap-4 font-semibold text-slate-400">
+            <a href="about.html" class="hover:text-emerald-400 transition">About Us</a>
+            <span>•</span>
+            <a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Policy</a>
+            <span>•</span>
+            <a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a>
+        </div>
+        <p>© 2026 NextHire Matrix. All rights reserved. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-400 underline">Yash Raj Goswami</a>.</p>
     </footer>
+
 </body>
 </html>

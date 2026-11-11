@@ -1,53 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - NextHire Matrix</title>
+    <meta name="description" content="NextHire Matrix Privacy Policy. Learn about our 100% in-browser, client-side data processing guarantee and privacy policies.">
+    <meta name="keywords" content="NextHire Matrix Privacy Policy, zero server storage, private ATS scanner data guard">
+    <link rel="canonical" href="https://www.nexthirematrix.com/privacy.html">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+    <!-- Google Search Schema Engine -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "url": "https://www.nexthirematrix.com/privacy.html",
+      "description": "Privacy Policy for NextHire Matrix explaining 100% client-side data isolation and analytics policy."
+    }
+    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
-    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-emerald-400">NextHire Matrix</a>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white">← Back to Tools</a>
+            <a href="index.html" class="text-xl font-black text-emerald-400 flex items-center gap-2">
+                <span class="p-1.5 bg-emerald-500 text-slate-950 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">← Back to Tools</a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="text-slate-400 hover:text-emerald-400 transition text-sm">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow">
-        <h1 class="text-3xl font-extrabold text-white mb-6">Privacy Policy</h1>
-        <p class="text-slate-400 mb-8 text-sm">Last Updated: November 2026</p>
+    <!-- Main Workspace Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow w-full">
+        <h1 class="text-3xl font-extrabold text-white mb-2">Privacy Policy</h1>
+        <p class="text-slate-400 mb-8 text-xs font-semibold">Last Updated: November 2026 • Effective Date: Immediate</p>
 
         <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
-            <section class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                <h2 class="text-lg font-semibold text-emerald-400 mb-2">1. 100% In-Browser & Local Data Processing</h2>
-                <p>NextHire Matrix operates entirely on client-side logic. All resume PDFs, text content, Job Descriptions, salary inputs, and code snippets uploaded or pasted into our tools are processed locally inside your browser memory (RAM). <strong>No user files or confidential documents are ever transmitted, stored, or saved to external servers or databases.</strong></p>
+            
+            <!-- Core 100% Client Side Processing Guard -->
+            <section class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-2">
+                <h2 class="text-base font-bold text-emerald-400 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> 1. 100% In-Browser & Local Data Processing
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    NextHire Matrix operates entirely on client-side JavaScript logic. All resume PDFs, text content, Job Descriptions, salary inputs, speech recordings, and code snippets uploaded or pasted into our tools are processed locally inside your browser memory (RAM). <strong>No user files or confidential documents are ever transmitted, stored, saved, or logged to external web servers or cloud databases.</strong>
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">2. Analytics & Cookies</h2>
-                <p>We use third-party analytics tools (such as Microsoft Clarity and Google Analytics) strictly to monitor aggregated website usage metrics, session performance, and UI responsiveness. These tools collect anonymized data such as browser types, device categories, click patterns, and referral sources to help us optimize site performance. No personally identifiable information (PII) or uploaded document content is included in analytics tracking.</p>
+            <!-- Analytics & Cookies -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-sky-400"></i> 2. Analytics & Cookies
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    We use standard third-party analytics utilities (such as Microsoft Clarity and Google Analytics) strictly to monitor aggregated website usage metrics, page rendering performance, and UI responsiveness. These tools collect non-personally identifiable information (anonymized device type, screen size, referral URL, and aggregated navigation patterns). No resume document text or private form entries are captured in telemetry logs.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">3. Advertising (Google AdSense)</h2>
-                <p>Third-party vendors, including Google, may use cookies to serve ads based on user visits to this website. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our sites and/or other sites on the Internet. Users may opt out of personalized advertising by visiting Google Ads Settings.</p>
+            <!-- AdSense Mandatory Policy Clause -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-rectangle-ad text-amber-400"></i> 3. Advertising & Google AdSense DoubleClick Cookies
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Third-party vendors, including Google, may use cookies to serve advertisements based on a user's prior visits to NextHire Matrix or other websites on the Internet. Google's use of advertising cookies enables it and its partners to serve targeted ads based on your navigation preferences. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" class="text-emerald-400 underline font-semibold">Google Ads Settings</a>.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">4. Third-Party Links</h2>
-                <p>Our website may contain links to external third-party sites (e.g., WhatsApp, LinkedIn). NextHire Matrix is not responsible for the privacy practices, content, or policies of any external websites.</p>
+            <!-- GDPR & User Data Rights -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-purple-400"></i> 4. User Data Rights (GDPR & CCPA Compliance)
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Because NextHire Matrix does not harvest, store, or maintain user database accounts or server records, there is zero stored personal data to delete or export. All session data is immediately wiped from memory as soon as you close or refresh your web browser tab.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">5. Contact Information</h2>
-                <p>If you have any questions regarding this Privacy Policy, you can reach out via the feedback form on our homepage or email us directly at support@nexthirematrix.com.</p>
+            <!-- Third-Party Outbound Links -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-up-right-from-square text-teal-400"></i> 5. External Third-Party Links
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Our web pages may contain voluntary sharing links to external third-party platforms (e.g., LinkedIn, WhatsApp). NextHire Matrix is not responsible for the privacy practices, content, or policies of external third-party web domains.
+                </p>
             </section>
+
+            <!-- Direct Contact Information -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-indigo-400"></i> 6. Contact Information & Support
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    If you have questions regarding this Privacy Policy or wish to report technical security inquiries, please contact us using our site feedback modal or email directly at <a href="mailto:support@nexthirematrix.com" class="text-emerald-400 underline font-semibold">support@nexthirematrix.com</a>.
+                </p>
+            </section>
+
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        © 2026 NextHire Matrix. All rights reserved. | <a href="terms.html" class="underline hover:text-slate-300">Terms of Service</a> | <a href="about.html" class="underline hover:text-slate-300">About Us</a>
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500 space-y-2">
+        <div class="flex justify-center items-center gap-4 font-semibold text-slate-400">
+            <a href="about.html" class="hover:text-emerald-400 transition">About Us</a>
+            <span>•</span>
+            <a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Policy</a>
+            <span>•</span>
+            <a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a>
+        </div>
+        <p>© 2026 NextHire Matrix. All rights reserved. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-400 underline">Yash Raj Goswami</a>.</p>
     </footer>
 </body>
 </html>

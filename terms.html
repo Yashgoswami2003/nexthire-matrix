@@ -1,58 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - NextHire Matrix</title>
+    <title>Terms of Service & Legal Disclaimer - NextHire Matrix</title>
+    <meta name="description" content="NextHire Matrix Terms of Service and legal disclaimers. Learn about tool usage guidelines, liability limits, and accuracy notices.">
+    <meta name="keywords" content="NextHire Matrix Terms of Service, legal disclaimer, ATS scanner terms, salary simulator liability limit">
+    <link rel="canonical" href="https://www.nexthirematrix.com/terms.html">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+    <!-- Google Search Schema Engine -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Terms of Service & Legal Disclaimer",
+      "url": "https://www.nexthirematrix.com/terms.html",
+      "description": "Terms of Service and legal limitation of liability for NextHire Matrix career tools."
+    }
+    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
-    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-emerald-400">NextHire Matrix</a>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white">← Back to Tools</a>
+            <a href="index.html" class="text-xl font-black text-emerald-400 flex items-center gap-2">
+                <span class="p-1.5 bg-emerald-500 text-slate-950 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">← Back to Tools</a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="text-slate-400 hover:text-emerald-400 transition text-sm">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow">
-        <h1 class="text-3xl font-extrabold text-white mb-6">Terms of Service & Legal Disclaimer</h1>
-        <p class="text-slate-400 mb-8 text-sm">Last Updated: November 2026</p>
+    <!-- Main Workspace Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow w-full">
+        <h1 class="text-3xl font-extrabold text-white mb-2">Terms of Service & Legal Disclaimer</h1>
+        <p class="text-slate-400 mb-8 text-xs font-semibold">Last Updated: November 2026 • Effective Date: Immediate</p>
 
         <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
-            <section class="bg-amber-950/40 border border-amber-600/40 p-6 rounded-xl">
-                <h2 class="text-lg font-semibold text-amber-400 mb-2">⚠️ CRITICAL LEGAL DISCLAIMER & LIMITATION OF LIABILITY</h2>
-                <p class="text-amber-200/90 text-sm">NextHire Matrix provides free self-service utilities, calculators, ATS checkers, and document generators for <strong>educational and personal preparation purposes only</strong>. We do not guarantee employment, job interviews, or offer letter validity. Under no circumstances shall NextHire Matrix or its creator be held legally or financially liable for hiring decisions, company rejections, financial miscalculations, or dispute outcomes resulting from the use of this website.</p>
+            
+            <!-- Amber Box: Critical Legal Disclaimer & Liability Shield -->
+            <section class="bg-amber-950/40 border border-amber-600/40 p-6 rounded-2xl space-y-2">
+                <h2 class="text-base font-extrabold text-amber-400 flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> CRITICAL LEGAL DISCLAIMER & LIMITATION OF LIABILITY
+                </h2>
+                <p class="text-xs text-amber-200/90 leading-relaxed font-medium">
+                    NextHire Matrix provides free self-service utilities, salary simulators, ATS checkers, and document formatting tools for <strong>educational, informational, and personal preparation purposes only</strong>. We do not guarantee employment selection, job interview calls, or corporate offer letter validity. Under no circumstances shall NextHire Matrix or its creator (Yash Raj Goswami) be held legally or financially liable for hiring decisions, company rejections, financial miscalculations, or dispute outcomes resulting from the use of this website.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">1. Use of Tools & Self-Attestation Notice</h2>
-                <p>All documents, custom project certificates, and bullet points generated on NextHire Matrix are self-attested utilities meant solely for personal portfolio representation. Users are solely responsible for ensuring that any resume details, project references, or claims submitted to employers are truthful, accurate, and compliant with their prospective employer's hiring policies.</p>
+            <!-- 1. Use of Tools -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-check text-emerald-400"></i> 1. Use of Tools & Self-Attestation Notice
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    All documents, custom project certificates, and bullet point enhancements generated on NextHire Matrix are self-attested utilities meant solely for personal portfolio representation. Users are solely responsible for ensuring that any resume details, project references, or credentials submitted to prospective employers are truthful, accurate, and compliant with employer hiring policies.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">2. Financial & Salary Estimates Disclaimer</h2>
-                <p>Our In-Hand Salary Calculator and Offer Comparison tools provide automated mathematical estimations based on standardized formulas. Actual corporate tax withholdings, statutory deductions (PF/ESI/TDS), and company policies may vary. These calculators are provided for informational reference only and do not constitute professional financial or legal tax advice.</p>
+            <!-- 2. Financial & Salary Estimates -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-amber-400"></i> 2. Financial & Salary Estimates Disclaimer
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Our In-Hand Salary Calculator and Offer Comparison utilities provide automated mathematical estimations based on standardized formulas. Actual corporate tax withholdings, statutory deductions (PF/ESI/TDS), and specific company payroll policies may vary. These calculators are provided for informational reference only and do not constitute certified financial or legal tax advice.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">3. ATS & AI Score Interpretation</h2>
-                <p>ATS scores, keyword match percentages, and formatting badges generated on NextHire Matrix are calculated via heuristic pattern matching. Third-party applicant tracking software (e.g., Workday, Greenhouse, Lever) uses proprietary algorithms that may differ. Achieving a high score on NextHire Matrix does not guarantee selection by any employer.</p>
+            <!-- 3. ATS & AI Score Interpretation -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-sky-400"></i> 3. ATS & Algorithmic Score Interpretation
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    ATS scores, keyword match percentages, and formatting audits generated on NextHire Matrix are calculated via client-side heuristic pattern matching. Third-party applicant tracking software (e.g., Workday, Greenhouse, Lever) uses proprietary scoring models that may differ. Achieving a high match score on NextHire Matrix does not guarantee candidate selection by any employer.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">4. User Intellectual Property & Privacy</h2>
-                <p>Since all data parsing occurs locally inside your web browser, NextHire Matrix claims zero ownership rights over your resumes, code, or personal data. You retain 100% ownership of your files.</p>
+            <!-- 4. User Intellectual Property -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-purple-400"></i> 4. User Intellectual Property & Privacy
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Since all document parsing executes locally inside your web browser memory (RAM), NextHire Matrix claims zero ownership rights over your resumes, code, audio, or personal data. You retain 100% full ownership of your submitted files.
+                </p>
             </section>
 
-            <section>
-                <h2 class="text-lg font-semibold text-white mb-2">5. Modifications & Service Availability</h2>
-                <p>We reserve the right to modify, update, or discontinue any feature or tool on NextHire Matrix at any time without prior notice.</p>
+            <!-- 5. Service Availability -->
+            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
+                <h2 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-server text-teal-400"></i> 5. Service Availability & Modifications
+                </h2>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    We reserve the right to modify, upgrade, or discontinue any feature, tool, or utility on NextHire Matrix at any time without prior notice.
+                </p>
             </section>
+
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        © 2026 NextHire Matrix. All rights reserved. | <a href="privacy.html" class="underline hover:text-slate-300">Privacy Policy</a> | <a href="about.html" class="underline hover:text-slate-300">About Us</a>
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500 space-y-2">
+        <div class="flex justify-center items-center gap-4 font-semibold text-slate-400">
+            <a href="about.html" class="hover:text-emerald-400 transition">About Us</a>
+            <span>•</span>
+            <a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Policy</a>
+            <span>•</span>
+            <a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a>
+        </div>
+        <p>© 2026 NextHire Matrix. All rights reserved. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-400 underline">Yash Raj Goswami</a>.</p>
     </footer>
 </body>
 </html>

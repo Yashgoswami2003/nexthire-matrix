@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextHire Matrix | All-in-One Free Career & Interview Toolkit</title>
+    <title>NextHire Matrix | Free ATS Resume Checker, Salary Calculator & Career Suite</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/index.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="Optimize resumes, calculate take-home pay, analyze code complexity, practice interviews, and test recruiter heatmaps — 100% free with zero sign-up.">
+    <meta name="description" content="All-in-one free career toolkit. Check ATS resume match scores, calculate monthly in-hand salary, test recruiter eye heatmaps, and analyze code.">
     <meta name="keywords" content="Free ATS resume checker online, In hand salary calculator India, Recruiter resume heatmap scanner, Coding interview flashcards, Big-O code complexity, free career tools">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/index.html">
-    <meta property="og:title" content="NextHire Matrix - All-in-One Free Career & Interview Suite">
-    <meta property="og:description" content="Free private career tools: ATS Resume Audit, In-Hand Salary Calculator, Recruiter Heatmap, Speech Coach, and Code Complexity Analyzer.">
+    <meta property="og:title" content="NextHire Matrix | Free ATS Resume Checker, Salary Calculator & Career Suite">
+    <meta property="og:description" content="All-in-one free career toolkit. Check ATS resume match scores, calculate monthly in-hand salary, test recruiter eye heatmaps, and analyze code.">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
@@ -27,21 +27,25 @@
         })(window, document, "clarity", "script", "zbvrt4kf5g");
     </script>
 
-    <!-- Schema.org WebApplication Data -->
+    <!-- Structured JSON-LD WebApplication Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "NextHire Matrix",
       "url": "https://www.nexthirematrix.com/index.html",
-      "applicationCategory": "Career Utility Suite",
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "All Browsers",
       "creator": {
         "@type": "Person",
         "name": "Yash Raj Goswami",
         "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
       },
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     }
     </script>
 
@@ -89,6 +93,11 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+
+        .feedback-widget {
+            bottom: 75px !important;
+            right: 16px !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
@@ -112,14 +121,15 @@
                     <i class="fa-solid fa-moon"></i>
                 </button>
 
+                <!-- Hamburger button (visible on mobile only) -->
                 <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Toggle Navigation Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Lotus365-Style Sub-Navbar -->
-        <div class="relative bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2">
+        <!-- Desktop Only Sub-Navbar (Hidden on Mobile < 768px via 'hidden md:block') -->
+        <div class="hidden md:block relative bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2">
             <div class="max-w-7xl mx-auto flex items-center gap-2 px-2 overflow-x-auto whitespace-nowrap no-scrollbar pr-8">
                 <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-emerald-500/20 shrink-0">
                     <i class="fa-solid fa-house text-sm"></i> Home
@@ -159,8 +169,8 @@
         </div>
     </header>
 
-    <!-- Mobile Slide-Out Navigation Drawer (80% Width + Blur) -->
-    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex justify-end transition-opacity duration-300">
+    <!-- Mobile Slide-Out Drawer containing ALL 10 Tools (Hidden on Desktop via 'md:hidden') -->
+    <div id="mobileDrawer" class="hidden md:hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex justify-end transition-opacity duration-300">
         <div onclick="toggleMobileDrawer()" class="flex-grow"></div>
         <div class="bg-white dark:bg-slate-900 w-80 max-w-[85vw] h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between border-l border-slate-200 dark:border-slate-800 overflow-y-auto">
             <div class="space-y-6">
@@ -174,11 +184,11 @@
                 </div>
 
                 <div class="space-y-2">
-                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1">Core Suite Tools</p>
+                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1">All Career Tools</p>
                     <nav class="flex flex-col gap-1 text-xs font-bold text-slate-700 dark:text-slate-200">
                         <a href="ats-checker.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
                             <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs"><i class="fa-solid fa-file-contract"></i></span>
-                            ATS Resume Checker
+                            Free ATS Resume Checker
                         </a>
                         <a href="salary-simulator.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
                             <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs"><i class="fa-solid fa-wallet"></i></span>
@@ -186,15 +196,35 @@
                         </a>
                         <a href="recruiter-skim.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
                             <span class="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-xs"><i class="fa-solid fa-eye"></i></span>
-                            6-Sec Resume Heatmap
+                            6-Sec Recruiter Heatmap
+                        </a>
+                        <a href="code-inspector.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
+                            <span class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xs"><i class="fa-solid fa-code"></i></span>
+                            Big-O Code Complexity Checker
+                        </a>
+                        <a href="voice-analyzer.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
+                            <span class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-xs"><i class="fa-solid fa-microphone"></i></span>
+                            AI Interview Speech Coach
+                        </a>
+                        <a href="offer-comparator.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
+                            <span class="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs"><i class="fa-solid fa-scale-balanced"></i></span>
+                            Job Offer Comparison Tool
+                        </a>
+                        <a href="format-auditor.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
+                            <span class="w-7 h-7 rounded-lg bg-teal-500/10 text-teal-500 flex items-center justify-center text-xs"><i class="fa-solid fa-font"></i></span>
+                            ATS Font & Layout Checker
                         </a>
                         <a href="bullet-enhancer.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
                             <span class="w-7 h-7 rounded-lg bg-fuchsia-500/10 text-fuchsia-500 flex items-center justify-center text-xs"><i class="fa-solid fa-list-check"></i></span>
-                            Metric Bullet Enhancer
+                            Resume Bullet Generator
                         </a>
                         <a href="certificate-builder.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
                             <span class="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs"><i class="fa-solid fa-award"></i></span>
-                            Project Certificate Builder
+                            Project Verification Builder
+                        </a>
+                        <a href="tech-flashcards.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs"><i class="fa-solid fa-layer-group"></i></span>
+                            500+ Tech Flashcards
                         </a>
                     </nav>
                 </div>
@@ -223,24 +253,20 @@
     <!-- Main Content Workspace -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
         
-        <!-- Upgraded Hero Section Covering ALL 10 Tools -->
+        <!-- Upgraded Hero Section -->
         <section class="hero-section text-center space-y-4 max-w-3xl mx-auto px-2">
-            <!-- Top Small Badge -->
             <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
                 <span>⚡ Instant Access • No Registration Required</span>
             </div>
 
-            <!-- Main H1 Heading (Covers Resume, Salary, Coding & Interview) -->
             <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                <span class="gradient-text">All-in-One Free Career</span> & Interview Toolkit
+                <span class="gradient-text">All-in-One Free Career</span> & Interview Suite
             </h1>
 
-            <!-- Complete Platform Coverage Subtitle -->
             <p class="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold leading-relaxed max-w-xl mx-auto px-2">
                 Optimize resumes, calculate take-home pay, analyze code complexity, and practice interview questions — instantly.
             </p>
 
-            <!-- Universal Action CTAs -->
             <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <a href="#tools-grid" class="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg shadow-emerald-500/25 transition transform hover:scale-105 flex items-center gap-2">
                     🚀 Explore 10+ Free Tools
@@ -250,7 +276,6 @@
                 </a>
             </div>
 
-            <!-- Clean High-Trust Privacy Box -->
             <div class="glass-card mt-6 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md max-w-2xl mx-auto text-left sm:text-center space-y-1">
                 <div class="flex items-center gap-2 sm:justify-center">
                     <span class="text-emerald-500"><i class="fa-solid fa-shield-halved"></i></span>
@@ -262,18 +287,18 @@
             </div>
         </section>
 
-        <!-- All 10 Tool Cards Grid (Anchor ID added for CTA smooth scrolling) -->
+        <!-- Upgraded High-Search SEO Titles for 10 Tool Cards Grid -->
         <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
             
-            <!-- Tool 1: ATS Resume Checker -->
+            <!-- Tool 1: Free ATS Resume Checker -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-file-contract"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">ATS Resume Checker</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Free ATS Resume Checker</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Find missing keywords and boost your resume match score for target job applications.
+                        Audit missing keywords and score your PDF resume against job descriptions.
                     </p>
                 </div>
                 <a href="ats-checker.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md shadow-emerald-500/10">
@@ -281,15 +306,15 @@
                 </a>
             </div>
 
-            <!-- Tool 2: Interview Speech Coach -->
+            <!-- Tool 2: AI Interview Speech Coach -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">AI Speech & WPM Coach</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">AI Interview Speech Coach</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Practice interview answers and analyze speaking speed, pauses, and clarity.
+                        Practice speaking WPM, clarity, and pause gaps for live tech interviews.
                     </p>
                 </div>
                 <a href="voice-analyzer.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-purple-600/10">
@@ -297,15 +322,15 @@
                 </a>
             </div>
 
-            <!-- Tool 3: Certificate Builder -->
+            <!-- Tool 3: Project Verification Builder -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-award"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Project Certificate Builder</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Project Verification Builder</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Generate verified print-ready certificates for your portfolio projects in 1 click.
+                        Generate print-ready A4 project verification certificates in 1-click.
                     </p>
                 </div>
                 <a href="certificate-builder.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-indigo-600/10">
@@ -321,7 +346,7 @@
                     </div>
                     <h3 class="text-lg font-black text-slate-900 dark:text-white">In-Hand Salary Calculator</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Calculate exact monthly take-home salary after taxes and 4-year ESOP breakdown.
+                        Calculate monthly take-home salary after tax, PF, and 4-year ESOP vesting.
                     </p>
                 </div>
                 <a href="salary-simulator.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md shadow-amber-500/10">
@@ -329,15 +354,15 @@
                 </a>
             </div>
 
-            <!-- Tool 5: Job Offer Compare -->
+            <!-- Tool 5: Job Offer Comparison Tool -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-scale-balanced"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Job Offer Compare</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Job Offer Comparison Tool</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Compare competing job offer letters side by side with weighted salary & perk scoring.
+                        Compare competing offer letters side-by-side with equity & perks.
                     </p>
                 </div>
                 <a href="offer-comparator.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-rose-600/10">
@@ -345,15 +370,15 @@
                 </a>
             </div>
 
-            <!-- Tool 6: 6-Sec Recruiter Test -->
+            <!-- Tool 6: 6-Sec Recruiter Heatmap -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-eye"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">6-Sec Resume Heatmap</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">6-Sec Recruiter Heatmap</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        See what HR notices in your resume during their first 6-second F-pattern scan.
+                        See how HR scans your resume in 6 seconds using F-pattern eye-tracking.
                     </p>
                 </div>
                 <a href="recruiter-skim.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-sky-600 hover:bg-sky-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-sky-600/10">
@@ -361,15 +386,15 @@
                 </a>
             </div>
 
-            <!-- Tool 7: Resume Font Checker -->
+            <!-- Tool 7: ATS Font & Layout Checker -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-font"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">ATS Font & Format Auditor</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">ATS Font & Layout Checker</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Audit fonts, margins, and formatting bugs to ensure 100% ATS parsing safety.
+                        Scan unreadable fonts, table issues, and layout errors for ATS safety.
                     </p>
                 </div>
                 <a href="format-auditor.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-teal-600/10">
@@ -377,15 +402,15 @@
                 </a>
             </div>
 
-            <!-- Tool 8: Impact Bullet Generator -->
+            <!-- Tool 8: Resume Bullet Generator -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-fuchsia-500/10 text-fuchsia-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-list-check"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Impact Bullet Generator</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Resume Bullet Generator</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Transform weak bullet points into high-impact, action-verb statements with metrics.
+                        Turn weak duties into action-word metric bullet points.
                     </p>
                 </div>
                 <a href="bullet-enhancer.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-fuchsia-600/10">
@@ -393,15 +418,15 @@
                 </a>
             </div>
 
-            <!-- Tool 9: Big-O Code Inspector -->
+            <!-- Tool 9: Big-O Code Analyzer -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
                 <div class="space-y-3">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl font-bold">
                         <i class="fa-solid fa-code"></i>
                     </div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Big-O Code Complexity Checker</h3>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">Big-O Code Analyzer</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                        Analyze time & space complexity (O(N), O(N²)) and optimize nested loops locally.
+                        Test code time complexity (O(N), O(N^2)) and memory leaks.
                     </p>
                 </div>
                 <a href="code-inspector.html" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-cyan-600 hover:bg-cyan-700 text-white font-black rounded-xl text-xs transition shadow-md shadow-cyan-600/10">
@@ -409,7 +434,7 @@
                 </a>
             </div>
 
-            <!-- Full-Width Row Hero Feature: Tech Flashcards -->
+            <!-- Tool 10: Tech Flashcards -->
             <div class="lg:col-span-3 glass-card tool-card p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-emerald-500/30 bg-emerald-500/5">
                 <div class="space-y-2 text-center sm:text-left">
                     <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full">High-Speed Interview Revision</span>
@@ -481,8 +506,8 @@
         </article>
     </main>
 
-    <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+    <!-- Floating Feedback Trigger Button (With CSS Lift Fix) -->
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="feedback-widget fixed z-50 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
         <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 

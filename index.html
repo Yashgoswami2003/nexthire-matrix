@@ -2,7 +2,7 @@
 <html lang="en" id="htmlRoot" class="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextHire Matrix | Free ATS Resume Checker, Salary Calculator & Career Suite</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/index.html">
@@ -79,11 +79,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         
-        /* Strict Horizontal Fixes to Eliminate Right Side Whitespace Bug */
         html, body { 
             font-family: 'Plus Jakarta Sans', sans-serif;
-            max-width: 100vw !important;
-            overflow-x: hidden !important;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -99,11 +98,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
-
-        .feedback-widget {
-            bottom: 75px !important;
-            right: 16px !important;
-        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
@@ -111,29 +105,25 @@
     <div class="glow-blob w-72 h-72 sm:w-96 sm:h-96 bg-emerald-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-72 h-72 sm:w-96 sm:h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Main Navigation Header -->
-    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full overflow-hidden">
+    <!-- Clean Header Navigation Bar (Drawer Completely Removed) -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/20 text-xs sm:text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </a>
             
-            <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="openMobileToolsDrawer()" class="md:hidden flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-slate-950 font-black text-xs rounded-xl shadow-md shadow-emerald-500/20">
-                    <i class="fa-solid fa-grid-2"></i> Features
-                </button>
+            <div class="flex items-center gap-3">
+                <a href="#tools-grid" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-500/20 transition transform hover:scale-105">
+                    🚀 Launch Tools Suite
+                </a>
 
                 <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-
-                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Toggle Navigation Menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
             </div>
         </div>
 
-        <!-- Desktop Only Sub-Navbar (Strict Hidden on Mobile to stop horizontal overflow) -->
+        <!-- Desktop Only Sub-Navbar -->
         <div class="hidden md:block relative bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 w-full overflow-hidden">
             <div class="max-w-7xl mx-auto flex items-center gap-2 px-2 overflow-x-auto whitespace-nowrap no-scrollbar pr-8">
                 <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-emerald-500/20 shrink-0">
@@ -172,98 +162,16 @@
             </div>
         </div>
     </header>
-
-    <!-- Mobile Drawer containing ALL 10 Tools (Opens smoothly on Mobile) -->
-    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex justify-end transition-opacity duration-300">
-        <div onclick="toggleMobileDrawer()" class="flex-grow"></div>
-        <div class="bg-white dark:bg-slate-900 w-80 max-w-[85vw] h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between border-l border-slate-200 dark:border-slate-800 overflow-y-auto">
-            <div class="space-y-6">
-                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
-                    <span class="font-black text-emerald-500 text-base flex items-center gap-2">
-                        <i class="fa-solid fa-bolt"></i> NextHire Matrix
-                    </span>
-                    <button onclick="toggleMobileDrawer()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition font-black text-sm" aria-label="Close Menu">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1">All Career Tools & Features</p>
-                    <nav class="flex flex-col gap-1 text-xs font-bold text-slate-700 dark:text-slate-200">
-                        <a href="ats-checker.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs"><i class="fa-solid fa-file-contract"></i></span>
-                            Free ATS Resume Checker
-                        </a>
-                        <a href="salary-simulator.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs"><i class="fa-solid fa-wallet"></i></span>
-                            In-Hand Salary Calculator
-                        </a>
-                        <a href="recruiter-skim.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-xs"><i class="fa-solid fa-eye"></i></span>
-                            6-Sec Recruiter Heatmap
-                        </a>
-                        <a href="code-inspector.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xs"><i class="fa-solid fa-code"></i></span>
-                            Big-O Code Complexity Checker
-                        </a>
-                        <a href="voice-analyzer.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-xs"><i class="fa-solid fa-microphone"></i></span>
-                            AI Interview Speech Coach
-                        </a>
-                        <a href="offer-comparator.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs"><i class="fa-solid fa-scale-balanced"></i></span>
-                            Job Offer Comparison Tool
-                        </a>
-                        <a href="format-auditor.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-teal-500/10 text-teal-500 flex items-center justify-center text-xs"><i class="fa-solid fa-font"></i></span>
-                            ATS Font & Layout Checker
-                        </a>
-                        <a href="bullet-enhancer.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-fuchsia-500/10 text-fuchsia-500 flex items-center justify-center text-xs"><i class="fa-solid fa-list-check"></i></span>
-                            Resume Bullet Generator
-                        </a>
-                        <a href="certificate-builder.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs"><i class="fa-solid fa-award"></i></span>
-                            Project Verification Builder
-                        </a>
-                        <a href="tech-flashcards.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs"><i class="fa-solid fa-layer-group"></i></span>
-                            500+ Tech Flashcards
-                        </a>
-                    </nav>
-                </div>
-
-                <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
-                    <p class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1">Legal & Safety</p>
-                    <nav class="flex flex-col gap-1 text-xs font-bold text-slate-700 dark:text-slate-200">
-                        <a href="about.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-slate-500/10 text-slate-500 flex items-center justify-center text-xs"><i class="fa-solid fa-circle-info"></i></span> About Us
-                        </a>
-                        <a href="privacy.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-slate-500/10 text-slate-500 flex items-center justify-center text-xs"><i class="fa-solid fa-shield-halved"></i></span> Privacy Policy
-                        </a>
-                        <a href="terms.html" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition">
-                            <span class="w-7 h-7 rounded-lg bg-slate-500/10 text-slate-500 flex items-center justify-center text-xs"><i class="fa-solid fa-scale-balanced"></i></span> Terms & Disclaimer
-                        </a>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="text-[10px] text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800 pt-4 flex items-center gap-2">
-                <i class="fa-solid fa-lock text-emerald-500"></i> 100% In-Browser Privacy Guard Active
-            </div>
-        </div>
-    </div>
     <!-- Main Content Workspace -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-grow w-full space-y-6 sm:space-y-8 overflow-hidden">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
         
         <!-- Upgraded Hero Section -->
         <section class="hero-section text-center space-y-4 max-w-3xl mx-auto px-2">
-            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full text-[11px] sm:text-xs font-black text-emerald-600 dark:text-emerald-400">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
                 <span>⚡ Instant Access • No Registration Required</span>
             </div>
 
-            <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight px-1">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
                 <span class="gradient-text">All-in-One Free Career</span> & Interview Suite
             </h1>
 
@@ -272,9 +180,9 @@
             </p>
 
             <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <button onclick="toggleMobileDrawer()" class="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg shadow-emerald-500/25 transition transform hover:scale-105 flex items-center gap-2">
+                <a href="#tools-grid" class="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg shadow-emerald-500/25 transition transform hover:scale-105 flex items-center gap-2">
                     🚀 Explore 10+ Free Tools
-                </button>
+                </a>
                 <a href="ats-checker.html" class="px-5 py-3.5 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-black text-xs sm:text-sm rounded-xl border border-slate-700/80 transition transform hover:scale-105 flex items-center gap-2">
                     ⚡ Quick Start (ATS Scanner)
                 </a>
@@ -292,7 +200,7 @@
         </section>
 
         <!-- Upgraded High-Search SEO Titles Grid -->
-        <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 sm:pt-6">
+        <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
             
             <!-- Tool 1: Free ATS Resume Checker -->
             <div class="glass-card tool-card p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800">
@@ -508,12 +416,14 @@
                 </details>
             </div>
         </article>
-    </main>
 
-    <!-- Floating Feedback Trigger Button (With CSS Lift Fix) -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="feedback-widget fixed z-50 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
-    </button>
+        <!-- Static Inline Feedback Button (Placed at Bottom of Content to remove floating clutter) -->
+        <div class="flex justify-center pt-4">
+            <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-black text-xs shadow-lg flex items-center gap-2 hover:scale-105 transition transform">
+                <i class="fa-solid fa-comment-dots text-sm"></i> Share Your Feedback / Report Bug
+            </button>
+        </div>
+    </main>
 
     <!-- Formspree Connected Feedback Modal -->
     <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -550,7 +460,7 @@
         </div>
     </div>
 
-    <!-- Footer Section with Relocated Legal Links -->
+    <!-- Footer Section with Legal Links -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
             <div class="flex justify-center items-center gap-6 font-bold text-slate-700 dark:text-slate-300">
@@ -566,14 +476,6 @@
 
     <!-- Universal Scripts Handler -->
     <script>
-        function toggleMobileDrawer() {
-            document.getElementById('mobileDrawer').classList.toggle('hidden');
-        }
-
-        function openMobileToolsDrawer() {
-            document.getElementById('mobileDrawer').classList.remove('hidden');
-        }
-
         function shareToWhatsApp() {
             const rawText = "Check out NextHire Matrix! Free ATS resume scanner, salary calculator & coding tools: https://www.nexthirematrix.com/index.html";
             const encodedText = encodeURIComponent(rawText);

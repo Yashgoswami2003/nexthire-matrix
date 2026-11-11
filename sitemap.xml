@@ -89,4 +89,28 @@
     <priority>0.80</priority>
   </url>
 
+  <!-- 12. About Us -->
+  <url>
+    <loc>https://www.nexthirematrix.com/about.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- 13. Privacy Policy -->
+  <url>
+    <loc>https://www.nexthirematrix.com/privacy.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- 14. Terms & Disclaimer -->
+  <url>
+    <loc>https://www.nexthirematrix.com/terms.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
 </urlset>

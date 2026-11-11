@@ -1,11 +1,14 @@
 # NextHire Matrix - Production Robots Configuration
 
+# Allow Google Search Indexing Crawler
 User-agent: Googlebot
 Allow: /
 
+# Block Google AI Model Scraper / Training Crawler
 User-agent: Google-Extended
-Allow: /
+Disallow: /
 
+# General Search Engine Crawler Rules
 User-agent: *
 Allow: /
 Disallow: /api/

@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metric Bullet Enhancer | NextHire Matrix</title>
+    <title>Metric Resume Bullet Enhancer | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/bullet-enhancer.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side Metric Resume Bullet Enhancer. Transform passive work experience bullets into high-impact metric statements with zero server uploads.">
+    <meta name="description" content="100% Client-Side Metric Resume Bullet Enhancer. Transform passive work experience bullets into high-impact Google XYZ metric statements with zero server uploads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/bullet-enhancer.html">
+    <meta property="og:title" content="Metric Bullet Enhancer - NextHire Matrix">
+    <meta property="og:description" content="Transform weak resume bullets into action-verb metric accomplishments locally in browser RAM.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,13 +47,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #d946ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #4f46e5 50%, #d946ef 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
@@ -48,68 +65,140 @@
     <div class="glow-blob w-96 h-96 bg-fuchsia-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-fuchsia-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-fuchsia-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-fuchsia-500/20 shrink-0">
+                    <i class="fa-solid fa-list-check text-sm"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-fuchsia-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-fuchsia-500">🏠 Home</a>
+                    <a href="bullet-enhancer.html" class="py-2 hover:text-fuchsia-500">📝 Bullet Generator</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-fuchsia-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-fuchsia-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-fuchsia-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-fuchsia-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
             <div class="inline-flex items-center gap-2 bg-fuchsia-500/10 border border-fuchsia-500/20 px-4 py-1.5 rounded-full text-xs font-black text-fuchsia-600 dark:text-fuchsia-400">
-                <i class="fa-solid fa-list-check"></i> Action-Verb & Metric Formula Engine
+                <i class="fa-solid fa-list-check"></i> Action-Verb & Google XYZ Formula Engine
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 Metric Bullet <span class="gradient-text">Impact Enhancer</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Convert weak, passive work experience bullets into high-impact, metric-backed accomplishments (XYZ Framework).
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Convert weak, passive work experience bullets into high-impact, metric-backed accomplishments using Google's XYZ Formula.
             </p>
         </div>
 
-        <!-- Trust Security Banner -->
+        <!-- Privacy Guard Banner -->
         <div class="glass-card border-l-4 border-l-fuchsia-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-fuchsia-500/10 text-fuchsia-500 rounded-xl flex items-center justify-center text-lg shrink-0">
-                    <i class="fa-solid fa-shield-halved"></i>
+                <div class="w-10 h-10 bg-fuchsia-500/10 text-fuchsia-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Client-Side Processing</strong>
-                    <span class="text-slate-500">Your resume work history bullets stay strictly inside your browser memory.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Your resume work history bullets remain strictly inside your local browser memory.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-fuchsia-100 dark:bg-fuchsia-950 text-fuchsia-700 dark:text-fuchsia-300 font-black rounded-lg text-[10px] uppercase shrink-0">Private Utility</span>
+            <button onclick="fillSampleBullet()" class="px-3 py-1.5 bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-black rounded-xl text-[11px] shrink-0 transition">
+                ⚡ Auto-Fill Sample
+            </button>
         </div>
 
         <!-- Workstation Form Card -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl">
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-200 dark:border-slate-800">
             <div class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Paste Your Current Bullet Point</label>
-                    <input type="text" id="rawBullet" placeholder="e.g. Built API endpoints for payment processing and reduced database queries" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Paste Your Raw Work Experience Bullet</label>
+                    <input type="text" id="rawBullet" placeholder="e.g. Built API endpoints for payment processing and reduced database queries" class="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-xs">
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Impact Metric (e.g., 40%, 250ms, $50K)</label>
-                        <input type="text" id="metricInput" placeholder="e.g. 35% latency reduction" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Impact Metric (e.g., 40%, 250ms, $50K)</label>
+                        <input type="text" id="metricInput" placeholder="e.g. 35% latency reduction" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Tech Stack / Tool Used</label>
-                        <input type="text" id="techStackInput" placeholder="e.g. Node.js, Redis, PostgreSQL" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Tech Stack / Tools Used</label>
+                        <input type="text" id="techStackInput" placeholder="e.g. Node.js, Redis, PostgreSQL" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-xs">
                     </div>
                 </div>
             </div>
@@ -121,28 +210,37 @@
 
         <!-- Output Recommendations Container -->
         <div id="resultsContainer" class="hidden space-y-6">
-            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border-2 border-fuchsia-500/30">
-                <h3 class="text-xs font-black uppercase text-fuchsia-600 dark:text-fuchsia-400 tracking-wider">High-Impact Bullet Formats (Google XYZ Formula)</h3>
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border-2 border-fuchsia-500/30 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h3 class="text-xs font-black uppercase text-fuchsia-600 dark:text-fuchsia-400 tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Google XYZ Formula Variations
+                    </h3>
+                    <span class="text-[10px] bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 font-bold px-2.5 py-1 rounded-full">1-Click Copy Ready</span>
+                </div>
                 
                 <div id="bulletOutputList" class="space-y-3 text-xs"></div>
             </div>
 
-            <!-- Social Flex LinkedIn Card -->
+            <!-- Social Share Banner -->
             <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Enhanced Resume Bullets</span>
-                    <h4 class="text-sm font-black">Upgraded your work history with impact metrics? Share on LinkedIn!</h4>
+                    <span class="text-[10px] font-black uppercase text-fuchsia-200 tracking-wider">🏆 Flex Your Enhanced Bullets</span>
+                    <h4 class="text-sm font-black">Upgraded your work history with impact metrics? Share on WhatsApp or LinkedIn!</h4>
                 </div>
-                <button onclick="shareBulletToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Bullet Badge
-                </button>
+                <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="shareBulletToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </button>
+                    <button onclick="shareBulletToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    </button>
+                </div>
             </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -152,51 +250,66 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found a bullet generator bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report a bullet generator issue directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
                         <option value="bullet_issue">📝 Bullet Enhancer Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the bullet enhancer feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your issue or suggestion..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-fuchsia-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-black rounded-xl shadow-lg shadow-fuchsia-600/25 transition flex items-center justify-center gap-2">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
-    <!-- XYZ Metric Bullet Transformation Engine Script -->
+    <!-- Client-Side Bullet Generation Logic -->
     <script>
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
+
+        function fillSampleBullet() {
+            document.getElementById('rawBullet').value = "Built backend API endpoints for processing user payment transactions and caching queries";
+            document.getElementById('metricInput').value = "40% reduction in query latency & $20K monthly cloud cost savings";
+            document.getElementById('techStackInput').value = "Node.js, Express, Redis & PostgreSQL";
+            enhanceBullet();
+        }
+
         function enhanceBullet() {
             const raw = document.getElementById('rawBullet').value.trim();
-            const metric = document.getElementById('metricInput').value.trim() || 'significant performance gains';
-            const tech = document.getElementById('techStackInput').value.trim() || 'modern architecture';
+            const metric = document.getElementById('metricInput').value.trim() || 'significant efficiency gains';
+            const tech = document.getElementById('techStackInput').value.trim() || 'modern technical stack';
 
             if (!raw) {
-                alert("Please enter a work experience bullet point to enhance.");
+                alert("Please enter a raw work experience bullet point to enhance.");
                 return;
             }
 
@@ -206,7 +319,7 @@
             const variations = [
                 `Architected and optimized ${raw.toLowerCase()} leveraging ${tech}, driving a ${metric}.`,
                 `Spearheaded ${raw.toLowerCase()} using ${tech}; achieved ${metric} across production systems.`,
-                `Engineered robust ${raw.toLowerCase()} with ${tech}, resulting in ${metric} and improved workflow efficiency.`
+                `Engineered robust ${raw.toLowerCase()} powered by ${tech}, resulting in ${metric} and elevated system throughput.`
             ];
 
             variations.forEach((varText, idx) => {
@@ -214,10 +327,10 @@
                 card.className = 'p-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-start justify-between gap-3 shadow-sm';
                 card.innerHTML = `
                     <div class="space-y-1">
-                        <span class="text-[10px] font-black uppercase text-fuchsia-500">Option ${idx + 1} (Google XYZ Standard)</span>
+                        <span class="text-[10px] font-black uppercase text-fuchsia-500">Option ${idx + 1} (Google XYZ Framework)</span>
                         <p class="font-semibold text-slate-800 dark:text-slate-200">${varText}</p>
                     </div>
-                    <button onclick="navigator.clipboard.writeText('${varText.replace(/'/g, "\\'")}'); alert('Bullet copied to clipboard!')" class="px-3 py-1.5 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 hover:bg-fuchsia-500 hover:text-white rounded-xl font-bold transition text-[11px] shrink-0">
+                    <button onclick="copyToClipboard('${varText.replace(/'/g, "\\'")}', this)" class="px-3 py-1.5 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 hover:bg-fuchsia-500 hover:text-white rounded-xl font-bold transition text-[11px] shrink-0">
                         <i class="fa-solid fa-copy mr-1"></i> Copy
                     </button>
                 `;
@@ -225,12 +338,34 @@
             });
 
             document.getElementById('resultsContainer').classList.remove('hidden');
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "bullet_enhancement_executed", "true");
+                clarity("event", "bullet_generated");
+            }
+        }
+
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = `<i class="fa-solid fa-check mr-1"></i> Copied!`;
+                btnElement.classList.add('bg-emerald-500', 'text-white');
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                    btnElement.classList.remove('bg-emerald-500', 'text-white');
+                }, 2000);
+            });
+        }
+
+        function shareBulletToWhatsApp() {
+            const rawText = "I upgraded my resume bullet points with Google XYZ metric framing using NextHire Matrix! Check it out: https://www.nexthirematrix.com/bullet-enhancer.html";
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
         function shareBulletToLinkedIn() {
-            const text = encodeURIComponent("I upgraded my resume bullet points with metric XYZ framing using NextHire Matrix! 100% private in-browser resume enhancer.");
-            const url = encodeURIComponent("https://www.nexthirematrix.com/bullet-enhancer.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/bullet-enhancer.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
     </script>
 </body>

@@ -11,7 +11,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <meta name="description" content="100% Client-Side Job Offer Comparison Engine. Compare competing compensation packages, WFH benefits, and equity options in browser RAM.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/offer-comparator.html">
+    <meta property="og:title" content="Job Offer Duel & Comparison Engine - NextHire Matrix">
+    <meta property="og:description" content="Evaluate competing tech job offers side-by-side based on base salary, equity upside, and WFH flexibility locally in browser RAM.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,39 +47,112 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #f43f5e 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #e11d48 50%, #7c3aed 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Ambient Mesh Glows -->
+    <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-rose-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-rose-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-rose-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-rose-500/20 shrink-0">
+                    <i class="fa-solid fa-scale-balanced text-sm"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-rose-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-rose-500">🏠 Home</a>
+                    <a href="offer-comparator.html" class="py-2 hover:text-rose-500">⚔️ Offer Duel Engine</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-rose-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-rose-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-rose-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-rose-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
@@ -75,74 +162,76 @@
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 Job Offer <span class="gradient-text">Duel & Comparison Engine</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Evaluate two competing tech offers side-by-side based on base pay, equity upside, WFH flexibility, and team growth.
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Evaluate two competing tech job offers side-by-side based on base salary, equity upside, WFH flexibility, and total weighted value.
             </p>
         </div>
 
-        <!-- Trust Banner -->
+        <!-- Privacy Guard Banner -->
         <div class="glass-card border-l-4 border-l-rose-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                <div class="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Offer Evaluation</strong>
-                    <span class="text-slate-500">Your job offer numbers remain strictly inside your browser instance.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Your job offer figures remain strictly inside your local browser memory instance.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero Cloud Uploads</span>
+            <button onclick="fillSampleOfferData()" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-black rounded-xl text-[11px] shrink-0 transition">
+                ⚡ Auto-Fill Sample Offers
+            </button>
         </div>
 
-        <!-- Side-by-Side Dual Form Input -->
+        <!-- Side-by-Side Dual Form Input Workstation -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <!-- Offer A Card -->
-            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-indigo-500">
+            <!-- Offer A Input Card -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-indigo-500 border border-slate-200 dark:border-slate-800">
                 <h3 class="text-sm font-black gradient-text flex items-center gap-2">
                     <i class="fa-solid fa-building"></i> Offer A (Company 1)
                 </h3>
                 <div class="space-y-3 text-xs">
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Company / Role Name</label>
-                        <input type="text" id="offerACompany" placeholder="e.g. Stripe - Senior Dev" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Company / Role Title</label>
+                        <input type="text" id="offerACompany" placeholder="e.g. Stripe - Senior Dev" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Base Salary ($ / ₹)</label>
-                        <input type="number" id="offerABase" placeholder="e.g. 150000" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Base Salary ($ / ₹)</label>
+                        <input type="number" id="offerABase" placeholder="e.g. 150000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Equity / ESOPs</label>
-                        <input type="number" id="offerAEquity" placeholder="e.g. 30000" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Equity / ESOPs ($ / ₹)</label>
+                        <input type="number" id="offerAEquity" placeholder="e.g. 30000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Work Flexibility Rating (1-10)</label>
-                        <input type="number" id="offerAWfh" min="1" max="10" placeholder="e.g. 9 (Full Remote)" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1-10)</label>
+                        <input type="number" id="offerAWfh" min="1" max="10" placeholder="e.g. 9 (Full Remote)" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                 </div>
             </div>
 
-            <!-- Offer B Card -->
-            <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-purple-500">
+            <!-- Offer B Input Card -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-purple-500 border border-slate-200 dark:border-slate-800">
                 <h3 class="text-sm font-black gradient-text flex items-center gap-2">
-                    <i class="fa-solid fa-building font-purple"></i> Offer B (Company 2)
+                    <i class="fa-solid fa-building text-purple-500"></i> Offer B (Company 2)
                 </h3>
                 <div class="space-y-3 text-xs">
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Company / Role Name</label>
-                        <input type="text" id="offerBCompany" placeholder="e.g. Vercel - Lead Eng" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Company / Role Title</label>
+                        <input type="text" id="offerBCompany" placeholder="e.g. Vercel - Lead Eng" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Base Salary ($ / ₹)</label>
-                        <input type="number" id="offerBBase" placeholder="e.g. 165000" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Base Salary ($ / ₹)</label>
+                        <input type="number" id="offerBBase" placeholder="e.g. 165000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Annual Equity / ESOPs</label>
-                        <input type="number" id="offerBEquity" placeholder="e.g. 20000" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Equity / ESOPs ($ / ₹)</label>
+                        <input type="number" id="offerBEquity" placeholder="e.g. 20000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Work Flexibility Rating (1-10)</label>
-                        <input type="number" id="offerBWfh" min="1" max="10" placeholder="e.g. 5 (Hybrid 3 days)" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1-10)</label>
+                        <input type="number" id="offerBWfh" min="1" max="10" placeholder="e.g. 5 (Hybrid 3 days)" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                 </div>
             </div>
@@ -150,33 +239,37 @@
         </div>
 
         <button onclick="runOfferDuel()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-rose-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-trophy"></i> Execute Offer Duel & Calculate Winner
+            <i class="fa-solid fa-trophy"></i> Execute Offer Duel & Calculate Weighted Winner
         </button>
 
-        <!-- Result Container -->
+        <!-- Result Analytics Container -->
         <div id="resultsContainer" class="hidden space-y-6">
-            <div class="glass-card p-8 rounded-3xl text-center space-y-3 border-2 border-emerald-500/30">
-                <span class="text-[10px] font-black uppercase text-emerald-500 tracking-wider">Winning Compensation Package</span>
-                <h2 id="winnerTitle" class="text-2xl sm:text-3xl font-black gradient-text">Company Winner</h2>
-                <p id="winnerReason" class="text-xs font-semibold text-slate-500 max-w-md mx-auto"></p>
+            <div class="glass-card p-6 sm:p-10 rounded-3xl text-center space-y-3 border-2 border-emerald-500/30 shadow-2xl">
+                <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full">Winning Compensation Package</span>
+                <h2 id="winnerTitle" class="text-2xl sm:text-4xl font-black gradient-text">Company Winner</h2>
+                <p id="winnerReason" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 max-w-lg mx-auto leading-relaxed"></p>
             </div>
 
-            <!-- Social Flex LinkedIn Badge Card -->
+            <!-- Social Share Banner -->
             <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Offer Audit</span>
-                    <h4 class="text-sm font-black">Evaluated your career moves privacy-first? Share score badge!</h4>
+                    <span class="text-[10px] font-black uppercase text-rose-200 tracking-wider">🏆 Flex Your Offer Audit</span>
+                    <h4 class="text-sm font-black">Evaluated your career moves privacy-first? Share on WhatsApp or LinkedIn!</h4>
                 </div>
-                <button onclick="shareDuelToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Offer Badge
-                </button>
+                <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="shareDuelToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </button>
+                    <button onclick="shareDuelToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    </button>
+                </div>
             </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-rose-600 hover:bg-rose-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -186,45 +279,67 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found an offer calculator bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report an offer comparator issue directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500">
                         <option value="offer_issue">⚔️ Offer Duel Engine Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the offer duel issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-black rounded-xl shadow-lg shadow-rose-600/25 transition flex items-center justify-center gap-2">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
     <!-- Offer Comparison Calculation Engine Script -->
     <script>
         let winningCompany = '';
+
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
+
+        function fillSampleOfferData() {
+            document.getElementById('offerACompany').value = "Stripe - Senior Dev";
+            document.getElementById('offerABase').value = "150000";
+            document.getElementById('offerAEquity').value = "30000";
+            document.getElementById('offerAWfh').value = "9";
+
+            document.getElementById('offerBCompany').value = "Vercel - Lead Eng";
+            document.getElementById('offerBBase').value = "165000";
+            document.getElementById('offerBEquity').value = "20000";
+            document.getElementById('offerBWfh').value = "5";
+
+            runOfferDuel();
+        }
 
         function runOfferDuel() {
             const compA = document.getElementById('offerACompany').value.trim() || 'Offer A';
@@ -242,27 +357,37 @@
                 return;
             }
 
-            // Weighted Scoring Algorithm: Base (50%), Equity (30%), WFH Score (20%)
+            // Weighted Scoring Algorithm: Base Salary (50%), Equity (30%), WFH Score (20%)
             const scoreA = (baseA * 0.5) + (eqA * 0.3) + (wfhA * 5000 * 0.2);
             const scoreB = (baseB * 0.5) + (eqB * 0.3) + (wfhB * 5000 * 0.2);
 
             if (scoreA >= scoreB) {
                 winningCompany = compA;
                 document.getElementById('winnerTitle').innerText = `🏆 ${compA}`;
-                document.getElementById('winnerReason').innerText = `${compA} leads with higher overall compensation score (base pay + equity + remote flexibility weightage).`;
+                document.getElementById('winnerReason').innerText = `${compA} leads with a higher overall weighted package score, driven by a balance of base salary, equity upside, and WFH flexibility rating.`;
             } else {
                 winningCompany = compB;
                 document.getElementById('winnerTitle').innerText = `🏆 ${compB}`;
-                document.getElementById('winnerReason').innerText = `${compB} leads with higher overall compensation score (base pay + equity + remote flexibility weightage).`;
+                document.getElementById('winnerReason').innerText = `${compB} leads with a higher overall weighted package score, driven by a balance of base salary, equity upside, and WFH flexibility rating.`;
             }
 
             document.getElementById('resultsContainer').classList.remove('hidden');
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "offer_duel_executed", "true");
+                clarity("event", "offer_compared");
+            }
+        }
+
+        function shareDuelToWhatsApp() {
+            const rawText = `I audited competing job offers privacy-first using NextHire Matrix! Evaluation winner: ${winningCompany}. Check it out: https://www.nexthirematrix.com/offer-comparator.html`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
         function shareDuelToLinkedIn() {
-            const text = encodeURIComponent(`I audited competing job offers privacy-first using NextHire Matrix! Evaluation winner: ${winningCompany}.`);
-            const url = encodeURIComponent("https://www.nexthirematrix.com/offer-comparator.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/offer-comparator.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
     </script>
 </body>

@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Fluency Analyzer | NextHire Matrix</title>
+    <title>Voice Pace & Speech Confidence Coach | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/voice-analyzer.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side Voice Speech Analyzer. Calculate Words Per Minute (WPM), silence detection, and speech clarity offline in local browser memory.">
+    <meta name="description" content="100% Client-Side Voice & Speech Confidence Coach. Analyze interview speech pace (WPM), filler word usage, and communication clarity locally in browser RAM.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/voice-analyzer.html">
+    <meta property="og:title" content="Voice Pace & Speech Confidence Coach - NextHire Matrix">
+    <meta property="og:description" content="Test your interview speech delivery, filler words, and words-per-minute (WPM) speaking pace privately in local browser memory.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Voice Fluency Analyzer",
+      "name": "Voice Pace & Speech Confidence Coach",
       "url": "https://www.nexthirematrix.com/voice-analyzer.html",
-      "applicationCategory": "Interview Practice Utility",
+      "applicationCategory": "Audio Processing Utility",
       "operatingSystem": "All Browsers",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
@@ -33,117 +47,216 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #d946ef 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
+    <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-purple-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-purple-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-purple-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-purple-500/20 shrink-0">
+                    <i class="fa-solid fa-microphone text-sm"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-purple-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-purple-500">🏠 Home</a>
+                    <a href="voice-analyzer.html" class="py-2 hover:text-purple-500">🎙️ Speech Pace Coach</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-purple-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-purple-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-purple-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-purple-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
             <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full text-xs font-black text-purple-600 dark:text-purple-400">
-                <i class="fa-solid fa-microphone"></i> Web Speech API • Zero Audio Uploads
+                <i class="fa-solid fa-microphone"></i> Local Web Speech API • Zero Audio Uploads
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
-                AI Voice & <span class="gradient-text">Speech Fluency Analyzer</span>
+                Voice Pace & <span class="gradient-text">Speech Confidence Coach</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Test your interview speaking pace in real-time. Measures Words Per Minute (WPM), filler word counts, and articulation clarity.
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Practice your 60-second interview response. Track speaking speed (WPM), filler words (um, like, basically), and communication confidence score.
             </p>
         </div>
 
-        <!-- Trust Security Banner -->
+        <!-- Privacy Guard Banner -->
         <div class="glass-card border-l-4 border-l-purple-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center text-lg shrink-0">
-                    <i class="fa-solid fa-shield-halved"></i>
+                <div class="w-10 h-10 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div>
-                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Audio Privacy Guaranteed</strong>
-                    <span class="text-slate-500">Voice stream is processed instantly using Web Speech API in browser RAM. No audio files saved or sent.</span>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Private Microphone Processing</strong>
+                    <span class="text-slate-500 dark:text-slate-400">Audio transcription runs 100% locally inside your browser Web Speech Engine. No audio is ever stored or transmitted.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-black rounded-lg text-[10px] uppercase shrink-0">Local Processing</span>
-        </div>
-
-        <!-- Recording Console Card -->
-        <div class="glass-card p-8 rounded-3xl text-center space-y-6 shadow-xl relative overflow-hidden">
-            <div class="space-y-2">
-                <div id="statusIndicator" class="text-xs font-black uppercase tracking-wider text-slate-400">Ready To Record</div>
-                <div id="timerDisplay" class="text-4xl font-black text-slate-800 dark:text-white">00:00</div>
-            </div>
-
-            <!-- Record Button -->
-            <button id="recordBtn" onclick="toggleRecording()" class="w-24 h-24 rounded-full gradient-bg text-white text-3xl shadow-2xl shadow-purple-500/40 hover:scale-105 transition transform flex items-center justify-center mx-auto">
-                <i id="recordIcon" class="fa-solid fa-microphone"></i>
+            <button onclick="fillSampleSpeech()" class="px-3 py-1.5 bg-purple-500 hover:bg-purple-600 text-white font-black rounded-xl text-[11px] shrink-0 transition">
+                ⚡ Text Simulation Mode
             </button>
-
-            <!-- Live Speech Output -->
-            <div class="p-4 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 min-h-[100px] text-xs font-medium text-slate-600 dark:text-slate-300 text-left" id="transcriptBox">
-                Your spoken transcript will appear here in real-time...
-            </div>
         </div>
 
-        <!-- Output Analytics Cards -->
+        <!-- Microphone Workstation Card -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-200 dark:border-slate-800 text-center">
+            
+            <div class="space-y-2">
+                <span id="recordingStatus" class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Ready To Record Speech Answer</span>
+                <div class="flex justify-center items-center gap-4 py-2">
+                    <button id="micBtn" onclick="toggleRecording()" class="w-20 h-20 rounded-full gradient-bg text-white text-2xl font-black shadow-xl shadow-purple-500/30 hover:scale-105 transition flex items-center justify-center mx-auto">
+                        <i id="micIcon" class="fa-solid fa-microphone"></i>
+                    </button>
+                </div>
+                <p id="timerVal" class="text-xl font-black text-slate-900 dark:text-slate-100">00:00</p>
+            </div>
+
+            <!-- Live Speech Textarea Container -->
+            <div class="text-left space-y-2">
+                <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
+                    Transcribed Answer Text / Manual Response Input
+                </label>
+                <textarea id="speechText" rows="6" placeholder="Click the microphone button and deliver your interview response (e.g. Tell me about yourself)..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
+            </div>
+
+            <button onclick="analyzeSpeech()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-purple-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-chart-line"></i> Analyze Speech Pace, WPM & Confidence Score
+            </button>
+        </div>
+
+        <!-- Output Analytics Container -->
         <div id="resultsContainer" class="hidden space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Pace (WPM)</span>
-                    <div id="wpmVal" class="text-3xl font-black gradient-text">0</div>
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Speaking Speed (WPM)</span>
+                    <div id="wpmVal" class="text-3xl font-black gradient-text">130 WPM</div>
+                    <span id="wpmStatus" class="text-[10px] text-emerald-500 font-bold">Ideal Pace (120-160)</span>
                 </div>
-                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Total Words</span>
-                    <div id="wordCountVal" class="text-3xl font-black text-indigo-500">0</div>
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Filler Words Detected</span>
+                    <div id="fillersVal" class="text-3xl font-black text-purple-500">2</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Um, Like, Basically</span>
                 </div>
-                <div class="glass-card p-5 rounded-2xl text-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Fluency Score</span>
-                    <div id="fluencyVal" class="text-3xl font-black text-emerald-500">0%</div>
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Confidence Score</span>
+                    <div id="confidenceVal" class="text-3xl font-black text-emerald-500">92%</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Overall Delivery Grade</span>
                 </div>
             </div>
 
-            <!-- Social Flex LinkedIn Card -->
+            <!-- Speech Delivery Feedback -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-xl">
+                <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-purple-500"></i> Speech Delivery Recommendations
+                </h3>
+                <div id="speechAuditList" class="space-y-3 text-xs"></div>
+            </div>
+
+            <!-- Social Share Banner -->
             <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Speech Fluency</span>
-                    <h4 class="text-sm font-black">Practiced your interview pitch? Share your fluency score badge!</h4>
+                    <span class="text-[10px] font-black uppercase text-purple-200 tracking-wider">🏆 Flex Your Speech Score</span>
+                    <h4 class="text-sm font-black">Practiced your interview pitch privacy-first? Share on WhatsApp or LinkedIn!</h4>
                 </div>
-                <button onclick="shareSpeechToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Fluency Badge
-                </button>
+                <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="shareSpeechToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </button>
+                    <button onclick="shareSpeechToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    </button>
+                </div>
             </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -153,140 +266,199 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found a voice recognition bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report a voice analyzer issue directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <option value="voice_issue">🎙️ Voice Speech / WPM Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="voice_issue">🎙️ Voice / Microphone Engine Bug</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the speech analyzer issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-black rounded-xl shadow-lg shadow-purple-600/25 transition flex items-center justify-center gap-2">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
-    <!-- Web Speech API Client Logic -->
+    <!-- Speech Recognition & WPM Engine Script -->
     <script>
         let isRecording = false;
         let recognition = null;
-        let startTime = null;
         let timerInterval = null;
         let secondsElapsed = 0;
-        let finalTranscript = '';
-        let currentWpm = 0;
+        let speechScore = 90;
 
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.continuous = true;
-            recognition.interimResults = true;
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
 
-            recognition.onresult = (event) => {
-                let interim = '';
-                for (let i = event.resultIndex; i < event.results.length; ++i) {
-                    if (event.results[i].isFinal) {
-                        finalTranscript += event.results[i][0].transcript + ' ';
-                    } else {
-                        interim += event.results[i][0].transcript;
-                    }
-                }
-                document.getElementById('transcriptBox').innerText = finalTranscript + interim;
-            };
-
-            recognition.onerror = (e) => {
-                console.error("Speech Recognition Error:", e);
-                stopRecording();
-            };
-        } else {
-            alert("Web Speech API is not supported in this browser. Please use Google Chrome or MS Edge.");
+        function fillSampleSpeech() {
+            document.getElementById('speechText').value = "I am a Senior Software Engineer with over 4 years of experience building scalable backend microservices. Um, basically I architected distributed caches using Node.js and Redis, which reduced database latency by 45%. Like, I also enjoy leading technical sprints and mentoring junior engineers.";
+            secondsElapsed = 30;
+            document.getElementById('timerVal').innerText = "00:30";
+            analyzeSpeech();
         }
 
         function toggleRecording() {
-            if (!recognition) return;
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                alert("Web Speech API is not supported in your browser. You can type or paste your answer directly into the response box.");
+                return;
+            }
+
             if (!isRecording) {
-                startRecording();
+                recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
+                recognition.lang = 'en-US';
+
+                recognition.onstart = function() {
+                    isRecording = true;
+                    secondsElapsed = 0;
+                    document.getElementById('recordingStatus').innerText = "Recording Live Interview Speech...";
+                    document.getElementById('micBtn').classList.add('animate-pulse', 'bg-rose-600');
+                    document.getElementById('micIcon').className = "fa-solid fa-stop";
+                    
+                    timerInterval = setInterval(() => {
+                        secondsElapsed++;
+                        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                        const secs = String(secondsElapsed % 60).padStart(2, '0');
+                        document.getElementById('timerVal').innerText = `${mins}:${secs}`;
+                    }, 1000);
+                };
+
+                recognition.onresult = function(event) {
+                    let transcript = '';
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript;
+                    }
+                    document.getElementById('speechText').value = transcript;
+                };
+
+                recognition.onerror = function(event) {
+                    console.error("Speech Recognition Error: ", event.error);
+                    stopRecording();
+                };
+
+                recognition.onend = function() {
+                    stopRecording();
+                };
+
+                recognition.start();
             } else {
                 stopRecording();
             }
         }
 
-        function startRecording() {
-            isRecording = true;
-            finalTranscript = '';
-            secondsElapsed = 0;
-            document.getElementById('transcriptBox').innerText = 'Listening... Speak now.';
-            document.getElementById('recordIcon').className = 'fa-solid fa-stop';
-            document.getElementById('statusIndicator').innerText = 'Recording Live Speech...';
-            document.getElementById('statusIndicator').classList.add('text-rose-500');
-
-            recognition.start();
-            startTime = Date.now();
-            timerInterval = setInterval(() => {
-                secondsElapsed++;
-                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-                const secs = String(secondsElapsed % 60).padStart(2, '0');
-                document.getElementById('timerDisplay').innerText = `${mins}:${secs}`;
-            }, 1000);
-
-            document.getElementById('resultsContainer').classList.add('hidden');
+        function stopRecording() {
+            if (recognition) {
+                recognition.stop();
+            }
+            isRecording = false;
+            clearInterval(timerInterval);
+            document.getElementById('recordingStatus').innerText = "Recording Stopped";
+            document.getElementById('micBtn').classList.remove('animate-pulse', 'bg-rose-600');
+            document.getElementById('micIcon').className = "fa-solid fa-microphone";
         }
 
-        function stopRecording() {
-            if (!isRecording) return;
-            isRecording = false;
-            recognition.stop();
-            clearInterval(timerInterval);
+        function analyzeSpeech() {
+            const text = document.getElementById('speechText').value.trim();
 
-            document.getElementById('recordIcon').className = 'fa-solid fa-microphone';
-            document.getElementById('statusIndicator').innerText = 'Analysis Complete';
-            document.getElementById('statusIndicator').classList.remove('text-rose-500');
+            if (!text) {
+                alert("Please record speech or enter response text to analyze.");
+                return;
+            }
 
-            // Analytics Calculation
-            const words = finalTranscript.trim().split(/\s+/).filter(w => w.length > 0);
+            const words = text.split(/\s+/).filter(w => w.length > 0);
             const wordCount = words.length;
-            const minutes = Math.max(secondsElapsed / 60, 0.1);
-            currentWpm = Math.round(wordCount / minutes);
 
-            // Optimal speaking pace is 120-160 WPM
-            let fluency = 100;
-            if (currentWpm < 100) fluency = Math.max(50, Math.round((currentWpm / 120) * 100));
-            else if (currentWpm > 170) fluency = Math.max(50, Math.round((160 / currentWpm) * 100));
+            const minutes = secondsElapsed > 0 ? (secondsElapsed / 60) : 0.5; // default 30s if manually typed
+            const wpm = Math.round(wordCount / minutes);
 
-            document.getElementById('wpmVal').innerText = currentWpm;
-            document.getElementById('wordCountVal').innerText = wordCount;
-            document.getElementById('fluencyVal').innerText = `${fluency}%`;
+            // Detect filler words
+            const fillerRegex = /\b(um|uh|like|basically|actually|you know|honestly|so)\b/gi;
+            const fillerMatches = text.match(fillerRegex) || [];
+            const fillerCount = fillerMatches.length;
+
+            speechScore = 100 - (fillerCount * 4);
+            if (wpm < 100 || wpm > 180) speechScore -= 10;
+            if (speechScore < 40) speechScore = 40;
+
+            document.getElementById('wpmVal').innerText = `${wpm} WPM`;
+            document.getElementById('fillersVal').innerText = fillerCount;
+            document.getElementById('confidenceVal').innerText = `${speechScore}%`;
+
+            const wpmStatus = document.getElementById('wpmStatus');
+            if (wpm >= 120 && wpm <= 160) {
+                wpmStatus.innerText = "Ideal Pace (120-160)";
+                wpmStatus.className = "text-[10px] text-emerald-500 font-bold";
+            } else if (wpm < 120) {
+                wpmStatus.innerText = "Too Slow (<120 WPM)";
+                wpmStatus.className = "text-[10px] text-amber-500 font-bold";
+            } else {
+                wpmStatus.innerText = "Too Fast (>160 WPM)";
+                wpmStatus.className = "text-[10px] text-rose-500 font-bold";
+            }
+
+            const list = document.getElementById('speechAuditList');
+            list.innerHTML = '';
+
+            if (fillerCount > 0) {
+                const el1 = document.createElement('div');
+                el1.className = 'p-3 bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold rounded-xl border border-purple-500/20';
+                el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Filler Word Penalty (${fillerCount}):</strong> Detected hesitation words (${[...new Set(fillerMatches.map(m=>m.toLowerCase()))].join(', ')}). Pause briefly instead of using filler vocalizations.`;
+                list.appendChild(el1);
+            } else {
+                const el1 = document.createElement('div');
+                el1.className = 'p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
+                el1.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Zero Fillers:</strong> Crisp vocal delivery without hesitation filler words.`;
+                list.appendChild(el1);
+            }
 
             document.getElementById('resultsContainer').classList.remove('hidden');
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "voice_analysis_executed", "true");
+                clarity("event", "speech_analyzed");
+            }
+        }
+
+        function shareSpeechToWhatsApp() {
+            const rawText = `I achieved a ${speechScore}% speech confidence score on NextHire Matrix! Check it out: https://www.nexthirematrix.com/voice-analyzer.html`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
         function shareSpeechToLinkedIn() {
-            const text = encodeURIComponent(`I scored a ${currentWpm} WPM speaking pace on my interview fluency test using NextHire Matrix! Audit speech clarity 100% in-browser.`);
-            const url = encodeURIComponent("https://www.nexthirematrix.com/voice-analyzer.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/voice-analyzer.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
     </script>
 </body>

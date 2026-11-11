@@ -11,7 +11,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <meta name="description" content="100% Client-Side Interactive Technical Flashcards. Master Data Structures, Algorithms, and System Design interview concepts offline in local browser memory.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/tech-flashcards.html">
+    <meta property="og:title" content="DSA & System Design Flashcards - NextHire Matrix">
+    <meta property="og:description" content="Master high-frequency LeetCode data structures, algorithms, and System Design concepts using interactive 3D flashcards.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,13 +47,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #8b5cf6 50%, #d946ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #c026d3 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
 
         /* 3D Card Flip Animation Styles */
         .perspective-1000 { perspective: 1000px; }
@@ -54,24 +71,94 @@
     <div class="glow-blob w-96 h-96 bg-violet-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-violet-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-violet-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-violet-500/20 shrink-0">
+                    <i class="fa-solid fa-layer-group text-sm"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-violet-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-violet-500">🏠 Home</a>
+                    <a href="tech-flashcards.html" class="py-2 hover:text-violet-500">🎴 Tech Revision Flashcards</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-violet-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-violet-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-violet-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-violet-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
@@ -81,59 +168,59 @@
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 DSA & System Design <span class="gradient-text">Interactive Flashcards</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
                 Rapidly revise high-frequency LeetCode data structures, algorithm patterns, and System Design concepts.
             </p>
         </div>
 
-        <!-- Trust Security Banner -->
+        <!-- Privacy Guard Banner -->
         <div class="glass-card border-l-4 border-l-violet-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-violet-500/10 text-violet-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                <div class="w-10 h-10 bg-violet-500/10 text-violet-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-brain"></i>
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Offline Flashcard Engine</strong>
-                    <span class="text-slate-500">Deck progression, score tracking, and study history persist in browser localStorage.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Deck progression, score tracking, and study history persist in browser localStorage.</span>
                 </div>
             </div>
             <span class="px-3 py-1 bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero API Calls</span>
         </div>
 
         <!-- Deck Selector & Progress Header -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 glass-card p-5 rounded-3xl text-xs font-bold">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 glass-card p-5 rounded-3xl text-xs font-bold border border-slate-200 dark:border-slate-800 shadow-lg">
             <div class="flex items-center gap-2 w-full sm:w-auto">
                 <span class="text-slate-400 font-black uppercase text-[10px]">Select Deck:</span>
-                <select id="deckSelect" onchange="loadDeck()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none flex-grow sm:flex-grow-0">
+                <select id="deckSelect" onchange="loadDeck()" class="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500 flex-grow sm:flex-grow-0 text-xs">
                     <option value="dsa">🧮 Data Structures & Algorithms</option>
                     <option value="system_design">🏗️ System Design Patterns</option>
                     <option value="behavioral">🗣️ Behavioral STAR Interview</option>
                 </select>
             </div>
             <div class="text-slate-500">
-                Card <span id="currentCardIndex" class="text-slate-900 dark:text-white font-black">1</span> of <span id="totalCardsCount" class="font-black">10</span>
+                Card <span id="currentCardIndex" class="text-slate-900 dark:text-white font-black">1</span> of <span id="totalCardsCount" class="font-black">3</span>
             </div>
         </div>
 
         <!-- Interactive 3D Flip Flashcard Container -->
-        <div class="perspective-1000 w-full h-72 cursor-pointer" onclick="flipCard()">
+        <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipCard()">
             <div id="flashcardInner" class="transform-style-3d transition-transform duration-500 relative w-full h-full">
                 
                 <!-- Front Side (Question) -->
-                <div class="backface-hidden absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-violet-500/20">
-                    <span class="text-[10px] font-black uppercase tracking-widest text-violet-500" id="cardCategory">Question Concept</span>
-                    <h3 id="cardQuestion" class="text-xl sm:text-2xl font-black text-slate-800 dark:text-slate-100 my-auto">Loading Flashcard...</h3>
+                <div class="backface-hidden absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-violet-500/20 bg-white dark:bg-slate-900">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-violet-500 bg-violet-500/10 px-3 py-1 rounded-full" id="cardCategory">Question Concept</span>
+                    <h3 id="cardQuestion" class="text-xl sm:text-2xl font-black text-slate-800 dark:text-slate-100 my-auto px-4">Loading Flashcard...</h3>
                     <div class="text-[11px] font-bold text-slate-400 flex items-center gap-1">
-                        <i class="fa-solid fa-rotate mr-1"></i> Click anywhere to reveal answer
+                        <i class="fa-solid fa-rotate mr-1"></i> Click anywhere to flip and reveal answer
                     </div>
                 </div>
 
                 <!-- Back Side (Answer) -->
-                <div class="backface-hidden rotate-y-180 absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-emerald-500/30 bg-emerald-500/5">
-                    <span class="text-[10px] font-black uppercase tracking-widest text-emerald-500">Answer Breakdown & Big-O</span>
-                    <p id="cardAnswer" class="text-sm font-semibold text-slate-700 dark:text-slate-200 my-auto leading-relaxed">Answer content will show here...</p>
+                <div class="backface-hidden rotate-y-180 absolute inset-0 glass-card p-8 rounded-3xl flex flex-col justify-between items-center text-center shadow-2xl border-2 border-emerald-500/30 bg-white dark:bg-slate-900">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full">Answer Breakdown & Big-O</span>
+                    <p id="cardAnswer" class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 my-auto leading-relaxed px-4">Answer content will show here...</p>
                     <div class="text-[11px] font-bold text-emerald-500 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-check mr-1"></i> Mastered Concept
+                        <i class="fa-solid fa-circle-check mr-1"></i> Concept Reviewed
                     </div>
                 </div>
 
@@ -145,26 +232,30 @@
             <button onclick="prevCard()" class="px-6 py-3.5 bg-slate-200 dark:bg-slate-800 font-black text-xs rounded-2xl hover:bg-slate-300 dark:hover:bg-slate-700 transition flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i> Previous
             </button>
-            <button onclick="nextCard()" class="px-8 py-3.5 gradient-bg text-white font-black text-xs rounded-2xl shadow-xl shadow-indigo-500/25 hover:opacity-95 transition flex items-center gap-2">
+            <button onclick="nextCard()" class="px-8 py-3.5 gradient-bg text-white font-black text-xs rounded-2xl shadow-xl shadow-violet-500/20 hover:opacity-95 transition flex items-center gap-2">
                 Next Concept <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
 
-        <!-- Social Flex LinkedIn Card -->
+        <!-- Social Share Banner -->
         <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
             <div class="space-y-1 text-center sm:text-left">
-                <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Revision Streak</span>
-                <h4 class="text-sm font-black">Finished your technical flashcards session? Share your streak badge!</h4>
+                <span class="text-[10px] font-black uppercase text-violet-200 tracking-wider">🏆 Flex Your Revision Streak</span>
+                <h4 class="text-sm font-black">Finished your technical revision session? Share on WhatsApp or LinkedIn!</h4>
             </div>
-            <button onclick="shareFlashcardsToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Revision Badge
-            </button>
+            <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                <button onclick="shareFlashcardsToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                </button>
+                <button onclick="shareFlashcardsToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                </button>
+            </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-violet-600 hover:bg-violet-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -174,39 +265,43 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found a flashcard deck error or want to suggest new questions? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report a flashcard deck error directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500">
                         <option value="flashcards_issue">🎴 Flashcards Deck / Content Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the flashcards feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-violet-600 hover:bg-violet-700 text-white font-black rounded-xl shadow-lg shadow-violet-600/25 transition flex items-center justify-center gap-2">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
@@ -232,6 +327,10 @@
         let currentDeckKey = 'dsa';
         let currentIndex = 0;
         let isFlipped = false;
+
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
 
         function loadDeck() {
             currentDeckKey = document.getElementById('deckSelect').value;
@@ -264,6 +363,12 @@
             } else {
                 inner.classList.remove('rotate-y-180');
             }
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "flashcard_flipped", "true");
+                clarity("event", "flashcard_reviewed");
+            }
         }
 
         function nextCard() {
@@ -278,10 +383,14 @@
             updateCardDisplay();
         }
 
+        function shareFlashcardsToWhatsApp() {
+            const rawText = "I revised DSA & System Design concepts offline using NextHire Matrix Flashcards! Check it out: https://www.nexthirematrix.com/tech-flashcards.html";
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
+        }
+
         function shareFlashcardsToLinkedIn() {
-            const text = encodeURIComponent(`I revised DSA & System Design concepts offline using NextHire Matrix Flashcards! 100% browser-based interview prep.`);
-            const url = encodeURIComponent("https://www.nexthirematrix.com/tech-flashcards.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/tech-flashcards.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
 
         // Initialize on page load

@@ -11,7 +11,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <meta name="description" content="100% Client-Side 6-Second Recruiter Skim Simulator. Test F-Pattern visual eye-tracking heatmaps and visual anchor points in local browser RAM.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/recruiter-skim.html">
+    <meta property="og:title" content="6-Second Recruiter Skim Simulator - NextHire Matrix">
+    <meta property="og:description" content="Simulate how technical recruiters scan your resume in 6 seconds using F-Pattern eye-tracking heatmaps locally in browser RAM.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,18 +47,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #0284c7 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #0369a1 50%, #4f46e5 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Heatmap Visual Overlay Mask */
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+        
+        /* F-Pattern Eye-Tracking Heatmap Overlay Mask */
         .f-pattern-overlay {
-            background: radial-gradient(circle at 20% 15%, rgba(239, 68, 68, 0.4) 0%, rgba(245, 158, 11, 0.25) 25%, transparent 60%),
-                        radial-gradient(circle at 20% 40%, rgba(239, 68, 68, 0.3) 0%, rgba(59, 130, 246, 0.15) 30%, transparent 50%);
+            background: radial-gradient(circle at 20% 15%, rgba(239, 68, 68, 0.45) 0%, rgba(245, 158, 11, 0.3) 25%, transparent 60%),
+                        radial-gradient(circle at 25% 42%, rgba(239, 68, 68, 0.35) 0%, rgba(59, 130, 246, 0.2) 30%, transparent 50%),
+                        radial-gradient(circle at 15% 70%, rgba(245, 158, 11, 0.25) 0%, transparent 40%);
             pointer-events: none;
         }
     </style>
@@ -55,24 +73,94 @@
     <div class="glow-blob w-96 h-96 bg-sky-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-sky-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-sky-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-sky-500/20 shrink-0">
+                    <i class="fa-solid fa-eye text-sm"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-sky-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-sky-500">🏠 Home</a>
+                    <a href="recruiter-skim.html" class="py-2 hover:text-sky-500">👁️ 6-Sec Skim Simulator</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-sky-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-sky-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-sky-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-sky-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
@@ -82,65 +170,75 @@
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 6-Second Recruiter <span class="gradient-text">Eye Skim Simulator</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
                 Simulate how technical recruiters scan your resume in 6 seconds using F-Pattern eye-tracking heatmap overlays.
             </p>
         </div>
 
-        <!-- Trust Security Banner -->
+        <!-- Privacy Guard Banner -->
         <div class="glass-card border-l-4 border-l-sky-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-sky-500/10 text-sky-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                <div class="w-10 h-10 bg-sky-500/10 text-sky-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Local Visual Rendering</strong>
-                    <span class="text-slate-500">Resume text scanning and heatmap overlays are computed locally in client RAM.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Resume text scanning and heatmap overlays are computed locally in browser RAM.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero Data Storage</span>
+            <button onclick="fillSampleResumeText()" class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-slate-950 font-black rounded-xl text-[11px] shrink-0 transition">
+                ⚡ Auto-Fill Sample Resume
+            </button>
         </div>
 
-        <!-- Input Box -->
-        <div class="glass-card p-6 rounded-3xl space-y-4 shadow-xl">
-            <label class="block text-xs font-black uppercase text-slate-500 tracking-wider">Paste Resume Content To Test Skim Anchor Points</label>
-            <textarea id="resumeInput" rows="8" placeholder="Paste your resume content here..." class="w-full p-4 glass-card rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white/50 dark:bg-slate-900/50"></textarea>
+        <!-- Input Workstation Card -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border border-slate-200 dark:border-slate-800">
+            <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
+                Paste Resume Content To Test Skim Visual Anchor Points
+            </label>
+            <textarea id="resumeInput" rows="8" placeholder="Paste your resume content here..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
             
             <button onclick="runSkimSimulation()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-sky-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-play"></i> Start 6-Second Skim Simulation
             </button>
         </div>
 
-        <!-- Heatmap Preview Container -->
+        <!-- Output Heatmap Preview Container -->
         <div id="resultsContainer" class="hidden space-y-6">
             <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 relative overflow-hidden shadow-2xl border-2 border-sky-500/30">
                 <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-3">
-                    <span class="text-xs font-black uppercase tracking-wider text-sky-600 dark:text-sky-400">Recruiter Eye-Tracking Heatmap Overlay</span>
-                    <span class="text-[10px] bg-rose-500/10 text-rose-500 font-bold px-2.5 py-1 rounded-full">Red = High Eye Fixation</span>
+                    <span class="text-xs font-black uppercase tracking-wider text-sky-600 dark:text-sky-400 flex items-center gap-2">
+                        <i class="fa-solid fa-fire"></i> Recruiter Eye-Tracking Heatmap Overlay
+                    </span>
+                    <span class="text-[10px] bg-rose-500/10 text-rose-500 font-bold px-2.5 py-1 rounded-full">Red = High Eye Fixation Area</span>
                 </div>
                 
-                <div class="relative rounded-2xl p-6 bg-white dark:bg-slate-900 font-mono text-xs leading-relaxed text-slate-700 dark:text-slate-300 overflow-hidden" id="heatmapView">
+                <div class="relative rounded-2xl p-6 bg-white dark:bg-slate-900 font-mono text-xs leading-relaxed text-slate-800 dark:text-slate-200 overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner" id="heatmapView">
                     <div class="f-pattern-overlay absolute inset-0"></div>
                     <div id="formattedContent" class="relative z-10 whitespace-pre-wrap"></div>
                 </div>
             </div>
 
-            <!-- Social Flex LinkedIn Card -->
+            <!-- Social Share Banner -->
             <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Share Your Visual Audit</span>
-                    <h4 class="text-sm font-black">Tested your resume's visual anchors? Share your audit score badge!</h4>
+                    <span class="text-[10px] font-black uppercase text-sky-200 tracking-wider">🏆 Share Your Visual Audit</span>
+                    <h4 class="text-sm font-black">Tested your resume's visual anchors? Share on WhatsApp or LinkedIn!</h4>
                 </div>
-                <button onclick="shareSkimToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Heatmap Badge
-                </button>
+                <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="shareSkimToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </button>
+                    <button onclick="shareSkimToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    </button>
+                </div>
             </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-sky-600 hover:bg-sky-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -150,44 +248,57 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found a heatmap rendering bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report a heatmap rendering issue directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <option value="skim_issue">👀 Eye Skim / Heatmap Rendering Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <option value="skim_issue">👀 Eye Skim / Heatmap Bug</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the recruiter skim feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-black rounded-xl shadow-lg shadow-sky-600/25 transition flex items-center justify-center gap-2">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
-    <!-- Skim Heatmap Engine Script -->
+    <!-- Skim Simulation Script Engine -->
     <script>
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
+
+        function fillSampleResumeText() {
+            document.getElementById('resumeInput').value = "YASH RAJ GOSWAMI\nSenior Software Architect | yash@nexthirematrix.com | Bengaluru, India\n\nPROFESSIONAL SUMMARY\nEngineered high-scale microservices processing 1M+ daily transactions. Reduced query latency by 42%.\n\nWORK EXPERIENCE\nLead Systems Engineer — Tech Corp (2022 – Present)\n• Architected distributed caching layer with Redis & Node.js saving $25K monthly.\n• Spearheaded devops pipeline migration to AWS EKS with 99.99% system availability.";
+            runSkimSimulation();
+        }
+
         function runSkimSimulation() {
             const text = document.getElementById('resumeInput').value;
 
@@ -198,12 +309,22 @@
 
             document.getElementById('formattedContent').innerText = text;
             document.getElementById('resultsContainer').classList.remove('hidden');
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "recruiter_skim_executed", "true");
+                clarity("event", "skim_simulated");
+            }
+        }
+
+        function shareSkimToWhatsApp() {
+            const rawText = "I tested my resume's 6-second recruiter visual eye-tracking heatmap using NextHire Matrix! Check it out: https://www.nexthirematrix.com/recruiter-skim.html";
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
         function shareSkimToLinkedIn() {
-            const text = encodeURIComponent("I tested my resume's 6-second recruiter visual eye-tracking heatmap using NextHire Matrix! 100% privacy-first client-side tool.");
-            const url = encodeURIComponent("https://www.nexthirematrix.com/recruiter-skim.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/recruiter-skim.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
     </script>
 </body>

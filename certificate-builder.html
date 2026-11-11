@@ -11,7 +11,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <meta name="description" content="100% Client-Side Verified Certificate & ATS PDF Builder with cryptographic SHA-256 hash checksum verification. Zero server data storage.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/certificate-builder.html">
+    <meta property="og:title" content="Verified Certificate Builder - NextHire Matrix">
+    <meta property="og:description" content="Generate tampered-proof project certificates with SHA-256 verification hashes locally in browser RAM.">
 
+    <!-- Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,13 +47,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #4f46e5 50%, #7c3aed 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
         
-        .glow-blob { position: absolute; filter: blur(90px); opacity: 0.25; z-index: -1; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printableCertificate, #printableCertificate * { visibility: visible; }
+            #printableCertificate { position: absolute; left: 0; top: 0; width: 100%; border: none !important; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
@@ -48,113 +71,200 @@
     <div class="glow-blob w-96 h-96 bg-emerald-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Header Navigation -->
-    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black gradient-text flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
-                <span class="p-2 gradient-bg text-white rounded-2xl shadow-lg shadow-indigo-500/30 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
-            </h1>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 flex items-center gap-1.5">
-                    <i class="fa-solid fa-house"></i> Hub
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition text-sm font-bold">
+    <!-- Navigation Header -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
+
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-sm"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-indigo-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-indigo-500/20 shrink-0">
+                    <i class="fa-solid fa-award text-sm"></i> Certificate Builder
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-indigo-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-indigo-500">🏠 Home</a>
+                    <a href="certificate-builder.html" class="py-2 hover:text-indigo-500">📜 Certificate Builder</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-indigo-500">📄 ATS Scanner</a>
+                    <a href="about.html" class="py-2 hover:text-indigo-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-indigo-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-indigo-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full text-xs font-black text-indigo-600 dark:text-indigo-400">
                 <i class="fa-solid fa-award"></i> SHA-256 Checksum Engine • 100% Client-Side
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 Verified PDF & <span class="gradient-text">Certificate Generator</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Generate tampered-proof ATS project certificates with embedded cryptographic verification hashes directly in browser memory.
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+                Generate print-ready ATS project certificates with embedded cryptographic verification hashes directly in browser memory.
             </p>
         </div>
 
-        <!-- Trust Security Banner -->
-        <div class="glass-card border-l-4 border-l-emerald-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <!-- Privacy Guard Banner -->
+        <div class="glass-card border-l-4 border-l-indigo-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-lg shrink-0">
+                <div class="w-10 h-10 bg-indigo-500/10 text-indigo-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-file-shield"></i>
                 </div>
                 <div>
-                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Document Processing</strong>
-                    <span class="text-slate-500">Certificate details and PDF rendering occur 100% locally inside your browser engine.</span>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Local Document Processing</strong>
+                    <span class="text-slate-500 dark:text-slate-400">Certificate generation and hash encryption occur 100% locally inside your browser.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero Data Storage</span>
+            <button onclick="fillSampleCertData()" class="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white font-black rounded-xl text-[11px] shrink-0 transition">
+                ⚡ Auto-Fill Sample
+            </button>
         </div>
 
-        <!-- Input Form Cards -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl">
+        <!-- Input Form Workstation -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-200 dark:border-slate-800">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Candidate Full Name</label>
-                    <input type="text" id="candidateName" placeholder="e.g. Yash Raj Goswami" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Candidate Full Name</label>
+                    <input type="text" id="candidateName" placeholder="e.g. Yash Raj Goswami" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Project / Skill Title</label>
-                    <input type="text" id="skillTitle" placeholder="e.g. NextHire Matrix Architecture" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Project / Skill Title</label>
+                    <input type="text" id="skillTitle" placeholder="e.g. NextHire Matrix SaaS Architecture" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issuer / Organization</label>
-                    <input type="text" id="issuerName" placeholder="e.g. Open-Source Dev Community" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Issuer / Organization</label>
+                    <input type="text" id="issuerName" placeholder="e.g. NextHire Matrix Dev Community" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Date</label>
-                    <input type="date" id="issueDate" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Issue Date</label>
+                    <input type="date" id="issueDate" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                 </div>
             </div>
 
-            <button onclick="generateCertificate()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-indigo-500/25 hover:opacity-95 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-stamp"></i> Generate Verified Certificate & Hash
+            <button onclick="generateCertificate()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-indigo-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-stamp"></i> Generate Verified Certificate & Cryptographic Hash
             </button>
         </div>
 
         <!-- Output Certificate Preview Box -->
         <div id="resultsContainer" class="hidden space-y-6">
-            <div class="glass-card p-6 sm:p-10 rounded-3xl space-y-6 border-2 border-indigo-500/30 text-center relative overflow-hidden shadow-2xl" id="certificateCard">
-                <div class="text-[10px] font-black uppercase tracking-widest text-indigo-500">Verified Certificate of Accomplishment</div>
-                <h2 id="outCandidate" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white gradient-text">Candidate Name</h2>
-                <p class="text-xs text-slate-500 max-w-md mx-auto">Has successfully demonstrated mastery and completed project audit in <strong id="outSkill" class="text-slate-800 dark:text-slate-200">Skill Title</strong>.</p>
+            <div id="printableCertificate" class="glass-card p-6 sm:p-12 rounded-3xl space-y-6 border-4 border-indigo-500/30 text-center relative overflow-hidden shadow-2xl bg-white dark:bg-slate-900">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <span class="text-xs font-black gradient-text flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt"></i> NextHire Matrix Verified Credential
+                    </span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-indigo-500 bg-indigo-500/10 px-3 py-1 rounded-full">Self-Attested Portfolio Document</span>
+                </div>
 
-                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-[11px] gap-3 text-left">
+                <div class="space-y-3 py-4">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-slate-400">Certificate of Completion & Accomplishment</span>
+                    <h2 id="outCandidate" class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white gradient-text">Candidate Name</h2>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
+                        Has successfully demonstrated technical proficiency and completed full audit requirements for <br><strong id="outSkill" class="text-slate-900 dark:text-white font-black text-base">Skill Title</strong>.
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs gap-4 text-left">
                     <div>
-                        <span class="block text-slate-400 font-bold">Issued By:</span>
-                        <strong id="outIssuer" class="text-slate-700 dark:text-slate-300">Issuer</strong>
+                        <span class="block text-slate-400 text-[10px] font-bold uppercase">Issued By:</span>
+                        <strong id="outIssuer" class="text-slate-800 dark:text-slate-200 font-extrabold">Issuer Name</strong>
                     </div>
-                    <div>
-                        <span class="block text-slate-400 font-bold">SHA-256 Verification Checksum:</span>
-                        <code id="outHash" class="text-[9px] bg-slate-100 dark:bg-slate-800 p-1 rounded font-mono text-indigo-600 dark:text-indigo-400">HASH_VAL</code>
+                    <div class="text-left sm:text-right">
+                        <span class="block text-slate-400 text-[10px] font-bold uppercase">Cryptographic SHA-256 Checksum:</span>
+                        <code id="outHash" class="text-[10px] bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md font-mono text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-700">HASH_VAL</code>
                     </div>
                 </div>
             </div>
 
-            <!-- Social Flex Card -->
-            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-                <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-indigo-200 tracking-wider">🏆 Flex Your Verification Badge</span>
-                    <h4 class="text-sm font-black">Generated your verified credential? Share on LinkedIn!</h4>
-                </div>
-                <button onclick="shareCertToLinkedIn()" class="px-5 py-3 bg-white text-indigo-900 rounded-2xl text-xs font-black flex items-center gap-2 hover:bg-slate-100 transition shadow-lg shrink-0">
-                    <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> Share Certificate Badge
+            <!-- Action Controls & Social Share Banner -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="window.print()" class="w-full sm:w-auto px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl text-xs font-black flex items-center justify-center gap-2 transition shadow-lg">
+                    <i class="fa-solid fa-print"></i> Download / Print PDF Certificate
                 </button>
+
+                <div class="flex gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="shareCertToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-2xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </button>
+                    <button onclick="shareCertToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-3 bg-white text-slate-900 hover:bg-slate-100 rounded-2xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
+                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    </button>
+                </div>
             </div>
         </div>
-        </main>
-
+    </main>
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-bug text-sm"></i> Report Bug / Feedback
+        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
     <!-- Interactive Feedback Modal Container (Formspree Connected) -->
@@ -164,45 +274,63 @@
             
             <div class="space-y-1">
                 <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Found a certificate generation bug or want a feature? Send directly to Yash Raj Goswami's Inbox.</p>
+                <p class="text-xs text-slate-500 font-semibold">Report a certificate issue directly to Yash Raj Goswami.</p>
             </div>
 
-            <!-- Live Formspree Endpoint Form -->
             <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email (To receive reply)</label>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
                     <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
                     <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         <option value="cert_issue">📜 Certificate / PDF Generator Bug</option>
-                        <option value="bug">🐛 Report UX Bug / Broken Link</option>
+                        <option value="bug">🐛 Report UX Bug</option>
                         <option value="feature">💡 Feature Request</option>
                         <option value="praise">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Explain the certificate builder issue..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    <textarea name="message" rows="3" required placeholder="Describe your issue or suggestion..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
                 </div>
                 <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl shadow-lg shadow-indigo-600/25 transition flex items-center justify-center gap-2">
-                    Send Direct Message <i class="fa-solid fa-paper-plane"></i>
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-600 dark:text-slate-400 font-semibold space-y-2">
-            <p>© 2026 NextHire Matrix. Designed & Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <!-- Footer Section with Required Legal Links -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex justify-center items-center gap-6 font-bold">
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
         </div>
     </footer>
 
-    <!-- SHA-256 Checksum & PDF Engine Script -->
+    <!-- SHA-256 Checksum & Certificate Generator Script -->
     <script>
         let currentSkill = '';
+
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
+
+        // Set Default Date to Today
+        document.getElementById('issueDate').valueAsDate = new Date();
+
+        function fillSampleCertData() {
+            document.getElementById('candidateName').value = "Yash Raj Goswami";
+            document.getElementById('skillTitle').value = "NextHire Matrix Full-Stack Architecture";
+            document.getElementById('issuerName').value = "Open-Source Dev Community";
+            generateCertificate();
+        }
 
         async function generateCertificate() {
             const name = document.getElementById('candidateName').value.trim();
@@ -217,7 +345,7 @@
 
             currentSkill = skill;
 
-            // Generate SHA-256 Checksum Hash
+            // Compute Cryptographic SHA-256 Checksum Hash Locally in RAM
             const rawString = `${name}-${skill}-${issuer}-${date}-${Date.now()}`;
             const msgUint8 = new TextEncoder().encode(rawString);
             const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
@@ -230,12 +358,22 @@
             document.getElementById('outHash').innerText = `0x${hashHex.toUpperCase()}`;
 
             document.getElementById('resultsContainer').classList.remove('hidden');
+
+            // Fire Clarity Event Tracking
+            if (typeof clarity === "function") {
+                clarity("set", "certificate_generated", "true");
+                clarity("event", "certificate_build_completed");
+            }
+        }
+
+        function shareCertToWhatsApp() {
+            const rawText = `I generated a cryptographic verified project certificate for ${currentSkill} using NextHire Matrix! Check it out: https://www.nexthirematrix.com/certificate-builder.html`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
         function shareCertToLinkedIn() {
-            const text = encodeURIComponent(`I generated a cryptographic verified project certificate for ${currentSkill} using NextHire Matrix! 100% privacy-first document computation.`);
-            const url = encodeURIComponent("https://www.nexthirematrix.com/certificate-builder.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&text=${text}`, '_blank');
+            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/certificate-builder.html");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
     </script>
 </body>

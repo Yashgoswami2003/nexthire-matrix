@@ -1,125 +1,438 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="dark">
+<html lang="en" id="htmlRoot" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service & Legal Disclaimer - NextHire Matrix</title>
-    <meta name="description" content="NextHire Matrix Terms of Service and legal disclaimers. Learn about tool usage guidelines, liability limits, and accuracy notices.">
+    <title>Terms of Service & Legal Disclaimer | NextHire Matrix</title>
+    <meta name="description" content="NextHire Matrix Terms of Service and legal disclaimers. Review our usage guidelines, ATS and salary estimate notices, intellectual property rights, and limitation of liability.">
     <meta name="keywords" content="NextHire Matrix Terms of Service, legal disclaimer, ATS scanner terms, salary simulator liability limit">
     <link rel="canonical" href="https://www.nexthirematrix.com/terms.html">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/terms.html">
+    <meta property="og:title" content="Terms of Service & Legal Disclaimer | NextHire Matrix">
+    <meta property="og:description" content="Read NextHire Matrix Terms of Service, tool accuracy disclaimers, intellectual property rights, and user responsibilities.">
+
+    <!-- Microsoft Clarity Analytics -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Google Search Schema Engine -->
+    <!-- Google AdSense & Search Schema Engine -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Terms of Service & Legal Disclaimer",
+      "name": "Terms of Service & Legal Disclaimer - NextHire Matrix",
       "url": "https://www.nexthirematrix.com/terms.html",
+      "dateModified": "2026-11-12",
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix",
+        "url": "https://www.nexthirematrix.com",
+        "email": "Nexthirematrix@gmail.com"
+      },
       "description": "Terms of Service and legal limitation of liability for NextHire Matrix career tools."
     }
     </script>
-</head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
-    <!-- Header Navigation -->
-    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6 sticky top-0 z-40">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black text-emerald-400 flex items-center gap-2">
-                <span class="p-1.5 bg-emerald-500 text-slate-950 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #4f46e5 50%, #7c3aed 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.85); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+        @media print { .no-print { display: none !important; } body { background: #fff !important; color: #000 !important; } }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
+
+    <div class="glow-blob w-96 h-96 bg-emerald-500 rounded-full top-0 -left-20 no-print"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20 no-print"></div>
+
+    <!-- Header Navigation (Synced across all NextHire Matrix pages) -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 shrink-0">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/20 text-xs sm:text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </a>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">← Back to Tools</a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="text-slate-400 hover:text-emerald-400 transition text-sm">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="#communitySection" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-black hover:bg-amber-500/20 transition">
+                    <i class="fa-solid fa-star text-amber-400"></i> Reviews
+                </a>
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                    <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- Complete 10-Tools Scrollable Sub-Navbar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-slate-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-indigo-400"></i> Resume Point Writer</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Checker</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> Quick Resume Review</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Prep</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Speed Check</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Writer</a>
             </div>
         </div>
     </header>
 
     <!-- Main Workspace Content -->
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow w-full">
-        <h1 class="text-3xl font-extrabold text-white mb-2">Terms of Service & Legal Disclaimer</h1>
-        <p class="text-slate-400 mb-8 text-xs font-semibold">Last Updated: November 2026 • Effective Date: Immediate</p>
-
-        <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
-            
-            <!-- Amber Box: Critical Legal Disclaimer & Liability Shield -->
-            <section class="bg-amber-950/40 border border-amber-600/40 p-6 rounded-2xl space-y-2">
-                <h2 class="text-base font-extrabold text-amber-400 flex items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> CRITICAL LEGAL DISCLAIMER & LIMITATION OF LIABILITY
-                </h2>
-                <p class="text-xs text-amber-200/90 leading-relaxed font-medium">
-                    NextHire Matrix provides free self-service utilities, salary simulators, ATS checkers, and document formatting tools for <strong>educational, informational, and personal preparation purposes only</strong>. We do not guarantee employment selection, job interview calls, or corporate offer letter validity. Under no circumstances shall NextHire Matrix or its creator (Yash Raj Goswami) be held legally or financially liable for hiring decisions, company rejections, financial miscalculations, or dispute outcomes resulting from the use of this website.
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+        
+        <!-- Hero Title + Print Control -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1 rounded-full text-[11px] font-black text-amber-600 dark:text-amber-400">
+                    <span>⚖️ Legal Terms, Usage Rules & Accuracy Notices</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+                    Terms of Service & <span class="gradient-text">Legal Disclaimer</span>
+                </h1>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-bold">
+                    Last Updated: November 12, 2026 • Effective Date: Immediate • Operator: NextHire Matrix
                 </p>
-            </section>
+            </div>
 
-            <!-- 1. Use of Tools -->
-            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-user-check text-emerald-400"></i> 1. Use of Tools & Self-Attestation Notice
-                </h2>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    All documents, custom project certificates, and bullet point enhancements generated on NextHire Matrix are self-attested utilities meant solely for personal portfolio representation. Users are solely responsible for ensuring that any resume details, project references, or credentials submitted to prospective employers are truthful, accurate, and compliant with employer hiring policies.
-                </p>
-            </section>
-
-            <!-- 2. Financial & Salary Estimates -->
-            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-calculator text-amber-400"></i> 2. Financial & Salary Estimates Disclaimer
-                </h2>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    Our In-Hand Salary Calculator and Offer Comparison utilities provide automated mathematical estimations based on standardized formulas. Actual corporate tax withholdings, statutory deductions (PF/ESI/TDS), and specific company payroll policies may vary. These calculators are provided for informational reference only and do not constitute certified financial or legal tax advice.
-                </p>
-            </section>
-
-            <!-- 3. ATS & AI Score Interpretation -->
-            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-chart-pie text-sky-400"></i> 3. ATS & Algorithmic Score Interpretation
-                </h2>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    ATS scores, keyword match percentages, and formatting audits generated on NextHire Matrix are calculated via client-side heuristic pattern matching. Third-party applicant tracking software (e.g., Workday, Greenhouse, Lever) uses proprietary scoring models that may differ. Achieving a high match score on NextHire Matrix does not guarantee candidate selection by any employer.
-                </p>
-            </section>
-
-            <!-- 4. User Intellectual Property -->
-            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-lock text-purple-400"></i> 4. User Intellectual Property & Privacy
-                </h2>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    Since all document parsing executes locally inside your web browser memory (RAM), NextHire Matrix claims zero ownership rights over your resumes, code, audio, or personal data. You retain 100% full ownership of your submitted files.
-                </p>
-            </section>
-
-            <!-- 5. Service Availability -->
-            <section class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 space-y-2">
-                <h2 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-server text-teal-400"></i> 5. Service Availability & Modifications
-                </h2>
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    We reserve the right to modify, upgrade, or discontinue any feature, tool, or utility on NextHire Matrix at any time without prior notice.
-                </p>
-            </section>
-
+            <div class="flex flex-wrap gap-2 no-print">
+                <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-xs font-black transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i> Print / Save Terms
+                </button>
+            </div>
         </div>
+
+        <!-- Terms At-A-Glance Box -->
+        <section class="glass-card p-6 rounded-3xl border-l-4 border-l-indigo-500 space-y-4">
+            <h2 class="text-sm font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+                <i class="fa-solid fa-bolt"></i> Terms At-A-Glance (Quick Summary)
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-1">
+                    <strong class="block font-black text-slate-900 dark:text-white">✅ Free Personal Use</strong>
+                    <span class="text-slate-600 dark:text-slate-400">Use all 10 career tools freely for job prep & education.</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-1">
+                    <strong class="block font-black text-slate-900 dark:text-white">📊 Estimates Only</strong>
+                    <span class="text-slate-600 dark:text-slate-400">ATS scores & CTC tax figures are informational guidance.</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-1">
+                    <strong class="block font-black text-slate-900 dark:text-white">🔐 Your Content is Yours</strong>
+                    <span class="text-slate-600 dark:text-slate-400">You keep 100% ownership of your resumes, code & audio.</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-1">
+                    <strong class="block font-black text-slate-900 dark:text-white">🇮🇳 Indian Jurisdiction</strong>
+                    <span class="text-slate-600 dark:text-slate-400">Governed by Indian laws • Support: Nexthirematrix@gmail.com.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Table of Contents -->
+        <nav class="glass-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2 text-[11px] font-black no-print">
+            <span class="text-slate-400 uppercase mr-1">Jump To:</span>
+            <a href="#disclaimerBox" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">Legal Disclaimer</a>
+            <a href="#sec1" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">1. Acceptance & Acceptable Use</a>
+            <a href="#sec2" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">2. Tool Disclaimers Matrix</a>
+            <a href="#sec3" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">3. Intellectual Property</a>
+            <a href="#sec4" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">4. Uptime & Community Conduct</a>
+            <a href="#sec5" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 hover:text-emerald-500 transition">5. Governing Law & Contact</a>
+        </nav>
+
+        <!-- Amber Box: Critical Legal Disclaimer & Liability Shield -->
+        <section id="disclaimerBox" class="bg-amber-500/10 border border-amber-500/35 p-6 rounded-3xl space-y-2.5">
+            <h2 class="text-base font-black text-amber-700 dark:text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> CRITICAL LEGAL DISCLAIMER & LIMITATION OF LIABILITY
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-800 dark:text-amber-200/95 leading-relaxed font-medium">
+                NextHire Matrix provides free self-service utilities, salary simulators, ATS resume checkers, speech analyzers, and document formatting tools strictly on an <strong>"AS IS" and "AS AVAILABLE"</strong> basis for <strong>educational, informational, and personal career preparation purposes only</strong>. We do not guarantee employment selection, interview calls, or corporate offer validity. Under no circumstances shall NextHire Matrix or its founder (<strong>Yash Raj Goswami</strong>) be held legally or financially liable for hiring outcomes, company rejections, tax/salary variances, or career decisions resulting from the use of this website.
+            </p>
+        </section>
+
+        <!-- Section 1: Acceptance of Terms, Self-Attestation & Acceptable Use -->
+        <section id="sec1" class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-user-check text-emerald-500"></i> 1. Acceptance of Terms, Self-Attestation & Acceptable Use
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                By accessing or using NextHire Matrix (<code>nexthirematrix.com</code>), you agree to be bound by these Terms of Service. All resume improvements, bullet point rewrites, and portfolio utilities generated on NextHire Matrix are self-attested aids meant solely for personal career representation. You are solely responsible for ensuring that every detail submitted to employers is truthful and accurate.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                <strong>Prohibited Activities:</strong> You agree not to use automated scrapers, bots, or scripts to harvest code or content from NextHire Matrix, reverse-engineer proprietary client-side logic for commercial cloning, or attempt to disrupt site availability.
+            </p>
+        </section>
+
+        <!-- Section 2: Tool-Specific Disclaimer Matrix Table -->
+        <section id="sec2" class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-table-list text-amber-500"></i> 2. Tool-Specific Accuracy & Scope Disclaimers
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-500 uppercase text-[10px] font-black">
+                            <th class="py-3 px-3">Utility Group</th>
+                            <th class="py-3 px-3">How Output Is Generated</th>
+                            <th class="py-3 px-3">Legal Scope & Limitation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-medium">
+                        <tr>
+                            <td class="py-3 px-3 font-bold">ATS & Resume Suite (4 Tools)</td>
+                            <td class="py-3 px-3">Client-side heuristic keyword & structure matching</td>
+                            <td class="py-3 px-3">Enterprise ATS platforms (Workday, Greenhouse, Lever) use proprietary rules; high scores do not guarantee shortlisting.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-3 font-bold">In-Hand Salary & Offer Compare</td>
+                            <td class="py-3 px-3">Standardized tax slab & statutory PF/TDS formulas</td>
+                            <td class="py-3 px-3">Informational estimates only; actual payroll deductions vary by company structure. Not certified CA or tax advice.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-3 font-bold">Interview Prep, Speech & Code Tools</td>
+                            <td class="py-3 px-3">Practice prompts, WPM audio metrics & Big-O rules</td>
+                            <td class="py-3 px-3">Self-training benchmarks only; final technical & HR interview evaluations depend on interviewer criteria.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- Section 3: Intellectual Property Rights (User Content vs Platform IP) -->
+        <section id="sec3" class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-lock text-purple-500"></i> 3. Intellectual Property Rights (User Content & Platform Code)
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                <strong>Your Content Remains 100% Yours:</strong> Because all document parsing, audio processing, and salary calculations execute locally inside your browser memory (RAM), NextHire Matrix claims zero ownership rights over your resumes, code snippets, or career inputs.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                <strong>Platform Intellectual Property:</strong> The NextHire Matrix brand name, logo, UI/UX design, custom scoring heuristics, and source code are the exclusive intellectual property of <strong>NextHire Matrix / Yash Raj Goswami</strong> and are protected under applicable copyright and intellectual property laws.
+            </p>
+        </section>
+
+        <!-- Section 4: Service Availability, Uptime & Community Review Conduct -->
+        <section id="sec4" class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-server text-teal-500"></i> 4. Service Availability, Modifications & Community Conduct
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                <strong>No Uptime Warranty & Updates:</strong> While we strive to keep all 10 career utilities online 24/7, NextHire Matrix provides no uninterrupted uptime warranty. We reserve the right to modify, upgrade, or discontinue any feature or calculator at any time without prior notice.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                <strong>Community Ratings & External Links:</strong> Users posting feedback in our 1–10 Community Rating sections agree not to submit spam, abusive language, or promotional links. Our site may display third-party advertisements (such as Google AdSense) and outbound links (e.g., LinkedIn, WhatsApp), which are governed by their respective terms.
+            </p>
+        </section>
+
+        <!-- Section 5: Governing Law, Severability & Legal Contact -->
+        <section id="sec5" class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+                <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-gavel text-sky-500"></i> 5. Governing Law, Severability & Legal Contact
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                    These Terms of Service are governed by and construed in accordance with the laws of <strong>India</strong>. If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions shall remain in full force and effect. For legal or support inquiries, contact <strong>Yash Raj Goswami</strong> at <a href="mailto:Nexthirematrix@gmail.com" class="text-emerald-600 dark:text-emerald-400 font-black underline">Nexthirematrix@gmail.com</a>.
+                </p>
+            </div>
+            <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-2 gradient-bg text-white font-black text-xs px-5 py-3 rounded-2xl shadow-lg shadow-emerald-500/20 hover:opacity-95 transition shrink-0 no-print">
+                <i class="fa-solid fa-envelope"></i> Contact Legal & Support
+            </button>
+        </section>
+
+        <!-- Terms FAQs -->
+        <section class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-black text-slate-900 dark:text-white">Frequently Asked Terms Questions</h2>
+            <div class="space-y-3 text-xs sm:text-sm">
+                <details class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <summary class="font-bold cursor-pointer text-slate-900 dark:text-white">Can I use the resume points and LinkedIn bios generated here for my job applications?</summary>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed">Yes! Everything you generate or optimize on NextHire Matrix is 100% free to use for your personal resumes, CVs, cover letters, and LinkedIn profiles—just ensure all experience claims are truthful.</p>
+                </details>
+                <details class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <summary class="font-bold cursor-pointer text-slate-900 dark:text-white">Are the In-Hand Salary Calculator results exact to the last rupee?</summary>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed">Our simulator uses standard Indian tax slabs and statutory PF rules to give a very close estimate, but your employer's specific payroll allowances (HRA, LTA, gratuity, variable pay) may cause minor differences.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Community Rating (1-10) & Feedback Wall -->
+        <section id="communitySection" class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-6 no-print">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Community Verified</span>
+                    <h2 class="text-xl font-black text-slate-900 dark:text-white">Rate Our Transparency & Platform</h2>
+                </div>
+                <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-4 py-2 rounded-2xl">
+                    <span class="text-2xl font-black text-amber-500" id="avgRatingDisplay">9.7</span>
+                    <div class="text-[11px] font-bold text-slate-500 leading-tight">
+                        <strong class="block text-slate-800 dark:text-slate-200">out of 10</strong>
+                        <span id="totalReviewsCount">Based on community ratings</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-2">Select Your Score (1–10):</label>
+                    <div id="ratingButtonsRow" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <input type="text" id="reviewerName" placeholder="Your Name (e.g., Rohan D.)" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="text" id="reviewerComment" placeholder="Share your thoughts on NextHire Matrix..." class="sm:col-span-2 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <button onclick="submitCommunityReview()" class="px-6 py-2.5 gradient-bg text-white font-black text-xs rounded-xl shadow-lg hover:opacity-95 transition">Post Rating & Feedback</button>
+                    <button onclick="openDirectSupportModal()" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1.5">
+                        <i class="fa-solid fa-envelope"></i> Support: Nexthirematrix@gmail.com
+                    </button>
+                </div>
+            </div>
+            <div id="reviewsListContainer" class="space-y-3 pt-2"></div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500 space-y-2">
-        <div class="flex justify-center items-center gap-4 font-semibold text-slate-400">
-            <a href="about.html" class="hover:text-emerald-400 transition">About Us</a>
-            <span>•</span>
-            <a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Policy</a>
-            <span>•</span>
-            <a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a>
+    <!-- Direct Support Modal (Strictly NextHire Matrix & Nexthirematrix@gmail.com) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 no-print">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">NextHire Matrix Legal & Support</h3>
+                <p class="text-xs text-slate-500 font-semibold">Send inquiries directly to <strong class="text-emerald-600 dark:text-emerald-400">Nexthirematrix@gmail.com</strong>.</p>
+            </div>
+            <form onsubmit="sendDirectSupportEmail(event)" class="space-y-3 text-xs">
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label><input type="email" id="supportUserEmail" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></div>
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Topic</label><select id="supportCategory" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"><option value="Terms / Legal Question">⚖️ Terms / Legal Question</option><option value="Tool Accuracy Feedback">📊 Tool Accuracy Feedback</option><option value="Bug Report">🐛 Report a Bug</option><option value="General Support">💬 General Support</option></select></div>
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label><textarea id="supportMessage" rows="3" required placeholder="Write your message here..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea></div>
+                <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-lg transition flex items-center justify-center gap-2">Send to Nexthirematrix@gmail.com <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
-        <p>© 2026 NextHire Matrix. All rights reserved. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-400 underline">Yash Raj Goswami</a>.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12 w-full no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span>•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <span>•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="terms.html" class="text-emerald-600 dark:text-emerald-400">Terms & Disclaimer</a>
+                <span>•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition">Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+        </div>
     </footer>
+
+    <script>
+        let selectedUserRating = 10;
+        const defaultTermsReviews = [
+            { name: "Ananya Verma", score: 10, comment: "Clear, honest disclaimers and zero hidden traps. Really appreciate the transparency!", likes: 14 },
+            { name: "Karthik R.", score: 9, comment: "Clean layout and helpful tool-by-tool accuracy notes. Very professional site.", likes: 9 }
+        ];
+
+        function openDirectSupportModal() {
+            document.getElementById('feedbackModal').classList.remove('hidden');
+        }
+
+        function sendDirectSupportEmail(e) {
+            e.preventDefault();
+            const email = document.getElementById('supportUserEmail').value;
+            const cat = document.getElementById('supportCategory').value;
+            const msg = document.getElementById('supportMessage').value;
+            const subject = `[NextHire Matrix - Terms] ${cat}`;
+            const body = `From: ${email}\nTopic: ${cat}\n\nMessage:\n${msg}`;
+            window.location.href = `mailto:Nexthirematrix@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            document.getElementById('feedbackModal').classList.add('hidden');
+        }
+
+        function initCommunityWidget() {
+            const btnRow = document.getElementById('ratingButtonsRow');
+            if (!btnRow) return;
+            btnRow.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.innerText = i;
+                btn.className = i === selectedUserRating
+                    ? 'py-2 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs shadow'
+                    : 'py-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-emerald-500/20 font-black text-xs transition';
+                btn.onclick = () => { selectedUserRating = i; initCommunityWidget(); };
+                btnRow.appendChild(btn);
+            }
+            renderReviews();
+        }
+
+        function renderReviews() {
+            const saved = JSON.parse(localStorage.getItem('nhm_terms_reviews') || 'null') || defaultTermsReviews;
+            const container = document.getElementById('reviewsListContainer');
+            container.innerHTML = '';
+            let total = 0;
+            saved.forEach((r, idx) => {
+                total += r.score;
+                const card = document.createElement('div');
+                card.className = 'p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex justify-between items-start gap-3 text-xs';
+                card.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <strong class="font-black text-slate-900 dark:text-white">${r.name}</strong>
+                            <span class="px-2 py-0.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black text-[10px]">${r.score}/10</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 font-medium">${r.comment}</p>
+                    </div>
+                    <button onclick="likeReview(${idx})" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-[11px] hover:text-emerald-500 shrink-0">
+                        👍 ${r.likes || 0}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+            document.getElementById('avgRatingDisplay').innerText = (total / saved.length).toFixed(1);
+            document.getElementById('totalReviewsCount').innerText = `Based on ${saved.length} community ratings`;
+        }
+
+        function submitCommunityReview() {
+            const name = document.getElementById('reviewerName').value.trim() || "Verified User";
+            const comment = document.getElementById('reviewerComment').value.trim();
+            if (!comment) {
+                alert("Please write a short comment before posting your rating.");
+                return;
+            }
+            const saved = JSON.parse(localStorage.getItem('nhm_terms_reviews') || 'null') || [...defaultTermsReviews];
+            saved.unshift({ name, score: selectedUserRating, comment, likes: 1 });
+            localStorage.setItem('nhm_terms_reviews', JSON.stringify(saved));
+            document.getElementById('reviewerComment').value = '';
+            renderReviews();
+        }
+
+        function likeReview(index) {
+            const saved = JSON.parse(localStorage.getItem('nhm_terms_reviews') || 'null') || [...defaultTermsReviews];
+            if (saved[index]) {
+                saved[index].likes = (saved[index].likes || 0) + 1;
+                localStorage.setItem('nhm_terms_reviews', JSON.stringify(saved));
+                renderReviews();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initCommunityWidget);
+    </script>
 </body>
 </html>

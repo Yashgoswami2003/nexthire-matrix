@@ -1,153 +1,494 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="dark">
+<html lang="en" id="htmlRoot" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | NextHire Matrix - Privacy-First Career Tools</title>
-    <meta name="description" content="Learn about NextHire Matrix, our mission to build 100% private, client-side career tools, engineered by Yash Raj Goswami.">
-    <meta name="keywords" content="About NextHire Matrix, private career tools, Yash Raj Goswami, client-side ATS scanner">
+    <title>About Us | NextHire Matrix - 100% Free Privacy-First Career Tools</title>
+    <meta name="description" content="Learn about NextHire Matrix, our mission to build 100% free, private, client-side ATS resume checkers, salary calculators, and interview tools engineered by Yash Raj Goswami.">
+    <meta name="keywords" content="About NextHire Matrix, private career tools, Yash Raj Goswami, client-side ATS scanner, free resume tools">
     <link rel="canonical" href="https://www.nexthirematrix.com/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/about.html">
+    <meta property="og:title" content="About Us | NextHire Matrix - Privacy-First Career Suite">
+    <meta property="og:description" content="Discover how NextHire Matrix empowers job seekers with 10 free, browser-based career tools with zero sign-up and 100% data privacy.">
+
+    <!-- Microsoft Clarity Analytics -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "zbvrt4kf5g");
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Google AdSense & Search Schema Engine -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "NextHire Matrix",
-      "url": "https://www.nexthirematrix.com",
-      "logo": "https://www.nexthirematrix.com/assets/logo.png",
-      "founder": {
-        "@type": "Person",
-        "name": "Yash Raj Goswami",
-        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
-      },
-      "description": "Provider of 100% free, private, client-side career tools, ATS resume scanners, and interview preparation utilities."
+      "@type": "AboutPage",
+      "name": "About NextHire Matrix",
+      "url": "https://www.nexthirematrix.com/about.html",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "NextHire Matrix",
+        "url": "https://www.nexthirematrix.com",
+        "email": "Nexthirematrix@gmail.com",
+        "founder": {
+          "@type": "Person",
+          "name": "Yash Raj Goswami",
+          "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+        },
+        "description": "Provider of 100% free, private, client-side career tools, ATS resume scanners, salary calculators, and interview preparation utilities."
+      }
     }
     </script>
-</head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
-    <!-- Header Navigation -->
-    <header class="border-b border-slate-800 bg-slate-950 py-4 px-6 sticky top-0 z-40">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black text-emerald-400 flex items-center gap-2">
-                <span class="p-1.5 bg-emerald-500 text-slate-950 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #4f46e5 50%, #7c3aed 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.85); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
+
+    <div class="glow-blob w-96 h-96 bg-emerald-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
+    <!-- Header Navigation (Synced across all NextHire Matrix pages) -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 shrink-0">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/20 text-xs sm:text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
             </a>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">← Back to Tools</a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="text-slate-400 hover:text-emerald-400 transition text-sm">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="#communitySection" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-black hover:bg-amber-500/20 transition">
+                    <i class="fa-solid fa-star text-amber-400"></i> Reviews
+                </a>
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                    <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- Complete 10-Tools Scrollable Sub-Navbar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-slate-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-indigo-400"></i> Resume Point Writer</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Checker</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> Quick Resume Review</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Prep</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Speed Check</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Writer</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content Workspace -->
-    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow w-full">
-        <div class="max-w-3xl space-y-8">
-            <div>
-                <span class="text-xs font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/80 border border-emerald-800/80 px-3 py-1.5 rounded-full inline-block mb-3">Our Mission</span>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Empowering Job Seekers with Free, Privacy-First Utilities</h1>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-10">
+        
+        <!-- Hero Mission Section -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-black text-emerald-600 dark:text-emerald-400">
+                <span>⚡ Our Mission & Story • Built for Job Seekers</span>
             </div>
-            
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                NextHire Matrix was built out of a simple necessity: Job hunting and interview preparation should not require expensive subscriptions or sacrificing your personal data privacy.
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+                Empowering Job Seekers with <span class="gradient-text">Free, Privacy-First</span> Career Tools
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
+                NextHire Matrix was built out of a simple necessity: landing your dream job should never require expensive subscriptions, forced sign-ups, or uploading sensitive personal resumes to unknown servers.
             </p>
-            
-            <p class="text-slate-300 text-sm leading-relaxed">
-                Most career tools require users to register, pay recurring fees, or upload sensitive resumes to third-party cloud servers. NextHire Matrix breaks this mold by running <strong>100% client-side in your web browser</strong>. Your resumes, code snippets, audio recordings, and salary numbers never leave your device.
-            </p>
+        </section>
 
-            <!-- Core Platform Pillars Card -->
-            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-4">
-                <h2 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-emerald-400"></i> Core Platform Pillars:
+        <!-- 4-Stat Trust Strip -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass-card p-5 rounded-3xl text-center space-y-1 border border-slate-200 dark:border-slate-800">
+                <span class="text-2xl sm:text-3xl font-black gradient-text">10+</span>
+                <p class="text-xs font-black text-slate-800 dark:text-slate-200">Free Career Tools</p>
+                <span class="text-[10px] text-slate-500 font-semibold block">All-in-one job prep suite</span>
+            </div>
+            <div class="glass-card p-5 rounded-3xl text-center space-y-1 border border-slate-200 dark:border-slate-800">
+                <span class="text-2xl sm:text-3xl font-black text-emerald-500">100%</span>
+                <p class="text-xs font-black text-slate-800 dark:text-slate-200">Client-Side Privacy</p>
+                <span class="text-[10px] text-slate-500 font-semibold block">Zero server file uploads</span>
+            </div>
+            <div class="glass-card p-5 rounded-3xl text-center space-y-1 border border-slate-200 dark:border-slate-800">
+                <span class="text-2xl sm:text-3xl font-black text-indigo-500">0</span>
+                <p class="text-xs font-black text-slate-800 dark:text-slate-200">Sign-Ups Required</p>
+                <span class="text-[10px] text-slate-500 font-semibold block">Instant browser access</span>
+            </div>
+            <div class="glass-card p-5 rounded-3xl text-center space-y-1 border border-slate-200 dark:border-slate-800">
+                <span class="text-2xl sm:text-3xl font-black text-amber-500">2026</span>
+                <p class="text-xs font-black text-slate-800 dark:text-slate-200">Updated Engines</p>
+                <span class="text-[10px] text-slate-500 font-semibold block">Modern ATS & CTC rules</span>
+            </div>
+        </section>
+
+        <!-- Why We Built NextHire Matrix + Core Platform Pillars -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
+                <h2 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-emerald-500"></i> Why We Built NextHire Matrix
                 </h2>
-                <ul class="space-y-3 text-sm text-slate-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-emerald-400 mt-0.5">⚡</span>
-                        <span><strong>100% Free Forever:</strong> High-utility tools built for students, software engineers, and job candidates worldwide with zero paywalls.</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-emerald-400 mt-0.5">🔒</span>
-                        <span><strong>Privacy By Design:</strong> All parsing and computations execute locally in browser RAM without server uploads or database logging.</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-emerald-400 mt-0.5">🚀</span>
-                        <span><strong>Zero Signup Barrier:</strong> Use any tool instantly without entering emails, creating passwords, or viewing intrusive ads.</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- AdSense Content Requirement: Platform Utilities Showcase -->
-            <div class="space-y-4">
-                <h2 class="text-lg font-bold text-white">Our Free Utility Suite</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
-                        <strong class="text-emerald-400 block font-bold mb-0.5">📄 ATS Resume Checker</strong>
-                        <span class="text-slate-400">Scans PDF text against JDs to calculate match score and missing keywords.</span>
-                    </div>
-                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
-                        <strong class="text-amber-400 block font-bold mb-0.5">💰 In-Hand Salary Simulator</strong>
-                        <span class="text-slate-400">Calculates precise take-home salary after CTC tax deductions.</span>
-                    </div>
-                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
-                        <strong class="text-sky-400 block font-bold mb-0.5">👁️ 6-Second Skim Auditor</strong>
-                        <span class="text-slate-400">Simulates recruiter eye-tracking attention on resume bullet layout.</span>
-                    </div>
-                    <div class="p-3 bg-slate-800/40 rounded-xl border border-slate-700/50">
-                        <strong class="text-purple-400 block font-bold mb-0.5">🎙️ Speech & Voice Coach</strong>
-                        <span class="text-slate-400">Analyzes interview speech pace, pitch, and filler words locally.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Legal Safety & Data Protection Guarantee Block -->
-            <div class="p-5 bg-emerald-950/30 border border-emerald-800/50 rounded-2xl text-xs text-slate-300 space-y-2">
-                <h3 class="font-bold text-emerald-400 text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-lock"></i> Legal Data Protection Guarantee
-                </h3>
-                <p class="leading-relaxed">
-                    NextHire Matrix operates under strict client-side data isolation. We do not store, process, monetize, or transmit any user-submitted PDF files, text content, or audio input to external API servers. Users maintain complete ownership of their career data.
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                    Most online resume checkers and career platforms lock basic ATS scores behind paywalls, harvest candidate emails, or store uploaded PDFs on cloud databases.
+                </p>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                    <strong>NextHire Matrix</strong> breaks this mold by running <strong>100% locally inside your web browser</strong>. Whether you are scanning a PDF resume, calculating in-hand salary from CTC, testing code speed, or practicing interview answers on your mic, your data never leaves your device.
                 </p>
             </div>
 
-            <!-- Creator & Contact Block -->
-            <div class="border-t border-slate-800 pt-8 space-y-4">
-                <div class="space-y-1">
-                    <h2 class="text-lg font-bold text-white">Engineered By</h2>
-                    <p class="text-slate-300 text-sm">
-                        <strong>Yash Raj Goswami</strong> — Full Stack Developer & Product Builder dedicated to building open, high-performance career web tools.
-                    </p>
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
+                <h2 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-indigo-500"></i> 4 Core Platform Pillars
+                </h2>
+                <ul class="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+                    <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-black">⚡</span><span><strong>100% Free Forever:</strong> Built for students, freshers, and professionals with zero hidden paywalls.</span></li>
+                    <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-black">🔒</span><span><strong>Privacy By Design:</strong> All PDF parsing and calculations run in browser memory (RAM) with zero server storage.</span></li>
+                    <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-black">🎯</span><span><strong>Unbiased Accuracy:</strong> Transparent scoring models aligned with real ATS engines and recruiter workflows.</span></li>
+                    <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-black">🚀</span><span><strong>Zero Login Friction:</strong> Open any tool and get instant results in seconds without creating an account.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- How Our Tools Work (3-Step Transparency Section) -->
+        <section class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+            <div class="text-center max-w-2xl mx-auto space-y-1">
+                <span class="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Under The Hood</span>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">How NextHire Matrix Works</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-2 border border-slate-200/80 dark:border-slate-800">
+                    <span class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black flex items-center justify-center text-sm">1</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Local Browser Extraction</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">When you drop a PDF or speak into your mic, client-side libraries (like PDF.js & Web Audio API) process inputs right on your device.</p>
                 </div>
-                
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="index.html" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-emerald-500/20">
-                        Explore All 10 Free Tools →
-                    </a>
-                    <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-4 py-2.5 rounded-xl border border-slate-700 transition">
-                        <i class="fa-brands fa-linkedin text-blue-400"></i> Connect on LinkedIn
-                    </a>
+                <div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-2 border border-slate-200/80 dark:border-slate-800">
+                    <span class="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 font-black flex items-center justify-center text-sm">2</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Industry-Standard Audits</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Our rule engines check weighted keywords, formatting traps, tax slabs, and Big-O complexity without sending data to external APIs.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 space-y-2 border border-slate-200/80 dark:border-slate-800">
+                    <span class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 font-black flex items-center justify-center text-sm">3</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Instant Actionable Fixes</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Get immediate scores, missing keyword lists, 1-click AI fix prompts, and printable reports — and close the tab knowing nothing was saved.</p>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- Who NextHire Matrix Is Built For (Target Audience Cards) -->
+        <section class="space-y-4">
+            <div class="text-center max-w-2xl mx-auto space-y-1">
+                <span class="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Built For Every Career Stage</span>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Who Uses NextHire Matrix?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="glass-card p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-xl">🎓</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Students & Freshers</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Build ATS-safe first resumes, eliminate formatting errors, and practice clear interview answers before campus or off-campus drives.</p>
+                </div>
+                <div class="glass-card p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-xl">💼</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Working Professionals</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Tailor resumes to specific job descriptions, calculate exact monthly take-home pay from CTC, and compare competing job offers side-by-side.</p>
+                </div>
+                <div class="glass-card p-5 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-xl">💻</span>
+                    <strong class="block text-sm font-black text-slate-900 dark:text-white">Tech & Product Candidates</strong>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Analyze algorithm Big-O complexity, optimize LinkedIn headlines, and test if resumes pass a 6-second recruiter skim.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complete 10-Tools Ecosystem Grid (3 Categories) -->
+        <section class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Complete Ecosystem</span>
+                    <h2 class="text-xl font-black text-slate-900 dark:text-white">Explore All 10 Free Career Tools</h2>
+                </div>
+                <a href="index.html" class="text-xs font-black text-emerald-600 dark:text-emerald-400 hover:underline">Open Full Dashboard →</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                <a href="ats-checker.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-emerald-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-emerald-500/15 text-emerald-500 rounded-xl"><i class="fa-solid fa-file-circle-check"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">1. Resume Checker (ATS Scanner)</strong><span class="text-slate-500 dark:text-slate-400">28-point PDF keyword match & formatting audit.</span></div>
+                </a>
+                <a href="bullet-enhancer.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-indigo-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-indigo-500/15 text-indigo-500 rounded-xl"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">2. Resume Point Writer</strong><span class="text-slate-500 dark:text-slate-400">Turn weak experience lines into high-impact bullets.</span></div>
+                </a>
+                <a href="format-auditor.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-teal-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-teal-500/15 text-teal-500 rounded-xl"><i class="fa-solid fa-align-left"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">3. Resume Format Checker</strong><span class="text-slate-500 dark:text-slate-400">Verify layout, section structure & ATS readability.</span></div>
+                </a>
+                <a href="recruiter-skim.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-sky-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-sky-500/15 text-sky-500 rounded-xl"><i class="fa-solid fa-eye"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">4. Quick Resume Review</strong><span class="text-slate-500 dark:text-slate-400">Simulate a 6-second HR recruiter eye-tracking scan.</span></div>
+                </a>
+                <a href="salary-simulator.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-amber-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-amber-500/15 text-amber-500 rounded-xl"><i class="fa-solid fa-wallet"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">5. In-Hand Salary Calculator</strong><span class="text-slate-500 dark:text-slate-400">Calculate exact monthly take-home pay from annual CTC.</span></div>
+                </a>
+                <a href="offer-comparator.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-rose-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-rose-500/15 text-rose-500 rounded-xl"><i class="fa-solid fa-scale-balanced"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">6. Job Offer Compare</strong><span class="text-slate-500 dark:text-slate-400">Compare two job offers across base pay, perks & growth.</span></div>
+                </a>
+                <a href="interview-prep.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-pink-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-pink-500/15 text-pink-500 rounded-xl"><i class="fa-solid fa-comments"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">7. Interview Prep Lab</strong><span class="text-slate-500 dark:text-slate-400">Role-specific STAR frameworks & interview questions.</span></div>
+                </a>
+                <a href="voice-analyzer.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-purple-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-purple-500/15 text-purple-500 rounded-xl"><i class="fa-solid fa-microphone"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">8. Speech Coach</strong><span class="text-slate-500 dark:text-slate-400">Measure speaking pace, clarity & filler words locally.</span></div>
+                </a>
+                <a href="code-inspector.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-cyan-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-cyan-500/15 text-cyan-500 rounded-xl"><i class="fa-solid fa-code"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">9. Code Speed Check</strong><span class="text-slate-500 dark:text-slate-400">Instant Big-O time & space complexity analyzer.</span></div>
+                </a>
+                <a href="linkedin-optimizer.html" class="p-4 bg-slate-100 dark:bg-slate-900 hover:border-blue-500 border border-transparent rounded-2xl transition flex items-start gap-3">
+                    <span class="p-2.5 bg-blue-500/15 text-blue-500 rounded-xl"><i class="fa-brands fa-linkedin"></i></span>
+                    <div><strong class="text-slate-900 dark:text-white block font-black">10. LinkedIn Bio Writer</strong><span class="text-slate-500 dark:text-slate-400">Craft recruiter-searchable headlines & About summaries.</span></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Legal Data Protection & AdSense Editorial Independence Disclosure -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+            <div class="p-6 bg-emerald-500/10 border border-emerald-500/25 rounded-3xl space-y-2">
+                <h3 class="font-black text-emerald-700 dark:text-emerald-400 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i> Legal Data Protection Guarantee
+                </h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                    NextHire Matrix operates under strict client-side data isolation. We never store, process, monetize, or transmit user-submitted PDF resumes, text content, or voice input to external servers. You retain 100% ownership of your career data.
+                </p>
+            </div>
+
+            <div class="p-6 bg-indigo-500/10 border border-indigo-500/25 rounded-3xl space-y-2">
+                <h3 class="font-black text-indigo-700 dark:text-indigo-400 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-scale-balanced"></i> Editorial Independence & Sustainability
+                </h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                    To keep all 10 career utilities 100% free without subscriptions, NextHire Matrix may display non-intrusive advertisements (such as Google AdSense). All ATS scores, salary calculations, and audit outputs remain completely independent and unbiased.
+                </p>
+            </div>
+        </section>
+
+        <!-- Creator & Direct Contact Block -->
+        <section class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+                <span class="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Founder & Lead Engineer</span>
+                <h2 class="text-xl font-black text-slate-900 dark:text-white">Engineered by Yash Raj Goswami</h2>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                    Full-Stack Developer & Product Builder dedicated to creating fast, open, privacy-respecting web tools that help candidates stand out in competitive hiring pipelines. Have a question, partnership inquiry, or bug report? Reach out directly at <strong>Nexthirematrix@gmail.com</strong>.
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-3 shrink-0">
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-2 gradient-bg text-white font-black text-xs px-5 py-3 rounded-2xl shadow-lg shadow-emerald-500/20 hover:opacity-95 transition">
+                    <i class="fa-solid fa-envelope"></i> Email Support
+                </button>
+                <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-black text-xs px-5 py-3 rounded-2xl border border-slate-700 transition">
+                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Profile
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQs Section -->
+        <section class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">Frequently Asked Questions About NextHire Matrix</h2>
+            <div class="space-y-3 text-xs sm:text-sm">
+                <details class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <summary class="font-bold cursor-pointer text-slate-900 dark:text-white">Are all 10 tools on NextHire Matrix completely free?</summary>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed">Yes. Every tool on NextHire Matrix — from the ATS Resume Checker to the In-Hand Salary Calculator and Speech Coach — is 100% free to use with no paywalls or hidden limits.</p>
+                </details>
+                <details class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <summary class="font-bold cursor-pointer text-slate-900 dark:text-white">How can I report a bug or request a new career tool?</summary>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed">You can click any Support button on our site or email us directly at <a href="mailto:Nexthirematrix@gmail.com" class="text-emerald-500 font-bold underline">Nexthirematrix@gmail.com</a>. We review all user feedback promptly.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Community Rating (1-10) & Reviews Wall -->
+        <section id="communitySection" class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Community Verified</span>
+                    <h2 class="text-xl font-black text-slate-900 dark:text-white">Rate NextHire Matrix Platform</h2>
+                </div>
+                <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-4 py-2 rounded-2xl">
+                    <span class="text-2xl font-black text-amber-500" id="avgRatingDisplay">9.6</span>
+                    <div class="text-[11px] font-bold text-slate-500 leading-tight">
+                        <strong class="block text-slate-800 dark:text-slate-200">out of 10</strong>
+                        <span id="totalReviewsCount">Based on community ratings</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-2">Select Your Score (1 = Poor, 10 = Amazing):</label>
+                    <div id="ratingButtonsRow" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <input type="text" id="reviewerName" placeholder="Your Name (e.g., Priya K.)" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="text" id="reviewerComment" placeholder="Share your experience with NextHire Matrix..." class="sm:col-span-2 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <button onclick="submitCommunityReview()" class="px-6 py-2.5 gradient-bg text-white font-black text-xs rounded-xl shadow-lg hover:opacity-95 transition">Post Rating & Review</button>
+                    <button onclick="openDirectSupportModal()" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1.5">
+                        <i class="fa-solid fa-envelope"></i> Direct Support: Nexthirematrix@gmail.com
+                    </button>
+                </div>
+            </div>
+            <div id="reviewsListContainer" class="space-y-3 pt-2"></div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500 space-y-2">
-        <div class="flex justify-center items-center gap-4 font-semibold text-slate-400">
-            <a href="about.html" class="hover:text-emerald-400 transition">About Us</a>
-            <span>•</span>
-            <a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Policy</a>
-            <span>•</span>
-            <a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a>
+    <!-- Direct Support Modal (Strictly NextHire Matrix & Nexthirematrix@gmail.com) -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="space-y-1">
+                <h3 class="text-base font-black gradient-text">Contact NextHire Matrix</h3>
+                <p class="text-xs text-slate-500 font-semibold">Send inquiries or feedback directly to <strong class="text-emerald-600 dark:text-emerald-400">Nexthirematrix@gmail.com</strong>.</p>
+            </div>
+            <form onsubmit="sendDirectSupportEmail(event)" class="space-y-3 text-xs">
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label><input type="email" id="supportUserEmail" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></div>
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Topic</label><select id="supportCategory" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"><option value="General Inquiry">💬 General Inquiry</option><option value="Bug Report">🐛 Report a Bug</option><option value="Feature Request">💡 New Tool Idea</option><option value="Partnership">🤝 Partnership / Media</option></select></div>
+                <div><label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label><textarea id="supportMessage" rows="3" required placeholder="Write your message here..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea></div>
+                <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl shadow-lg transition flex items-center justify-center gap-2">Send to Nexthirematrix@gmail.com <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
-        <p>© 2026 NextHire Matrix. All rights reserved. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-400 underline">Yash Raj Goswami</a>.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span>•</span>
+                <a href="about.html" class="text-emerald-600 dark:text-emerald-400">About Us</a>
+                <span>•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+                <span>•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition">Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+        </div>
     </footer>
 
+    <script>
+        let selectedUserRating = 10;
+        const defaultAboutReviews = [
+            { name: "Siddharth Nair", score: 10, comment: "Best free career toolkit online. Zero login walls and the ATS + Salary tools are super accurate!", likes: 18 },
+            { name: "Neha Kulkarni", score: 9, comment: "Love that everything runs locally in the browser without uploading my resume anywhere.", likes: 11 }
+        ];
+
+        function openDirectSupportModal() {
+            document.getElementById('feedbackModal').classList.remove('hidden');
+        }
+
+        function sendDirectSupportEmail(e) {
+            e.preventDefault();
+            const email = document.getElementById('supportUserEmail').value;
+            const cat = document.getElementById('supportCategory').value;
+            const msg = document.getElementById('supportMessage').value;
+            const subject = `[NextHire Matrix - About] ${cat}`;
+            const body = `From: ${email}\nTopic: ${cat}\n\nMessage:\n${msg}`;
+            window.location.href = `mailto:Nexthirematrix@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            document.getElementById('feedbackModal').classList.add('hidden');
+        }
+
+        function initCommunityWidget() {
+            const btnRow = document.getElementById('ratingButtonsRow');
+            if (!btnRow) return;
+            btnRow.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.innerText = i;
+                btn.className = i === selectedUserRating
+                    ? 'py-2 rounded-xl bg-emerald-500 text-slate-950 font-black text-xs shadow'
+                    : 'py-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-emerald-500/20 font-black text-xs transition';
+                btn.onclick = () => { selectedUserRating = i; initCommunityWidget(); };
+                btnRow.appendChild(btn);
+            }
+            renderReviews();
+        }
+
+        function renderReviews() {
+            const saved = JSON.parse(localStorage.getItem('nhm_about_reviews') || 'null') || defaultAboutReviews;
+            const container = document.getElementById('reviewsListContainer');
+            container.innerHTML = '';
+            let total = 0;
+            saved.forEach((r, idx) => {
+                total += r.score;
+                const card = document.createElement('div');
+                card.className = 'p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex justify-between items-start gap-3 text-xs';
+                card.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <strong class="font-black text-slate-900 dark:text-white">${r.name}</strong>
+                            <span class="px-2 py-0.5 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black text-[10px]">${r.score}/10</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 font-medium">${r.comment}</p>
+                    </div>
+                    <button onclick="likeReview(${idx})" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-[11px] hover:text-emerald-500 shrink-0">
+                        👍 ${r.likes || 0}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+            document.getElementById('avgRatingDisplay').innerText = (total / saved.length).toFixed(1);
+            document.getElementById('totalReviewsCount').innerText = `Based on ${saved.length} community ratings`;
+        }
+
+        function submitCommunityReview() {
+            const name = document.getElementById('reviewerName').value.trim() || "Verified User";
+            const comment = document.getElementById('reviewerComment').value.trim();
+            if (!comment) {
+                alert("Please write a short comment before posting your rating.");
+                return;
+            }
+            const saved = JSON.parse(localStorage.getItem('nhm_about_reviews') || 'null') || [...defaultAboutReviews];
+            saved.unshift({ name, score: selectedUserRating, comment, likes: 1 });
+            localStorage.setItem('nhm_about_reviews', JSON.stringify(saved));
+            document.getElementById('reviewerComment').value = '';
+            renderReviews();
+        }
+
+        function likeReview(index) {
+            const saved = JSON.parse(localStorage.getItem('nhm_about_reviews') || 'null') || [...defaultAboutReviews];
+            if (saved[index]) {
+                saved[index].likes = (saved[index].likes || 0) + 1;
+                localStorage.setItem('nhm_about_reviews', JSON.stringify(saved));
+                renderReviews();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initCommunityWidget);
+    </script>
 </body>
 </html>

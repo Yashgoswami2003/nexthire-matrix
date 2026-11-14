@@ -4,6 +4,14 @@
 User-agent: Googlebot
 Allow: /
 
+# Allow Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+# Allow Bing Search Crawler
+User-agent: Bingbot
+Allow: /
+
 # Block Google AI Model Scraper / Training Crawler
 User-agent: Google-Extended
 Disallow: /
@@ -13,5 +21,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Sitemap Location
+# Canonical Host & Sitemap Location
+Host: https://www.nexthirematrix.com
 Sitemap: https://www.nexthirematrix.com/sitemap.xml

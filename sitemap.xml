@@ -1,116 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- 1. Central Suite Dashboard -->
+  <!-- Homepage (15-Tools Hub) -->
   <url>
-    <loc>https://www.nexthirematrix.com/index.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.00</priority>
+    <loc>https://www.nexthirematrix.com/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
-  <!-- 2. ATS Resume Scanner -->
+  <!-- Resume & ATS Suite -->
   <url>
     <loc>https://www.nexthirematrix.com/ats-checker.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
-
-  <!-- 3. Voice Speech & Fluency Analyzer -->
-  <url>
-    <loc>https://www.nexthirematrix.com/voice-analyzer.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- 4. Verified PDF Certificate & Resume Builder -->
-  <url>
-    <loc>https://www.nexthirematrix.com/certificate-builder.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- 5. ESOP & Tax Split Salary Simulator -->
-  <url>
-    <loc>https://www.nexthirematrix.com/salary-simulator.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- 6. Side-by-Side Job Offer Duel Engine -->
-  <url>
-    <loc>https://www.nexthirematrix.com/offer-comparator.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- 7. 6-Second Recruiter Eye-Tracking Skim Simulator -->
-  <url>
-    <loc>https://www.nexthirematrix.com/recruiter-skim.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- 8. ATS Formatting & Font Bug Auditor -->
-  <url>
-    <loc>https://www.nexthirematrix.com/format-auditor.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- 9. 500+ Offline Tech Speed Recall Flashcards -->
-  <url>
-    <loc>https://www.nexthirematrix.com/tech-flashcards.html</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- 10. Action-Verb & Metric Bullet Enhancer -->
   <url>
     <loc>https://www.nexthirematrix.com/bullet-enhancer.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/format-auditor.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/recruiter-skim.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- 11. AST Big-O & Client Code Bug Inspector -->
+  <!-- Salary, Offer & Exit Calculators -->
+  <url>
+    <loc>https://www.nexthirematrix.com/salary-simulator.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/offer-comparator.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/notice-period.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Interview & Coding Prep -->
+  <url>
+    <loc>https://www.nexthirematrix.com/voice-analyzer.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/interview-prep.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/tech-flashcards.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://www.nexthirematrix.com/code-inspector.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- 12. About Us -->
+  <!-- Outreach, LinkedIn & Student Utilities -->
+  <url>
+    <loc>https://www.nexthirematrix.com/linkedin-optimizer.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/cover-letter.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/certificate-builder.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexthirematrix.com/cgpa-converter.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Trust & Legal Pages -->
   <url>
     <loc>https://www.nexthirematrix.com/about.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <priority>0.6</priority>
   </url>
-
-  <!-- 13. Privacy Policy -->
   <url>
     <loc>https://www.nexthirematrix.com/privacy.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <priority>0.5</priority>
   </url>
-
-  <!-- 14. Terms & Disclaimer -->
   <url>
     <loc>https://www.nexthirematrix.com/terms.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <priority>0.5</priority>
   </url>
-
 </urlset>

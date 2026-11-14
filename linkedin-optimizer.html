@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Bio & Headline Maker | Audit & Rate Profile Out of 10 - NextHire Matrix</title>
+    
+    <link rel="canonical" href="https://www.nexthirematrix.com/linkedin-optimizer.html">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
+    <meta name="description" content="Audit your LinkedIn profile link or bio out of 10, spot weak words and missing keywords, get line-by-line replacements, and generate recruiter-ready LinkedIn headlines and About summaries.">
+    <meta name="keywords" content="LinkedIn bio maker, LinkedIn headline generator, LinkedIn profile link checker, LinkedIn summary audit out of 10, recruiter searchable LinkedIn bio">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/linkedin-optimizer.html">
+    <meta property="og:title" content="LinkedIn Bio & Headline Maker | NextHire Matrix">
+    <meta property="og:description" content="Rate your LinkedIn link or bio out of 10, fix weak lines, and generate high-converting LinkedIn headlines and About summaries.">
+
+    <!-- Delayed Microsoft Clarity Analytics Tag Integration -->
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "zbvrt4kf5g");
+            }, 2000);
+        });
+    </script>
+
+    <!-- Structured JSON-LD WebApplication Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LinkedIn Bio & Headline Maker - NextHire Matrix",
+      "url": "https://www.nexthirematrix.com/linkedin-optimizer.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All Browsers",
+      "author": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix"
+      }
+    }
+    </script>
+
+    <!-- Tool-Specific Google FAQ Schema (5 Questions) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How do I write a recruiter-searchable LinkedIn headline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Include your target job role, top 3-4 technical or domain skills, and a measurable achievement or value statement within 220 characters instead of generic titles like 'Looking for opportunities'."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why should I remove random numbers from my LinkedIn profile URL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Default LinkedIn URLs with random numbers look unfinished on resumes and business cards. Customizing your link to linkedin.com/in/your-name improves recruiter trust and search visibility."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What mistakes lower a LinkedIn About bio score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Overused buzzwords like 'hardworking', 'team player', and 'passionate' without real project metrics, skills, or a clear contact call-to-action reduce recruiter response rates."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does the LinkedIn Bio & Headline Maker score my profile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our tool checks your LinkedIn URL structure, headline length, role keywords, action verbs, measurable numbers, and weak clichés to give an instant score out of 10 with line-by-line replacements."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Does NextHire Matrix store my LinkedIn profile text or link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Everything runs locally inside your browser window. Your LinkedIn text and URL are never saved or uploaded to any external server."
+        }
+      }]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' }</script>
+
+    <!-- Non-Blocking Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+
+    <style>
+        html, body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        .tech-grid {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.13) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #10b981 55%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #1d4ed8 0%, #059669 55%, #4f46e5 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.95); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 tech-grid text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
+
+    <!-- Header Navigation Bar with All 15 Tools -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2.5">
+                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-blue-500/25 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            </a>
+            
+            <div class="flex items-center gap-2.5">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
+                </a>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- All-15-Tools Easy & SEO-Friendly Sub-Navbar -->
+        <div class="relative bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 w-full overflow-hidden">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2 overflow-x-auto whitespace-nowrap no-scrollbar pr-8">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-emerald-400"></i> Home
+                </a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker
+                </a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator
+                </a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare
+                </a>
+                <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach
+                </a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker
+                </a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards
+                </a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed
+                </a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-blue-600 text-white font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-blue-600/25 shrink-0">
+                    <i class="fa-brands fa-linkedin text-sm"></i> LinkedIn Bio Maker
+                </a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter
+                </a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker
+                </a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
+        
+        <!-- Hero Header -->
+        <section class="text-center space-y-3 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/25 px-4 py-1.5 rounded-full text-xs font-black text-blue-600 dark:text-blue-400">
+                <i class="fa-brands fa-linkedin"></i> <span>Profile Link Audit • Bio Score Out of 10 • Smart Generator</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
+                <span class="gradient-text">LinkedIn Bio & Headline</span> Maker + Profile Audit
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
+                Paste your LinkedIn profile link or your existing Headline/Bio to get an instant <strong>Score out of 10</strong>, spot weak lines, and see exact <strong>"Replace With This"</strong> improvements — or generate a brand-new profile from scratch.
+            </p>
+        </section>
+
+        <!-- Mode Switcher Tabs -->
+        <div class="flex flex-wrap justify-center gap-3">
+            <button onclick="switchLinkedInTab('audit', this)" id="tab-audit-btn" class="px-5 py-3 rounded-2xl bg-blue-600 text-white font-black text-xs sm:text-sm shadow-lg shadow-blue-600/25 flex items-center gap-2 transition">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> Rate & Fix My Link / Bio (Out of 10)
+            </button>
+            <button onclick="switchLinkedInTab('generate', this)" id="tab-gen-btn" class="px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-bold text-xs sm:text-sm hover:border-blue-500 flex items-center gap-2 transition">
+                <i class="fa-solid fa-wand-magic-sparkles text-emerald-500"></i> Generate New Headline & Bio
+            </button>
+        </div>
+
+        <!-- TAB 1: LINKEDIN PROFILE LINK & BIO AUDIT (SCORE OUT OF 10 + MISTAKES + REPLACEMENTS) -->
+        <section id="panel-audit" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left Input Form -->
+            <div class="lg:col-span-6 glass-card p-6 sm:p-7 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-user-check text-blue-600"></i> Paste Link or Your Written Bio
+                    </h2>
+                    <button type="button" onclick="loadSampleAudit()" class="text-[11px] font-black text-blue-600 dark:text-blue-400 hover:underline">
+                        Try Sample Bio
+                    </button>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">
+                            <i class="fa-solid fa-link text-blue-500 mr-1"></i> LinkedIn Profile Link (Optional)
+                        </label>
+                        <input type="url" id="audit-url" placeholder="https://www.linkedin.com/in/your-name-12345/" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">
+                            <i class="fa-solid fa-bullseye text-emerald-500 mr-1"></i> Target Job Role
+                        </label>
+                        <input type="text" id="audit-role" placeholder="e.g., Frontend Developer, Data Analyst, MBA Finance" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">
+                            <i class="fa-solid fa-heading text-purple-500 mr-1"></i> Your Current or Planned Headline
+                        </label>
+                        <input type="text" id="audit-headline" placeholder="e.g., B.Tech CSE Student | Seeking Software Engineer Opportunities" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">
+                            <i class="fa-solid fa-align-left text-amber-500 mr-1"></i> Your Current or Planned About Bio
+                        </label>
+                        <textarea id="audit-bio" rows="5" placeholder="Paste the About summary you wrote or want to check..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+
+                    <button type="button" onclick="runLinkedInAudit()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl shadow-lg shadow-blue-600/25 transition flex items-center justify-center gap-2 text-xs sm:text-sm">
+                        <i class="fa-solid fa-star-half-stroke"></i> Rate Out of 10 & Show Fixes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Audit Result Panel -->
+            <div class="lg:col-span-6 glass-card p-6 sm:p-7 rounded-3xl space-y-5 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
+                <div id="audit-placeholder" class="my-auto text-center py-12 space-y-3">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <h3 class="text-base font-black text-slate-900 dark:text-white">Your Profile Score & Fixes Will Appear Here</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold max-w-sm mx-auto">
+                        Enter your LinkedIn link, headline, or About bio on the left to see your <strong>Score out of 10</strong>, exact issues, and ready-to-copy replacements.
+                    </p>
+                </div>
+
+                <div id="audit-results" class="hidden space-y-5">
+                    <!-- Score Header -->
+                    <div class="p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">Recruiter Readiness Score</span>
+                            <h3 id="audit-verdict" class="text-base sm:text-lg font-black text-slate-900 dark:text-white mt-0.5">Good Start — Needs Stronger Keywords</h3>
+                            <p id="audit-sub" class="text-[11px] text-slate-500 font-semibold">Applying the suggested replacements below can boost your profile to 9.5/10.</p>
+                        </div>
+                        <div class="w-20 h-20 rounded-2xl gradient-bg text-white flex flex-col items-center justify-center shrink-0 shadow-lg">
+                            <span id="audit-score-val" class="text-2xl font-black leading-none">6.5</span>
+                            <span class="text-[10px] font-bold opacity-85">out of 10</span>
+                        </div>
+                    </div>
+
+                    <!-- Issues List -->
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Issues & Weaknesses Detected
+                        </h4>
+                        <div id="audit-mistakes-list" class="space-y-2 text-xs"></div>
+                    </div>
+
+                    <!-- Before -> After Replacements -->
+                    <div class="space-y-2.5">
+                        <h4 class="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-check"></i> Suggested Replacements (Use These Instead)
+                        </h4>
+                        <div id="audit-replacements-list" class="space-y-3 text-xs"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FRESH LINKEDIN HEADLINE & ABOUT BIO GENERATOR -->
+        <section id="panel-generate" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-5 glass-card p-6 sm:p-7 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-lg">
+                <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-sparkles text-emerald-500"></i> Enter Your Details
+                </h2>
+
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Target Role / Title</label>
+                        <input type="text" id="gen-role" placeholder="e.g., Full Stack Developer / Data Analyst" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Experience Level</label>
+                        <select id="gen-exp" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="fresher">College Student / Fresher (2025–2027 Batch)</option>
+                            <option value="junior">1–3 Years Experience</option>
+                            <option value="senior">3+ Years Experienced Professional</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Top 4–5 Skills (Comma Separated)</label>
+                        <input type="text" id="gen-skills" placeholder="e.g., React, Node.js, Python, SQL, AWS" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Key Achievement / Project Highlight</label>
+                        <input type="text" id="gen-win" placeholder="e.g., Built 3 full-stack apps & solved 350+ DSA problems" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Contact Email or Portfolio Link (Optional)</label>
+                        <input type="text" id="gen-contact" placeholder="e.g., rahul@email.com | github.com/rahul" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+
+                    <button type="button" onclick="generateLinkedInProfile()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black rounded-xl shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2 text-xs sm:text-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Headline & About Bio
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 glass-card p-6 sm:p-7 rounded-3xl space-y-5 border border-slate-200 dark:border-slate-800 shadow-lg">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider"><i class="fa-solid fa-heading mr-1"></i> High-Ranking LinkedIn Headline</span>
+                        <button onclick="copyBoxText('out-headline', this)" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-[11px] font-black transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy
+                        </button>
+                    </div>
+                    <div id="out-headline" class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-relaxed">
+                        Full Stack Developer | React, Node.js, Python & SQL | Building Scalable Web Apps & Solving Real-World Problems
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider"><i class="fa-solid fa-align-left mr-1"></i> Recruiter-Ready About Summary</span>
+                        <button onclick="copyBoxText('out-bio', this)" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-[11px] font-black transition">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy Bio
+                        </button>
+                    </div>
+                    <pre id="out-bio" class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 whitespace-pre-wrap font-sans leading-relaxed">Fill your role, skills, and achievement on the left and click "Generate Headline & About Bio" to get a custom summary ready to paste on LinkedIn.</pre>
+                </div>
+            </div>
+        </section>
+        <!-- 5 Tool-Specific SEO FAQs (Google Rich Snippets Ready) -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed border border-slate-200 dark:border-slate-800">
+            <div class="space-y-1">
+                <span class="text-[10px] font-black uppercase text-blue-600 dark:text-blue-400 tracking-wider">LinkedIn Optimization Guide</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">Frequently Asked Questions About LinkedIn Bio & Headline</h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        1. How do I write a recruiter-searchable LinkedIn headline?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Include your exact target job title, top 3–4 technical or domain skills, and one clear outcome within 220 characters. Avoid passive phrases like "Seeking opportunities" or "Unemployed".</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        2. Why should I remove random numbers from my LinkedIn profile link?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Default LinkedIn URLs with trailing numbers look unfinished on resumes. Editing your public URL to <strong>linkedin.com/in/your-name</strong> looks cleaner and builds instant trust with hiring managers.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        3. Which words reduce my LinkedIn About section rating?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Generic filler words like "hardworking", "passionate learner", and "team player" without real projects, tools, or numbers make your bio blend in with thousands of other profiles.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        4. How does the LinkedIn Profile Audit score out of 10 work?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">It evaluates your profile URL slug, headline structure, keyword density, action verbs, measurable results, and call-to-action clarity to give an instant score out of 10 with ready-to-use replacements.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        5. Is my LinkedIn profile text or link saved on any server?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">No. All analysis and bio generation happen 100% locally inside your browser window. Nothing is stored or shared externally.</p>
+                </details>
+            </div>
+        </article>
+
+        <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION (Toggle Like/Dislike + Reply + Delete) -->
+        <section id="community-feedback" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+                <div class="space-y-1">
+                    <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full"><i class="fa-solid fa-signal mr-1"></i> Live Community Wall</span>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white pt-1">Rate & Review LinkedIn Bio Maker</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Share your profile score improvement or rate this tool out of 10.</p>
+                </div>
+                <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 self-start md:self-auto">
+                    <div class="text-amber-400 text-2xl"><i class="fa-solid fa-star"></i></div>
+                    <div>
+                        <div class="text-lg font-black text-slate-900 dark:text-white leading-none"><span id="avg-rating-display">9.8</span><span class="text-xs text-slate-400 font-bold">/10</span></div>
+                        <div class="text-[11px] font-bold text-slate-500"><span id="total-count">0</span> Verified Reviews</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black text-slate-700 dark:text-slate-300">Select Your Score (1 = Low, 10 = Best)</label>
+                        <div id="rating-buttons" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5"></div>
+                    </div>
+
+                    <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-3 text-xs">
+                        <div>
+                            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name / Role</label>
+                            <input type="text" id="user-name" required placeholder="e.g., Aman Verma (CSE Student)" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Public Review</label>
+                            <textarea id="user-comment" rows="3" required placeholder="How did this tool help your LinkedIn profile?" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Post Rating & Review
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-7 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-500">Recent User Feedback</h3>
+                        <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-500"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Updates</span>
+                    </div>
+                    <div id="comments-container" class="space-y-3 max-h-[420px] overflow-y-auto pr-1">
+                        <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 text-xs text-slate-500 font-semibold text-center">
+                            Loading community ratings...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="flex justify-center items-center gap-3">
+                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        function escapeHTML(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
+        function switchLinkedInTab(tab, btn) {
+            const auditPanel = document.getElementById('panel-audit');
+            const genPanel = document.getElementById('panel-generate');
+            const auditBtn = document.getElementById('tab-audit-btn');
+            const genBtn = document.getElementById('tab-gen-btn');
+
+            if (tab === 'audit') {
+                auditPanel.classList.remove('hidden');
+                genPanel.classList.add('hidden');
+                auditBtn.className = "px-5 py-3 rounded-2xl bg-blue-600 text-white font-black text-xs sm:text-sm shadow-lg shadow-blue-600/25 flex items-center gap-2 transition";
+                genBtn.className = "px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-bold text-xs sm:text-sm hover:border-blue-500 flex items-center gap-2 transition";
+            } else {
+                genPanel.classList.remove('hidden');
+                auditPanel.classList.add('hidden');
+                genBtn.className = "px-5 py-3 rounded-2xl bg-emerald-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-emerald-500/25 flex items-center gap-2 transition";
+                auditBtn.className = "px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-bold text-xs sm:text-sm hover:border-blue-500 flex items-center gap-2 transition";
+            }
+        }
+
+        function loadSampleAudit() {
+            document.getElementById('audit-url').value = "https://www.linkedin.com/in/rohan-kumar-8943219a/";
+            document.getElementById('audit-role').value = "Software Developer";
+            document.getElementById('audit-headline').value = "B.Tech CSE Student | Hardworking Learner Seeking Job Opportunities";
+            document.getElementById('audit-bio').value = "I am a passionate and hardworking computer science student looking for a good job opportunity where I can learn and grow. I know Java, HTML, CSS and SQL.";
+            runLinkedInAudit();
+        }
+
+        function runLinkedInAudit() {
+            const url = document.getElementById('audit-url').value.trim();
+            const role = document.getElementById('audit-role').value.trim() || "Software Engineer";
+            const headline = document.getElementById('audit-headline').value.trim();
+            const bio = document.getElementById('audit-bio').value.trim();
+
+            if (!url && !headline && !bio) {
+                alert("Please paste at least your LinkedIn Profile Link, Headline, or Bio to audit!");
+                return;
+            }
+
+            let score = 10.0;
+            const mistakes = [];
+            const replacements = [];
+
+            // 1. Check LinkedIn Profile Link
+            if (url) {
+                if (!url.toLowerCase().includes("linkedin.com/in/")) {
+                    score -= 1.5;
+                    mistakes.push("Invalid profile link format — your public LinkedIn URL should start with <strong>linkedin.com/in/username</strong>.");
+                    replacements.push({
+                        bad: url,
+                        good: "https://www.linkedin.com/in/your-full-name"
+                    });
+                } else if (/\d{4,}/.test(url)) {
+                    score -= 1.2;
+                    const cleanSlug = url.replace(/-[0-9a-zA-Z]{5,}\/?$/, "").replace(/\/+$/, "");
+                    mistakes.push("Your LinkedIn URL has random numbers at the end, which looks unfinished on resumes and job applications.");
+                    replacements.push({
+                        bad: url,
+                        good: `${cleanSlug} (Remove trailing numbers via LinkedIn Settings → Edit Public Profile & URL)`
+                    });
+                }
+            } else {
+                score -= 0.5;
+                mistakes.push("LinkedIn profile URL was not provided — paste your link to verify custom URL cleanliness.");
+            }
+
+            // 2. Check Headline
+            const weakWords = ["seeking", "looking for", "unemployed", "fresher", "hardworking", "passionate", "student at"];
+            if (headline) {
+                const lowerH = headline.toLowerCase();
+                const foundWeakH = weakWords.filter(w => lowerH.includes(w));
+                if (foundWeakH.length > 0) {
+                    score -= 1.8;
+                    mistakes.push(`Your headline uses passive/weak phrases (<strong>"${foundWeakH.join(', ')}"</strong>). Recruiters search by job role and skills instead.`);
+                }
+                if (!headline.includes("|") && !headline.includes("•")) {
+                    score -= 0.8;
+                    mistakes.push("Missing visual separators (<strong>|</strong>) in your headline — separating skills makes them easier to scan.");
+                }
+                if (headline.length < 40) {
+                    score -= 0.7;
+                    mistakes.push("Your headline is too short — utilize the 220-character limit by adding your top 3–4 core skills.");
+                }
+                if (foundWeakH.length > 0 || headline.length < 45) {
+                    replacements.push({
+                        bad: headline,
+                        good: `${role} | Core Skills & Tech Stack | Building High-Impact Projects & Solving Real-World Problems`
+                    });
+                }
+            } else {
+                score -= 2.0;
+                mistakes.push("Headline is empty — recruiters see your headline first in search results.");
+                replacements.push({
+                    bad: "(Empty Headline)",
+                    good: `${role} | Python, SQL & Cloud | Turning Data & Code Into Measurable Results`
+                });
+            }
+
+            // 3. Check About Bio
+            if (bio) {
+                const lowerB = bio.toLowerCase();
+                const foundWeakB = ["hardworking", "passionate", "team player", "good job", "learn and grow", "quick learner"].filter(w => lowerB.includes(w));
+                if (foundWeakB.length > 0) {
+                    score -= 1.5;
+                    mistakes.push(`Your About summary contains overused clichés (<strong>"${foundWeakB.join(', ')}"</strong>) without concrete proof.`);
+                }
+                if (!/\d+/.test(bio)) {
+                    score -= 1.2;
+                    mistakes.push("No measurable numbers or metrics found (e.g., 3+ projects, 95% accuracy, 300+ coding problems solved).");
+                }
+                if (!lowerB.includes("@") && !lowerB.includes("github") && !lowerB.includes("portfolio") && !lowerB.includes("reach out") && !lowerB.includes("connect")) {
+                    score -= 0.8;
+                    mistakes.push("Missing a clear Call-to-Action or contact email at the end of your bio.");
+                }
+
+                replacements.push({
+                    bad: bio,
+                    good: `Results-driven ${role} skilled in building scalable solutions and solving real-world business problems.\n\n• Built 3+ end-to-end projects improving workflow speed by 35%.\n• Hands-on experience with core industry tools, clean architecture & problem solving.\n• Open to ${role} roles & collaborations — feel free to connect or message directly!`
+                });
+            } else {
+                score -= 1.5;
+                mistakes.push("About summary was not provided — adding a structured 4-line bio increases recruiter profile views.");
+            }
+
+            score = Math.max(2.5, Math.min(9.8, score)).toFixed(1);
+            document.getElementById('audit-placeholder').classList.add('hidden');
+            document.getElementById('audit-results').classList.remove('hidden');
+            document.getElementById('audit-score-val').innerText = score;
+
+            if (score >= 8.5) {
+                document.getElementById('audit-verdict').innerText = "Strong Recruiter-Ready Profile!";
+            } else if (score >= 6.5) {
+                document.getElementById('audit-verdict').innerText = "Good Foundation — Easy Fixes Available";
+            } else {
+                document.getElementById('audit-verdict').innerText = "Needs Optimization — Weak Keywords Detected";
+            }
+
+            const mContainer = document.getElementById('audit-mistakes-list');
+            mContainer.innerHTML = mistakes.length
+                ? mistakes.map(m => `<div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-slate-700 dark:text-slate-200 font-semibold leading-relaxed"><i class="fa-solid fa-xmark text-rose-500 mr-1.5"></i>${m}</div>`).join('')
+                : `<div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">No major issues detected! Your profile structure looks clean and recruiter-ready.</div>`;
+
+            const rContainer = document.getElementById('audit-replacements-list');
+            rContainer.innerHTML = replacements.map((r, idx) => `
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                    <div class="text-[11px] text-rose-600 dark:text-rose-400 line-through font-semibold"><i class="fa-solid fa-circle-minus mr-1"></i> ${escapeHTML(r.bad)}</div>
+                    <div class="text-[11px] sm:text-xs text-emerald-700 dark:text-emerald-300 font-bold whitespace-pre-line bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20" id="rep-text-${idx}"><i class="fa-solid fa-circle-check mr-1"></i> ${escapeHTML(r.good)}</div>
+                    <button onclick="copyBoxText('rep-text-${idx}', this)" class="text-[11px] font-black text-blue-600 dark:text-blue-400 hover:underline">
+                        <i class="fa-regular fa-copy mr-1"></i> Copy Replacement
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function generateLinkedInProfile() {
+            const role = document.getElementById('gen-role').value.trim() || "Software Engineer";
+            const exp = document.getElementById('gen-exp').value;
+            const skills = document.getElementById('gen-skills').value.trim() || "Python, JavaScript, SQL, Git";
+            const win = document.getElementById('gen-win').value.trim() || "Built 3+ full-stack projects & solved 300+ coding problems";
+            const contact = document.getElementById('gen-contact').value.trim();
+
+            const skillArr = skills.split(',').map(s => s.trim()).filter(Boolean);
+            const topSkills = skillArr.slice(0, 4).join(' • ');
+
+            const headline = `${role} | ${topSkills} | ${win.slice(0, 65)}`;
+            let introLine = "";
+            if (exp === "fresher") {
+                introLine = `Detail-oriented ${role} with strong hands-on foundations in ${skills}, focused on building clean, scalable, and user-centric solutions.`;
+            } else if (exp === "junior") {
+                introLine = `Results-focused ${role} with 1–3 years of practical experience delivering reliable products using ${skills}.`;
+            } else {
+                introLine = `Experienced ${role} specializing in high-performance systems, cross-functional execution, and measurable business growth using ${skills}.`;
+            }
+
+            const bio = `${introLine}\n\n🚀 Key Highlights & Impact:\n• ${win}\n• Strong command over ${skills} with clean documentation and problem-solving discipline.\n• Passionate about turning complex requirements into fast, real-world applications.\n\n📩 Let's Connect:\nOpen to full-time ${role} opportunities and meaningful tech collaborations.${contact ? `\nReach me at: ${contact}` : ''}`;
+
+            document.getElementById('out-headline').innerText = headline;
+            document.getElementById('out-bio').innerText = bio;
+        }
+
+        function copyBoxText(elId, btn) {
+            const text = document.getElementById(elId).innerText.trim();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+                const oldHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = oldHtml; }, 1800);
+            }
+        }
+
+        // Firebase Configuration & Toggle Like/Dislike + Reply + Delete Review System
+        const firebaseConfig = {
+            apiKey: "AIzaSyBHjOlrEWMfzmGPP8IAwwsGaoN09C6",
+            authDomain: "nexthire-matrix.firebaseapp.com",
+            projectId: "nexthire-matrix",
+            storageBucket: "nexthire-matrix.firebasestorage.app",
+            messagingSenderId: "296779224806",
+            appId: "1:296779224806:web:50bd95014aa4f5b31",
+            databaseURL: "https://nexthire-matrix-default-rtdb.firebaseio.com"
+        };
+
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const db = firebase.database();
+        const DB_PATH = 'feedbacks_linkedin';
+        let selectedScore = 10;
+
+        function getUserVotes() {
+            try { return JSON.parse(localStorage.getItem('nhm_votes_linkedin') || '{}'); } catch (e) { return {}; }
+        }
+        function saveUserVotes(v) {
+            try { localStorage.setItem('nhm_votes_linkedin', JSON.stringify(v)); } catch (e) {}
+        }
+
+        const btnContainer = document.getElementById('rating-buttons');
+        for (let i = 1; i <= 10; i++) {
+            btnContainer.innerHTML += `<button type="button" class="rate-btn h-9 rounded-lg border border-slate-200 dark:border-slate-700 font-black text-xs transition cursor-pointer" onclick="selectRating(${i})" id="rate-${i}">${i}</button>`;
+        }
+
+        function selectRating(score) {
+            selectedScore = score;
+            document.querySelectorAll('.rate-btn').forEach(btn => {
+                btn.className = "rate-btn h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-black text-xs transition cursor-pointer hover:border-emerald-500";
+            });
+            const activeBtn = document.getElementById(`rate-${score}`);
+            if (activeBtn) {
+                activeBtn.className = "rate-btn h-9 rounded-lg border border-emerald-500 bg-emerald-500 text-slate-950 font-black text-xs shadow-md shadow-emerald-500/25 transition cursor-pointer";
+            }
+        }
+        selectRating(10);
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const name = document.getElementById('user-name').value.trim();
+            const comment = document.getElementById('user-comment').value.trim();
+            if (!name || !comment) return;
+
+            db.ref(DB_PATH).push().set({
+                name: name,
+                comment: comment,
+                rating: selectedScore,
+                likes: 0,
+                dislikes: 0,
+                timestamp: Date.now()
+            }).then(() => {
+                document.getElementById('feedback-form').reset();
+                selectRating(10);
+            });
+        }
+
+        function toggleVote(key, action) {
+            const votes = getUserVotes();
+            const currentVote = votes[key] || null;
+            db.ref(`${DB_PATH}/${key}`).once('value', (snap) => {
+                const data = snap.val();
+                if (!data) return;
+                let likes = Number(data.likes || 0);
+                let dislikes = Number(data.dislikes || 0);
+                if (currentVote === action) {
+                    if (action === 'like') likes = Math.max(0, likes - 1);
+                    if (action === 'dislike') dislikes = Math.max(0, dislikes - 1);
+                    delete votes[key];
+                } else {
+                    if (currentVote === 'like') likes = Math.max(0, likes - 1);
+                    if (currentVote === 'dislike') dislikes = Math.max(0, dislikes - 1);
+                    if (action === 'like') likes += 1;
+                    if (action === 'dislike') dislikes += 1;
+                    votes[key] = action;
+                }
+                saveUserVotes(votes);
+                db.ref(`${DB_PATH}/${key}`).update({ likes: likes, dislikes: dislikes });
+            });
+        }
+
+        function toggleReplyBox(key) {
+            const box = document.getElementById(`reply-box-${key}`);
+            if (box) box.classList.toggle('hidden');
+        }
+
+        function submitReply(e, key) {
+            e.preventDefault();
+            const nameInput = document.getElementById(`reply-name-${key}`);
+            const textInput = document.getElementById(`reply-text-${key}`);
+            const rName = nameInput.value.trim() || 'Community Member';
+            const rText = textInput.value.trim();
+            if (!rText) return;
+            db.ref(`${DB_PATH}/${key}/replies`).push().set({
+                name: rName,
+                text: rText,
+                timestamp: Date.now()
+            }).then(() => {
+                nameInput.value = '';
+                textInput.value = '';
+                toggleReplyBox(key);
+            });
+        }
+
+        function deleteReview(key) {
+            if (confirm('Delete this review permanently?')) {
+                db.ref(`${DB_PATH}/${key}`).remove();
+            }
+        }
+
+        function deleteReply(reviewKey, replyKey) {
+            if (confirm('Delete this reply?')) {
+                db.ref(`${DB_PATH}/${reviewKey}/replies/${replyKey}`).remove();
+            }
+        }
+
+        db.ref(DB_PATH).orderByChild('timestamp').on('value', (snapshot) => {
+            const container = document.getElementById('comments-container');
+            container.innerHTML = '';
+            let count = 0;
+            let totalScore = 0;
+            const userVotes = getUserVotes();
+
+            snapshot.forEach((child) => {
+                count++;
+                const key = child.key;
+                const data = child.val();
+                totalScore += Number(data.rating || 10);
+                const myVote = userVotes[key] || null;
+                const likeClass = myVote === 'like' ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-lg' : 'hover:text-emerald-500 px-2 py-1 rounded-lg';
+                const dislikeClass = myVote === 'dislike' ? 'text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-1 rounded-lg' : 'hover:text-rose-500 px-2 py-1 rounded-lg';
+
+                let userRepliesHtml = '';
+                if (data.replies) {
+                    Object.keys(data.replies).forEach((rKey) => {
+                        const r = data.replies[rKey];
+                        userRepliesHtml += `
+                            <div class="mt-2 ml-3 pl-3 border-l-2 border-slate-200 dark:border-slate-700 flex items-start justify-between gap-2 text-[11px]">
+                                <div>
+                                    <span class="font-black text-slate-800 dark:text-slate-200">${escapeHTML(r.name)}:</span>
+                                    <span class="text-slate-600 dark:text-slate-300 font-medium">${escapeHTML(r.text)}</span>
+                                </div>
+                                <button onclick="deleteReply('${key}', '${rKey}')" class="text-slate-400 hover:text-rose-500 transition shrink-0"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>`;
+                    });
+                }
+
+                const item = document.createElement('div');
+                item.className = "p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm";
+                item.innerHTML = `
+                    <div class="flex items-center justify-between gap-2">
+                        <strong class="text-xs font-black text-slate-900 dark:text-white">${escapeHTML(data.name)}</strong>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black text-[11px]">${data.rating}/10 <i class="fa-solid fa-star text-[9px]"></i></span>
+                            <button onclick="deleteReview('${key}')" class="text-slate-400 hover:text-rose-500 transition text-xs p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 font-medium leading-relaxed">${escapeHTML(data.comment)}</p>
+                    <div class="flex items-center gap-2 pt-1 text-[11px] font-bold text-slate-500">
+                        <button onclick="toggleVote('${key}', 'like')" class="${likeClass} transition flex items-center gap-1"><i class="fa-solid fa-thumbs-up"></i> ${data.likes || 0}</button>
+                        <button onclick="toggleVote('${key}', 'dislike')" class="${dislikeClass} transition flex items-center gap-1"><i class="fa-solid fa-thumbs-down"></i> ${data.dislikes || 0}</button>
+                        <button onclick="toggleReplyBox('${key}')" class="hover:text-indigo-500 px-2 py-1 rounded-lg transition flex items-center gap-1"><i class="fa-solid fa-reply"></i> Reply</button>
+                    </div>
+                    <form id="reply-box-${key}" onsubmit="submitReply(event, '${key}')" class="hidden pt-2 space-y-2">
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="reply-name-${key}" placeholder="Your Name" class="sm:w-1/3 p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-[11px] font-semibold focus:outline-none">
+                            <input type="text" id="reply-text-${key}" required placeholder="Write a comment or reply..." class="flex-1 p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-[11px] font-semibold focus:outline-none">
+                            <button type="submit" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-lg text-[11px] transition shrink-0">Post</button>
+                        </div>
+                    </form>
+                    ${userRepliesHtml}
+                `;
+                container.prepend(item);
+            });
+
+            document.getElementById('total-count').innerText = count;
+            if (count > 0) {
+                document.getElementById('avg-rating-display').innerText = (totalScore / count).toFixed(1);
+            } else {
+                container.innerHTML = `<div class="p-6 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 text-xs text-slate-500 font-semibold text-center">Be the first to rate LinkedIn Bio & Headline Maker!</div>`;
+            }
+        });
+
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/linkedin-optimizer.html");
+            const text = encodeURIComponent("Rate your LinkedIn profile link & bio out of 10 and generate recruiter-ready headlines on NextHire Matrix: https://www.nexthirematrix.com/linkedin-optimizer.html");
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/linkedin-optimizer.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
+        }
+    </script>
+</body>
+</html>

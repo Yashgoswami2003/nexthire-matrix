@@ -6,6 +6,10 @@
     <title>Interview Answer Generator | STAR Method & HR Script Builder - NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/interview-prep.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,21 +126,35 @@
         .dark .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 tech-grid text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
+    <!-- Background Decorative Glows -->
+    <div class="glow-blob w-96 h-96 bg-pink-500 rounded-full top-0 -left-20"></div>
+    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+
     <!-- Header Navigation Bar with All 15 Tools -->
     <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2.5">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-pink-500/25 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="px-2.5 py-1.5 gradient-bg text-white rounded-xl shadow-lg shadow-pink-500/25 text-xs sm:text-sm font-black tracking-tight">NH</span> NextHire Matrix
             </a>
             
-            <div class="flex items-center gap-2.5">
+            <div class="flex items-center gap-2 sm:gap-2.5">
                 <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl transition">
                     <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
                 </a>
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <nav class="hidden md:flex items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-300">
+                    <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                    <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                    <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-500 transition">Terms</a>
+                </nav>
                 <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-pink-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-moon"></i>
                 </button>
@@ -198,19 +216,43 @@
         </div>
     </header>
 
+    <!-- Slide-over Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
+        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-pink-500 text-sm">NextHire Matrix</span>
+                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="py-2 hover:text-pink-500">🏠 Home</a>
+                    <a href="interview-prep.html" class="py-2 hover:text-pink-500">💬 Interview Answer Maker</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-pink-500">📄 ATS Resume Checker</a>
+                    <a href="salary-simulator.html" class="py-2 hover:text-pink-500">💰 In-Hand Salary</a>
+                    <a href="about.html" class="py-2 hover:text-pink-500">ℹ️ About Us</a>
+                    <a href="privacy.html" class="py-2 hover:text-pink-500">🔒 Privacy Policy</a>
+                    <a href="terms.html" class="py-2 hover:text-pink-500">⚖️ Terms & Disclaimer</a>
+                </nav>
+            </div>
+            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
+                100% In-Browser Privacy Guard Active
+            </div>
+        </div>
+    </div>
+
     <!-- Main Workspace -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
         
         <!-- Hero Section -->
         <section class="text-center space-y-3 max-w-3xl mx-auto">
             <div class="inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/25 px-4 py-1.5 rounded-full text-xs font-black text-pink-600 dark:text-pink-400">
-                <i class="fa-solid fa-comments"></i> <span>STAR Method Builder • HR Scripts • Answer Scorer Out of 10</span>
+                <i class="fa-solid fa-comments"></i> <span>STAR Method Builder • HR Scripts • Live Teleprompter & Scorer</span>
             </div>
             <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
                 <span class="gradient-text">Interview Answer</span> Generator & Scorer
             </h1>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
-                Generate tailored, recruiter-ready scripts for common HR & STAR behavioral questions—or paste your own draft answer to get an instant <strong>Score out of 10</strong> and upgrades.
+                Generate tailored, recruiter-ready scripts for common HR & STAR behavioral questions, practice with the live speaking teleprompter, or paste your draft to get an instant <strong>Score out of 10</strong>.
             </p>
         </section>
 
@@ -227,31 +269,38 @@
         <!-- TAB 1: INTERVIEW ANSWER GENERATOR -->
         <section id="panel-generate" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div class="lg:col-span-5 glass-card p-6 sm:p-7 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-lg">
-                <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-pink-600"></i> Customize Your Answer
-                </h2>
+                <div class="flex items-center justify-between gap-2">
+                    <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-pink-600"></i> Customize Your Answer
+                    </h2>
+                    <button type="button" onclick="fillSampleGeneratorData()" class="px-2.5 py-1 rounded-xl bg-pink-500/10 hover:bg-pink-600 hover:text-white text-pink-600 dark:text-pink-400 text-[11px] font-black transition">
+                        ⚡ Sample
+                    </button>
+                </div>
 
                 <div class="space-y-3 text-xs">
                     <div>
                         <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Select Interview Question</label>
-                        <select id="q-type" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <select id="q-type" onchange="generateInterviewAnswer()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-pink-500">
                             <option value="about">1. Tell me about yourself.</option>
                             <option value="hire">2. Why should we hire you?</option>
                             <option value="star">3. Describe a challenging project or problem you solved (STAR).</option>
                             <option value="strength">4. What are your greatest strengths and weaknesses?</option>
                             <option value="salary">5. What are your salary expectations?</option>
                             <option value="company">6. Why do you want to join our company?</option>
+                            <option value="gap">7. Explain a career gap, low CGPA, or branch switch.</option>
+                            <option value="conflict">8. Tell me about a disagreement or team conflict you handled.</option>
                         </select>
                     </div>
 
                     <div>
                         <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Target Job Role</label>
-                        <input type="text" id="int-role" placeholder="e.g., Software Engineer, Data Analyst, Product Associate" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <input type="text" id="int-role" value="Software Engineer" placeholder="e.g., Software Engineer, Data Analyst, Product Associate" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
 
                     <div>
                         <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Background / Experience</label>
-                        <select id="int-exp" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <select id="int-exp" onchange="generateInterviewAnswer()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
                             <option value="fresher">Final Year Student / Fresher Graduate</option>
                             <option value="junior">1–3 Years Working Experience</option>
                             <option value="senior">3+ Years Experienced Professional</option>
@@ -260,12 +309,12 @@
 
                     <div>
                         <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Key Skills & Tools</label>
-                        <input type="text" id="int-skills" placeholder="e.g., React, Node.js, SQL, Python, System Design" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <input type="text" id="int-skills" value="React, Node.js, SQL, Python, Git" placeholder="e.g., React, Node.js, SQL, Python, System Design" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
 
                     <div>
                         <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Best Project / Measurable Achievement</label>
-                        <input type="text" id="int-project" placeholder="e.g., Built an e-commerce web app that reduced checkout latency by 40%" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <input type="text" id="int-project" value="built a full-stack task automation app that reduced manual workflow time by 40%" placeholder="e.g., Built an e-commerce web app that reduced checkout latency by 40%" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
 
                     <button type="button" onclick="generateInterviewAnswer()" class="w-full py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-black rounded-xl shadow-lg shadow-pink-600/25 transition flex items-center justify-center gap-2 text-xs sm:text-sm">
@@ -276,11 +325,14 @@
 
             <div class="lg:col-span-7 glass-card p-6 sm:p-7 rounded-3xl space-y-5 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
                 <div class="space-y-3">
-                    <div class="flex items-center justify-between gap-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
                         <span id="out-q-badge" class="text-xs font-black text-pink-600 dark:text-pink-400 uppercase tracking-wider"><i class="fa-solid fa-microphone mr-1"></i> Spoken Interview Script</span>
-                        <div class="flex items-center gap-2">
+                        <div class="flex flex-wrap items-center gap-2">
                             <span id="out-duration" class="text-[11px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg">~75 sec read</span>
-                            <button onclick="copyBoxText('out-answer', this)" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-pink-600 hover:text-white text-[11px] font-black transition">
+                            <button type="button" onclick="togglePracticeTimer()" id="practiceTimerBtn" class="px-3 py-1.5 rounded-lg bg-indigo-500/15 hover:bg-indigo-600 hover:text-white text-indigo-600 dark:text-indigo-400 text-[11px] font-black transition">
+                                <i class="fa-solid fa-stopwatch mr-1"></i> <span id="practiceTimerText">Practice Timer (00:00)</span>
+                            </button>
+                            <button type="button" onclick="copyBoxText('out-answer', this)" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-pink-600 hover:text-white text-[11px] font-black transition">
                                 <i class="fa-regular fa-copy mr-1"></i> Copy Script
                             </button>
                         </div>
@@ -290,15 +342,26 @@
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 space-y-2">
-                    <h3 class="text-xs font-black text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
-                        <i class="fa-solid fa-lightbulb"></i> Delivery & Confidence Tips for This Question
-                    </h3>
-                    <ul id="out-tips" class="text-[11px] text-slate-600 dark:text-slate-300 font-semibold space-y-1 list-disc pl-4">
-                        <li>Maintain steady eye contact and pause briefly between your background, project proof, and future goal.</li>
-                        <li>Keep your answer focused on measurable outcomes rather than repeating your entire resume line by line.</li>
-                        <li>End with a confident bridge connecting your skills directly to the hiring team's needs.</li>
-                    </ul>
+                <div class="space-y-3">
+                    <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 space-y-2">
+                        <h3 class="text-xs font-black text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-lightbulb"></i> Delivery & Confidence Tips for This Question
+                        </h3>
+                        <ul id="out-tips" class="text-[11px] text-slate-600 dark:text-slate-300 font-semibold space-y-1 list-disc pl-4">
+                            <li>Maintain steady eye contact and pause briefly between your background, project proof, and future goal.</li>
+                            <li>Keep your answer focused on measurable outcomes rather than repeating your entire resume line by line.</li>
+                            <li>End with a confident bridge connecting your skills directly to the hiring team's needs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px]">
+                        <div class="font-bold text-indigo-800 dark:text-indigo-200">
+                            <i class="fa-solid fa-circle-question mr-1 text-indigo-500"></i> <strong>Smart Question to Ask HR at the End:</strong> <span id="smart-hr-question" class="font-semibold text-slate-700 dark:text-slate-300">"What does success look like in the first 90 days for someone stepping into this role?"</span>
+                        </div>
+                        <button type="button" onclick="copyBoxText('smart-hr-question', this)" class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 font-black shrink-0 border border-indigo-500/20 hover:bg-indigo-600 hover:text-white transition">
+                            Copy Q
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -478,12 +541,15 @@
     <!-- Footer Section -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
-            <div class="flex justify-center items-center gap-3">
-                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
-                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
-                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
-                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
-                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                </div>
             </div>
             <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
                 <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
@@ -505,8 +571,45 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
+        let practiceTimerInterval = null;
+        let practiceSeconds = 0;
+
+        function toggleMobileDrawer() {
+            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        }
+
         function escapeHTML(str) {
             return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
+        function togglePracticeTimer() {
+            const btnText = document.getElementById('practiceTimerText');
+            if (practiceTimerInterval) {
+                clearInterval(practiceTimerInterval);
+                practiceTimerInterval = null;
+                btnText.innerText = `Restart Timer (${formatTimer(practiceSeconds)})`;
+            } else {
+                practiceSeconds = 0;
+                btnText.innerText = "Stop (00:00)";
+                practiceTimerInterval = setInterval(() => {
+                    practiceSeconds++;
+                    btnText.innerText = `Stop (${formatTimer(practiceSeconds)})`;
+                }, 1000);
+            }
+        }
+
+        function formatTimer(sec) {
+            const m = String(Math.floor(sec / 60)).padStart(2, '0');
+            const s = String(sec % 60).padStart(2, '0');
+            return `${m}:${s}`;
+        }
+
+        function fillSampleGeneratorData() {
+            document.getElementById('int-role').value = "Full Stack Developer";
+            document.getElementById('int-exp').value = "fresher";
+            document.getElementById('int-skills').value = "React, Node.js, PostgreSQL, Docker, Git";
+            document.getElementById('int-project').value = "built an AI-assisted resume & job tracker platform used by 1,200+ students with sub-100ms API latency";
+            generateInterviewAnswer();
         }
 
         function switchInterviewTab(tab, btn) {
@@ -537,6 +640,7 @@
 
             let script = "";
             let tips = [];
+            let smartHrQ = "\"What does success look like in the first 90 days for someone stepping into this role?\"";
 
             if (qType === "about") {
                 const bg = exp === "fresher"
@@ -551,36 +655,56 @@
                     "Avoid reciting your school history or family background unless specifically asked.",
                     "Smile naturally on your closing sentence to project energy and readiness."
                 ];
+                smartHrQ = "\"Which core projects or engineering priorities will this team focus on over the next 6 months?\"";
             } else if (qType === "hire") {
                 script = `"You should hire me because I combine strong technical execution in ${skills} with a proven track record of delivering measurable outcomes.\n\nFor example, I ${project}. Instead of just following instructions, I focus on understanding the business goal, debugging edge cases early, and shipping clean work.\n\nAs a ${role}, I will require minimal ramp-up time and will immediately add value to your team's delivery speed and product quality."`;
                 tips = [
                     "Connect your strongest project result directly to the daily responsibilities of the role.",
                     "Use confident, ownership-driven verbs like 'built', 'optimized', and 'delivered'."
                 ];
+                smartHrQ = "\"How does your team measure engineering quality and impact during the onboarding period?\"";
             } else if (qType === "star") {
                 script = `"Situation: While working on a critical project as a ${role}, we faced performance bottlenecks and tight delivery timelines.\n\nTask: My responsibility was to diagnose the root cause and implement a scalable fix using ${skills} without breaking existing features.\n\nAction: I profiled the slow modules, refactored the core logic, and added automated checks to validate every edge case.\n\nResult: As a result, I ${project}, and the system ran reliably in production with positive feedback from stakeholders."`;
                 tips = [
                     "Clearly separate Situation, Task, Action, and Result so the interviewer can follow your logic.",
                     "Spend 60% of your speaking time on the Action and Result sections."
                 ];
+                smartHrQ = "\"What is the most interesting technical or scaling challenge your team solved recently?\"";
             } else if (qType === "strength") {
                 script = `"My biggest strength is structured problem-solving backed by strong execution in ${skills}. Whenever I face a complex requirement, I break it into small milestones—which is how I ${project}.\n\nAs for my weakness, earlier I used to spend extra time perfecting minor details before sharing early drafts. To improve this, I now set strict time-boxed checkpoints and share progress early with my team, which keeps both quality and speed balanced."`;
                 tips = [
                     "Never use fake weaknesses like 'I work too hard'—pick a real habit and explain how you fixed it.",
                     "Back up your strength with a concrete example immediately."
                 ];
+                smartHrQ = "\"How are code reviews, mentorship, and peer feedback structured within the team?\"";
             } else if (qType === "salary") {
                 script = `"Based on my hands-on skills in ${skills}, my project experience where I ${project}, and current market standards for a ${role}, I am looking for a competitive package aligned with your company's band for this level.\n\nHowever, my primary priority is joining a strong team with high learning and growth potential, so I am open to discussing the complete compensation structure."`;
                 tips = [
                     "Research the company's typical CTC range beforehand so you never underquote yourself.",
                     "Keep your tone collaborative rather than rigid during initial HR rounds."
                 ];
+                smartHrQ = "\"Could you share how performance reviews and growth milestones are evaluated annually?\"";
+            } else if (qType === "gap") {
+                script = `"I appreciate you asking. Rather than letting that phase remain passive, I used it intentionally to build real-world fluency in ${skills} and strengthen my core fundamentals.\n\nSpecifically, I ${project}, which proved my ability to stay disciplined, ship production-grade work independently, and deliver measurable outcomes as a ${role}."`;
+                tips = [
+                    "Own the timeline calmly without sounding defensive or over-apologizing.",
+                    "Pivot within 15 seconds to the concrete projects and skills you built during that period."
+                ];
+                smartHrQ = "\"What qualities help new hires ramp up fastest on your team?\"";
+            } else if (qType === "conflict") {
+                script = `"Situation: During a team sprint, a teammate and I had different approaches on structuring the API and data flow using ${skills}.\n\nTask: We needed to align quickly without delaying the release deadline.\n\nAction: Instead of debating opinions, I proposed benchmarking both approaches on a small test dataset and reviewing trade-offs together.\n\nResult: The data made the best choice obvious, we merged the solution ahead of schedule, and I ${project}."`;
+                tips = [
+                    "Never blame or badmouth a former teammate or manager.",
+                    "Show that you resolve disagreements using objective data and shared goals."
+                ];
+                smartHrQ = "\"How does the team collaborate across product, design, and engineering on new features?\"";
             } else {
                 script = `"I have been following your company's product growth and engineering culture closely. Your focus on building high-impact solutions aligns directly with my background in ${skills}.\n\nHaving already ${project}, I am excited about the chance to contribute as a ${role} and help your team scale its upcoming initiatives."`;
                 tips = [
                     "Mention one specific product, recent launch, or engineering value of the company.",
                     "Show how your existing skills solve a real problem for their team."
                 ];
+                smartHrQ = "\"What excites you most about the roadmap for this team over the next year?\"";
             }
 
             const words = script.split(/\s+/).length;
@@ -588,6 +712,7 @@
             document.getElementById('out-answer').innerText = script;
             document.getElementById('out-duration').innerText = `~${estSec} sec read (${words} words)`;
             document.getElementById('out-tips').innerHTML = tips.map(t => `<li>${escapeHTML(t)}</li>`).join('');
+            document.getElementById('smart-hr-question').innerText = smartHrQ;
         }
 
         function loadSampleDraft() {
@@ -859,6 +984,8 @@
                 window.open("https://www.instagram.com/", "_blank");
             }
         }
+
+        window.addEventListener('DOMContentLoaded', () => generateInterviewAnswer());
     </script>
 </body>
 </html>

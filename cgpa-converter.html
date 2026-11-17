@@ -6,21 +6,25 @@
     <title>Marks, Percentage & CGPA Converter (AKTU, CBSE, ICSE, Others) - NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/cgpa-converter.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
 
-    <meta name="description" content="Convert CGPA to Percentage, Percentage to CGPA, Semester SGPA to CGPA, Marks to Percentage, and 10-point CGPA to 4.0 GPA for AKTU, CBSE, ICSE, and other universities.">
-    <meta name="keywords" content="CGPA to percentage converter, AKTU CGPA to percentage, CBSE CGPA calculator, ICSE percentage to CGPA, SGPA to CGPA calculator, marks percentage calculator, 10 point CGPA to 4.0 GPA">
+    <meta name="description" content="Convert CGPA to Percentage, Percentage to CGPA, Credit-Weighted Semester SGPA to CGPA, Marks to Percentage, and 10-point CGPA to 4.0 GPA for AKTU, CBSE, ICSE, VTU, Anna, IB, and other universities.">
+    <meta name="keywords" content="CGPA to percentage converter, AKTU CGPA to percentage, CBSE CGPA calculator, ICSE percentage to CGPA, credit weighted SGPA to CGPA calculator, marks percentage calculator, 10 point CGPA to 4.0 GPA">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/cgpa-converter.html">
     <meta property="og:title" content="Marks, Percentage & CGPA Converter | NextHire Matrix">
-    <meta property="og:description" content="Instant bidirectional CGPA, SGPA, Marks, and Percentage converter supporting AKTU, CBSE, ICSE, and custom university formulas.">
+    <meta property="og:description" content="Instant bidirectional CGPA, Credit-Weighted SGPA, Marks, and Percentage converter supporting AKTU, CBSE, ICSE, VTU, Anna, IB, and custom university formulas.">
 
-    <!-- Delayed Microsoft Clarity Analytics Tag Integration -->
+    <!-- Delayed Analytics Tag Integration -->
     <script type="text/javascript">
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -85,7 +89,7 @@
         "name": "How do I calculate overall CGPA from semester SGPA scores?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Enter each semester's SGPA into the Semester SGPA tab. The calculator computes your cumulative average CGPA along with the equivalent percentage and division."
+          "text": "Enter each semester's SGPA and optional credit hours into the Semester SGPA tab. The calculator computes your credit-weighted cumulative CGPA along with the equivalent percentage and division."
         }
       }, {
         "@type": "Question",
@@ -130,7 +134,7 @@
     <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2.5">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/25 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+                <span class="px-2.5 py-1.5 gradient-bg text-white rounded-xl shadow-lg shadow-emerald-500/25 text-xs sm:text-sm font-black tracking-tight">NH</span> NextHire Matrix
             </a>
             
             <div class="flex items-center gap-2.5">
@@ -204,13 +208,13 @@
         <!-- Hero Section -->
         <section class="text-center space-y-3 max-w-3xl mx-auto">
             <div class="inline-flex items-center gap-2 bg-lime-500/15 border border-lime-500/30 px-4 py-1.5 rounded-full text-xs font-black text-lime-700 dark:text-lime-400">
-                <i class="fa-solid fa-graduation-cap"></i> <span>AKTU • CBSE • ICSE • Mumbai / Pune / VTU • Custom Formula</span>
+                <i class="fa-solid fa-graduation-cap"></i> <span>AKTU • CBSE • ICSE • Anna / VTU / Mumbai • IB • Custom Formula</span>
             </div>
             <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
                 <span class="gradient-text">Marks, Percentage & CGPA</span> Converter
             </h1>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
-                Convert CGPA to Percentage, Percentage to CGPA, Semester SGPA to Cumulative CGPA, Marks to Percentage, and 10-Point CGPA to 4.0 GPA with one click.
+                Convert CGPA to Percentage, Percentage to CGPA, Credit-Weighted Semester SGPA to CGPA, Marks to Percentage, and 10-Point CGPA to 4.0 GPA with one click.
             </p>
         </section>
 
@@ -233,22 +237,40 @@
         <!-- MODE 1: BIDIRECTIONAL CGPA <-> PERCENTAGE -->
         <section id="panel-cgpa" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-                <div class="space-y-1.5">
-                    <label class="block text-xs font-black text-slate-700 dark:text-slate-300">
-                        <i class="fa-solid fa-building-columns text-lime-600 mr-1"></i> Select University / Board
-                    </label>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between gap-2">
+                        <label class="text-xs font-black text-slate-700 dark:text-slate-300">
+                            <i class="fa-solid fa-building-columns text-lime-600 mr-1"></i> Select University / Board
+                        </label>
+                        <button type="button" onclick="toggleFormulaInfo()" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-lime-500/20 text-[11px] font-black text-slate-600 dark:text-slate-300 transition" title="Official Formula Guideline">
+                            <i class="fa-solid fa-circle-question text-lime-600"></i> Formula Info
+                        </button>
+                    </div>
+                    <!-- Auto-Detect / Search Filter Input -->
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="boardSearchInput" oninput="filterBoardOptions()" placeholder="Quick search board (e.g., AKTU, CBSE, VTU, Anna, IB, US GPA)..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-lime-500">
+                    </div>
                     <select id="boardSelect" onchange="handleBoardChange()" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-lime-500">
                         <option value="aktu">AKTU (Dr. A.P.J. Abdul Kalam Technical University — × 10)</option>
                         <option value="cbse">CBSE Board (Central Board — × 9.5)</option>
                         <option value="icse">ICSE / ISC Board (Standard 10-Point — × 9.5)</option>
-                        <option value="vtu">VTU / GTU / Mumbai / Pune (× 10 or Custom)</option>
+                        <option value="state">State Boards (UP / Bihar / Maharashtra — Direct Marks & 10×)</option>
+                        <option value="vtu">VTU / GTU / Anna / JNTU / Osmania ((CGPA - 0.75) × 10)</option>
+                        <option value="mumbai">Mumbai University (7.1 × CGPA + 11)</option>
+                        <option value="pune">SPPU / Pune University (CGPA × 8.9)</option>
+                        <option value="du">DU / JNU / BHU (CBCS Scale — × 9.5)</option>
+                        <option value="iit">IITs / NITs (Strict 10-Point Scale — × 10)</option>
+                        <option value="ib">IB Board (International Baccalaureate — 7-Point Scale)</option>
+                        <option value="igcse">IGCSE / Cambridge Board (Percentage Unified Scale)</option>
+                        <option value="usgpa">US GPA Scale (4.0 Maximum Scale)</option>
                         <option value="custom">Others / Custom Multiplier</option>
                     </select>
                 </div>
 
                 <div id="customMultiplierBox" class="hidden space-y-1.5">
-                    <label class="block text-xs font-black text-slate-700 dark:text-slate-300">Custom Multiplier (e.g., 9.5 or 10)</label>
-                    <input type="number" step="0.1" id="customMultiplier" value="9.5" oninput="convertFromCGPA()" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-lime-500">
+                    <label class="block text-xs font-black text-slate-700 dark:text-slate-300">Enter Custom Multiplier (e.g., 9.25, 9.5, or 10)</label>
+                    <input type="number" step="0.05" id="customMultiplier" value="9.25" oninput="convertFromCGPA()" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-lime-500">
                 </div>
 
                 <div id="formulaBadge" class="p-3.5 rounded-2xl bg-lime-500/10 border border-lime-500/25 text-xs font-bold text-lime-800 dark:text-lime-300 flex items-center gap-2">
@@ -257,12 +279,40 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                <!-- Left: Enter CGPA -->
+            <!-- Official Formula Guideline Popover Box -->
+            <div id="formulaInfoBox" class="hidden p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                <div class="flex items-center justify-between">
+                    <span class="font-black text-indigo-600 dark:text-indigo-400"><i class="fa-solid fa-book-open mr-1"></i> Official University / Board Guideline</span>
+                    <button type="button" onclick="toggleFormulaInfo()" class="text-slate-400 hover:text-slate-600 font-bold"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p id="formulaGuidelineDesc" class="text-[11px] font-medium leading-relaxed">
+                    As per AKTU & AICTE standard 10-point grading ordinance, equivalent percentage is computed by multiplying cumulative CGPA by 10.
+                </p>
+            </div>
+
+            <!-- Dynamic Board Marks Input Bar (Auto-shows for CBSE / ICSE / State Board) -->
+            <div id="boardMarksQuickBar" class="hidden p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-black text-emerald-700 dark:text-emerald-300"><i class="fa-solid fa-bolt mr-1"></i> Direct Board Marks Input (Auto-Calculates Percentage, CGPA & Grade)</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-600 dark:text-slate-300 mb-1">Marks Obtained</label>
+                        <input type="number" id="boardObtainedMarks" value="425" oninput="syncFromBoardMarks()" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm font-black focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-black text-slate-600 dark:text-slate-300 mb-1">Total Maximum Marks</label>
+                        <input type="number" id="boardTotalMarks" value="500" oninput="syncFromBoardMarks()" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm font-black focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
+                <!-- Left: Enter CGPA / Scale Score -->
                 <div class="p-5 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
-                    <label class="block text-xs font-black uppercase tracking-wider text-slate-500">Enter CGPA (0.00 – 10.00)</label>
+                    <label id="cgpaInputLabel" class="block text-xs font-black uppercase tracking-wider text-slate-500">Enter CGPA (0.00 – 10.00)</label>
                     <input type="number" step="0.01" min="0" max="10" id="cgpaInput" value="8.50" oninput="convertFromCGPA()" placeholder="e.g., 8.50" class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-xl font-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-lime-500">
-                    <p class="text-[11px] text-slate-500 font-semibold">Type your CGPA to instantly update Percentage on the right.</p>
+                    <p class="text-[11px] text-slate-500 font-semibold">Type your grade score to instantly update Percentage on the right.</p>
                 </div>
 
                 <!-- Right: Enter Percentage -->
@@ -273,45 +323,108 @@
                 </div>
             </div>
 
-            <!-- Result Summary Strip -->
+            <!-- Placement & Higher Studies Eligibility Status Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Letter Grade & Division</span>
+                    <div id="gradeBadgeDisplay" class="text-xs sm:text-sm font-black text-slate-900 dark:text-white mt-0.5">Grade A+ • First Division with Distinction</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Campus Placement Criteria</span>
+                    <div id="placementEligibilityBadge" class="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400 mt-0.5">Eligible for 95% Tech Companies (>75%)</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">4.0 International GPA Scale</span>
+                    <div id="abroadGpaBadge" class="text-xs sm:text-sm font-black text-indigo-600 dark:text-indigo-400 mt-0.5">3.40 / 4.00 GPA (Master's Ready)</div>
+                </div>
+            </div>
+
+            <!-- Result Summary Strip + Flex Card Button -->
             <div class="p-4 sm:p-5 rounded-2xl gradient-bg text-white flex flex-wrap items-center justify-between gap-4 shadow-lg">
                 <div>
                     <span class="text-[10px] font-black uppercase tracking-wider text-emerald-200">Converted Academic Summary</span>
                     <div id="cgpaResultSummary" class="text-base sm:text-xl font-black mt-0.5">8.50 CGPA = 85.00% (First Division with Distinction)</div>
                 </div>
-                <button onclick="copyResultText('cgpaResultSummary', this)" class="px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black transition shrink-0">
-                    <i class="fa-regular fa-copy mr-1"></i> Copy Result
-                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="openAcademicFlexCard('cgpa')" class="px-4 py-2.5 bg-slate-950/90 hover:bg-slate-900 text-emerald-300 rounded-xl text-xs font-black transition shrink-0">
+                        <i class="fa-solid fa-id-card-clip mr-1"></i> Generate Flex Card
+                    </button>
+                    <button onclick="copyResultText('cgpaResultSummary', this)" class="px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black transition shrink-0">
+                        <i class="fa-regular fa-copy mr-1"></i> Copy Result
+                    </button>
+                </div>
             </div>
         </section>
-
-        <!-- MODE 2: SEMESTER SGPA TO OVERALL CGPA -->
+        <!-- MODE 2: SEMESTER SGPA TO OVERALL CGPA (Credit-Weighted + What-If Simulator + Backlog Booster) -->
         <section id="panel-sgpa" class="hidden glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div class="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                    <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">Calculate Overall CGPA From Semester SGPA</h2>
-                    <p class="text-xs text-slate-500 font-semibold">Enter SGPA for completed semesters (leave upcoming semesters blank).</p>
+                    <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">Credit-Weighted Semester SGPA → Overall CGPA</h2>
+                    <p class="text-xs text-slate-500 font-semibold">Enter SGPA and optional Credit Hours for completed semesters (leave credits blank for equal weight).</p>
                 </div>
-                <select id="sgpaBoard" onchange="calculateSGPA()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold">
-                    <option value="10">AKTU / 10× Scale</option>
-                    <option value="9.5">CBSE / ICSE / 9.5× Scale</option>
-                </select>
+                <div class="flex flex-wrap items-center gap-2">
+                    <select id="courseDurationSelect" onchange="updateSemesterGridVisibility()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold">
+                        <option value="8">B.Tech / 4 Years (8 Sems)</option>
+                        <option value="6">Lateral Entry / 3 Years (6 Sems)</option>
+                    </select>
+                    <select id="sgpaBoard" onchange="calculateSGPA()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-bold">
+                        <option value="10">AKTU / 10× Scale</option>
+                        <option value="9.5">CBSE / ICSE / 9.5× Scale</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="semInputsGrid"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="semInputsGrid"></div>
+
+            <!-- "What-If" Target CGPA Simulator & Backlog Grade Improvement -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                <!-- What-If Target Slider -->
+                <div class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-black text-slate-800 dark:text-slate-200"><i class="fa-solid fa-sliders text-lime-500 mr-1"></i> "What-If" Target CGPA Simulator</label>
+                        <span id="targetCgpaVal" class="px-2.5 py-0.5 rounded-lg bg-lime-500/20 text-lime-700 dark:text-lime-300 font-black text-xs">8.50 CGPA</span>
+                    </div>
+                    <input type="range" id="targetCgpaSlider" min="6.0" max="9.8" step="0.05" value="8.50" oninput="calculateSGPA()" class="w-full accent-lime-500 cursor-pointer">
+                    <p id="whatIfOutputText" class="text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                        Enter your completed semester SGPAs above to see the required SGPA in remaining semesters.
+                    </p>
+                </div>
+
+                <!-- Backlog & Grade Improvement Simulator -->
+                <div class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-black text-slate-800 dark:text-slate-200"><i class="fa-solid fa-arrow-trend-up text-emerald-500 mr-1"></i> Backlog / Grade Improvement Boost</label>
+                        <label class="inline-flex items-center gap-1.5 text-[11px] font-bold cursor-pointer">
+                            <input type="checkbox" id="backlogToggle" onchange="calculateSGPA()" class="accent-emerald-500 rounded"> Enable
+                        </label>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-[11px] font-bold text-slate-500 shrink-0">Improved Lowest Sem to:</span>
+                        <input type="number" step="0.1" min="5" max="10" id="improvedSemSgpa" value="8.0" oninput="calculateSGPA()" class="w-24 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 font-black text-xs">
+                    </div>
+                    <p id="backlogBoostOutput" class="text-[11px] font-bold text-slate-500">
+                        Toggle on to simulate replacing your lowest semester SGPA after clearing a backlog or re-exam.
+                    </p>
+                </div>
+            </div>
 
             <div class="p-4 sm:p-5 rounded-2xl gradient-bg text-white flex flex-wrap items-center justify-between gap-4 shadow-lg">
                 <div>
                     <span class="text-[10px] font-black uppercase tracking-wider text-emerald-200">Cumulative CGPA & Percentage</span>
                     <div id="sgpaResultSummary" class="text-base sm:text-xl font-black mt-0.5">Enter at least 1 semester SGPA above</div>
                 </div>
-                <button onclick="copyResultText('sgpaResultSummary', this)" class="px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black transition shrink-0">
-                    <i class="fa-regular fa-copy mr-1"></i> Copy Result
-                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="openAcademicFlexCard('sgpa')" class="px-4 py-2.5 bg-slate-950/90 hover:bg-slate-900 text-emerald-300 rounded-xl text-xs font-black transition shrink-0">
+                        <i class="fa-solid fa-id-card-clip mr-1"></i> Generate Flex Card
+                    </button>
+                    <button onclick="copyResultText('sgpaResultSummary', this)" class="px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black transition shrink-0">
+                        <i class="fa-regular fa-copy mr-1"></i> Copy Result
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- MODE 3: MARKS <-> PERCENTAGE -->
+        <!-- MODE 3: MARKS <-> PERCENTAGE (With Instant Estimated CGPA & Letter Grade) -->
         <section id="panel-marks" class="hidden glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
@@ -325,6 +438,22 @@
                 <div class="p-4 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
                     <label class="block text-xs font-black text-slate-600 dark:text-slate-300">Percentage (%) — Editable</label>
                     <input type="number" step="0.01" id="marksPerc" value="87.00" oninput="calcPercToMarks()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-lg font-black text-emerald-600 dark:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+            </div>
+
+            <!-- Multi-Scale Breakdown Pills -->
+            <div id="marksMultiScaleStrip" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">10-Point Scale (AKTU / Univ)</span>
+                    <div id="marksCgpa10" class="text-sm font-black text-slate-900 dark:text-white mt-0.5">8.70 CGPA</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">CBSE / ICSE Scale (÷ 9.5)</span>
+                    <div id="marksCgpaCbse" class="text-sm font-black text-emerald-600 dark:text-emerald-400 mt-0.5">9.16 CGPA</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Letter Grade Indicator</span>
+                    <div id="marksLetterGrade" class="text-sm font-black text-indigo-600 dark:text-indigo-400 mt-0.5">Grade A+ (Distinction)</div>
                 </div>
             </div>
 
@@ -362,6 +491,7 @@
                 </button>
             </div>
         </section>
+
         <!-- 5 Tool-Specific SEO FAQs (Google Rich Snippets Ready) -->
         <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed border border-slate-200 dark:border-slate-800">
             <div class="space-y-1">
@@ -399,7 +529,7 @@
                         4. How do I calculate overall CGPA from semester-wise SGPA?
                         <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
                     </summary>
-                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Switch to the "Semester SGPA → CGPA" tab and enter your SGPA for each completed semester. The calculator automatically computes your cumulative CGPA, equivalent percentage, and division.</p>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Switch to the "Semester SGPA → CGPA" tab and enter your SGPA and credit hours for each completed semester. The calculator automatically computes your cumulative CGPA, equivalent percentage, and division.</p>
                 </details>
 
                 <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
@@ -412,7 +542,7 @@
             </div>
         </article>
 
-        <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION (Toggle Like/Dislike + Reply + Delete) -->
+        <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION -->
         <section id="community-feedback" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
                 <div class="space-y-1">
@@ -466,15 +596,44 @@
         </section>
     </main>
 
+    <!-- One-Click Academic Grade Flex Card Modal -->
+    <div id="academicFlexModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-slate-900 text-white rounded-3xl p-6 border border-emerald-500/40 shadow-2xl space-y-5 relative">
+            <button onclick="document.getElementById('academicFlexModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 border border-emerald-500/30 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="px-2.5 py-1 rounded-lg gradient-bg text-white font-black text-xs">NH • NextHire Matrix</span>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-emerald-400">Verified Score Card</span>
+                </div>
+                <div class="pt-1">
+                    <div id="flexCardMainMetric" class="text-3xl font-black text-emerald-400">8.50 CGPA • 85.00%</div>
+                    <div id="flexCardSubMetric" class="text-xs font-bold text-slate-300 mt-1">First Division with Distinction • AKTU Standard</div>
+                </div>
+                <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-400">
+                    <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> Campus Placement Ready</span>
+                    <span>nexthirematrix.com</span>
+                </div>
+            </div>
+            <div class="flex gap-2.5">
+                <button onclick="copyFlexPost(this)" class="flex-1 py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black rounded-xl text-xs transition">
+                    <i class="fa-brands fa-linkedin mr-1"></i> Copy LinkedIn / Status Post
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Section -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
-            <div class="flex justify-center items-center gap-3">
-                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
-                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
-                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
-                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
-                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                </div>
             </div>
             <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
                 <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
@@ -512,11 +671,24 @@
             btn.className = "mode-tab px-4 py-2.5 rounded-2xl bg-lime-500 text-slate-950 font-black text-xs shadow-md shadow-lime-500/20 flex items-center gap-1.5 transition";
         }
 
-        function getMultiplier() {
-            const board = document.getElementById('boardSelect').value;
-            if (board === 'aktu' || board === 'vtu') return 10;
-            if (board === 'cbse' || board === 'icse') return 9.5;
-            return parseFloat(document.getElementById('customMultiplier').value) || 9.5;
+        // Filter Board Dropdown Options
+        function filterBoardOptions() {
+            const q = document.getElementById('boardSearchInput').value.toLowerCase().trim();
+            const select = document.getElementById('boardSelect');
+            let firstMatch = null;
+            Array.from(select.options).forEach(opt => {
+                const match = !q || opt.text.toLowerCase().includes(q);
+                opt.hidden = !match;
+                if (match && !firstMatch) firstMatch = opt.value;
+            });
+            if (firstMatch && select.options[select.selectedIndex].hidden) {
+                select.value = firstMatch;
+                handleBoardChange();
+            }
+        }
+
+        function toggleFormulaInfo() {
+            document.getElementById('formulaInfoBox').classList.toggle('hidden');
         }
 
         function getDivisionLabel(perc) {
@@ -527,73 +699,232 @@
             return "Below Pass Threshold";
         }
 
+        function getLetterGrade(perc) {
+            if (perc >= 90) return "Grade O (Outstanding)";
+            if (perc >= 80) return "Grade A+ (Distinction)";
+            if (perc >= 70) return "Grade A (First Class)";
+            if (perc >= 60) return "Grade B+ (Above Average)";
+            if (perc >= 50) return "Grade B (Second Class)";
+            return "Grade C / Pass";
+        }
+
+        function updateAcademicBadges(perc, cgpa10) {
+            document.getElementById('gradeBadgeDisplay').innerText = `${getLetterGrade(perc)} • ${getDivisionLabel(perc)}`;
+            const placeEl = document.getElementById('placementEligibilityBadge');
+            if (perc >= 75) {
+                placeEl.innerText = "Eligible for 95% Top Tech & Product Roles (≥75%)";
+                placeEl.className = "text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-400 mt-0.5";
+            } else if (perc >= 60) {
+                placeEl.innerText = "Eligible for Standard 60% Placement Cutoff";
+                placeEl.className = "text-xs sm:text-sm font-black text-amber-600 dark:text-amber-400 mt-0.5";
+            } else {
+                placeEl.innerText = "Below 60% Cutoff — Target Skill-First Startups";
+                placeEl.className = "text-xs sm:text-sm font-black text-rose-600 dark:text-rose-400 mt-0.5";
+            }
+            const gpa4 = ((cgpa10 / 10) * 4).toFixed(2);
+            document.getElementById('abroadGpaBadge').innerText = `${gpa4} / 4.00 GPA (${gpa4 >= 3.2 ? "Master's Ready" : "Standard Scale"})`;
+        }
+
+        function computePercFromScale(board, val) {
+            if (board === 'aktu' || board === 'iit' || board === 'state' || board === 'igcse') return val * 10;
+            if (board === 'cbse' || board === 'icse' || board === 'du') return val * 9.5;
+            if (board === 'vtu') return Math.max(0, (val - 0.75) * 10);
+            if (board === 'mumbai') return (7.1 * val) + 11;
+            if (board === 'pune') return val * 8.9;
+            if (board === 'ib') return (val / 7) * 100;
+            if (board === 'usgpa') return (val / 4) * 100;
+            const customMult = parseFloat(document.getElementById('customMultiplier').value) || 9.5;
+            return val * customMult;
+        }
+
+        function computeScaleFromPerc(board, perc) {
+            if (board === 'aktu' || board === 'iit' || board === 'state' || board === 'igcse') return perc / 10;
+            if (board === 'cbse' || board === 'icse' || board === 'du') return perc / 9.5;
+            if (board === 'vtu') return (perc / 10) + 0.75;
+            if (board === 'mumbai') return Math.max(0, (perc - 11) / 7.1);
+            if (board === 'pune') return perc / 8.9;
+            if (board === 'ib') return (perc / 100) * 7;
+            if (board === 'usgpa') return (perc / 100) * 4;
+            const customMult = parseFloat(document.getElementById('customMultiplier').value) || 9.5;
+            return perc / customMult;
+        }
+
         function handleBoardChange() {
             const board = document.getElementById('boardSelect').value;
             const customBox = document.getElementById('customMultiplierBox');
             const fText = document.getElementById('formulaText');
+            const gDesc = document.getElementById('formulaGuidelineDesc');
+            const quickMarksBar = document.getElementById('boardMarksQuickBar');
+            const cgpaLbl = document.getElementById('cgpaInputLabel');
 
-            if (board === 'custom') {
-                customBox.classList.remove('hidden');
-                fText.innerText = "Active Formula: Percentage = CGPA × Custom Multiplier";
+            customBox.classList.toggle('hidden', board !== 'custom');
+            quickMarksBar.classList.toggle('hidden', !['cbse', 'icse', 'state'].includes(board));
+
+            if (board === 'ib') {
+                cgpaLbl.innerText = "Enter IB Score (1.00 – 7.00)";
+                document.getElementById('cgpaInput').max = "7";
+                if (parseFloat(document.getElementById('cgpaInput').value) > 7) document.getElementById('cgpaInput').value = "6.00";
+            } else if (board === 'usgpa') {
+                cgpaLbl.innerText = "Enter US GPA (0.00 – 4.00)";
+                document.getElementById('cgpaInput').max = "4";
+                if (parseFloat(document.getElementById('cgpaInput').value) > 4) document.getElementById('cgpaInput').value = "3.50";
             } else {
-                customBox.classList.add('hidden');
-                if (board === 'aktu') fText.innerText = "Active Formula: Percentage = CGPA × 10 (AKTU Standard)";
-                else if (board === 'cbse') fText.innerText = "Active Formula: Percentage = CGPA × 9.5 (CBSE Standard)";
-                else if (board === 'icse') fText.innerText = "Active Formula: Percentage = CGPA × 9.5 (ICSE Standard)";
-                else fText.innerText = "Active Formula: Percentage = CGPA × 10 (10-Point University Scale)";
+                cgpaLbl.innerText = "Enter CGPA (0.00 – 10.00)";
+                document.getElementById('cgpaInput').max = "10";
             }
+
+            const meta = {
+                aktu: ["Active Formula: Percentage = CGPA × 10 (AKTU Standard)", "As per AKTU & AICTE standard 10-point ordinance, cumulative CGPA multiplied by 10 gives the equivalent percentage."],
+                cbse: ["Active Formula: Percentage = CGPA × 9.5 (CBSE Standard)", "CBSE official conversion multiplies overall grade point average by 9.5 (or divides total obtained marks by maximum marks)."],
+                icse: ["Active Formula: Percentage = CGPA × 9.5 (ICSE / ISC Standard)", "CISCE / ICSE standard conversion scales 10-point grade scores using the 9.5 multiplier."],
+                state: ["Active Formula: Direct Marks % & 10-Point CGPA", "State boards (UP, Bihar, Maharashtra) calculate direct percentage from total marks and map 10% per 1.0 CGPA."],
+                vtu: ["Active Formula: Percentage = (CGPA - 0.75) × 10", "Official CBCS conversion formula followed by VTU, GTU, Anna University, JNTU, and Osmania University."],
+                mumbai: ["Active Formula: Percentage = 7.1 × CGPA + 11", "University of Mumbai official 10-point CBCS circular conversion equation."],
+                pune: ["Active Formula: Percentage = CGPA × 8.9 (SPPU)", "Savitribai Phule Pune University (SPPU) standard CGPA-to-percentage conversion multiplier."],
+                du: ["Active Formula: Percentage = CGPA × 9.5 (DU / CBCS)", "University of Delhi, JNU, and BHU CBCS grand CGPA conversion multiplier (9.5)."],
+                iit: ["Active Formula: Percentage = CGPA × 10 (IIT / NIT Scale)", "IITs and NITs follow a strict 10-point relative grading scale directly mapped to 100%."],
+                ib: ["Active Formula: IB 7-Point Scale → Percentage", "International Baccalaureate (IB) Diploma scores out of 7 scaled to equivalent percentage."],
+                igcse: ["Active Formula: IGCSE / Cambridge Unified Scale", "Cambridge IGCSE / O-Level / A-Level uniform percentage mark mapping."],
+                usgpa: ["Active Formula: 4.0 US GPA Scale ↔ Percentage", "North American 4.0 GPA scale mapped proportionally to percentage and 10-point CGPA."],
+                custom: ["Active Formula: Percentage = CGPA × Custom Multiplier", "Custom university formula using your manually entered conversion multiplier."]
+            };
+
+            fText.innerText = meta[board][0];
+            gDesc.innerText = meta[board][1];
             convertFromCGPA();
         }
 
-        function convertFromCGPA() {
-            const mult = getMultiplier();
-            let cgpa = parseFloat(document.getElementById('cgpaInput').value);
-            if (isNaN(cgpa)) return;
-            cgpa = Math.max(0, Math.min(10, cgpa));
-            const perc = Math.min(100, cgpa * mult);
+        function syncFromBoardMarks() {
+            const obt = parseFloat(document.getElementById('boardObtainedMarks').value);
+            const tot = parseFloat(document.getElementById('boardTotalMarks').value);
+            if (isNaN(obt) || isNaN(tot) || tot <= 0) return;
+            const perc = Math.max(0, Math.min(100, (obt / tot) * 100));
             document.getElementById('percInput').value = perc.toFixed(2);
-            document.getElementById('cgpaResultSummary').innerText = `${cgpa.toFixed(2)} CGPA = ${perc.toFixed(2)}% (${getDivisionLabel(perc)})`;
+            convertFromPerc();
+        }
+
+        function convertFromCGPA() {
+            const board = document.getElementById('boardSelect').value;
+            const maxScale = board === 'ib' ? 7 : (board === 'usgpa' ? 4 : 10);
+            let val = parseFloat(document.getElementById('cgpaInput').value);
+            if (isNaN(val)) return;
+            val = Math.max(0, Math.min(maxScale, val));
+            const perc = Math.max(0, Math.min(100, computePercFromScale(board, val)));
+            const cgpa10 = board === 'ib' ? (val / 7) * 10 : (board === 'usgpa' ? (val / 4) * 10 : val);
+
+            document.getElementById('percInput').value = perc.toFixed(2);
+            const unitLabel = board === 'ib' ? 'IB Points' : (board === 'usgpa' ? 'US GPA' : 'CGPA');
+            document.getElementById('cgpaResultSummary').innerText = `${val.toFixed(2)} ${unitLabel} = ${perc.toFixed(2)}% (${getDivisionLabel(perc)})`;
+            updateAcademicBadges(perc, cgpa10);
         }
 
         function convertFromPerc() {
-            const mult = getMultiplier();
+            const board = document.getElementById('boardSelect').value;
+            const maxScale = board === 'ib' ? 7 : (board === 'usgpa' ? 4 : 10);
             let perc = parseFloat(document.getElementById('percInput').value);
             if (isNaN(perc)) return;
             perc = Math.max(0, Math.min(100, perc));
-            const cgpa = Math.min(10, perc / mult);
-            document.getElementById('cgpaInput').value = cgpa.toFixed(2);
-            document.getElementById('cgpaResultSummary').innerText = `${perc.toFixed(2)}% = ${cgpa.toFixed(2)} CGPA (${getDivisionLabel(perc)})`;
+            const val = Math.max(0, Math.min(maxScale, computeScaleFromPerc(board, perc)));
+            const cgpa10 = board === 'ib' ? (val / 7) * 10 : (board === 'usgpa' ? (val / 4) * 10 : val);
+
+            document.getElementById('cgpaInput').value = val.toFixed(2);
+            const unitLabel = board === 'ib' ? 'IB Points' : (board === 'usgpa' ? 'US GPA' : 'CGPA');
+            document.getElementById('cgpaResultSummary').innerText = `${perc.toFixed(2)}% = ${val.toFixed(2)} ${unitLabel} (${getDivisionLabel(perc)})`;
+            updateAcademicBadges(perc, cgpa10);
         }
 
-        // Build 8 Semester SGPA Inputs
+        // Build 8 Credit-Weighted Semester SGPA Inputs
         const semGrid = document.getElementById('semInputsGrid');
         for (let s = 1; s <= 8; s++) {
             semGrid.innerHTML += `
-                <div class="p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <label class="block text-[11px] font-black text-slate-500 mb-1">Semester ${s} SGPA</label>
-                    <input type="number" step="0.01" min="0" max="10" placeholder="0.00" oninput="calculateSGPA()" class="sem-sgpa-input w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-sm font-black focus:outline-none focus:ring-2 focus:ring-lime-500">
+                <div id="sem-card-${s}" class="p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="text-[11px] font-black text-slate-600 dark:text-slate-300">Semester ${s}</label>
+                        <span class="text-[10px] font-bold text-slate-400">SGPA / Credits</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5">
+                        <input type="number" step="0.01" min="0" max="10" placeholder="SGPA" oninput="calculateSGPA()" class="sem-sgpa-input w-full p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs font-black focus:outline-none focus:ring-2 focus:ring-lime-500">
+                        <input type="number" step="1" min="1" max="40" placeholder="Credits" oninput="calculateSGPA()" class="sem-credit-input w-full p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs font-bold text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
                 </div>
             `;
         }
 
+        function updateSemesterGridVisibility() {
+            const maxSems = parseInt(document.getElementById('courseDurationSelect').value, 10) || 8;
+            for (let s = 1; s <= 8; s++) {
+                const card = document.getElementById(`sem-card-${s}`);
+                if (card) card.classList.toggle('hidden', s > maxSems);
+            }
+            calculateSGPA();
+        }
+
         function calculateSGPA() {
-            const inputs = document.querySelectorAll('.sem-sgpa-input');
-            let sum = 0, count = 0;
-            inputs.forEach(inp => {
-                const v = parseFloat(inp.value);
+            const maxSems = parseInt(document.getElementById('courseDurationSelect').value, 10) || 8;
+            const sgpaInputs = document.querySelectorAll('.sem-sgpa-input');
+            const creditInputs = document.querySelectorAll('.sem-credit-input');
+
+            let weightedSum = 0, totalCredits = 0, simpleSum = 0, count = 0;
+            let entries = [];
+
+            for (let i = 0; i < maxSems; i++) {
+                const v = parseFloat(sgpaInputs[i].value);
+                const c = parseFloat(creditInputs[i].value);
                 if (!isNaN(v) && v > 0 && v <= 10) {
-                    sum += v;
+                    const cr = (!isNaN(c) && c > 0) ? c : 20;
+                    weightedSum += v * cr;
+                    totalCredits += cr;
+                    simpleSum += v;
                     count++;
+                    entries.push({ sgpa: v, credits: cr });
                 }
-            });
+            }
+
             const mult = parseFloat(document.getElementById('sgpaBoard').value) || 10;
+            const targetCgpa = parseFloat(document.getElementById('targetCgpaSlider').value) || 8.5;
+            document.getElementById('targetCgpaVal').innerText = `${targetCgpa.toFixed(2)} CGPA`;
+
             if (count === 0) {
                 document.getElementById('sgpaResultSummary').innerText = "Enter at least 1 semester SGPA above";
+                document.getElementById('whatIfOutputText').innerText = "Enter your completed semester SGPAs above to see the required SGPA in remaining semesters.";
                 return;
             }
-            const avgCgpa = sum / count;
-            const perc = Math.min(100, avgCgpa * mult);
-            document.getElementById('sgpaResultSummary').innerText = `${count} Semesters Avg: ${avgCgpa.toFixed(2)} CGPA = ${perc.toFixed(2)}% (${getDivisionLabel(perc)})`;
+
+            const finalCgpa = totalCredits > 0 ? (weightedSum / totalCredits) : (simpleSum / count);
+            const perc = Math.min(100, finalCgpa * mult);
+            document.getElementById('sgpaResultSummary').innerText = `${count} Sems CGPA: ${finalCgpa.toFixed(2)} = ${perc.toFixed(2)}% (${getDivisionLabel(perc)})`;
+
+            // What-If Target CGPA Simulator Calculation
+            const remSems = maxSems - count;
+            if (remSems > 0) {
+                const reqSgpa = ((targetCgpa * maxSems) - (finalCgpa * count)) / remSems;
+                if (reqSgpa > 10) {
+                    document.getElementById('whatIfOutputText').innerText = `To reach ${targetCgpa.toFixed(2)}, you'd need ${reqSgpa.toFixed(2)} SGPA (above 10.0 cap). Max achievable CGPA: ${(((finalCgpa * count) + (10 * remSems)) / maxSems).toFixed(2)}.`;
+                } else if (reqSgpa <= 0) {
+                    document.getElementById('whatIfOutputText').innerText = `You have already crossed ${targetCgpa.toFixed(2)} CGPA! Maintain 6.0+ to stay safe.`;
+                } else {
+                    document.getElementById('whatIfOutputText').innerText = `Target Alert: Score an average of ${reqSgpa.toFixed(2)} SGPA across your remaining ${remSems} semester(s) to hit ${targetCgpa.toFixed(2)} CGPA.`;
+                }
+            } else {
+                document.getElementById('whatIfOutputText').innerText = `All ${maxSems} semesters entered. Final Cumulative CGPA: ${finalCgpa.toFixed(2)}.`;
+            }
+
+            // Backlog / Grade Improvement Simulator
+            const backlogEnabled = document.getElementById('backlogToggle').checked;
+            const improvedVal = Math.min(10, Math.max(0, parseFloat(document.getElementById('improvedSemSgpa').value) || 8.0));
+            if (backlogEnabled && entries.length > 0) {
+                let minIdx = 0;
+                entries.forEach((e, idx) => { if (e.sgpa < entries[minIdx].sgpa) minIdx = idx; });
+                if (improvedVal > entries[minIdx].sgpa) {
+                    const boostedWeighted = weightedSum - (entries[minIdx].sgpa * entries[minIdx].credits) + (improvedVal * entries[minIdx].credits);
+                    const boostedCgpa = boostedWeighted / totalCredits;
+                    document.getElementById('backlogBoostOutput').innerText = `Boosted CGPA: ${boostedCgpa.toFixed(2)} (+${(boostedCgpa - finalCgpa).toFixed(2)} jump by improving Sem ${minIdx + 1} from ${entries[minIdx].sgpa.toFixed(2)} to ${improvedVal.toFixed(2)}).`;
+                } else {
+                    document.getElementById('backlogBoostOutput').innerText = `Enter a score higher than your lowest semester (${entries[minIdx].sgpa.toFixed(2)}) to preview boost.`;
+                }
+            } else {
+                document.getElementById('backlogBoostOutput').innerText = "Toggle on to simulate replacing your lowest semester SGPA after clearing a backlog or re-exam.";
+            }
         }
 
         // Marks <-> Percentage
@@ -603,6 +934,9 @@
             if (isNaN(obt) || isNaN(tot) || tot <= 0) return;
             const perc = Math.max(0, Math.min(100, (obt / tot) * 100));
             document.getElementById('marksPerc').value = perc.toFixed(2);
+            document.getElementById('marksCgpa10').innerText = `${(perc / 10).toFixed(2)} CGPA`;
+            document.getElementById('marksCgpaCbse').innerText = `${Math.min(10, perc / 9.5).toFixed(2)} CGPA`;
+            document.getElementById('marksLetterGrade').innerText = getLetterGrade(perc);
             document.getElementById('marksResultSummary').innerText = `${obt} / ${tot} = ${perc.toFixed(2)}% • Equivalent 10-Point CGPA: ${(perc / 10).toFixed(2)}`;
         }
 
@@ -612,6 +946,9 @@
             if (isNaN(perc) || isNaN(tot) || tot <= 0) return;
             const obt = (perc / 100) * tot;
             document.getElementById('marksObtained').value = obt.toFixed(1);
+            document.getElementById('marksCgpa10').innerText = `${(perc / 10).toFixed(2)} CGPA`;
+            document.getElementById('marksCgpaCbse').innerText = `${Math.min(10, perc / 9.5).toFixed(2)} CGPA`;
+            document.getElementById('marksLetterGrade').innerText = getLetterGrade(perc);
             document.getElementById('marksResultSummary').innerText = `${perc.toFixed(2)}% of ${tot} = ${obt.toFixed(1)} Marks • Equivalent 10-Point CGPA: ${(perc / 10).toFixed(2)}`;
         }
 
@@ -632,6 +969,28 @@
             const g10 = (g4 / 4) * 10;
             document.getElementById('gpa10Input').value = g10.toFixed(2);
             document.getElementById('gpa4ResultSummary').innerText = `${g4.toFixed(2)} / 4.00 US GPA = ${g10.toFixed(2)} / 10 CGPA`;
+        }
+
+        // One-Click Academic Flex Card Modal
+        function openAcademicFlexCard(source) {
+            const summary = source === 'sgpa'
+                ? document.getElementById('sgpaResultSummary').innerText
+                : document.getElementById('cgpaResultSummary').innerText;
+            document.getElementById('flexCardMainMetric').innerText = summary.split('(')[0].trim();
+            document.getElementById('flexCardSubMetric').innerText = document.getElementById('gradeBadgeDisplay').innerText;
+            document.getElementById('academicFlexModal').classList.remove('hidden');
+        }
+
+        function copyFlexPost(btn) {
+            const mainText = document.getElementById('flexCardMainMetric').innerText;
+            const subText = document.getElementById('flexCardSubMetric').innerText;
+            const post = `Academic Milestone Locked In: ${mainText} (${subText})! Verified via NextHire Matrix CGPA & Percentage Converter: https://www.nexthirematrix.com/cgpa-converter.html`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(post);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied to Clipboard!';
+                setTimeout(() => { btn.innerHTML = old; }, 2000);
+            }
         }
 
         function copyResultText(elId, btn) {

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="light">
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Offer Duel Engine | NextHire Matrix</title>
+    <title>Job Offer Duel & Scam Detector | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/offer-comparator.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side Job Offer Comparison Engine. Compare competing compensation packages, WFH benefits, and equity options in browser RAM.">
+    <meta name="description" content="Job Offer Comparison Engine & Job Scam Detector. Compare competing compensation packages, 4-year ESOP vesting, 2026 in-hand pay, and verify suspicious job/internship messages instantly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/offer-comparator.html">
-    <meta property="og:title" content="Job Offer Duel & Comparison Engine - NextHire Matrix">
-    <meta property="og:description" content="Evaluate competing tech job offers side-by-side based on base salary, equity upside, and WFH flexibility locally in browser RAM.">
+    <meta property="og:title" content="Job Offer Duel & Scam Detector - NextHire Matrix">
+    <meta property="og:description" content="Evaluate competing tech job offers side-by-side based on base salary, 4-year ESOP upside, WFH flexibility, and scam red-flag checks.">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
@@ -34,7 +38,11 @@
       "url": "https://www.nexthirematrix.com/offer-comparator.html",
       "applicationCategory": "Decision Matrix Utility",
       "operatingSystem": "All Browsers",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix",
+        "url": "https://www.nexthirematrix.com"
+      }
     }
     </script>
 
@@ -45,7 +53,7 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
         
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #f43f5e 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gradient-bg { background: linear-gradient(135deg, #059669 0%, #e11d48 50%, #7c3aed 100%); }
@@ -59,21 +67,25 @@
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-rose-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Navigation Header -->
-    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-rose-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Navigation Header with All 15 Tools -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="px-2.5 py-1.5 gradient-bg text-white rounded-xl shadow-lg shadow-rose-500/20 text-xs sm:text-sm font-black tracking-tight">NH</span> NextHire Matrix
             </a>
             
-            <div class="flex items-center gap-3">
-                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-black transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
+                </a>
+
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Open Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
@@ -90,42 +102,25 @@
             </div>
         </div>
 
-        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <!-- Complete 15-Tool Horizontal Category Navigation Bar -->
         <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
             <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-house text-sm"></i> Home
-                </a>
-                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
-                </a>
-                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
-                </a>
-                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
-                </a>
-                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
-                </a>
-                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
-                </a>
-                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-rose-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-rose-500/20 shrink-0">
-                    <i class="fa-solid fa-scale-balanced text-sm"></i> Offer Duel
-                </a>
-                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
-                </a>
-                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
-                </a>
-                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
-                </a>
-                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
-                </a>
+                <a href="index.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-slate-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Point Writer</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Checker</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> Quick Resume Review</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-1.5 bg-rose-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-rose-500/20 shrink-0"><i class="fa-solid fa-scale-balanced text-sm"></i> Job Offer Compare</a>
+                <a href="notice-period.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Prep</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach</a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Speed Check</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Writer</a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate</a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA Converter</a>
             </div>
         </div>
     </header>
@@ -141,7 +136,8 @@
                 <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
                     <a href="index.html" class="py-2 hover:text-rose-500">🏠 Home</a>
                     <a href="offer-comparator.html" class="py-2 hover:text-rose-500">⚔️ Offer Duel Engine</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-rose-500">📄 ATS Scanner</a>
+                    <a href="salary-simulator.html" class="py-2 hover:text-rose-500">💰 In-Hand Salary</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-rose-500">📄 Resume Checker</a>
                     <a href="about.html" class="py-2 hover:text-rose-500">ℹ️ About Us</a>
                     <a href="privacy.html" class="py-2 hover:text-rose-500">🔒 Privacy Policy</a>
                     <a href="terms.html" class="py-2 hover:text-rose-500">⚖️ Terms & Disclaimer</a>
@@ -152,18 +148,19 @@
             </div>
         </div>
     </div>
+
     <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
             <div class="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 px-4 py-1.5 rounded-full text-xs font-black text-rose-600 dark:text-rose-400">
-                <i class="fa-solid fa-scale-balanced"></i> Weighted Decision Matrix
+                <i class="fa-solid fa-scale-balanced"></i> Weighted Decision Matrix & Scam Shield
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
-                Job Offer <span class="gradient-text">Duel & Comparison Engine</span>
+                Job Offer <span class="gradient-text">Duel & Scam Detector</span>
             </h1>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Evaluate two competing tech job offers side-by-side based on base salary, equity upside, WFH flexibility, and total weighted value.
+                Compare two job offers side-by-side with 2026 in-hand pay & 4-year ESOP reality meter, plus verify suspicious offers for scam red flags.
             </p>
         </div>
 
@@ -175,7 +172,7 @@
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Offer Evaluation</strong>
-                    <span class="text-slate-500 dark:text-slate-400">Your job offer figures remain strictly inside your local browser memory instance.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Your job offer figures and messages stay strictly inside your local browser session.</span>
                 </div>
             </div>
             <button onclick="fillSampleOfferData()" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-black rounded-xl text-[11px] shrink-0 transition">
@@ -183,71 +180,141 @@
             </button>
         </div>
 
-        <!-- Side-by-Side Dual Form Input Workstation -->
+        <!-- Side-by-Side Dual Form Input Workstation (Pre-Filled with Live Sliders) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Offer A Input Card -->
             <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-indigo-500 border border-slate-200 dark:border-slate-800">
-                <h3 class="text-sm font-black gradient-text flex items-center gap-2">
-                    <i class="fa-solid fa-building"></i> Offer A (Company 1)
-                </h3>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-black gradient-text flex items-center gap-2">
+                        <i class="fa-solid fa-building"></i> Offer A (Company 1)
+                    </h3>
+                    <span id="offerAScoreBadge" class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">Score: 0</span>
+                </div>
                 <div class="space-y-3 text-xs">
                     <div>
                         <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Company / Role Title</label>
-                        <input type="text" id="offerACompany" placeholder="e.g. Stripe - Senior Dev" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                        <input type="text" id="offerACompany" value="Stripe - Senior Dev" oninput="runOfferDuel(false)" placeholder="e.g. Stripe - Senior Dev" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Base Salary ($ / ₹)</label>
-                        <input type="number" id="offerABase" placeholder="e.g. 150000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">Annual Fixed Base (₹)</label>
+                            <span id="offerABaseLabel" class="font-black text-indigo-500">₹18.0L</span>
+                        </div>
+                        <input type="range" id="offerABaseSlider" min="300000" max="6000000" step="50000" value="1800000" oninput="syncOfferSlider('A','base')" class="w-full accent-indigo-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerABase" value="1800000" oninput="syncOfferInput('A','base')" placeholder="e.g. 1800000" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Equity / ESOPs ($ / ₹)</label>
-                        <input type="number" id="offerAEquity" placeholder="e.g. 30000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">4-Yr ESOP / Equity Grant (₹)</label>
+                            <span id="offerAEquityLabel" class="font-black text-emerald-500">₹12.0L</span>
+                        </div>
+                        <input type="range" id="offerAEquitySlider" min="0" max="5000000" step="50000" value="1200000" oninput="syncOfferSlider('A','equity')" class="w-full accent-emerald-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerAEquity" value="1200000" oninput="syncOfferInput('A','equity')" placeholder="e.g. 1200000" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1-10)</label>
-                        <input type="number" id="offerAWfh" min="1" max="10" placeholder="e.g. 9 (Full Remote)" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1–10)</label>
+                            <span id="offerAWfhLabel" class="font-black text-sky-500">9 / 10</span>
+                        </div>
+                        <input type="range" id="offerAWfhSlider" min="1" max="10" step="1" value="9" oninput="syncOfferSlider('A','wfh')" class="w-full accent-sky-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerAWfh" min="1" max="10" value="9" oninput="syncOfferInput('A','wfh')" placeholder="e.g. 9 (Full Remote)" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
                     </div>
                 </div>
             </div>
 
             <!-- Offer B Input Card -->
             <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border-t-4 border-t-purple-500 border border-slate-200 dark:border-slate-800">
-                <h3 class="text-sm font-black gradient-text flex items-center gap-2">
-                    <i class="fa-solid fa-building text-purple-500"></i> Offer B (Company 2)
-                </h3>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-black gradient-text flex items-center gap-2">
+                        <i class="fa-solid fa-building text-purple-500"></i> Offer B (Company 2)
+                    </h3>
+                    <span id="offerBScoreBadge" class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-400">Score: 0</span>
+                </div>
                 <div class="space-y-3 text-xs">
                     <div>
                         <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Company / Role Title</label>
-                        <input type="text" id="offerBCompany" placeholder="e.g. Vercel - Lead Eng" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
+                        <input type="text" id="offerBCompany" value="Vercel - Lead Eng" oninput="runOfferDuel(false)" placeholder="e.g. Vercel - Lead Eng" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Base Salary ($ / ₹)</label>
-                        <input type="number" id="offerBBase" placeholder="e.g. 165000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">Annual Fixed Base (₹)</label>
+                            <span id="offerBBaseLabel" class="font-black text-purple-500">₹21.0L</span>
+                        </div>
+                        <input type="range" id="offerBBaseSlider" min="300000" max="6000000" step="50000" value="2100000" oninput="syncOfferSlider('B','base')" class="w-full accent-purple-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerBBase" value="2100000" oninput="syncOfferInput('B','base')" placeholder="e.g. 2100000" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Equity / ESOPs ($ / ₹)</label>
-                        <input type="number" id="offerBEquity" placeholder="e.g. 20000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">4-Yr ESOP / Equity Grant (₹)</label>
+                            <span id="offerBEquityLabel" class="font-black text-emerald-500">₹6.0L</span>
+                        </div>
+                        <input type="range" id="offerBEquitySlider" min="0" max="5000000" step="50000" value="600000" oninput="syncOfferSlider('B','equity')" class="w-full accent-emerald-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerBEquity" value="600000" oninput="syncOfferInput('B','equity')" placeholder="e.g. 600000" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                     <div>
-                        <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1-10)</label>
-                        <input type="number" id="offerBWfh" min="1" max="10" placeholder="e.g. 5 (Hybrid 3 days)" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px]">WFH Flexibility Rating (1–10)</label>
+                            <span id="offerBWfhLabel" class="font-black text-sky-500">5 / 10</span>
+                        </div>
+                        <input type="range" id="offerBWfhSlider" min="1" max="10" step="1" value="5" oninput="syncOfferSlider('B','wfh')" class="w-full accent-sky-500 cursor-pointer mb-1.5">
+                        <input type="number" id="offerBWfh" min="1" max="10" value="5" oninput="syncOfferInput('B','wfh')" placeholder="e.g. 5 (Hybrid 3 days)" class="w-full p-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs">
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <button onclick="runOfferDuel()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-rose-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+        <button onclick="runOfferDuel(true)" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-rose-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
             <i class="fa-solid fa-trophy"></i> Execute Offer Duel & Calculate Weighted Winner
         </button>
 
         <!-- Result Analytics Container -->
-        <div id="resultsContainer" class="hidden space-y-6">
-            <div class="glass-card p-6 sm:p-10 rounded-3xl text-center space-y-3 border-2 border-emerald-500/30 shadow-2xl">
+        <div id="resultsContainer" class="space-y-6">
+            <div class="glass-card p-6 sm:p-8 rounded-3xl text-center space-y-4 border-2 border-emerald-500/30 shadow-2xl">
                 <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full">Winning Compensation Package</span>
                 <h2 id="winnerTitle" class="text-2xl sm:text-4xl font-black gradient-text">Company Winner</h2>
                 <p id="winnerReason" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 max-w-lg mx-auto leading-relaxed"></p>
+
+                <!-- Reality Meter & 2026 In-Hand + 4-Yr ESOP Side-by-Side Breakdown -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left pt-2 text-xs">
+                    <div class="p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                        <span id="cardATitle" class="font-black text-indigo-600 dark:text-indigo-400 uppercase text-[11px]">Offer A Reality Snapshot</span>
+                        <div id="cardAInHand" class="font-bold text-slate-800 dark:text-slate-200">2026 Monthly In-Hand: ₹0</div>
+                        <div id="cardAFourYr" class="font-semibold text-slate-500">4-Yr Total Cash + Vested ESOP: ₹0</div>
+                        <div id="cardAMeter" class="text-[11px] font-black text-emerald-600 dark:text-emerald-400"></div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                        <span id="cardBTitle" class="font-black text-purple-600 dark:text-purple-400 uppercase text-[11px]">Offer B Reality Snapshot</span>
+                        <div id="cardBInHand" class="font-bold text-slate-800 dark:text-slate-200">2026 Monthly In-Hand: ₹0</div>
+                        <div id="cardBFourYr" class="font-semibold text-slate-500">4-Yr Total Cash + Vested ESOP: ₹0</div>
+                        <div id="cardBMeter" class="text-[11px] font-black text-emerald-600 dark:text-emerald-400"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Scam vs Legit Detector Mini-Tool -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border-2 border-amber-500/30 shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                        <span class="text-[10px] font-black uppercase text-amber-600 dark:text-amber-400 tracking-wider">🛡️ Anti-Fraud Career Shield</span>
+                        <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-shield-virus text-rose-500"></i> Job Scam vs Legit Offer Detector
+                        </h3>
+                    </div>
+                    <div class="flex gap-2">
+                        <button type="button" onclick="fillScamSample('scam')" class="px-2.5 py-1 rounded-xl bg-rose-500/10 hover:bg-rose-500 hover:text-white text-rose-600 dark:text-rose-400 text-[10px] font-black transition">Test Scam Sample</button>
+                        <button type="button" onclick="fillScamSample('legit')" class="px-2.5 py-1 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 hover:text-white text-emerald-600 dark:text-emerald-400 text-[10px] font-black transition">Test Legit Sample</button>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+                    Paste any suspicious WhatsApp, Telegram, or email job/internship offer message below to check for registration fee traps, unpaid labor scams, or fake HR domains.
+                </p>
+                <textarea id="scamMessageInput" rows="3" placeholder="Paste job offer email, WhatsApp message, or internship terms here..." class="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 text-xs"></textarea>
+                <button type="button" onclick="analyzeOfferScam()" class="px-5 py-3 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 font-black text-xs rounded-2xl hover:opacity-90 transition flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> Scan Offer Message for Scam Red Flags
+                </button>
+                <div id="scamResultBox" class="hidden p-4 rounded-2xl border text-xs space-y-2"></div>
             </div>
 
             <!-- Social Share Banner -->
@@ -267,6 +334,7 @@
             </div>
         </div>
     </main>
+
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-rose-600 hover:bg-rose-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
         <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
@@ -307,10 +375,20 @@
         </div>
     </div>
 
-    <!-- Footer Section with Required Legal Links -->
-    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
-            <div class="flex justify-center items-center gap-6 font-bold">
+    <!-- Footer Section with Required Legal Links & Social Share Row -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6 font-bold text-slate-700 dark:text-slate-300">
                 <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
                 <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
@@ -319,29 +397,81 @@
         </div>
     </footer>
 
-    <!-- Offer Comparison Calculation Engine Script -->
+    <!-- Offer Comparison & Scam Detector Engine Script -->
     <script>
         let winningCompany = '';
+
+        function escapeHTML(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
 
         function toggleMobileDrawer() {
             document.getElementById('mobileDrawer').classList.toggle('hidden');
         }
 
-        function fillSampleOfferData() {
-            document.getElementById('offerACompany').value = "Stripe - Senior Dev";
-            document.getElementById('offerABase').value = "150000";
-            document.getElementById('offerAEquity').value = "30000";
-            document.getElementById('offerAWfh').value = "9";
-
-            document.getElementById('offerBCompany').value = "Vercel - Lead Eng";
-            document.getElementById('offerBBase').value = "165000";
-            document.getElementById('offerBEquity').value = "20000";
-            document.getElementById('offerBWfh').value = "5";
-
-            runOfferDuel();
+        function formatLakhs(val) {
+            return `₹${(val / 100000).toFixed(1)}L`;
         }
 
-        function runOfferDuel() {
+        function syncOfferSlider(side, field) {
+            const sliderVal = parseFloat(document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}Slider`).value) || 0;
+            const inputEl = document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}`);
+            const labelEl = document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}Label`);
+            inputEl.value = sliderVal;
+            if (field === 'wfh') labelEl.innerText = `${sliderVal} / 10`;
+            else labelEl.innerText = formatLakhs(sliderVal);
+            runOfferDuel(false);
+        }
+
+        function syncOfferInput(side, field) {
+            const inputVal = parseFloat(document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}`).value) || 0;
+            const sliderEl = document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}Slider`);
+            const labelEl = document.getElementById(`offer${side}${field.charAt(0).toUpperCase() + field.slice(1)}Label`);
+            if (field === 'wfh') {
+                sliderEl.value = Math.min(10, Math.max(1, inputVal));
+                labelEl.innerText = `${inputVal} / 10`;
+            } else {
+                sliderEl.value = Math.min(6000000, Math.max(0, inputVal));
+                labelEl.innerText = formatLakhs(inputVal);
+            }
+            runOfferDuel(false);
+        }
+
+        function estimateMonthly2026InHand(annualBase) {
+            const pf = Math.min(annualBase * 0.06, 86400);
+            const taxable = Math.max(0, annualBase - 75000);
+            if (taxable <= 1200000) return Math.max(0, Math.round((annualBase - pf) / 12));
+            let tax = 0;
+            if (taxable > 400000) tax += Math.min(400000, taxable - 400000) * 0.05;
+            if (taxable > 800000) tax += Math.min(400000, taxable - 800000) * 0.10;
+            if (taxable > 1200000) tax += Math.min(400000, taxable - 1200000) * 0.15;
+            if (taxable > 1600000) tax += Math.min(400000, taxable - 1600000) * 0.20;
+            if (taxable > 2000000) tax += Math.min(400000, taxable - 2000000) * 0.25;
+            if (taxable > 2400000) tax += (taxable - 2400000) * 0.30;
+            return Math.max(0, Math.round((annualBase - (tax * 1.04 + pf)) / 12));
+        }
+
+        function fillSampleOfferData() {
+            document.getElementById('offerACompany').value = "Stripe - Senior Dev";
+            document.getElementById('offerABase').value = "1800000";
+            document.getElementById('offerAEquity').value = "1200000";
+            document.getElementById('offerAWfh').value = "9";
+            syncOfferInput('A', 'base');
+            syncOfferInput('A', 'equity');
+            syncOfferInput('A', 'wfh');
+
+            document.getElementById('offerBCompany').value = "Vercel - Lead Eng";
+            document.getElementById('offerBBase').value = "2100000";
+            document.getElementById('offerBEquity').value = "600000";
+            document.getElementById('offerBWfh').value = "5";
+            syncOfferInput('B', 'base');
+            syncOfferInput('B', 'equity');
+            syncOfferInput('B', 'wfh');
+
+            runOfferDuel(true);
+        }
+
+        function runOfferDuel(scrollToResult = true) {
             const compA = document.getElementById('offerACompany').value.trim() || 'Offer A';
             const baseA = parseFloat(document.getElementById('offerABase').value) || 0;
             const eqA = parseFloat(document.getElementById('offerAEquity').value) || 0;
@@ -353,30 +483,100 @@
             const wfhB = parseFloat(document.getElementById('offerBWfh').value) || 5;
 
             if (baseA <= 0 || baseB <= 0) {
-                alert("Please enter base salary values for both offers to calculate comparison.");
+                if (scrollToResult) alert("Please enter base salary values for both offers to calculate comparison.");
                 return;
             }
 
-            // Weighted Scoring Algorithm: Base Salary (50%), Equity (30%), WFH Score (20%)
-            const scoreA = (baseA * 0.5) + (eqA * 0.3) + (wfhA * 5000 * 0.2);
-            const scoreB = (baseB * 0.5) + (eqB * 0.3) + (wfhB * 5000 * 0.2);
+            const annualEqA = eqA / 4;
+            const annualEqB = eqB / 4;
+            const scoreA = Math.round((baseA * 0.5) + (annualEqA * 0.3) + (wfhA * 40000 * 0.2));
+            const scoreB = Math.round((baseB * 0.5) + (annualEqB * 0.3) + (wfhB * 40000 * 0.2));
+
+            document.getElementById('offerAScoreBadge').innerText = `Score: ${Math.round(scoreA / 1000)} pts`;
+            document.getElementById('offerBScoreBadge').innerText = `Score: ${Math.round(scoreB / 1000)} pts`;
+
+            const monthlyA = estimateMonthly2026InHand(baseA);
+            const monthlyB = estimateMonthly2026InHand(baseB);
+            const fourYrTotalA = (monthlyA * 48) + eqA;
+            const fourYrTotalB = (monthlyB * 48) + eqB;
+
+            document.getElementById('cardATitle').innerText = `${compA} • Reality Snapshot`;
+            document.getElementById('cardAInHand').innerText = `2026 Monthly In-Hand: ₹${monthlyA.toLocaleString('en-IN')}`;
+            document.getElementById('cardAFourYr').innerText = `4-Yr Net Cash + Vested ESOP: ₹${fourYrTotalA.toLocaleString('en-IN')}`;
+            document.getElementById('cardAMeter').innerText = wfhA >= 8 ? "🟢 High Remote Freedom + Wealth Builder" : "🟡 Hybrid Commute Cost Factor";
+
+            document.getElementById('cardBTitle').innerText = `${compB} • Reality Snapshot`;
+            document.getElementById('cardBInHand').innerText = `2026 Monthly In-Hand: ₹${monthlyB.toLocaleString('en-IN')}`;
+            document.getElementById('cardBFourYr').innerText = `4-Yr Net Cash + Vested ESOP: ₹${fourYrTotalB.toLocaleString('en-IN')}`;
+            document.getElementById('cardBMeter').innerText = wfhB >= 8 ? "🟢 High Remote Freedom + Wealth Builder" : "🟡 Hybrid Commute Cost Factor";
 
             if (scoreA >= scoreB) {
                 winningCompany = compA;
                 document.getElementById('winnerTitle').innerText = `🏆 ${compA}`;
-                document.getElementById('winnerReason').innerText = `${compA} leads with a higher overall weighted package score, driven by a balance of base salary, equity upside, and WFH flexibility rating.`;
+                document.getElementById('winnerReason').innerText = `${compA} leads with a higher overall weighted package score (${Math.round(scoreA/1000)} vs ${Math.round(scoreB/1000)} pts), balancing 2026 take-home pay, 4-year ESOP upside, and WFH flexibility.`;
             } else {
                 winningCompany = compB;
                 document.getElementById('winnerTitle').innerText = `🏆 ${compB}`;
-                document.getElementById('winnerReason').innerText = `${compB} leads with a higher overall weighted package score, driven by a balance of base salary, equity upside, and WFH flexibility rating.`;
+                document.getElementById('winnerReason').innerText = `${compB} leads with a higher overall weighted package score (${Math.round(scoreB/1000)} vs ${Math.round(scoreA/1000)} pts), balancing 2026 take-home pay, 4-year ESOP upside, and WFH flexibility.`;
             }
 
             document.getElementById('resultsContainer').classList.remove('hidden');
+            if (scrollToResult) {
+                document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
 
-            // Fire Clarity Event Tracking
             if (typeof clarity === "function") {
                 clarity("set", "offer_duel_executed", "true");
                 clarity("event", "offer_compared");
+            }
+        }
+
+        function fillScamSample(type) {
+            const box = document.getElementById('scamMessageInput');
+            if (type === 'scam') {
+                box.value = "Congratulations! You are shortlisted for WFH Data Entry & Software Intern at Google Partner HR. Pay ₹1,999 refundable security deposit / laptop registration fee via UPI today to get your offer letter immediately on WhatsApp!";
+            } else {
+                box.value = "Hi Priya, following your final engineering round with our hiring manager, we are pleased to share your formal offer letter from careers@razorpay.com. No fees or deposits are ever required. Let's schedule a call to walk through your CTC & ESOP vesting.";
+            }
+            analyzeOfferScam();
+        }
+
+        function analyzeOfferScam() {
+            const msg = document.getElementById('scamMessageInput').value.trim();
+            const resBox = document.getElementById('scamResultBox');
+            if (!msg) {
+                alert("Please paste a job offer message or email first.");
+                return;
+            }
+
+            const lower = msg.toLowerCase();
+            const redFlags = [];
+            if (/registration fee|security deposit|pay ₹|pay rs|upi|training fee|laptop fee|refundable deposit/.test(lower)) {
+                redFlags.push("🚩 Demands upfront money / registration / security deposit (100% classic job scam)");
+            }
+            if (/gmail\.com|yahoo\.com|hotmail\.com|whatsapp only|telegram task|part-time daily payout/.test(lower)) {
+                redFlags.push("🚩 Uses personal email domain or WhatsApp/Telegram instant-task recruitment");
+            }
+            if (/unpaid|no stipend|pay for certificate|buy course first/.test(lower)) {
+                redFlags.push("⚠️ Unpaid labor or mandatory paid training/certificate trap");
+            }
+            if (/urgent pay today|within 2 hours|spot offer without interview/.test(lower)) {
+                redFlags.push("🚩 Artificial urgency without any technical or HR interview");
+            }
+
+            resBox.classList.remove('hidden');
+            if (redFlags.length >= 2) {
+                resBox.className = "p-4 rounded-2xl border-2 border-rose-500/40 bg-rose-500/10 text-xs space-y-1.5";
+                resBox.innerHTML = `<div class="font-black text-rose-600 dark:text-rose-400 text-sm">🚨 HIGH SCAM RISK DETECTED — DO NOT PAY OR SHARE OTP/DOCS</div>` +
+                    redFlags.map(f => `<div class="font-semibold text-slate-800 dark:text-slate-200">${escapeHTML(f)}</div>`).join('');
+            } else if (redFlags.length === 1) {
+                resBox.className = "p-4 rounded-2xl border-2 border-amber-500/40 bg-amber-500/10 text-xs space-y-1.5";
+                resBox.innerHTML = `<div class="font-black text-amber-600 dark:text-amber-400 text-sm">⚠️ CAUTION — VERIFY OFFICIAL COMPANY DOMAIN FIRST</div>` +
+                    redFlags.map(f => `<div class="font-semibold text-slate-800 dark:text-slate-200">${escapeHTML(f)}</div>`).join('');
+            } else {
+                resBox.className = "p-4 rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/10 text-xs space-y-1";
+                resBox.innerHTML = `<div class="font-black text-emerald-600 dark:text-emerald-400 text-sm">✅ NO OBVIOUS SCAM RED FLAGS FOUND</div>
+                <p class="font-semibold text-slate-700 dark:text-slate-300">Still verify that the sender email matches the company's official domain and never pay any onboarding fee.</p>`;
             }
         }
 
@@ -389,6 +589,24 @@
             const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/offer-comparator.html");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
+
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/offer-comparator.html");
+            const text = encodeURIComponent("Compare job offers & check for fake job scams on NextHire Matrix: https://www.nexthirematrix.com/offer-comparator.html");
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/offer-comparator.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => runOfferDuel(false));
     </script>
 </body>
 </html>

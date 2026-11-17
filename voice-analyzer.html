@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="light">
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Pace & Speech Confidence Coach | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/voice-analyzer.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <meta name="description" content="100% Client-Side Voice & Speech Confidence Coach. Analyze interview speech pace (WPM), filler word usage, and communication clarity locally in browser RAM.">
     <meta property="og:type" content="website">
@@ -34,6 +39,16 @@
       "url": "https://www.nexthirematrix.com/voice-analyzer.html",
       "applicationCategory": "Audio Processing Utility",
       "operatingSystem": "All Browsers",
+      "author": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix",
+        "url": "https://www.nexthirematrix.com"
+      },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
@@ -41,11 +56,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
         
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #d946ef 100%); }
@@ -59,21 +74,25 @@
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-purple-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Navigation Header -->
-    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-purple-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Navigation Header with All 15 Tools -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="px-2.5 py-1.5 gradient-bg text-white rounded-xl shadow-lg shadow-purple-500/20 text-xs sm:text-sm font-black tracking-tight">NH</span> NextHire Matrix
             </a>
             
-            <div class="flex items-center gap-3">
-                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-black transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
+                </a>
+
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Open Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
@@ -90,41 +109,56 @@
             </div>
         </div>
 
-        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <!-- Complete 15-Tool Horizontal Category Navigation Bar -->
         <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
             <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-house text-sm"></i> Home
+                <a href="index.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-house text-slate-400"></i> Home
                 </a>
-                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
+                <a href="ats-checker.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-file-circle-check text-emerald-400"></i> Resume Checker
                 </a>
-                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Point Writer
+                </a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Checker
+                </a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-eye text-sky-400"></i> Quick Resume Review
+                </a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
                     <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary
                 </a>
-                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
+                <a href="offer-comparator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare
                 </a>
-                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
+                <a href="notice-period.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period
                 </a>
-                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-purple-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-purple-500/20 shrink-0">
+                <a href="interview-prep.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-comments text-pink-400"></i> Interview Prep
+                </a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-1.5 bg-purple-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-purple-500/20 shrink-0">
                     <i class="fa-solid fa-microphone text-sm"></i> Speech Coach
                 </a>
-                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards
                 </a>
-                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
+                <a href="code-inspector.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-code text-cyan-400"></i> Code Speed Check
                 </a>
-                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Writer
                 </a>
-                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
+                <a href="cover-letter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter
                 </a>
-                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
+                <a href="certificate-builder.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-award text-indigo-400"></i> Project Certificate
+                </a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
+                    <i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA Converter
                 </a>
             </div>
         </div>
@@ -141,7 +175,8 @@
                 <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
                     <a href="index.html" class="py-2 hover:text-purple-500">🏠 Home</a>
                     <a href="voice-analyzer.html" class="py-2 hover:text-purple-500">🎙️ Speech Pace Coach</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-purple-500">📄 ATS Scanner</a>
+                    <a href="interview-prep.html" class="py-2 hover:text-purple-500">💬 Interview Prep</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-purple-500">📄 Resume Checker</a>
                     <a href="about.html" class="py-2 hover:text-purple-500">ℹ️ About Us</a>
                     <a href="privacy.html" class="py-2 hover:text-purple-500">🔒 Privacy Policy</a>
                     <a href="terms.html" class="py-2 hover:text-purple-500">⚖️ Terms & Disclaimer</a>
@@ -152,6 +187,7 @@
             </div>
         </div>
     </div>
+
     <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
@@ -163,7 +199,7 @@
                 Voice Pace & <span class="gradient-text">Speech Confidence Coach</span>
             </h1>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Practice your 60-second interview response. Track speaking speed (WPM), filler words (um, like, basically), and communication confidence score.
+                Practice your 60-second interview response. Track speaking speed (WPM), filler words (um, like, basically), power action verbs, and communication confidence score.
             </p>
         </div>
 
@@ -183,9 +219,27 @@
             </button>
         </div>
 
-        <!-- Microphone Workstation Card -->
+        <!-- Practice Prompt Selector & Microphone Workstation Card -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-200 dark:border-slate-800 text-center">
             
+            <!-- Practice Prompt Selector -->
+            <div class="text-left space-y-2 bg-slate-100/80 dark:bg-slate-900/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <label class="text-[11px] font-black uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                        <i class="fa-solid fa-bullseye mr-1"></i> Select Mock Interview Prompt To Practice
+                    </label>
+                    <select id="promptSelect" onchange="updatePracticePrompt()" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="0">1. Tell me about yourself (60s Pitch)</option>
+                        <option value="1">2. Describe your toughest project & technical impact</option>
+                        <option value="2">3. Why should we hire you for this role?</option>
+                        <option value="3">4. Tell me about a deadline pressure or bug you resolved</option>
+                    </select>
+                </div>
+                <p id="promptDisplay" class="text-xs font-bold text-slate-700 dark:text-slate-200 pt-1">
+                    Prompt: "Walk me through your background, key technical skills, and one project impact you are proud of in 60 seconds."
+                </p>
+            </div>
+
             <div class="space-y-2">
                 <span id="recordingStatus" class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Ready To Record Speech Answer</span>
                 <div class="flex justify-center items-center gap-4 py-2">
@@ -198,9 +252,14 @@
 
             <!-- Live Speech Textarea Container -->
             <div class="text-left space-y-2">
-                <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
-                    Transcribed Answer Text / Manual Response Input
-                </label>
+                <div class="flex items-center justify-between">
+                    <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
+                        Transcribed Answer Text / Manual Response Input
+                    </label>
+                    <button type="button" onclick="clearSpeechBox()" class="text-[11px] font-bold text-slate-400 hover:text-rose-500 transition">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset
+                    </button>
+                </div>
                 <textarea id="speechText" rows="6" placeholder="Click the microphone button and deliver your interview response (e.g. Tell me about yourself)..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
             </div>
 
@@ -211,7 +270,7 @@
 
         <!-- Output Analytics Container -->
         <div id="resultsContainer" class="hidden space-y-6">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
                     <span class="text-[10px] font-black uppercase text-slate-400">Speaking Speed (WPM)</span>
                     <div id="wpmVal" class="text-3xl font-black gradient-text">130 WPM</div>
@@ -223,18 +282,35 @@
                     <span class="text-[10px] text-slate-500 font-semibold">Um, Like, Basically</span>
                 </div>
                 <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                    <span class="text-[10px] font-black uppercase text-slate-400">Power Action Verbs</span>
+                    <div id="powerVerbsVal" class="text-3xl font-black text-indigo-500">3</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Built, Led, Reduced</span>
+                </div>
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
                     <span class="text-[10px] font-black uppercase text-slate-400">Confidence Score</span>
                     <div id="confidenceVal" class="text-3xl font-black text-emerald-500">92%</div>
                     <span class="text-[10px] text-slate-500 font-semibold">Overall Delivery Grade</span>
                 </div>
             </div>
 
-            <!-- Speech Delivery Feedback -->
+            <!-- Speech Delivery Feedback & Clean Rewrite -->
             <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-xl">
                 <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300 flex items-center gap-2">
                     <i class="fa-solid fa-bullhorn text-purple-500"></i> Speech Delivery Recommendations
                 </h3>
                 <div id="speechAuditList" class="space-y-3 text-xs"></div>
+
+                <div class="pt-2 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                            <i class="fa-solid fa-sparkles mr-1"></i> Filler-Free Polished Version
+                        </span>
+                        <button type="button" onclick="copyCleanSpeech(this)" class="text-[11px] font-black text-purple-600 dark:text-purple-400 hover:underline">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy Clean Script
+                        </button>
+                    </div>
+                    <div id="cleanSpeechBox" class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-slate-800 dark:text-slate-100 leading-relaxed"></div>
+                </div>
             </div>
 
             <!-- Social Share Banner -->
@@ -254,6 +330,7 @@
             </div>
         </div>
     </main>
+
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
         <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
@@ -294,10 +371,20 @@
         </div>
     </div>
 
-    <!-- Footer Section with Required Legal Links -->
-    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
-            <div class="flex justify-center items-center gap-6 font-bold">
+    <!-- Footer Section with Required Legal Links & Social Share Row -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6 font-bold text-slate-700 dark:text-slate-300">
                 <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
                 <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
@@ -314,14 +401,39 @@
         let secondsElapsed = 0;
         let speechScore = 90;
 
+        const practicePrompts = [
+            'Prompt: "Walk me through your background, key technical skills, and one project impact you are proud of in 60 seconds."',
+            'Prompt: "Describe a challenging technical project you built using the STAR method (Situation, Task, Action, Result)."',
+            'Prompt: "Why should we hire you over other candidates for this role? Highlight measurable proof."',
+            'Prompt: "Tell me about a critical bug or tight deadline you resolved without compromising code quality."'
+        ];
+
+        function escapeHTML(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
         function toggleMobileDrawer() {
             document.getElementById('mobileDrawer').classList.toggle('hidden');
         }
 
+        function updatePracticePrompt() {
+            const idx = parseInt(document.getElementById('promptSelect').value, 10) || 0;
+            document.getElementById('promptDisplay').innerText = practicePrompts[idx] || practicePrompts[0];
+        }
+
+        function clearSpeechBox() {
+            if (isRecording) stopRecording();
+            document.getElementById('speechText').value = '';
+            secondsElapsed = 0;
+            document.getElementById('timerVal').innerText = '00:00';
+            document.getElementById('recordingStatus').innerText = 'Ready To Record Speech Answer';
+            document.getElementById('resultsContainer').classList.add('hidden');
+        }
+
         function fillSampleSpeech() {
             document.getElementById('speechText').value = "I am a Senior Software Engineer with over 4 years of experience building scalable backend microservices. Um, basically I architected distributed caches using Node.js and Redis, which reduced database latency by 45%. Like, I also enjoy leading technical sprints and mentoring junior engineers.";
-            secondsElapsed = 30;
-            document.getElementById('timerVal').innerText = "00:30";
+            secondsElapsed = 24;
+            document.getElementById('timerVal').innerText = "00:24";
             analyzeSpeech();
         }
 
@@ -356,7 +468,7 @@
 
                 recognition.onresult = function(event) {
                     let transcript = '';
-                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                    for (let i = 0; i < event.results.length; i++) {
                         transcript += event.results[i][0].transcript;
                     }
                     document.getElementById('speechText').value = transcript;
@@ -399,20 +511,27 @@
             const words = text.split(/\s+/).filter(w => w.length > 0);
             const wordCount = words.length;
 
-            const minutes = secondsElapsed > 0 ? (secondsElapsed / 60) : 0.5; // default 30s if manually typed
+            const minutes = secondsElapsed > 0 ? (secondsElapsed / 60) : Math.max(0.25, wordCount / 135);
             const wpm = Math.round(wordCount / minutes);
 
             // Detect filler words
-            const fillerRegex = /\b(um|uh|like|basically|actually|you know|honestly|so)\b/gi;
+            const fillerRegex = /\b(um|uh|like|basically|actually|you know|honestly|so|kind of|sort of)\b/gi;
             const fillerMatches = text.match(fillerRegex) || [];
             const fillerCount = fillerMatches.length;
 
-            speechScore = 100 - (fillerCount * 4);
+            // Detect power action verbs
+            const powerRegex = /\b(built|architected|led|reduced|improved|optimized|designed|launched|scaled|automated|delivered|solved)\b/gi;
+            const powerMatches = text.match(powerRegex) || [];
+            const powerCount = powerMatches.length;
+
+            speechScore = 100 - (fillerCount * 4) + Math.min(8, powerCount * 2);
             if (wpm < 100 || wpm > 180) speechScore -= 10;
-            if (speechScore < 40) speechScore = 40;
+            if (!/\d+/.test(text)) speechScore -= 5;
+            speechScore = Math.max(40, Math.min(99, speechScore));
 
             document.getElementById('wpmVal').innerText = `${wpm} WPM`;
             document.getElementById('fillersVal').innerText = fillerCount;
+            document.getElementById('powerVerbsVal').innerText = powerCount;
             document.getElementById('confidenceVal').innerText = `${speechScore}%`;
 
             const wpmStatus = document.getElementById('wpmStatus');
@@ -431,9 +550,10 @@
             list.innerHTML = '';
 
             if (fillerCount > 0) {
+                const uniqueFillers = [...new Set(fillerMatches.map(m => m.toLowerCase()))].join(', ');
                 const el1 = document.createElement('div');
                 el1.className = 'p-3 bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold rounded-xl border border-purple-500/20';
-                el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Filler Word Penalty (${fillerCount}):</strong> Detected hesitation words (${[...new Set(fillerMatches.map(m=>m.toLowerCase()))].join(', ')}). Pause briefly instead of using filler vocalizations.`;
+                el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Filler Word Penalty (${fillerCount}):</strong> Detected hesitation words (${escapeHTML(uniqueFillers)}). Pause silently for 0.5 seconds instead of using filler vocalizations.`;
                 list.appendChild(el1);
             } else {
                 const el1 = document.createElement('div');
@@ -442,12 +562,38 @@
                 list.appendChild(el1);
             }
 
+            if (!/\d+/.test(text)) {
+                const el2 = document.createElement('div');
+                el2.className = 'p-3 bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold rounded-xl border border-amber-500/20';
+                el2.innerHTML = `<i class="fa-solid fa-chart-simple mr-2"></i><strong>Add Quantifiable Proof:</strong> Include at least one metric (e.g., "reduced latency by 40%" or "built 3 production modules") to boost interviewer trust.`;
+                list.appendChild(el2);
+            }
+
+            // Generate filler-free cleaned rewrite
+            const cleanedText = text
+                .replace(/\b(um|uh|like|basically|actually|you know|honestly|kind of|sort of),?\s*/gi, '')
+                .replace(/\s{2,}/g, ' ')
+                .replace(/(^\w|[.!?]\s+\w)/g, c => c.toUpperCase())
+                .trim();
+            document.getElementById('cleanSpeechBox').innerText = cleanedText || text;
+
             document.getElementById('resultsContainer').classList.remove('hidden');
+            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             // Fire Clarity Event Tracking
             if (typeof clarity === "function") {
                 clarity("set", "voice_analysis_executed", "true");
                 clarity("event", "speech_analyzed");
+            }
+        }
+
+        function copyCleanSpeech(btn) {
+            const cleanText = document.getElementById('cleanSpeechBox').innerText.trim();
+            if (navigator.clipboard && cleanText) {
+                navigator.clipboard.writeText(cleanText);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = old; }, 1800);
             }
         }
 
@@ -459,6 +605,22 @@
         function shareSpeechToLinkedIn() {
             const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/voice-analyzer.html");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
+        }
+
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/voice-analyzer.html");
+            const text = encodeURIComponent("Test your interview speech pace (WPM), filler words & confidence score on NextHire Matrix: https://www.nexthirematrix.com/voice-analyzer.html");
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/voice-analyzer.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
         }
     </script>
 </body>

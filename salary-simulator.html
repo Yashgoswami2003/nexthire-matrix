@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="light">
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESOP & In-Hand Salary Simulator | NextHire Matrix</title>
+    <title>ESOP & In-Hand Salary Simulator (2026 Tax Regime) | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/salary-simulator.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side In-Hand CTC, Tax Breakdown & ESOP Vesting Simulator. Calculate monthly take-home pay completely in local browser RAM.">
+    <meta name="description" content="In-Hand CTC, 2026 Tax Breakdown & 4-Year ESOP Vesting Simulator. Calculate monthly take-home pay, New vs Old tax regime, and 4-year cash breakdown in your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/salary-simulator.html">
     <meta property="og:title" content="In-Hand Salary & ESOP Simulator - NextHire Matrix">
-    <meta property="og:description" content="Break down annual CTC into monthly take-home pay, estimated tax deductions, and 4-year ESOP vesting value locally in browser RAM.">
+    <meta property="og:description" content="Break down annual CTC into monthly take-home pay, 2026 New vs Old tax deductions, and 4-year ESOP vesting value instantly.">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
@@ -34,7 +38,11 @@
       "url": "https://www.nexthirematrix.com/salary-simulator.html",
       "applicationCategory": "Financial Utility",
       "operatingSystem": "All Browsers",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix",
+        "url": "https://www.nexthirematrix.com"
+      }
     }
     </script>
 
@@ -45,7 +53,7 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
         
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #f59e0b 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gradient-bg { background: linear-gradient(135deg, #059669 0%, #d97706 50%, #4f46e5 100%); }
@@ -59,21 +67,25 @@
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-amber-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Navigation Header -->
-    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-amber-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <!-- Navigation Header with All 15 Tools -->
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="px-2.5 py-1.5 gradient-bg text-white rounded-xl shadow-lg shadow-amber-500/20 text-xs sm:text-sm font-black tracking-tight">NH</span> NextHire Matrix
             </a>
             
-            <div class="flex items-center gap-3">
-                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-black transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
+                </a>
+
+                <button onclick="toggleMobileDrawer()" class="md:hidden p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold" aria-label="Open Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
@@ -90,42 +102,25 @@
             </div>
         </div>
 
-        <!-- Lotus365-Style Horizontal Category Navigation Bar -->
+        <!-- Complete 15-Tool Horizontal Category Navigation Bar -->
         <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
             <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-house text-sm"></i> Home
-                </a>
-                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-file-contract text-emerald-400"></i> ATS Scanner
-                </a>
-                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-amber-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-amber-500/20 shrink-0">
-                    <i class="fa-solid fa-wallet text-sm"></i> In-Hand Salary
-                </a>
-                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Sec Skim
-                </a>
-                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-code text-cyan-400"></i> Big-O Analyzer
-                </a>
-                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach
-                </a>
-                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Offer Duel
-                </a>
-                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-font text-teal-400"></i> Font Checker
-                </a>
-                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-list-check text-fuchsia-400"></i> Bullet Generator
-                </a>
-                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-award text-indigo-400"></i> Certificate Builder
-                </a>
-                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Flashcards
-                </a>
+                <a href="index.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-slate-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Point Writer</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Checker</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> Quick Resume Review</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-1.5 bg-amber-500 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-amber-500/20 shrink-0"><i class="fa-solid fa-wallet text-sm"></i> In-Hand Salary</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="notice-period.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Prep</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone text-purple-400"></i> Speech Coach</a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Speed Check</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Writer</a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate</a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA Converter</a>
             </div>
         </div>
     </header>
@@ -141,7 +136,8 @@
                 <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
                     <a href="index.html" class="py-2 hover:text-amber-500">🏠 Home</a>
                     <a href="salary-simulator.html" class="py-2 hover:text-amber-500">💰 In-Hand Salary Simulator</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-amber-500">📄 ATS Scanner</a>
+                    <a href="offer-comparator.html" class="py-2 hover:text-amber-500">⚖️ Job Offer Compare</a>
+                    <a href="ats-checker.html" class="py-2 hover:text-amber-500">📄 Resume Checker</a>
                     <a href="about.html" class="py-2 hover:text-amber-500">ℹ️ About Us</a>
                     <a href="privacy.html" class="py-2 hover:text-amber-500">🔒 Privacy Policy</a>
                     <a href="terms.html" class="py-2 hover:text-amber-500">⚖️ Terms & Disclaimer</a>
@@ -152,18 +148,19 @@
             </div>
         </div>
     </div>
+
     <!-- Main Content Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
         <div class="text-center space-y-3">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-black text-amber-600 dark:text-amber-400">
-                <i class="fa-solid fa-wallet"></i> Client-Side Financial Computation
+                <i class="fa-solid fa-wallet"></i> 2026 Tax Regime & 4-Year ESOP Vesting Engine
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 ESOP & Monthly <span class="gradient-text">In-Hand Salary Simulator</span>
             </h1>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Break down annual CTC into monthly take-home income, estimated tax deductions, and 4-year ESOP vesting value.
+                Compare 2026 New vs Old Tax Regime monthly take-home pay, 4-year ESOP vesting cash flow, and lifestyle Reality Meter instantly.
             </p>
         </div>
 
@@ -175,7 +172,7 @@
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Confidential Financial Audit</strong>
-                    <span class="text-slate-500 dark:text-slate-400">Salary & ESOP values are computed purely in local JavaScript memory. No data is saved.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Salary & ESOP values stay strictly in your browser session. No data is ever stored.</span>
                 </div>
             </div>
             <button onclick="fillSampleSalaryData()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-[11px] shrink-0 transition">
@@ -183,45 +180,130 @@
             </button>
         </div>
 
-        <!-- Form Workstation Card -->
+        <!-- Form Workstation Card with Pre-Filled Interactive Sliders & Tax Regime Toggle -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-200 dark:border-slate-800">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                <div>
-                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Fixed Base Pay ($ / ₹)</label>
-                    <input type="number" id="basePay" placeholder="e.g. 1200000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 text-xs">
-                </div>
-                <div>
-                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Annual Performance Bonus</label>
-                    <input type="number" id="bonusPay" placeholder="e.g. 150000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 text-xs">
-                </div>
-                <div>
-                    <label class="block font-black text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider text-[11px]">Total 4-Yr ESOP Stock Value</label>
-                    <input type="number" id="esopVal" placeholder="e.g. 800000" class="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 text-xs">
+            
+            <!-- Tax Regime Switcher (2026 New vs Old) -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+                <span class="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-scale-balanced text-amber-500"></i> 2026 Income Tax Regime
+                </span>
+                <div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-xl text-[11px] font-black">
+                    <button type="button" id="btnRegimeNew" onclick="setTaxRegime('new')" class="px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 shadow transition">New Regime (2026 Default)</button>
+                    <button type="button" id="btnRegimeOld" onclick="setTaxRegime('old')" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 transition">Old Regime (80C + HRA)</button>
                 </div>
             </div>
 
-            <button onclick="calculateSalary()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-amber-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+            <!-- Interactive Pre-Filled Sliders + Exact Number Inputs -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-xs">
+                <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <div class="flex justify-between items-center">
+                        <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">Annual Fixed Base (₹)</label>
+                        <span id="baseSliderLabel" class="font-black text-amber-600 dark:text-amber-400">₹15.0L</span>
+                    </div>
+                    <input type="range" id="basePaySlider" min="300000" max="6000000" step="50000" value="1500000" oninput="syncFromSlider('base')" class="w-full accent-amber-500 cursor-pointer">
+                    <input type="number" id="basePay" value="1500000" oninput="syncFromInput('base')" placeholder="e.g. 1500000" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-bold focus:outline-none focus:ring-2 focus:ring-amber-500 text-xs">
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <div class="flex justify-between items-center">
+                        <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">Variable / Bonus (₹)</label>
+                        <span id="bonusSliderLabel" class="font-black text-emerald-600 dark:text-emerald-400">₹2.0L</span>
+                    </div>
+                    <input type="range" id="bonusPaySlider" min="0" max="2000000" step="25000" value="200000" oninput="syncFromSlider('bonus')" class="w-full accent-emerald-500 cursor-pointer">
+                    <input type="number" id="bonusPay" value="200000" oninput="syncFromInput('bonus')" placeholder="e.g. 200000" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-xs">
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <div class="flex justify-between items-center">
+                        <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">4-Yr ESOP Grant (₹)</label>
+                        <span id="esopSliderLabel" class="font-black text-indigo-600 dark:text-indigo-400">₹10.0L</span>
+                    </div>
+                    <input type="range" id="esopValSlider" min="0" max="5000000" step="50000" value="1000000" oninput="syncFromSlider('esop')" class="w-full accent-indigo-500 cursor-pointer">
+                    <input type="number" id="esopVal" value="1000000" oninput="syncFromInput('esop')" placeholder="e.g. 1000000" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+                </div>
+            </div>
+
+            <!-- Monthly Living Expense Slider for Reality Meter -->
+            <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+                <div class="flex flex-wrap justify-between items-center gap-2">
+                    <label class="font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[10px]">
+                        <i class="fa-solid fa-house-chimney text-rose-500 mr-1"></i> Monthly Rent + EMIs + Living Expenses (₹)
+                    </label>
+                    <span id="expenseSliderLabel" class="font-black text-rose-600 dark:text-rose-400">₹45,000 / mo</span>
+                </div>
+                <input type="range" id="monthlyExpenseSlider" min="10000" max="250000" step="2500" value="45000" oninput="calculateSalary(false)" class="w-full accent-rose-500 cursor-pointer">
+            </div>
+
+            <button onclick="calculateSalary(true)" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-amber-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-calculator"></i> Simulate Monthly In-Hand & ESOP Breakdown
             </button>
         </div>
 
         <!-- Output Analytics Container -->
-        <div id="resultsContainer" class="hidden space-y-6">
+        <div id="resultsContainer" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1 border border-slate-200 dark:border-slate-800">
                     <span class="text-[10px] font-black uppercase text-slate-400">Est. Monthly In-Hand</span>
-                    <div id="monthlyInHandVal" class="text-3xl font-black gradient-text">0</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Post Estimated Deductions</span>
+                    <div id="monthlyInHandVal" class="text-3xl font-black gradient-text">₹0</div>
+                    <span id="regimeSubLabel" class="text-[10px] text-slate-500 font-semibold">Post 2026 New Tax + PF</span>
                 </div>
-                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1 border border-slate-200 dark:border-slate-800">
                     <span class="text-[10px] font-black uppercase text-slate-400">Annual ESOP Vest (25%/Yr)</span>
-                    <div id="annualEsopVal" class="text-3xl font-black text-amber-500">0</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Standard 4-Year Cliff</span>
+                    <div id="annualEsopVal" class="text-3xl font-black text-amber-500">₹0</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Standard 4-Year Schedule</span>
                 </div>
-                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
+                <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1 border border-slate-200 dark:border-slate-800">
                     <span class="text-[10px] font-black uppercase text-slate-400">Total Real Annual CTC</span>
-                    <div id="realCtcVal" class="text-3xl font-black text-emerald-500">0</div>
+                    <div id="realCtcVal" class="text-3xl font-black text-emerald-500">₹0</div>
                     <span class="text-[10px] text-slate-500 font-semibold">Fixed + Bonus + Vesting</span>
+                </div>
+            </div>
+
+            <!-- Wealth Builder vs EMI Trap Reality Meter -->
+            <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200 dark:border-slate-800">
+                <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <h3 class="font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse text-emerald-500"></i> Cash-Flow Reality Meter (Wealth Builder vs EMI Trap)
+                    </h3>
+                    <span id="realityStatusPill" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black text-[11px]">
+                        Wealth Builder Zone
+                    </span>
+                </div>
+                <div class="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex">
+                    <div id="expenseRatioBar" class="h-full bg-rose-500 transition-all duration-500" style="width: 40%" title="Expenses & EMIs"></div>
+                    <div id="savingsRatioBar" class="h-full bg-emerald-500 transition-all duration-500" style="width: 60%" title="Monthly Net Savings"></div>
+                </div>
+                <div class="flex flex-wrap justify-between text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                    <span id="monthlySavingsText">Net Monthly Investable Surplus: ₹0</span>
+                    <span id="savingsPctText">Savings Rate: 0%</span>
+                </div>
+            </div>
+
+            <!-- 2026 Tax Regime Comparison & 4-Year ESOP Cash Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200 dark:border-slate-800 text-xs">
+                    <h3 class="font-black uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-landmark"></i> 2026 New vs Old Regime Comparison
+                    </h3>
+                    <div class="space-y-2 pt-1">
+                        <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 flex justify-between items-center">
+                            <span class="font-bold">New Tax Regime (2026 Slabs)</span>
+                            <span id="newRegimeMonthlyText" class="font-black text-emerald-600 dark:text-emerald-400">₹0 / mo</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 flex justify-between items-center">
+                            <span class="font-bold">Old Tax Regime (With Std Deductions)</span>
+                            <span id="oldRegimeMonthlyText" class="font-black text-indigo-600 dark:text-indigo-400">₹0 / mo</span>
+                        </div>
+                        <p id="taxWinnerNote" class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 pt-1"></p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200 dark:border-slate-800 text-xs">
+                    <h3 class="font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> 4-Year Cumulative Cash + ESOP Vesting
+                    </h3>
+                    <div id="fourYearGrid" class="grid grid-cols-2 gap-2.5 pt-1"></div>
                 </div>
             </div>
 
@@ -242,6 +324,7 @@
             </div>
         </div>
     </main>
+
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-amber-600 hover:bg-amber-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
         <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
@@ -282,10 +365,20 @@
         </div>
     </div>
 
-    <!-- Footer Section with Required Legal Links -->
-    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
-            <div class="flex justify-center items-center gap-6 font-bold">
+    <!-- Footer Section with Required Legal Links & Social Share Row -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6 font-bold text-slate-700 dark:text-slate-300">
                 <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
                 <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
@@ -294,48 +387,184 @@
         </div>
     </footer>
 
-    <!-- Salary & Tax Calculation Engine Script -->
+    <!-- Salary & 2026 Tax Calculation Engine Script -->
     <script>
         let estimatedMonthlyInHand = 0;
+        let selectedTaxRegime = 'new';
 
         function toggleMobileDrawer() {
             document.getElementById('mobileDrawer').classList.toggle('hidden');
         }
 
-        function fillSampleSalaryData() {
-            document.getElementById('basePay').value = "1500000";
-            document.getElementById('bonusPay').value = "200000";
-            document.getElementById('esopVal').value = "1000000";
-            calculateSalary();
+        function formatLakhs(val) {
+            return `₹${(val / 100000).toFixed(1)}L`;
         }
 
-        function calculateSalary() {
+        function setTaxRegime(regime) {
+            selectedTaxRegime = regime;
+            const btnNew = document.getElementById('btnRegimeNew');
+            const btnOld = document.getElementById('btnRegimeOld');
+            if (regime === 'new') {
+                btnNew.className = "px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 shadow transition";
+                btnOld.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 transition";
+            } else {
+                btnOld.className = "px-3 py-1.5 rounded-lg bg-indigo-600 text-white shadow transition";
+                btnNew.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 transition";
+            }
+            calculateSalary(false);
+        }
+
+        function syncFromSlider(field) {
+            if (field === 'base') {
+                const v = parseFloat(document.getElementById('basePaySlider').value) || 0;
+                document.getElementById('basePay').value = v;
+                document.getElementById('baseSliderLabel').innerText = formatLakhs(v);
+            } else if (field === 'bonus') {
+                const v = parseFloat(document.getElementById('bonusPaySlider').value) || 0;
+                document.getElementById('bonusPay').value = v;
+                document.getElementById('bonusSliderLabel').innerText = formatLakhs(v);
+            } else if (field === 'esop') {
+                const v = parseFloat(document.getElementById('esopValSlider').value) || 0;
+                document.getElementById('esopVal').value = v;
+                document.getElementById('esopSliderLabel').innerText = formatLakhs(v);
+            }
+            calculateSalary(false);
+        }
+
+        function syncFromInput(field) {
+            if (field === 'base') {
+                const v = parseFloat(document.getElementById('basePay').value) || 0;
+                document.getElementById('basePaySlider').value = Math.min(6000000, Math.max(300000, v));
+                document.getElementById('baseSliderLabel').innerText = formatLakhs(v);
+            } else if (field === 'bonus') {
+                const v = parseFloat(document.getElementById('bonusPay').value) || 0;
+                document.getElementById('bonusPaySlider').value = Math.min(2000000, Math.max(0, v));
+                document.getElementById('bonusSliderLabel').innerText = formatLakhs(v);
+            } else if (field === 'esop') {
+                const v = parseFloat(document.getElementById('esopVal').value) || 0;
+                document.getElementById('esopValSlider').value = Math.min(5000000, Math.max(0, v));
+                document.getElementById('esopSliderLabel').innerText = formatLakhs(v);
+            }
+            calculateSalary(false);
+        }
+
+        function compute2026Tax(annualGross, regime) {
+            const pfDeduction = Math.min(annualGross * 0.06, 86400);
+            if (regime === 'new') {
+                const taxable = Math.max(0, annualGross - 75000);
+                if (taxable <= 1200000) return pfDeduction;
+                let tax = 0;
+                if (taxable > 400000) tax += Math.min(400000, taxable - 400000) * 0.05;
+                if (taxable > 800000) tax += Math.min(400000, taxable - 800000) * 0.10;
+                if (taxable > 1200000) tax += Math.min(400000, taxable - 1200000) * 0.15;
+                if (taxable > 1600000) tax += Math.min(400000, taxable - 1600000) * 0.20;
+                if (taxable > 2000000) tax += Math.min(400000, taxable - 2000000) * 0.25;
+                if (taxable > 2400000) tax += (taxable - 2400000) * 0.30;
+                return Math.round(tax * 1.04 + pfDeduction);
+            } else {
+                const taxable = Math.max(0, annualGross - 250000);
+                if (taxable <= 500000) return pfDeduction;
+                let tax = 0;
+                if (taxable > 250000) tax += Math.min(250000, taxable - 250000) * 0.05;
+                if (taxable > 500000) tax += Math.min(500000, taxable - 500000) * 0.20;
+                if (taxable > 1000000) tax += (taxable - 1000000) * 0.30;
+                return Math.round(tax * 1.04 + pfDeduction);
+            }
+        }
+
+        function fillSampleSalaryData() {
+            document.getElementById('basePay').value = "1800000";
+            document.getElementById('bonusPay').value = "250000";
+            document.getElementById('esopVal').value = "1200000";
+            document.getElementById('monthlyExpenseSlider').value = "50000";
+            syncFromInput('base');
+            syncFromInput('bonus');
+            syncFromInput('esop');
+            calculateSalary(true);
+        }
+
+        function calculateSalary(scrollToResult = true) {
             const base = parseFloat(document.getElementById('basePay').value) || 0;
             const bonus = parseFloat(document.getElementById('bonusPay').value) || 0;
             const esop = parseFloat(document.getElementById('esopVal').value) || 0;
+            const monthlyExpense = parseFloat(document.getElementById('monthlyExpenseSlider').value) || 45000;
+
+            document.getElementById('expenseSliderLabel').innerText = `₹${monthlyExpense.toLocaleString('en-IN')} / mo`;
 
             if (base <= 0) {
-                alert("Please enter a valid annual base pay.");
+                if (scrollToResult) alert("Please enter a valid annual base pay.");
                 return;
             }
 
-            // Estimate ~18% standard deductions (PF + Tax slab estimation)
-            const annualTaxDeduction = base * 0.18;
-            const netAnnualBase = base - annualTaxDeduction;
-            
-            estimatedMonthlyInHand = Math.round(netAnnualBase / 12);
-            const annualEsopVesting = Math.round(esop / 4); // Standard 4-year cliff/vesting
+            const newRegimeDeduction = compute2026Tax(base, 'new');
+            const oldRegimeDeduction = compute2026Tax(base, 'old');
+
+            const newMonthly = Math.max(0, Math.round((base - newRegimeDeduction) / 12));
+            const oldMonthly = Math.max(0, Math.round((base - oldRegimeDeduction) / 12));
+
+            estimatedMonthlyInHand = selectedTaxRegime === 'new' ? newMonthly : oldMonthly;
+            const annualEsopVesting = Math.round(esop / 4);
             const realTotalCtc = Math.round(base + bonus + annualEsopVesting);
 
-            const formatMoney = (num) => num.toLocaleString();
+            const formatMoney = (num) => num.toLocaleString('en-IN');
 
             document.getElementById('monthlyInHandVal').innerText = `₹${formatMoney(estimatedMonthlyInHand)}`;
+            document.getElementById('regimeSubLabel').innerText = selectedTaxRegime === 'new' ? 'Post 2026 New Regime + PF' : 'Post Old Regime + PF';
             document.getElementById('annualEsopVal').innerText = `₹${formatMoney(annualEsopVesting)}`;
             document.getElementById('realCtcVal').innerText = `₹${formatMoney(realTotalCtc)}`;
 
-            document.getElementById('resultsContainer').classList.remove('hidden');
+            document.getElementById('newRegimeMonthlyText').innerText = `₹${formatMoney(newMonthly)} / mo`;
+            document.getElementById('oldRegimeMonthlyText').innerText = `₹${formatMoney(oldMonthly)} / mo`;
+            const monthlyDiff = Math.abs(newMonthly - oldMonthly);
+            document.getElementById('taxWinnerNote').innerText = newMonthly >= oldMonthly
+                ? `💡 2026 New Regime saves you ₹${formatMoney(monthlyDiff)} extra every month!`
+                : `💡 Old Regime (with 80C/HRA) saves you ₹${formatMoney(monthlyDiff)} extra every month!`;
 
-            // Fire Clarity Event Tracking
+            // Reality Meter Calculation
+            const surplus = estimatedMonthlyInHand - monthlyExpense;
+            const expensePct = estimatedMonthlyInHand > 0 ? Math.min(100, Math.round((monthlyExpense / estimatedMonthlyInHand) * 100)) : 100;
+            const savingsPct = Math.max(0, 100 - expensePct);
+
+            document.getElementById('expenseRatioBar').style.width = `${expensePct}%`;
+            document.getElementById('savingsRatioBar').style.width = `${savingsPct}%`;
+            document.getElementById('monthlySavingsText').innerText = surplus >= 0
+                ? `Net Monthly Investable Surplus: ₹${formatMoney(surplus)}`
+                : `Monthly Deficit Alert: -₹${formatMoney(Math.abs(surplus))}`;
+            document.getElementById('savingsPctText').innerText = `Savings Rate: ${savingsPct}%`;
+
+            const pill = document.getElementById('realityStatusPill');
+            if (savingsPct >= 45) {
+                pill.className = "px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-black text-[11px]";
+                pill.innerText = "🟢 Wealth Builder Zone (45%+ Saved)";
+            } else if (savingsPct >= 20) {
+                pill.className = "px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-black text-[11px]";
+                pill.innerText = "🟡 Balanced Lifestyle (20–44% Saved)";
+            } else {
+                pill.className = "px-3 py-1 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-400 font-black text-[11px]";
+                pill.innerText = "🔴 EMI / Expense Trap (<20% Saved)";
+            }
+
+            // 4-Year Cumulative Breakdown
+            const fourYearGrid = document.getElementById('fourYearGrid');
+            fourYearGrid.innerHTML = '';
+            const annualCashInHand = (estimatedMonthlyInHand * 12) + bonus;
+            for (let yr = 1; yr <= 4; yr++) {
+                const cumCash = annualCashInHand * yr;
+                const cumEsop = annualEsopVesting * yr;
+                fourYearGrid.innerHTML += `
+                    <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                        <span class="text-[10px] font-black uppercase text-indigo-500">Year ${yr} Cumulative</span>
+                        <div class="font-black text-slate-900 dark:text-white text-sm mt-0.5">₹${formatMoney(cumCash + cumEsop)}</div>
+                        <span class="text-[10px] text-slate-500 font-semibold block">Cash: ₹${formatMoney(cumCash)} + ESOP: ₹${formatMoney(cumEsop)}</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById('resultsContainer').classList.remove('hidden');
+            if (scrollToResult) {
+                document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
             if (typeof clarity === "function") {
                 clarity("set", "salary_simulation_executed", "true");
                 clarity("event", "salary_calculated");
@@ -343,7 +572,7 @@
         }
 
         function shareSalaryToWhatsApp() {
-            const rawText = "I simulated my monthly take-home salary & ESOP breakdown using NextHire Matrix! Check it out: https://www.nexthirematrix.com/salary-simulator.html";
+            const rawText = "I simulated my monthly take-home salary & 4-year ESOP breakdown using NextHire Matrix! Check it out: https://www.nexthirematrix.com/salary-simulator.html";
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
         }
 
@@ -351,6 +580,24 @@
             const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/salary-simulator.html");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
         }
+
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/salary-simulator.html");
+            const text = encodeURIComponent("Simulate your 2026 In-Hand Salary & 4-Year ESOP Vesting on NextHire Matrix: https://www.nexthirematrix.com/salary-simulator.html");
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/salary-simulator.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => calculateSalary(false));
     </script>
 </body>
 </html>

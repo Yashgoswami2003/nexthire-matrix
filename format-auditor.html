@@ -6,17 +6,20 @@
     <title>Format & Font ATS Auditor | NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/format-auditor.html">
+
+    <!-- Browser Tab Favicon (NH Gradient Badge) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='50%' stop-color='%234f46e5'/><stop offset='100%' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='28'>NH</text></svg>">
+
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side Resume Format Auditor. Detect multi-column text collision, font glyph encoding bugs, and ATS table extraction breakdown risks.">
+    <meta name="description" content="Client-Side Resume Format Auditor. Detect multi-column text collision, font glyph encoding bugs, and ATS table extraction breakdown risks.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/format-auditor.html">
     <meta property="og:title" content="Resume Format & Font Auditor - NextHire Matrix">
     <meta property="og:description" content="Detect corrupted fonts, unreadable bullet symbols, and multi-column text merger errors locally in browser RAM.">
 
-    <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -25,7 +28,12 @@
         })(window, document, "clarity", "script", "zbvrt4kf5g");
     </script>
 
-    <!-- Schema.org Structured Data -->
+    <!-- PDF.js for Client-Side PDF Text Extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,15 +69,14 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-teal-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
     <!-- Navigation Header -->
     <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-teal-500/20 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-xl gradient-bg text-white shadow-lg shadow-teal-500/25 text-xs sm:text-sm font-black flex items-center justify-center tracking-tight">NH</span> NextHire Matrix
             </a>
             
             <div class="flex items-center gap-3">
@@ -152,6 +159,7 @@
             </div>
         </div>
     </div>
+
     <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
@@ -167,7 +175,7 @@
             </p>
         </div>
 
-        <!-- Privacy Guard Banner -->
+        <!-- Privacy Guard & PDF Upload Banner -->
         <div class="glass-card border-l-4 border-l-teal-500 rounded-3xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-teal-500/10 text-teal-500 rounded-2xl flex items-center justify-center text-lg shrink-0">
@@ -178,16 +186,27 @@
                     <span class="text-slate-500 dark:text-slate-400">Document structure and font glyph analysis execute completely inside your local browser RAM.</span>
                 </div>
             </div>
-            <button onclick="fillSampleText()" class="px-3 py-1.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-black rounded-xl text-[11px] shrink-0 transition">
-                ⚡ Auto-Fill Sample Text
-            </button>
+            <div class="flex items-center gap-2 shrink-0">
+                <button onclick="document.getElementById('pdfUploadInput').click()" class="px-3 py-1.5 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 dark:text-indigo-400 font-black rounded-xl text-[11px] border border-indigo-500/30 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pdf"></i> Upload PDF
+                </button>
+                <input type="file" id="pdfUploadInput" accept="application/pdf" class="hidden" onchange="handlePdfUpload(event)">
+                <button onclick="fillSampleText()" class="px-3 py-1.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-black rounded-xl text-[11px] transition">
+                    ⚡ Auto-Fill Sample Text
+                </button>
+            </div>
         </div>
 
         <!-- Input Workstation Card -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border border-slate-200 dark:border-slate-800">
-            <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
-                Paste Resume Raw Copy-Text (To Check Layout Contamination)
-            </label>
+            <div class="flex justify-between items-center">
+                <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
+                    Paste Resume Raw Copy-Text (To Check Layout Contamination)
+                </label>
+                <button type="button" onclick="autoSanitizeText()" class="px-3 py-1 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 font-black rounded-xl text-[10px] border border-emerald-500/30 transition flex items-center gap-1">
+                    ✨ 1-Click Auto-Sanitize Special Characters
+                </button>
+            </div>
             <textarea id="formatText" rows="9" placeholder="Paste your copied resume text here..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
             
             <button onclick="runFormatAudit()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-teal-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
@@ -240,55 +259,72 @@
             </div>
         </div>
     </main>
+
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-teal-600 hover:bg-teal-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
         <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
     </button>
 
-    <!-- Interactive Feedback Modal Container (Formspree Connected) -->
+    <!-- Interactive Feedback Modal Container -->
     <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
             <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
             
             <div class="space-y-1">
-                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Report a format auditor issue directly to Yash Raj Goswami.</p>
+                <h3 class="text-base font-black gradient-text">Direct Support</h3>
+                <p class="text-xs text-slate-500 font-semibold">Send feedback directly to <strong class="text-teal-600 dark:text-teal-400">Nexthirematrix@gmail.com</strong>.</p>
             </div>
 
-            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
+            <form onsubmit="sendDirectSupportEmail(event)" class="space-y-3 text-xs">
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <input type="email" id="supportUserEmail" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
                 </div>
                 <div>
                     <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <option value="format_issue">📑 Format & Font Auditor Bug</option>
-                        <option value="bug">🐛 Report UX Bug</option>
-                        <option value="feature">💡 Feature Request</option>
-                        <option value="praise">⭐ General Feedback</option>
+                    <select id="supportCategory" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <option value="Format & Font Auditor Bug">📑 Format & Font Auditor Bug</option>
+                        <option value="Bug Report">🐛 Report UX Bug</option>
+                        <option value="Feature Request">💡 Feature Request</option>
+                        <option value="General Inquiry">⭐ General Feedback</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Describe your issue or suggestion..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                    <textarea id="supportMessage" rows="3" required placeholder="Describe your issue or suggestion..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-black rounded-xl shadow-lg shadow-teal-600/25 transition flex items-center justify-center gap-2">
-                    Send Message <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-black rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                    Send to Nexthirematrix@gmail.com <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer Section with Required Legal Links -->
-    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
-            <div class="flex justify-center items-center gap-6 font-bold">
-                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
-                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+    <!-- Footer Section with Share Heading Added -->
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="space-y-2">
+                <p class="text-xs font-black text-slate-700 dark:text-slate-300">Share NextHire Matrix:</p>
+                <div class="flex justify-center items-center gap-3">
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                    <a href="https://t.me/" target="_blank" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></a>
+                    <a href="https://api.whatsapp.com/" target="_blank" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></a>
+                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                </div>
             </div>
-            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span>•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                <span>•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
+                <span>•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition">Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. All rights reserved.</p>
         </div>
     </footer>
 
@@ -305,6 +341,38 @@
             runFormatAudit();
         }
 
+        async function handlePdfUpload(event) {
+            const file = event.target.files[0];
+            if (!file || file.type !== 'application/pdf') return;
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                let fullText = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    fullText += textContent.items.map(s => s.str).join(' ') + "\n";
+                }
+                document.getElementById('formatText').value = fullText.trim();
+                runFormatAudit();
+            } catch (err) {
+                alert("Error extracting text from PDF. Please paste text manually.");
+            }
+        }
+
+        function autoSanitizeText() {
+            let text = document.getElementById('formatText').value;
+            if (!text) {
+                alert("No text to sanitize!");
+                return;
+            }
+            // Replace bad symbols with standard bullet points
+            cleaned = text.replace(/[★❖➤➢✦◆▪]/g, '•');
+            document.getElementById('formatText').value = cleaned;
+            runFormatAudit();
+            alert("Special characters successfully sanitized into standard bullets!");
+        }
+
         function runFormatAudit() {
             const text = document.getElementById('formatText').value;
 
@@ -313,13 +381,17 @@
                 return;
             }
 
-            // Check non-standard ASCII / corrupted symbols / special glyphs
             const badGlyphs = text.match(/[^\x00-\x7F\u2022\u2013\u2014]/g) || [];
-            
-            // Check multi-column text merger (large gap spaces or double tabs)
             const columnCollisions = (text.match(/\t{2,}| {4,}/g) || []).length;
+            
+            // Paragraph Line-Density Check (Detect long unbroken text blocks > 280 chars)
+            const lines = text.split('\n');
+            let longParagraphs = 0;
+            lines.forEach(l => {
+                if (l.trim().length > 280) longParagraphs++;
+            });
 
-            formatScore = 100 - (badGlyphs.length * 5) - (columnCollisions * 3);
+            formatScore = 100 - (badGlyphs.length * 5) - (columnCollisions * 3) - (longParagraphs * 4);
             if (formatScore < 30) formatScore = 30;
 
             document.getElementById('formatScoreVal').innerText = `${formatScore}%`;
@@ -329,29 +401,34 @@
             const findings = document.getElementById('findingsList');
             findings.innerHTML = '';
 
-            if (badGlyphs.length === 0 && columnCollisions === 0) {
+            if (badGlyphs.length === 0 && columnCollisions === 0 && longParagraphs === 0) {
                 const el = document.createElement('div');
                 el.className = 'p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
-                el.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Clean Layout:</strong> No corrupted font glyphs or multi-column text collisions found. Standard single-column text flow verified.`;
+                el.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Clean Layout:</strong> No corrupted font glyphs, multi-column collisions, or dense paragraphs found. Standard single-column flow verified.`;
                 findings.appendChild(el);
             } else {
                 if (badGlyphs.length > 0) {
                     const el1 = document.createElement('div');
                     el1.className = 'p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
-                    el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Non-Standard Symbols (${badGlyphs.length}):</strong> Detected custom icons/bullets. ATS parsers often replace non-standard glyphs with unreadable question marks or gibberish. Use standard bullet points (•).`;
+                    el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Non-Standard Symbols (${badGlyphs.length}):</strong> Detected custom icons/bullets. Use the 1-Click Auto-Sanitize button above to convert them to standard round bullets (•).`;
                     findings.appendChild(el1);
                 }
                 if (columnCollisions > 0) {
                     const el2 = document.createElement('div');
                     el2.className = 'p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold rounded-xl border border-amber-500/20';
-                    el2.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Multi-Column Spacing (${columnCollisions}):</strong> Detected wide spacing gaps/tabs. Avoid multi-column table layouts as legacy ATS parsers read across columns, merging unrelated text lines.`;
+                    el2.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Multi-Column Spacing (${columnCollisions}):</strong> Detected wide spacing gaps/tabs. Avoid multi-column table layouts as legacy ATS parsers read across columns.`;
                     findings.appendChild(el2);
+                }
+                if (longParagraphs > 0) {
+                    const el3 = document.createElement('div');
+                    el3.className = 'p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl border border-indigo-500/20';
+                    el3.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Line Density Warning (${longParagraphs}):</strong> Detected overly long text blocks (>280 chars). Break them into concise bullet points for better parser readability.`;
+                    findings.appendChild(el3);
                 }
             }
 
             document.getElementById('resultsContainer').classList.remove('hidden');
 
-            // Fire Clarity Event Tracking
             if (typeof clarity === "function") {
                 clarity("set", "format_audit_executed", "true");
                 clarity("event", "format_analyzed");
@@ -366,6 +443,17 @@
         function shareFormatToLinkedIn() {
             const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/format-auditor.html");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
+        }
+
+        function sendDirectSupportEmail(e) {
+            e.preventDefault();
+            const email = document.getElementById('supportUserEmail').value;
+            const cat = document.getElementById('supportCategory').value;
+            const msg = document.getElementById('supportMessage').value;
+            const subject = `[NextHire Matrix - Format Auditor] ${cat}`;
+            const body = `From: ${email}\nCategory: ${cat}\n\nMessage:\n${msg}`;
+            window.location.href = `mailto:Nexthirematrix@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            document.getElementById('feedbackModal').classList.add('hidden');
         }
     </script>
 </body>

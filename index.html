@@ -266,6 +266,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Complete 15-Tools Grid -->
         <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
             
@@ -532,7 +533,7 @@
 
         </div>
 
-        <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION (Toggle Like/Dislike + Reply/Comment + Delete) -->
+        <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION -->
         <section id="community-feedback" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
                 <div class="space-y-1">
@@ -579,7 +580,7 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Live Community Feed with Toggle Like/Dislike, Reply & Delete -->
+                <!-- Right Column: Live Community Feed -->
                 <div class="lg:col-span-7 space-y-3">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-black uppercase tracking-wider text-slate-500">Recent User Feedback</h3>
@@ -594,7 +595,7 @@
             </div>
         </section>
 
-        <!-- Social Share & Community Banner (Instagram, Facebook, Telegram, WhatsApp, LinkedIn) -->
+        <!-- Social Share & Community Banner -->
         <div class="p-6 sm:p-7 gradient-bg rounded-3xl text-white flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl shadow-emerald-500/20">
             <div class="space-y-1 text-center lg:text-left">
                 <span class="text-[10px] font-black uppercase text-emerald-200 tracking-wider"><i class="fa-solid fa-share-nodes mr-1"></i> Share With Friends & Job Seekers</span>
@@ -664,7 +665,7 @@
         </div>
     </main>
 
-    <!-- Direct Email Connected Feedback Modal (nexthirematrix@gmail.com) -->
+    <!-- Direct Email Connected Feedback Modal -->
     <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
             <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
@@ -699,7 +700,7 @@
         </div>
     </div>
 
-    <!-- Footer Section with Social Icons & SEO Brand Tagline -->
+    <!-- Footer Section -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
             <div class="space-y-2">
@@ -725,13 +726,12 @@
         </div>
     </footer>
 
-    <!-- Firebase SDKs for Realtime 1-10 Ratings, Toggle Votes, Replies & Delete -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <!-- Universal Scripts Handler -->
     <script>
-        // 3-Second Instant Hero Quick-Audit + Browser Session Auto-Save
         function runInstantHeroAudit(forceShow) {
             const box = document.getElementById('quickResumeSnippet');
             const resultBox = document.getElementById('quickAuditResultBox');
@@ -795,7 +795,6 @@
             } catch (e) {}
         });
 
-        // Category & Search Filtering for 15 Tools
         let activeCategory = 'all';
         function setCategory(cat, btn) {
             activeCategory = cat;
@@ -817,7 +816,6 @@
             });
         }
 
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBHjOlrEWMfzmGPP8IAwwsGaoN09C6",
             authDomain: "nexthire-matrix.firebaseapp.com",
@@ -834,7 +832,6 @@
         const db = firebase.database();
         let selectedScore = 10;
 
-        // Track User Votes Locally for Reversible Toggle Like/Dislike
         function getUserVotes() {
             try { return JSON.parse(localStorage.getItem('nhm_user_votes') || '{}'); } catch (e) { return {}; }
         }
@@ -846,7 +843,6 @@
             return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
         }
 
-        // Build 1-10 Rating Buttons
         const btnContainer = document.getElementById('rating-buttons');
         for (let i = 1; i <= 10; i++) {
             btnContainer.innerHTML += `<button type="button" class="rate-btn h-9 rounded-lg border border-slate-200 dark:border-slate-700 font-black text-xs transition cursor-pointer" onclick="selectRating(${i})" id="rate-${i}">${i}</button>`;
@@ -864,7 +860,6 @@
         }
         selectRating(10);
 
-        // Submit Rating & Review to Firebase
         function submitFeedback(e) {
             e.preventDefault();
             const name = document.getElementById('user-name').value.trim();
@@ -884,7 +879,6 @@
             });
         }
 
-        // Toggle Like / Dislike (Reversible Vote + Switch)
         function toggleVote(key, action) {
             const votes = getUserVotes();
             const currentVote = votes[key] || null;
@@ -913,13 +907,11 @@
             });
         }
 
-        // Toggle Reply Input Box
         function toggleReplyBox(key) {
             const box = document.getElementById(`reply-box-${key}`);
             if (box) box.classList.toggle('hidden');
         }
 
-        // Post Threaded Reply / Comment under Review
         function submitReply(e, key) {
             e.preventDefault();
             const nameInput = document.getElementById(`reply-name-${key}`);
@@ -939,7 +931,6 @@
             });
         }
 
-        // Delete Review or Reply
         function deleteReview(key) {
             if (confirm('Delete this review permanently?')) {
                 db.ref(`feedbacks/${key}`).remove();
@@ -952,7 +943,6 @@
             }
         }
 
-        // Listen for Live Ratings, Toggle Votes, Replies & Deletes
         db.ref('feedbacks').orderByChild('timestamp').on('value', (snapshot) => {
             const container = document.getElementById('comments-container');
             container.innerHTML = '';
@@ -1040,20 +1030,6 @@
                     alert("Link copied! Paste it in your Instagram Bio or Story.");
                 }
                 window.open("https://www.instagram.com/", "_blank");
-            }
-        }
-
-        function trackResumeAuditExecuted(hasJD, score) {
-            if (typeof clarity === "function") {
-                clarity("set", "resume_audit_completed", "true");
-                clarity("event", "resume_scanned");
-            }
-            if (typeof gtag === "function") {
-                gtag('event', 'resume_scan_executed', {
-                    'event_category': 'ATS_Checker',
-                    'jd_provided': hasJD,
-                    'ats_score_range': score >= 75 ? 'High' : (score >= 50 ? 'Medium' : 'Low')
-                });
             }
         }
     </script>

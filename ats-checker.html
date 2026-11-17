@@ -279,6 +279,7 @@
                     <textarea id="resumeTextInput" oninput="updateLiveResumeStats(); computeLivePulse();" rows="10" placeholder="Paste your complete resume text here (Skills, Experience, Projects, Education)..." class="w-full p-4 glass-card rounded-3xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
                     <div class="flex justify-between items-center px-2 text-[10px] font-bold text-slate-500 dark:text-slate-400">
                         <span id="liveWordCount">Words: 0 (Ideal: 350–750)</span>
+                        <span id="liveActionVerbsCount">Action Verbs: 0 detected</span>
                         <span id="livePageEst">Est. Pages: 0</span>
                     </div>
                 </div>
@@ -318,6 +319,7 @@
                 🩺 JD-Free Quality Audit
             </button>
         </div>
+
         <!-- Results Output Container -->
         <div id="resultsContainer" class="hidden space-y-6 pt-4">
 
@@ -364,9 +366,14 @@
                         </svg>
                         <span id="atsScoreVal" class="absolute text-2xl font-black text-slate-900 dark:text-white">0%</span>
                     </div>
-                    <button onclick="window.print()" class="no-print px-3 py-1.5 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-[10px] font-black transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-print"></i> Print / Save Report
-                    </button>
+                    <div class="flex gap-2 no-print">
+                        <button onclick="downloadCleanAtsPdf()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-black transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-download"></i> Clean & Export ATS PDF
+                        </button>
+                        <button onclick="window.print()" class="px-3 py-1.5 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-[10px] font-black transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-print"></i> Print Report
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -403,7 +410,7 @@
                 <div class="glass-card p-6 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800">
                     <div class="flex justify-between items-center border-b pb-3 border-slate-200 dark:border-slate-800">
                         <h3 class="text-xs font-black uppercase text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check"></i> Matched Keywords
+                            <i class="fa-solid fa-circle-check"></i> Matched Keywords (Green Pills)
                         </h3>
                         <span id="matchedCountVal" class="text-xs font-black px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full">0</span>
                     </div>
@@ -413,7 +420,7 @@
                 <div class="glass-card p-6 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800">
                     <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3 border-slate-200 dark:border-slate-800">
                         <h3 class="text-xs font-black uppercase text-rose-500 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-xmark"></i> Missing ATS Keywords
+                            <i class="fa-solid fa-circle-xmark"></i> Missing ATS Keywords (Amber Chips)
                         </h3>
                         <div class="flex items-center gap-1.5">
                             <span id="missingCountVal" class="text-xs font-black px-2 py-0.5 bg-rose-500/10 text-rose-600 rounded-full">0</span>
@@ -625,6 +632,7 @@
             </form>
         </div>
     </div>
+
     <!-- Footer Section -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
@@ -666,6 +674,7 @@
         const RESUME_ANCHORS = ['experience', 'education', 'skills', 'projects', 'summary', 'work', 'profile', 'qualification', 'certifications', 'employment', 'internship'];
         const SOFT_SKILL_SET = new Set(['leadership', 'communication', 'agile', 'scrum', 'teamwork', 'collaboration', 'problem', 'solving', 'stakeholder', 'mentoring', 'presentation', 'negotiation', 'analytical', 'strategy', 'cross-functional']);
         const WEAK_CLICHES = ['hardworking', 'team player', 'responsible for', 'go-getter', 'detail-oriented', 'synergy', 'think outside the box', 'self-motivated', 'duties included'];
+        const STRONG_ACTION_VERBS = ['engineered', 'architected', 'spearheaded', 'executed', 'owned', 'led', 'collaborated', 'built', 'developed', 'managed', 'streamlined', 'optimized', 'delivered', 'designed', 'automated', 'scaled'];
         const WEAK_VERB_MAP = [
             { weak: 'worked on', strong: 'Engineered / Architected' },
             { weak: 'helped with', strong: 'Spearheaded / Executed' },
@@ -771,7 +780,11 @@
             const text = document.getElementById('resumeTextInput').value.trim();
             const words = text ? text.split(/\s+/).length : 0;
             const estPages = words === 0 ? 0 : Math.max(1, Math.ceil(words / 475));
+            const textLower = text.toLowerCase();
+            const verbMatches = STRONG_ACTION_VERBS.filter(v => textLower.includes(v)).length;
+
             document.getElementById('liveWordCount').innerText = `Words: ${words} (Ideal: 350–750)`;
+            document.getElementById('liveActionVerbsCount').innerText = `Action Verbs: ${verbMatches} detected`;
             document.getElementById('livePageEst').innerText = `Est. Pages: ${estPages}`;
         }
 
@@ -1230,6 +1243,23 @@
             }
         }
 
+        function downloadCleanAtsPdf() {
+            const activeText = activeInputMode === 'pdf' ? parsedPdfText : document.getElementById('resumeTextInput').value.trim();
+            if (!activeText) {
+                showValidationError("No resume text available to export.");
+                return;
+            }
+            const blob = new Blob([activeText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Clean_ATS_Optimized_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
         function setAuditTile(prefix, isPass, statusText) {
             const iconEl = document.getElementById(`${prefix}Icon`);
             const textEl = document.getElementById(`${prefix}Status`);
@@ -1307,8 +1337,8 @@
         }
 
         const defaultReviews = [
-            { name: "Ananya Verma", score: 10, comment: "Found 8 missing keywords in my SDE resume and jumped from 58% to 84%!", likes: 14 },
-            { name: "Rohan Mehta", score: 9, comment: "Loved the header blind-spot warning and 1-click AI fix prompt. Super clean UI.", likes: 9 }
+            { name: "Ananya Verma", score: 10, comment: "Found 8 missing keywords in my SDE resume and jumped from 58% to 84%!", likes: 14, dislikes: 0 },
+            { name: "Rohan Mehta", score: 9, comment: "Loved the header blind-spot warning and 1-click AI fix prompt. Super clean UI.", likes: 9, dislikes: 0 }
         ];
 
         function initCommunityWidget() {
@@ -1345,9 +1375,14 @@
                         </div>
                         <p class="text-slate-600 dark:text-slate-300 font-medium">${escapeHTML(r.comment)}</p>
                     </div>
-                    <button onclick="likeReview(${idx})" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-[11px] hover:text-emerald-500 shrink-0">
-                        👍 ${r.likes || 0}
-                    </button>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button onclick="voteReview(${idx}, 'like')" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-[11px] hover:text-emerald-500">
+                            👍 ${r.likes || 0}
+                        </button>
+                        <button onclick="voteReview(${idx}, 'dislike')" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-[11px] hover:text-rose-500">
+                            👎 ${r.dislikes || 0}
+                        </button>
+                    </div>
                 `;
                 container.appendChild(card);
             });
@@ -1360,16 +1395,20 @@
             const comment = document.getElementById('reviewerComment').value.trim();
             if (!comment) { showValidationError("Please write a short comment before posting your rating."); return; }
             const saved = JSON.parse(localStorage.getItem('nhm_ats_reviews') || 'null') || [...defaultReviews];
-            saved.unshift({ name, score: selectedUserRating, comment, likes: 1 });
+            saved.unshift({ name, score: selectedUserRating, comment, likes: 1, dislikes: 0 });
             localStorage.setItem('nhm_ats_reviews', JSON.stringify(saved));
             document.getElementById('reviewerComment').value = '';
             renderReviews();
         }
 
-        function likeReview(index) {
+        function voteReview(index, type) {
             const saved = JSON.parse(localStorage.getItem('nhm_ats_reviews') || 'null') || [...defaultReviews];
             if (saved[index]) {
-                saved[index].likes = (saved[index].likes || 0) + 1;
+                if (type === 'like') {
+                    saved[index].likes = (saved[index].likes || 0) + 1;
+                } else {
+                    saved[index].dislikes = (saved[index].dislikes || 0) + 1;
+                }
                 localStorage.setItem('nhm_ats_reviews', JSON.stringify(saved));
                 renderReviews();
             }

@@ -34,23 +34,35 @@ for filename in html_files:
     with open(filename, 'r', encoding='utf-8') as f:
         content = f.read()
         
-    # 1. Agar pehle se purane social tags hain toh unhe hata do taaki duplicate na ho
+    # 1. Purane social tags ko saaf karo taaki duplicate na ho
     content = re.sub(r'<!-- Share NextHire Matrix.*?-->.*?</meta>', '', content, flags=re.DOTALL)
     content = re.sub(r'<meta property="og:title".*?>', '', content)
     content = re.sub(r'<meta property="og:description".*?>', '', content)
     content = re.sub(r'<meta property="og:image".*?>', '', content)
     
-    # 2. <head> tag ke turant baad yeh social tags aur favicon title inject kar do
-    if '</head>' in content:
+    # 2. <head> tag ke turant baad social tags inject karo
+    if '</head>' in content and 'Share NextHire Matrix' not in content:
         content = content.replace('</head>', f'{social_tags_to_inject}\n</head>')
         
-    # 3. Yeh ensure karna ki mobile/tablet/laptop par layout overflow ya stretch na ho
+    # 3. Responsive layout rules add karo (overflow avoid karne ke liye)
     if 'max-width: 100vw; overflow-x: hidden;' not in content:
         content = content.replace('body {', 'body { max-width: 100vw; overflow-x: hidden; ')
+
+    # 4. Footer mein social icons ke upar "Share NextHire Matrix" heading inject karo
+    content = re.sub(r'<p[^>]*>Share NextHire Matrix</p>', '', content)
+    content = re.sub(r'<h4[^>]*>Share NextHire Matrix</h4>', '', content)
+
+    target_pattern = '<div class="flex justify-center items-center gap-3">'
+    replacement = '<p class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Share NextHire Matrix</p>\n            <div class="flex justify-center items-center gap-3">'
+    
+    if target_pattern in content and 'Share NextHire Matrix heading' not in content:
+        # Check karo ki pehle se heading nahi dali hai
+        if 'mb-2">Share NextHire Matrix</p>' not in content:
+            content = content.replace(target_pattern, replacement, 1)
 
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
         
     print(f"Successfully updated: {filename}")
 
-print("\n🚀 All pages successfully updated with Share NextHire Matrix tags and responsive layout rules!")
+print("\n🚀 All pages successfully updated with SEO tags, responsive rules, and footer heading!")

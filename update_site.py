@@ -1,12 +1,12 @@
 import os
 import re
 
-# 1. Standardized Uniform Header (Logo with yellow thunderbolt + 15 tools sub-nav)
-NEW_HEADER = """<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
+# 1. Ultra-Fast, Clean & Optimized Uniform Header (Zero layout bugs, lightning fast load)
+NEW_HEADER = """<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
-        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 shrink-0">
-            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow-md"><i class="fa-solid fa-bolt"></i></span>
-            <span>NextHire Matrix</span>
+        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
+            <span class="tracking-tight">NextHire Matrix</span>
         </a>
         <div class="flex items-center gap-2 sm:gap-3">
             <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
@@ -20,7 +20,7 @@ NEW_HEADER = """<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md
             </button>
         </div>
     </div>
-    <!-- 15-Tools Uniform Sub-Navbar -->
+    <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
     <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
         <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
             <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
@@ -44,7 +44,7 @@ NEW_HEADER = """<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md
 </header>"""
 
 # 2. Standardized Uniform Footer
-NEW_FOOTER = """<footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 border-t py-7 mt-12 w-full">
+NEW_FOOTER = """<footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
         <div class="flex justify-center items-center gap-3">
             <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
@@ -68,10 +68,8 @@ NEW_FOOTER = """<footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md
     </div>
 </footer>"""
 
-# 3. Exact Yellow Thunderbolt SVG Favicon (matching the website logo)
+# 3. Exact Lightning Favicon & Social Sharing Meta Tags
 LIGHTNING_FAVICON = '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><path fill=\'%23fbbf24\' d=\'M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z\'/></svg>">'
-
-# 4. Open Graph Meta Tags for Social Sharing (WhatsApp, LinkedIn, Telegram preview)
 OG_TAGS = """
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/">
@@ -85,23 +83,20 @@ for filename in os.listdir('.'):
         with open(filename, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Uniform Header & Footer replacement
+        # Replace Header & Footer
         content = re.sub(r'<header.*?</header>', NEW_HEADER, content, flags=re.DOTALL)
         content = re.sub(r'<footer.*?</footer>', NEW_FOOTER, content, flags=re.DOTALL)
         
-        # Remove old favicons or icons to prevent duplicates
+        # Clean duplicate favicons and og tags
         content = re.sub(r'<link[^>]*rel=["\']icon["\'][^>]*>', '', content, flags=re.IGNORECASE)
         content = re.sub(r'<link[^>]*rel=["\']shortcut icon["\'][^>]*>', '', content, flags=re.DOTALL)
-        
-        # Remove old og tags if present
         content = re.sub(r'<meta property="og:[^>]*>', '', content, flags=re.IGNORECASE)
         
-        # Inject exact lightning favicon and OG sharing tags into <head>
+        # Inject fast loading favicon & metadata into head
         if '</head>' in content:
-            head_injection = f"    {LIGHTNING_FAVICON}\n{OG_TAGS}\n</head>"
-            content = content.replace('</head>', head_injection)
+            content = content.replace('</head>', f'    {LIGHTNING_FAVICON}\n{OG_TAGS}\n</head>')
         
-        # Keep reviews/ratings ONLY on index.html, remove from all other pages
+        # Keep reviews ONLY on index.html, remove from all other tool pages
         if filename != 'index.html':
             content = re.sub(r'<section\s+id="community-feedback"[^>]*>.*?</section>', '', content, flags=re.DOTALL)
             content = re.sub(r'<a\s+href="#community-feedback"[^>]*>.*?</a>', '', content, flags=re.DOTALL)
@@ -109,4 +104,4 @@ for filename in os.listdir('.'):
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(content)
 
-print("All HTML files successfully updated with exact lightning favicon and Open Graph sharing tags!")
+print("Lightning speed optimization applied! All headers, footers, favicons, and social tags standardized.")

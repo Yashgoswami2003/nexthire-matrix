@@ -1,8 +1,8 @@
 import os
 import re
 
-# 1. Ultra-Fast, Clean & Optimized Uniform Header (Zero layout bugs, lightning fast load)
-NEW_HEADER = """<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full transition-all">
+# 1. Clean & Perfect Uniform Header
+NEW_HEADER = """<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
         <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
             <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
@@ -43,7 +43,7 @@ NEW_HEADER = """<header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md
     </div>
 </header>"""
 
-# 2. Standardized Uniform Footer
+# 2. Clean Footer
 NEW_FOOTER = """<footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
         <div class="flex justify-center items-center gap-3">
@@ -68,7 +68,6 @@ NEW_FOOTER = """<footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md
     </div>
 </footer>"""
 
-# 3. Exact Lightning Favicon & Social Sharing Meta Tags
 LIGHTNING_FAVICON = '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><path fill=\'%23fbbf24\' d=\'M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z\'/></svg>">'
 OG_TAGS = """
     <meta property="og:type" content="website">
@@ -80,23 +79,27 @@ OG_TAGS = """
 
 for filename in os.listdir('.'):
     if filename.endswith('.html'):
-        with open(filename, 'r', encoding='utf-8') as f:
+        with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
         
-        # Replace Header & Footer
+        # Remove any lingering stray artifacts like "NH">" from previous bad injections
+        content = re.sub(r'NH["\']?>', '', content)
+        content = re.sub(r'NH\s*&gt;', '', content)
+        
+        # Replace Header & Footer completely clean
         content = re.sub(r'<header.*?</header>', NEW_HEADER, content, flags=re.DOTALL)
         content = re.sub(r'<footer.*?</footer>', NEW_FOOTER, content, flags=re.DOTALL)
         
-        # Clean duplicate favicons and og tags
+        # Clean old favicons / OG tags
         content = re.sub(r'<link[^>]*rel=["\']icon["\'][^>]*>', '', content, flags=re.IGNORECASE)
         content = re.sub(r'<link[^>]*rel=["\']shortcut icon["\'][^>]*>', '', content, flags=re.DOTALL)
         content = re.sub(r'<meta property="og:[^>]*>', '', content, flags=re.IGNORECASE)
         
-        # Inject fast loading favicon & metadata into head
+        # Inject fast favicon & OG tags
         if '</head>' in content:
             content = content.replace('</head>', f'    {LIGHTNING_FAVICON}\n{OG_TAGS}\n</head>')
         
-        # Keep reviews ONLY on index.html, remove from all other tool pages
+        # Remove ratings from non-index pages
         if filename != 'index.html':
             content = re.sub(r'<section\s+id="community-feedback"[^>]*>.*?</section>', '', content, flags=re.DOTALL)
             content = re.sub(r'<a\s+href="#community-feedback"[^>]*>.*?</a>', '', content, flags=re.DOTALL)
@@ -104,4 +107,4 @@ for filename in os.listdir('.'):
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(content)
 
-print("Lightning speed optimization applied! All headers, footers, favicons, and social tags standardized.")
+print("All files cleaned, scrubbed of stray text, and successfully updated!")

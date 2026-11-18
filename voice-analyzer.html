@@ -363,7 +363,7 @@
         </div>
     </div>
 
-    <!-- Exact Index Page Footer Match -->
+    <!-- Exact Index Page Footer Match with Home Link Included -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-8 mt-12 w-full text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
             <div>
@@ -378,6 +378,8 @@
             </div>
             
             <div class="flex flex-wrap justify-center items-center gap-2 font-bold text-slate-700 dark:text-slate-300 text-xs">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span>&bull;</span>
                 <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
                 <span>&bull;</span>
                 <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
@@ -513,7 +515,7 @@
             const wpm = Math.round(wordCount / minutes);
 
             // Detect filler words
-            const fillerRegex = /\b(um|uh|like|baseline|basically|actually|you know|honestly|so|kind of|sort of)\b/gi;
+            const fillerRegex = /\b(um|uh|like|basically|actually|you know|honestly|so|kind of|sort of)\b/gi;
             const fillerMatches = text.match(fillerRegex) || [];
             const fillerCount = fillerMatches.length;
 

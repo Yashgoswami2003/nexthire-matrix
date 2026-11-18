@@ -123,80 +123,51 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 tech-grid text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Header Navigation Bar with All 15 Tools -->
     <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black gradient-text flex items-center gap-2.5">
-                <span class="p-2 gradient-bg text-white rounded-xl shadow-lg shadow-violet-500/25 text-sm"><i class="fa-solid fa-bolt"></i></span> NextHire Matrix
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 shrink-0">
+            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow-md"><i class="fa-solid fa-bolt"></i></span>
+            <span>NextHire Matrix</span>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-3">
+            <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
             </a>
-            
-            <div class="flex items-center gap-2.5">
-                <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl transition">
-                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> All 15 Tools
-                </a>
-                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-violet-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-            </div>
+            <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+            </button>
+            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
         </div>
-
-        <!-- All-15-Tools Easy & SEO-Friendly Sub-Navbar -->
-        <div class="relative bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 w-full overflow-hidden">
-            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2 overflow-x-auto whitespace-nowrap no-scrollbar pr-8">
-                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-house text-emerald-400"></i> Home
-                </a>
-                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker
-                </a>
-                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker
-                </a>
-                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer
-                </a>
-                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View
-                </a>
-                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator
-                </a>
-                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare
-                </a>
-                <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator
-                </a>
-                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach
-                </a>
-                <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker
-                </a>
-                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards
-                </a>
-                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed
-                </a>
-                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker
-                </a>
-                <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-violet-600 text-white font-black px-4 py-2 rounded-xl text-xs shadow-lg shadow-violet-600/25 shrink-0">
-                    <i class="fa-solid fa-envelope-open-text text-sm"></i> Cold Email & Cover Letter
-                </a>
-                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker
-                </a>
-                <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition">
-                    <i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter
-                </a>
-            </div>
+    </div>
+    <!-- 15-Tools Uniform Sub-Navbar -->
+    <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+        <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
+            <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
+            <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
+            <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
+            <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
+            <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
+            <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+            <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
+            <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
+            <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
+            <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+            <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
+            <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
+            <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+            <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
+            <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Main Workspace -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
@@ -418,57 +389,7 @@
         </article>
 
         <!-- LIVE COMMUNITY RATING (1-10) & FEEDBACK SECTION (Toggle Like/Dislike + Reply + Delete) -->
-        <section id="community-feedback" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
-                <div class="space-y-1">
-                    <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full"><i class="fa-solid fa-signal mr-1"></i> Live Community Wall</span>
-                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white pt-1">Rate & Review Cold Email & Cover Letter Writer</h2>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Share your outreach success or rate this tool out of 10.</p>
-                </div>
-                <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 self-start md:self-auto">
-                    <div class="text-amber-400 text-2xl"><i class="fa-solid fa-star"></i></div>
-                    <div>
-                        <div class="text-lg font-black text-slate-900 dark:text-white leading-none"><span id="avg-rating-display">9.8</span><span class="text-xs text-slate-400 font-bold">/10</span></div>
-                        <div class="text-[11px] font-bold text-slate-500"><span id="total-count">0</span> Verified Reviews</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-5 space-y-4">
-                    <div class="space-y-2">
-                        <label class="block text-xs font-black text-slate-700 dark:text-slate-300">Select Your Score (1 = Low, 10 = Best)</label>
-                        <div id="rating-buttons" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5"></div>
-                    </div>
-
-                    <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-3 text-xs">
-                        <div>
-                            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name / Role</label>
-                            <input type="text" id="user-name" required placeholder="e.g., Sneha Patel (Product Analyst)" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Public Review</label>
-                            <textarea id="user-comment" rows="3" required placeholder="Did the cold email or referral template help you get replies?" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> Post Rating & Review
-                        </button>
-                    </form>
-                </div>
-
-                <div class="lg:col-span-7 space-y-3">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-500">Recent User Feedback</h3>
-                        <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-500"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Updates</span>
-                    </div>
-                    <div id="comments-container" class="space-y-3 max-h-[420px] overflow-y-auto pr-1">
-                        <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 text-xs text-slate-500 font-semibold text-center">
-                            Loading community ratings...
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
     </main>
 
     <!-- Footer Section -->

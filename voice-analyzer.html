@@ -63,7 +63,7 @@
         html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
         
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #d946ef 100%); }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #c026d3 100%); }
         
         .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
         .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
@@ -363,7 +363,7 @@
         </div>
     </div>
 
-    <!-- Exact Standardized Footer Matching Reference Screenshot -->
+    <!-- Exact Index Page Footer Match -->
     <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-8 mt-12 w-full text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
             <div>
@@ -378,18 +378,16 @@
             </div>
             
             <div class="flex flex-wrap justify-center items-center gap-2 font-bold text-slate-700 dark:text-slate-300 text-xs">
-                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
-                <span>&bull;</span>
-                <a href="about.html" class="hover:text-emerald-500 transition">About</a>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
                 <span>&bull;</span>
                 <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
                 <span>&bull;</span>
-                <a href="terms.html" class="hover:text-emerald-500 transition">Terms &amp; Disclaimer</a>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms &amp; Usage Guide</a>
                 <span>&bull;</span>
                 <a href="mailto:nexthirematrix@gmail.com" class="hover:text-emerald-500 transition">nexthirematrix@gmail.com</a>
             </div>
 
-            <p class="text-slate-500 dark:text-slate-400">&copy; 2026 NextHire Matrix. All rights reserved.</p>
+            <p class="text-slate-500 dark:text-slate-400">&copy; 2026 NextHire Matrix. Smart Career, Resume &amp; Interview Intelligence Suite.</p>
         </div>
     </footer>
 
@@ -515,7 +513,7 @@
             const wpm = Math.round(wordCount / minutes);
 
             // Detect filler words
-            const fillerRegex = /\b(um|uh|like|basically|actually|you know|honestly|so|kind of|sort of)\b/gi;
+            const fillerRegex = /\b(um|uh|like|baseline|basically|actually|you know|honestly|so|kind of|sort of)\b/gi;
             const fillerMatches = text.match(fillerRegex) || [];
             const fillerCount = fillerMatches.length;
 

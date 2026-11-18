@@ -68,7 +68,9 @@ NEW_FOOTER = """<footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md
     </div>
 </footer>"""
 
+# 3. Clean Safe Data-URI Favicon
 LIGHTNING_FAVICON = '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><path fill=\'%23fbbf24\' d=\'M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z\'/></svg>">'
+
 OG_TAGS = """
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/">
@@ -82,24 +84,27 @@ for filename in os.listdir('.'):
         with open(filename, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
         
-        # Remove any lingering stray artifacts like "NH">" from previous bad injections
+        # Scrub stray raw SVG fragments, incorrect tags, or artifacts like NH">">"
+        content = re.sub(r'<defs>.*?</defs>', '', content, flags=re.DOTALL)
+        content = re.sub(r'<linearGradient.*?>.*?</linearGradient>', '', content, flags=re.DOTALL)
         content = re.sub(r'NH["\']?>', '', content)
         content = re.sub(r'NH\s*&gt;', '', content)
+        content = re.sub(r'<!--\s*Browser Tab Favicon.*?\-->', '', content, flags=re.DOTALL)
         
-        # Replace Header & Footer completely clean
+        # Replace Header & Footer cleanly
         content = re.sub(r'<header.*?</header>', NEW_HEADER, content, flags=re.DOTALL)
         content = re.sub(r'<footer.*?</footer>', NEW_FOOTER, content, flags=re.DOTALL)
         
-        # Clean old favicons / OG tags
+        # Remove old duplicate favicons or OG tags
         content = re.sub(r'<link[^>]*rel=["\']icon["\'][^>]*>', '', content, flags=re.IGNORECASE)
         content = re.sub(r'<link[^>]*rel=["\']shortcut icon["\'][^>]*>', '', content, flags=re.DOTALL)
         content = re.sub(r'<meta property="og:[^>]*>', '', content, flags=re.IGNORECASE)
         
-        # Inject fast favicon & OG tags
+        # Inject clean favicon and OG tags right before </head>
         if '</head>' in content:
             content = content.replace('</head>', f'    {LIGHTNING_FAVICON}\n{OG_TAGS}\n</head>')
         
-        # Remove ratings from non-index pages
+        # Keep reviews/ratings ONLY on index.html
         if filename != 'index.html':
             content = re.sub(r'<section\s+id="community-feedback"[^>]*>.*?</section>', '', content, flags=re.DOTALL)
             content = re.sub(r'<a\s+href="#community-feedback"[^>]*>.*?</a>', '', content, flags=re.DOTALL)
@@ -107,4 +112,4 @@ for filename in os.listdir('.'):
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(content)
 
-print("All files cleaned, scrubbed of stray text, and successfully updated!")
+print("Success! All stray text artifacts and faulty tags scrubbed. Clean favicon and uniform layout applied.")

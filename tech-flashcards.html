@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="light">
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,44 @@
     
     <link rel="canonical" href="https://www.nexthirematrix.com/tech-flashcards.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <meta name="description" content="100% Client-Side Interactive Technical Flashcards. Master Data Structures, Algorithms, and System Design interview concepts offline in local browser memory.">
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="Master Data Structures, Algorithms, and System Design interview concepts offline with 100% client-side interactive flashcards and spaced repetition.">
+    <meta name="keywords" content="tech flashcards, DSA flashcards, system design interview prep, LeetCode flashcards, NextHire Matrix">
+    <meta name="author" content="Yash Raj Goswami - NextHire Matrix">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NextHire Matrix">
+    <meta property="og:url" content="https://www.nexthirematrix.com/tech-flashcards.html">
     
     
     
-    
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DSA & System Design Flashcards - NextHire Matrix">
+    <meta name="twitter:description" content="Master tech interviews with offline flashcards and spaced repetition.">
+
+    <!-- Clean SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2310b981'/><stop offset='50%' stop-color='%238b5cf6'/><stop offset='100%' stop-color='%23d946ef'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><path d='M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z' fill='%23ffffff'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%238b5cf6'/><text x='50%' y='54%' font-family='sans-serif' font-size='28' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>FC</text></svg>">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "zbvrt4kf5g");
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "zbvrt4kf5g");
+            }, 2000);
+        });
     </script>
 
     <!-- Schema.org Structured Data -->
@@ -30,28 +52,64 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "DSA & System Design Flashcards",
+      "name": "DSA & System Design Flashcards - NextHire Matrix",
       "url": "https://www.nexthirematrix.com/tech-flashcards.html",
-      "applicationCategory": "Interview Preparation Utility",
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "All Browsers",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix"
+      }
+    }
+    </script>
+
+    <!-- Tool-Specific FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What topics are covered in these technical flashcards?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The decks cover Data Structures & Algorithms (DSA), System Design patterns, and Behavioral STAR interview frameworks."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Are these flashcards saved locally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all flashcard progression and custom cards are saved securely in your browser's local storage with 100% offline privacy."
+        }
+      }]
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html, body { font-family: 'Plus Jakarta Sans', sans-serif; max-width: 100vw; overflow-x: hidden; }
         
+        .tech-grid {
+            background-image: radial-gradient(rgba(139, 92, 246, 0.13) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #8b5cf6 50%, #d946ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gradient-bg { background: linear-gradient(135deg, #059669 0%, #7c3aed 50%, #c026d3 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.9); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -64,131 +122,80 @@
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
     </style>
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
 
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%232305966'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs>
-
+    <!-- Share NextHire Matrix & Social Meta Tags -->
+    <meta name="application-name" content="Share NextHire Matrix">
+    <meta property="og:site_name" content="NextHire Matrix">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/">
     <meta property="og:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
     <meta property="og:description" content="Check ATS resume scores, calculate in-hand salary, audit resume format, and practice interview answers instantly in your browser with zero sign-up.">
-    <meta property="og:image" content="https://www.nexthirematrix.com/favicon.ico">
+    <meta property="og:image" content="https://www.nexthirematrix.com/og-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
+    <meta name="twitter:description" content="Check ATS resume scores, calculate in-hand salary, and practice interview answers instantly in your browser.">
+    <meta name="twitter:image" content="https://www.nexthirematrix.com/og-banner.png">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' font-family='system-ui, -apple-system, sans-serif' font-size='30' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>NH</text></svg>">
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-slate-950 tech-grid text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Background Decorative Glows -->
     <div class="glow-blob w-96 h-96 bg-violet-500 rounded-full top-0 -left-20"></div>
     <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
 
-    <!-- Navigation Header -->
+    <!-- Navigation Header with All 15 Tools -->
     <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
-        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
-            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
-            <span class="tracking-tight">NextHire Matrix</span>
-        </a>
-        <div class="flex items-center gap-2 sm:gap-3">
-            <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
+                <span class="tracking-tight">NextHire Matrix</span>
             </a>
-            <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
-                <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
-            </button>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-    </div>
-    <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
-    <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
-        <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
-            <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
-            <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
-            <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
-            <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
-            <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
-            <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
-            <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
-            <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
-            <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
-            <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
-            <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
-            <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
-            <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
-            <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
-            <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
-        </div>
-    </div>
-</header>
-
-    <!-- Slide-over Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
-        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
-            <div class="space-y-4">
-                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
-                    <span class="font-bold text-violet-500 text-sm">NextHire Matrix</span>
-                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
-                    <a href="index.html" class="py-2 hover:text-violet-500">🏠 Home</a>
-                    <a href="tech-flashcards.html" class="py-2 hover:text-violet-500">🎴 Coding & HR Flashcards</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-violet-500">📄 ATS Resume Checker</a>
-                    <a href="about.html" class="py-2 hover:text-violet-500">ℹ️ About Us</a>
-                    <a href="privacy.html" class="py-2 hover:text-violet-500">🔒 Privacy Policy</a>
-                    <a href="terms.html" class="py-2 hover:text-violet-500">⚖️ Terms & Disclaimer</a>
-                </nav>
-            </div>
-            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
-                100% In-Browser Privacy Guard Active
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+                </a>
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                    <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </div>
         </div>
-    </div>
+        <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-violet-500/20 text-violet-300 font-bold px-3.5 py-2 rounded-xl text-xs border border-violet-500/40 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
+            </div>
+        </div>
+    </header>
 
     <!-- Main Content Workspace -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 px-4 py-1.5 rounded-full text-xs font-black text-violet-600 dark:text-violet-400">
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-violet-500/15 border border-violet-500/30 px-4 py-1.5 rounded-full text-xs font-black text-violet-700 dark:text-violet-300">
                 <i class="fa-solid fa-layer-group"></i> Spaced Repetition Engine • 100% Client-Side
             </div>
-            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
                 DSA & System Design <span class="gradient-text">Interactive Flashcards</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
                 Rapidly revise high-frequency LeetCode data structures, algorithm patterns, and System Design concepts.
             </p>
         </div>
@@ -204,12 +211,12 @@
                     <span class="text-slate-500 dark:text-slate-400">Deck progression, score tracking, and study history persist in browser localStorage.</span>
                 </div>
             </div>
-            <span class="px-3 py-1 bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-black rounded-lg text-[10px] uppercase shrink-0">Zero API Calls</span>
+            <span class="px-3.5 py-2 bg-violet-500/15 text-violet-700 dark:text-violet-300 font-black rounded-xl text-[10px] uppercase tracking-wider shrink-0 shadow-sm">Zero API Calls</span>
         </div>
 
         <!-- Deck Selector & Progress Header -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 glass-card p-5 rounded-3xl text-xs font-bold border border-slate-200 dark:border-slate-800 shadow-lg">
-            <div class="flex items-center gap-2 w-full sm:w-auto">
+            <div class="flex items-center gap-2.5 w-full sm:w-auto">
                 <span class="text-slate-400 font-black uppercase text-[10px]">Select Deck:</span>
                 <select id="deckSelect" onchange="loadDeck()" class="p-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500 flex-grow sm:flex-grow-0 text-xs">
                     <option value="dsa">🧮 Data Structures & Algorithms</option>
@@ -252,7 +259,7 @@
             <button onclick="prevCard()" class="px-6 py-3.5 bg-slate-200 dark:bg-slate-800 font-black text-xs rounded-2xl hover:bg-slate-300 dark:hover:bg-slate-700 transition flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i> Previous
             </button>
-            <button onclick="nextCard()" class="px-8 py-3.5 gradient-bg text-white font-black text-xs rounded-2xl shadow-xl shadow-violet-500/20 hover:opacity-95 transition flex items-center gap-2">
+            <button onclick="nextCard()" class="px-8 py-3.5 gradient-bg text-white font-black text-xs rounded-2xl shadow-xl shadow-violet-500/25 hover:opacity-95 transition flex items-center gap-2">
                 Next Concept <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
@@ -264,7 +271,7 @@
                 <h4 class="text-sm font-black">Finished your technical revision session? Share on WhatsApp or LinkedIn!</h4>
             </div>
             <div class="flex gap-2 w-full sm:w-auto shrink-0">
-                <button onclick="shareFlashcardsToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
+                <button onclick="shareFlashcardsToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
                     <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
                 </button>
                 <button onclick="shareFlashcardsToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
@@ -272,7 +279,48 @@
                 </button>
             </div>
         </div>
+
+        <!-- SEO FAQ Section -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed border border-slate-200 dark:border-slate-800">
+            <div class="space-y-1">
+                <span class="text-[10px] font-black uppercase text-violet-600 dark:text-violet-400 tracking-wider">Revision Guide</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">Frequently Asked Questions About Technical Flashcards</h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer" open>
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        1. What topics are covered in these technical flashcards?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">The decks cover Data Structures & Algorithms (DSA), System Design patterns, and Behavioral STAR interview frameworks.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        2. Are these flashcards saved locally?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Yes, all flashcard progression and study history are saved securely in your browser's local storage with 100% offline privacy.</p>
+                </details>
+            </div>
+        </article>
     </main>
+
+    <!-- Direct Support Modal -->
+    <div id="directSupportModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
+            <button onclick="document.getElementById('directSupportModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="space-y-1">
+                <h3 class="text-base font-black text-slate-900 dark:text-white"><i class="fa-solid fa-headset text-violet-500 mr-1.5"></i> Need Help with Flashcards?</h3>
+                <p class="text-xs text-slate-500 font-medium">Have a suggestion or need help revising DSA concepts? Email us directly.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
+                <span class="text-xs font-black text-violet-600 dark:text-violet-400">Nexthirematrix@gmail.com</span>
+                <a href="mailto:Nexthirematrix@gmail.com?subject=Flashcards%20Support" class="px-3.5 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-xl text-xs font-black transition">Send Email</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating Feedback Trigger Button -->
     <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-violet-600 hover:bg-violet-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
@@ -314,30 +362,31 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer Section with All Social Brand Icons -->
     <footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
-        <div class="flex justify-center items-center gap-3">
-            <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
-            <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
-            <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
-            <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
-            <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="flex justify-center items-center gap-3">
+                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                <button onclick="sharePlatform('twitter')" aria-label="X Twitter" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-x-twitter text-sm"></i></button>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
-            <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
-        </div>
-        <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
-    </div>
-</footer>
+    </footer>
 
     <!-- Interactive Flashcard Deck Logic Script -->
     <script>
@@ -362,8 +411,8 @@
         let currentIndex = 0;
         let isFlipped = false;
 
-        function toggleMobileDrawer() {
-            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        function openDirectSupportModal() {
+            document.getElementById('directSupportModal').classList.remove('hidden');
         }
 
         function loadDeck() {
@@ -423,6 +472,24 @@
         function shareFlashcardsToLinkedIn() {
             const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/tech-flashcards.html");
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
+        }
+
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/tech-flashcards.html");
+            const rawText = "Master tech interviews with DSA & System Design Flashcards on NextHire Matrix: https://www.nexthirematrix.com/tech-flashcards.html";
+            const text = encodeURIComponent(rawText);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/tech-flashcards.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
         }
 
         window.onload = loadDeck;

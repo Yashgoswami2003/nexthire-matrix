@@ -1,195 +1,221 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot" class="light">
+<html lang="en" id="htmlRoot" class="light scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Format & Font ATS Auditor | NextHire Matrix</title>
+    <title>Resume Format & Font ATS Auditor | Fix Hidden Layout Bugs - NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/format-auditor.html">
-
-    
-    
-
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <meta name="description" content="Client-Side Resume Format Auditor. Detect multi-column text collision, font glyph encoding bugs, and ATS table extraction breakdown risks.">
-    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="Free 100% client-side Resume Format & Font ATS Auditor. Check PDF or raw resume text for multi-column spacing errors, broken symbols, and fix formatting in 1 click.">
+    <meta name="keywords" content="resume format checker, ATS font checker, fix resume formatting for ATS, PDF resume layout checker, single column resume audit, NextHire Matrix">
+    <meta name="author" content="Yash Raj Goswami - NextHire Matrix">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NextHire Matrix">
+    <meta property="og:url" content="https://www.nexthirematrix.com/format-auditor.html">
     
     
     
 
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Resume Format & Font ATS Auditor - NextHire Matrix">
+    <meta name="twitter:description" content="Check and fix hidden resume formatting errors before applying to jobs.">
+
+    <!-- Clean SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2310b981'/><stop offset='50%' stop-color='%2314b8a6'/><stop offset='100%' stop-color='%236366f1'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><path d='M20 22h24M20 32h18M20 42h12' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/><circle cx='44' cy='41' r='6' fill='%23fbbf24'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230d9488'/><text x='50%' y='54%' font-family='sans-serif' font-size='28' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>FA</text></svg>">
+
+    <!-- Delayed Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "zbvrt4kf5g");
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "zbvrt4kf5g");
+            }, 2000);
+        });
     </script>
 
     <!-- PDF.js for Client-Side PDF Text Extraction -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script>
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+        }
     </script>
 
+    <!-- Structured JSON-LD WebApplication Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Format & Font ATS Auditor",
+      "name": "Resume Format & Font ATS Auditor - NextHire Matrix",
       "url": "https://www.nexthirematrix.com/format-auditor.html",
-      "applicationCategory": "Document Parsing Utility",
+      "applicationCategory": "BusinessApplication",
       "operatingSystem": "All Browsers",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NextHire Matrix"
+      }
+    }
+    </script>
+
+    <!-- Tool-Specific Google FAQ Schema (5 Easy Questions) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Why do multi-column resumes fail ATS software checks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Older ATS software reads resumes from left to right across the entire page. If your resume has two columns or tables, the software mixes your left column text with your right column text, making your experience unreadable."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Which fonts are safest for an ATS-friendly resume?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clean standard fonts like Arial, Calibri, Roboto, Inter, Helvetica, Georgia, and Times New Roman are 100% readable by all hiring systems."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why do fancy bullet icons cause errors in job portals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Special icons like stars, arrows, or diamonds often turn into broken boxes or question marks when uploaded to job portals. Standard round bullets (•) or hyphens (-) work everywhere."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does the 1-Click Auto-Fix button clean my resume text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It replaces fancy symbols with standard round bullets, removes hidden multi-column tabs and extra spaces, and gives you clean text ready to paste into your resume."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is my uploaded PDF resume saved on any server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your PDF and resume text are checked 100% locally inside your own browser memory and never leave your device."
+        }
+      }]
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome 6.5.1 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
+        html, body { max-width: 100vw; overflow-x: hidden; 
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        .tech-grid {
+            background-image: radial-gradient(rgba(20, 184, 166, 0.14) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gradient-bg { background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #4f46e5 100%); }
-        
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
-        
+        .glass-card { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.95); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
 
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%232305966'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs>
-
+    <!-- Share NextHire Matrix & Social Meta Tags -->
+    <meta name="application-name" content="Share NextHire Matrix">
+    <meta property="og:site_name" content="NextHire Matrix">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/">
     <meta property="og:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
     <meta property="og:description" content="Check ATS resume scores, calculate in-hand salary, audit resume format, and practice interview answers instantly in your browser with zero sign-up.">
-    <meta property="og:image" content="https://www.nexthirematrix.com/favicon.ico">
+    <meta property="og:image" content="https://www.nexthirematrix.com/og-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
+    <meta name="twitter:description" content="Check ATS resume scores, calculate in-hand salary, and practice interview answers instantly in your browser.">
+    <meta name="twitter:image" content="https://www.nexthirematrix.com/og-banner.png">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' font-family='system-ui, -apple-system, sans-serif' font-size='30' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>NH</text></svg>">
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
-
-    <div class="glow-blob w-96 h-96 bg-teal-500 rounded-full top-0 -left-20"></div>
-    <div class="glow-blob w-96 h-96 bg-indigo-500 rounded-full top-1/3 -right-20"></div>
+<body class="bg-slate-50 dark:bg-slate-950 tech-grid text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden w-full">
 
     <!-- Navigation Header -->
     <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
-        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
-            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
-            <span class="tracking-tight">NextHire Matrix</span>
-        </a>
-        <div class="flex items-center gap-2 sm:gap-3">
-            <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
+                <span class="tracking-tight">NextHire Matrix</span>
             </a>
-            <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
-                <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
-            </button>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-    </div>
-    <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
-    <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
-        <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
-            <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
-            <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
-            <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
-            <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
-            <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
-            <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
-            <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
-            <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
-            <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
-            <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
-            <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
-            <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
-            <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
-            <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
-            <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
-        </div>
-    </div>
-</header>
-
-    <!-- Slide-over Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
-        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
-            <div class="space-y-4">
-                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
-                    <span class="font-bold text-teal-500 text-sm">NextHire Matrix</span>
-                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
-                    <a href="index.html" class="py-2 hover:text-teal-500">🏠 Home</a>
-                    <a href="format-auditor.html" class="py-2 hover:text-teal-500">🔤 Font & Format Checker</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-teal-500">📄 ATS Scanner</a>
-                    <a href="about.html" class="py-2 hover:text-teal-500">ℹ️ About Us</a>
-                    <a href="privacy.html" class="py-2 hover:text-teal-500">🔒 Privacy Policy</a>
-                    <a href="terms.html" class="py-2 hover:text-teal-500">⚖️ Terms & Disclaimer</a>
-                </nav>
-            </div>
-            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
-                100% In-Browser Privacy Guard Active
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+                </a>
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                    <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </div>
         </div>
-    </div>
+        <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 font-bold px-3.5 py-2 rounded-xl text-xs border border-teal-500/40 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
+            </div>
+        </div>
+    </header>
 
     <!-- Main Content Workspace -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
         
-        <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/20 px-4 py-1.5 rounded-full text-xs font-black text-teal-600 dark:text-teal-400">
-                <i class="fa-solid fa-table-columns"></i> Layout Risk Analysis • 100% In-Memory
+        <div class="text-center space-y-3 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-teal-500/15 border border-teal-500/30 px-4 py-1.5 rounded-full text-xs font-black text-teal-700 dark:text-teal-300">
+                <i class="fa-solid fa-table-columns"></i> PDF & Text Format Check • 100% In-Browser Privacy
             </div>
-            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
-                Format & Font <span class="gradient-text">ATS Structure Auditor</span>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
+                Resume Format & <span class="gradient-text">Font ATS Fixer</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Detect multi-column text collisions, unusual bullet glyphs, table extraction failures, and font encoding corruption before submitting your resume.
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
+                Upload your resume PDF or paste your text to spot broken bullet icons, hidden multi-column spacing bugs, and unreadable blocks—and fix them in 1 click.
             </p>
         </div>
 
@@ -200,35 +226,40 @@
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <div>
-                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Private Layout Inspection</strong>
-                    <span class="text-slate-500 dark:text-slate-400">Document structure and font glyph analysis execute completely inside your local browser RAM.</span>
+                    <strong class="block text-slate-900 dark:text-white font-extrabold">100% Private Resume Format Check</strong>
+                    <span class="text-slate-500 dark:text-slate-400">Your PDF and text are scanned locally inside your browser. Nothing is ever uploaded.</span>
                 </div>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
-                <button onclick="document.getElementById('pdfUploadInput').click()" class="px-3 py-1.5 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 dark:text-indigo-400 font-black rounded-xl text-[11px] border border-indigo-500/30 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-file-pdf"></i> Upload PDF
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <button onclick="document.getElementById('pdfUploadInput').click()" class="px-3.5 py-2 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 dark:text-indigo-400 font-black rounded-xl text-[11px] border border-indigo-500/30 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pdf"></i> Upload Resume PDF
                 </button>
                 <input type="file" id="pdfUploadInput" accept="application/pdf" class="hidden" onchange="handlePdfUpload(event)">
-                <button onclick="fillSampleText()" class="px-3 py-1.5 bg-teal-500 hover:bg-teal-600 text-slate-950 font-black rounded-xl text-[11px] transition">
-                    ⚡ Auto-Fill Sample Text
+                <button onclick="fillSampleText()" class="px-3.5 py-2 bg-teal-500 hover:bg-teal-600 text-slate-950 font-black rounded-xl text-[11px] transition shadow">
+                    ⚡ Try Sample Resume
                 </button>
             </div>
         </div>
 
         <!-- Input Workstation Card -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center">
+            <div class="flex flex-wrap justify-between items-center gap-2">
                 <label class="block text-xs font-black uppercase text-slate-700 dark:text-slate-300 tracking-wider">
-                    Paste Resume Raw Copy-Text (To Check Layout Contamination)
+                    Paste Resume Text (Or Upload PDF Above)
                 </label>
-                <button type="button" onclick="autoSanitizeText()" class="px-3 py-1 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 font-black rounded-xl text-[10px] border border-emerald-500/30 transition flex items-center gap-1">
-                    ✨ 1-Click Auto-Sanitize Special Characters
-                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button type="button" onclick="autoSanitizeText()" class="px-3 py-1.5 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 font-black rounded-xl text-[11px] border border-emerald-500/30 transition flex items-center gap-1">
+                        ✨ 1-Click Auto-Fix All Formatting
+                    </button>
+                    <button type="button" onclick="copyCleanText(this)" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-black rounded-xl text-[11px] transition flex items-center gap-1">
+                        <i class="fa-regular fa-copy"></i> Copy Text
+                    </button>
+                </div>
             </div>
-            <textarea id="formatText" rows="9" placeholder="Paste your copied resume text here..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
+            <textarea id="formatText" rows="8" placeholder="Paste your copied resume text here or upload your PDF above..." class="w-full p-4 glass-card rounded-2xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 leading-relaxed"></textarea>
             
             <button onclick="runFormatAudit()" class="w-full py-4 gradient-bg text-white font-black text-sm rounded-2xl shadow-xl shadow-teal-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-magnifying-glass font-bold"></i> Run Deep Layout & Glyph Audit
+                <i class="fa-solid fa-magnifying-glass font-bold"></i> Check Resume Format & Font Safety
             </button>
         </div>
 
@@ -236,123 +267,195 @@
         <div id="resultsContainer" class="hidden space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Layout Safety Score</span>
+                    <span class="text-[10px] font-black uppercase text-slate-400">ATS Format Score</span>
                     <div id="formatScoreVal" class="text-3xl font-black gradient-text">100%</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Parser Readiness</span>
+                    <span class="text-[10px] text-slate-500 font-semibold">Readability Rating</span>
                 </div>
                 <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Corrupted Glyphs</span>
+                    <span class="text-[10px] font-black uppercase text-slate-400">Broken Symbols</span>
                     <div id="badGlyphVal" class="text-3xl font-black text-rose-500">0</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Non-ASCII Symbols</span>
+                    <span class="text-[10px] text-slate-500 font-semibold">Fancy Icons Found</span>
                 </div>
                 <div class="glass-card p-5 rounded-3xl text-center flex flex-col items-center justify-center space-y-1">
-                    <span class="text-[10px] font-black uppercase text-slate-400">Column Collision Risks</span>
-                    <div id="columnRiskVal" class="text-3xl font-black text-amber-500">None</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Tab / Table Merger</span>
+                    <span class="text-[10px] font-black uppercase text-slate-400">Column Spacing Issues</span>
+                    <div id="columnRiskVal" class="text-3xl font-black text-amber-500">0 Risks</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Multi-Column Gaps</span>
                 </div>
             </div>
 
             <!-- Detailed Structural Findings List -->
             <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800 shadow-xl">
-                <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-teal-500"></i> Structural Findings & Parser Diagnostics
-                </h3>
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="text-xs font-black uppercase text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-teal-500"></i> Format Check Results & Quick Fixes
+                    </h3>
+                    <button type="button" onclick="downloadCleanTxt()" class="px-3 py-1.5 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400 font-black text-[11px] hover:bg-teal-500/25 transition">
+                        <i class="fa-solid fa-download mr-1"></i> Download Clean .TXT
+                    </button>
+                </div>
                 <div id="findingsList" class="space-y-3 text-xs"></div>
             </div>
 
-            <!-- Social Share Banner -->
-            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-                <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-teal-200 tracking-wider">🏆 Flex Your Format Audit Score</span>
-                    <h4 class="text-sm font-black">Verified ATS structural compliance? Share on WhatsApp or LinkedIn!</h4>
+            <!-- ATS Plain-Text View Preview -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-3 border border-slate-200 dark:border-slate-800 shadow-xl">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-black uppercase text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+                        <i class="fa-solid fa-robot"></i> How ATS Software Sees Your Resume (Plain-Text View)
+                    </h3>
+                    <span class="text-[10px] font-bold text-slate-400">Live Simulation</span>
                 </div>
-                <div class="flex gap-2 w-full sm:w-auto shrink-0">
-                    <button onclick="shareFormatToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                <pre id="atsRawPreview" class="p-4 rounded-2xl bg-slate-900 text-emerald-300 font-mono text-[11px] whitespace-pre-wrap leading-relaxed max-h-56 overflow-y-auto border border-slate-800"></pre>
+            </div>
+
+            <!-- Result Share Banner -->
+            <div class="p-5 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1 text-center sm:text-left">
+                    <span class="text-[10px] font-black uppercase text-teal-200 tracking-wider">🏆 ATS Format Verified</span>
+                    <h4 id="formatShareHeadline" class="text-sm font-black">My resume scored 100% on ATS Format Safety!</h4>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 shrink-0">
+                    <button onclick="shareFormatSocial('whatsapp')" class="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition shadow">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </button>
-                    <button onclick="shareFormatToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
-                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
+                    <button onclick="shareFormatSocial('linkedin')" class="px-3.5 py-2 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center gap-1.5 transition shadow">
+                        <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
+                    </button>
+                    <button onclick="shareFormatSocial('telegram')" class="px-3.5 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition shadow">
+                        <i class="fa-brands fa-telegram"></i> Telegram
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- ATS-Safe Fonts & Layout Quick Reference Card -->
+        <section class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-font text-teal-500"></i> Best ATS-Friendly Fonts & Layout Rules
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 space-y-1.5">
+                    <strong class="text-emerald-700 dark:text-emerald-300 font-black block"><i class="fa-solid fa-circle-check mr-1"></i> Use These (100% ATS Safe)</strong>
+                    <ul class="space-y-1 text-slate-700 dark:text-slate-300 font-semibold text-[11px]">
+                        <li>• <strong>Fonts:</strong> Arial, Calibri, Roboto, Inter, Helvetica, Georgia</li>
+                        <li>• <strong>Font Size:</strong> 10.5pt – 12pt for body text, 14pt – 16pt for headings</li>
+                        <li>• <strong>Bullets:</strong> Standard round dots (•) or simple hyphens (-)</li>
+                        <li>• <strong>Layout:</strong> Clean single-column layout saved as text-selectable PDF</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 space-y-1.5">
+                    <strong class="text-rose-700 dark:text-rose-300 font-black block"><i class="fa-solid fa-circle-xmark mr-1"></i> Avoid These (Causes ATS Rejection)</strong>
+                    <ul class="space-y-1 text-slate-700 dark:text-slate-300 font-semibold text-[11px]">
+                        <li>• <strong>Multi-Column Tables:</strong> Sidebars mix up text order when scanned</li>
+                        <li>• <strong>Skill Progress Bars / Stars:</strong> ATS reads ★★★★☆ as blank or gibberish</li>
+                        <li>• <strong>Header/Footer Contact Info:</strong> Many portals skip text inside page headers</li>
+                        <li>• <strong>Image-Only PDFs:</strong> Scanned images cannot be read by software</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Easy SEO FAQs -->
+        <article class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed border border-slate-200 dark:border-slate-800">
+            <div class="space-y-1">
+                <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400 tracking-wider">Easy Resume Formatting Guide</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">Frequently Asked Questions About Resume Format & Fonts</h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer" open>
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        1. Why do two-column resumes fail ATS software checks?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Most company ATS tools read a page straight across from left to right. If you use two columns or tables, the software merges your left column words with your right column words, making your resume messy and unreadable.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        2. Which fonts are best for an ATS-friendly resume?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Simple, clean fonts like <strong>Calibri, Arial, Roboto, Inter, Helvetica, and Georgia</strong> are supported by every hiring portal and look sharp on both desktop and mobile screens.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        3. Why do fancy bullet symbols cause problems?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">Decorative icons like stars (★), arrows (➤), or diamonds (◆) often break during PDF parsing and turn into weird characters. Always stick to standard round dots (•) or hyphens (-).</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        4. What does the 1-Click Auto-Fix button do?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">It automatically replaces broken icons with standard bullets (•), cleans up extra wide spaces and hidden column tabs, and gives you clean text you can copy or download right away.</p>
+                </details>
+
+                <details class="group border border-slate-200 dark:border-slate-800 rounded-2xl p-4 cursor-pointer">
+                    <summary class="font-bold text-slate-800 dark:text-slate-200 list-none flex justify-between items-center text-xs">
+                        5. Is my uploaded PDF resume stored on any server?
+                        <i class="fa-solid fa-chevron-down group-open:rotate-180 transition text-slate-400"></i>
+                    </summary>
+                    <p class="mt-2 text-slate-500 text-[11px] leading-relaxed">No. Everything runs 100% locally inside your browser window. Your PDF and personal details are never uploaded anywhere.</p>
+                </details>
+            </div>
+        </article>
     </main>
 
-    <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-teal-600 hover:bg-teal-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
-    </button>
-
-    <!-- Interactive Feedback Modal Container -->
-    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <!-- Direct Support Modal -->
+    <div id="directSupportModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
-            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
-            
+            <button onclick="document.getElementById('directSupportModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
             <div class="space-y-1">
-                <h3 class="text-base font-black gradient-text">Direct Support</h3>
-                <p class="text-xs text-slate-500 font-semibold">Send feedback directly to <strong class="text-teal-600 dark:text-teal-400">Nexthirematrix@gmail.com</strong>.</p>
+                <h3 class="text-base font-black text-slate-900 dark:text-white"><i class="fa-solid fa-headset text-teal-500 mr-1.5"></i> Direct Support</h3>
+                <p class="text-xs text-slate-500 font-medium">Need help with resume formatting or want to report a bug? Email us directly.</p>
             </div>
-
-            <form onsubmit="sendDirectSupportEmail(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                    <input type="email" id="supportUserEmail" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
-                    <select id="supportCategory" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <option value="Format & Font Auditor Bug">📑 Format & Font Auditor Bug</option>
-                        <option value="Bug Report">🐛 Report UX Bug</option>
-                        <option value="Feature Request">💡 Feature Request</option>
-                        <option value="General Inquiry">⭐ General Feedback</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label>
-                    <textarea id="supportMessage" rows="3" required placeholder="Describe your issue or suggestion..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-black rounded-xl shadow-lg transition flex items-center justify-center gap-2">
-                    Send to Nexthirematrix@gmail.com <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
+            <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
+                <span class="text-xs font-black text-teal-600 dark:text-teal-400">Nexthirematrix@gmail.com</span>
+                <a href="mailto:Nexthirematrix@gmail.com?subject=Resume%20Format%20Auditor%20Support" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-black transition">Send Email</a>
+            </div>
         </div>
     </div>
 
-    <!-- Footer Section with Share Heading Added -->
+    <!-- Footer Section with All Social Brand Icons -->
     <footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
-        <div class="flex justify-center items-center gap-3">
-            <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
-            <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
-            <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
-            <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
-            <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="flex justify-center items-center gap-3">
+                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                <button onclick="sharePlatform('twitter')" aria-label="X Twitter" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-x-twitter text-sm"></i></button>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
-            <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
-        </div>
-        <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
-    </div>
-</footer>
+    </footer>
 
     <!-- Format & Font Inspection Engine Script -->
     <script>
         let formatScore = 100;
 
-        function toggleMobileDrawer() {
-            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        function openDirectSupportModal() {
+            document.getElementById('directSupportModal').classList.remove('hidden');
         }
 
         function fillSampleText() {
-            document.getElementById('formatText').value = "Senior Software Engineer\t\t\t2021 – Present\n★ Architected microservices with 99.9% uptime\n• Managed 5-person dev team   |   Reduced latency by 40%";
+            document.getElementById('formatText').value = "Senior Software Engineer\t\t\t2024 – Present\n★ Built cloud microservices with 99.9% uptime\n➤ Led 5-person dev team   |   Cut API latency by 40%";
             runFormatAudit();
         }
 
@@ -371,31 +474,57 @@
                 document.getElementById('formatText').value = fullText.trim();
                 runFormatAudit();
             } catch (err) {
-                alert("Error extracting text from PDF. Please paste text manually.");
+                alert("Could not read PDF text. Please copy and paste your resume text manually.");
             }
         }
 
         function autoSanitizeText() {
             let text = document.getElementById('formatText').value;
-            if (!text) {
-                alert("No text to sanitize!");
+            if (!text.trim()) {
+                alert("Please paste some resume text first!");
                 return;
             }
-            let cleaned = text.replace(/[★❖➤➢✦◆▪]/g, '•');
+            let cleaned = text
+                .replace(/[★❖➤➢✦◆▪✓✔→➔]/g, '•')
+                .replace(/\t+/g, ' ')
+                .replace(/ {3,}/g, ' ')
+                .replace(/[^\x00-\x7F\u2022\u2013\u2014\n]/g, '');
             document.getElementById('formatText').value = cleaned;
             runFormatAudit();
-            alert("Special characters successfully sanitized into standard bullets!");
+        }
+
+        function copyCleanText(btn) {
+            const text = document.getElementById('formatText').value.trim();
+            if (!text) return;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = old; }, 1800);
+            }
+        }
+
+        function downloadCleanTxt() {
+            const text = document.getElementById('formatText').value.trim();
+            if (!text) return;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ATS-Clean-Resume.txt';
+            a.click();
+            URL.revokeObjectURL(url);
         }
 
         function runFormatAudit() {
             const text = document.getElementById('formatText').value;
 
             if (!text.trim()) {
-                alert("Please paste your resume raw text to perform the structural audit.");
+                alert("Please paste your resume text or upload a PDF to check formatting.");
                 return;
             }
 
-            const badGlyphs = text.match(/[^\x00-\x7F\u2022\u2013\u2014]/g) || [];
+            const badGlyphs = text.match(/[^\x00-\x7F\u2022\u2013\u2014\n]/g) || [];
             const columnCollisions = (text.match(/\t{2,}| {4,}/g) || []).length;
             
             const lines = text.split('\n');
@@ -404,38 +533,40 @@
                 if (l.trim().length > 280) longParagraphs++;
             });
 
-            formatScore = 100 - (badGlyphs.length * 5) - (columnCollisions * 3) - (longParagraphs * 4);
+            formatScore = 100 - (badGlyphs.length * 5) - (columnCollisions * 4) - (longParagraphs * 4);
             if (formatScore < 30) formatScore = 30;
 
             document.getElementById('formatScoreVal').innerText = `${formatScore}%`;
             document.getElementById('badGlyphVal').innerText = badGlyphs.length;
-            document.getElementById('columnRiskVal').innerText = columnCollisions > 0 ? `${columnCollisions} Risks` : 'Low Risk';
+            document.getElementById('columnRiskVal').innerText = `${columnCollisions} Risks`;
+            document.getElementById('formatShareHeadline').innerText = `My resume scored ${formatScore}% on ATS Format & Font Safety!`;
+            document.getElementById('atsRawPreview').innerText = text.replace(/\s+/g, ' ').trim();
 
             const findings = document.getElementById('findingsList');
             findings.innerHTML = '';
 
             if (badGlyphs.length === 0 && columnCollisions === 0 && longParagraphs === 0) {
                 const el = document.createElement('div');
-                el.className = 'p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
-                el.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Clean Layout:</strong> No corrupted font glyphs, multi-column collisions, or dense paragraphs found. Standard single-column flow verified.`;
+                el.className = 'p-3.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-bold rounded-xl border border-emerald-500/20';
+                el.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>100% ATS-Safe Format:</strong> No broken symbols, column gaps, or dense text walls detected. Your layout is ready for job portals!`;
                 findings.appendChild(el);
             } else {
                 if (badGlyphs.length > 0) {
                     const el1 = document.createElement('div');
-                    el1.className = 'p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
-                    el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Non-Standard Symbols (${badGlyphs.length}):</strong> Detected custom icons/bullets. Use the 1-Click Auto-Sanitize button above to convert them to standard round bullets (•).`;
+                    el1.className = 'p-3.5 bg-rose-500/10 text-rose-700 dark:text-rose-300 font-bold rounded-xl border border-rose-500/20';
+                    el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Fancy / Broken Icons Found (${badGlyphs.length}):</strong> Special icons like stars or arrows can break in ATS parsers. Click <strong>"1-Click Auto-Fix All Formatting"</strong> above to replace them with standard round bullets (•).`;
                     findings.appendChild(el1);
                 }
                 if (columnCollisions > 0) {
                     const el2 = document.createElement('div');
-                    el2.className = 'p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold rounded-xl border border-amber-500/20';
-                    el2.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Multi-Column Spacing (${columnCollisions}):</strong> Detected wide spacing gaps/tabs. Avoid multi-column table layouts as legacy ATS parsers read across columns.`;
+                    el2.className = 'p-3.5 bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold rounded-xl border border-amber-500/20';
+                    el2.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Multi-Column Spacing Gaps (${columnCollisions}):</strong> Wide spaces or tabs detected. Use a single-column layout so ATS software reads your experience in the right order.`;
                     findings.appendChild(el2);
                 }
                 if (longParagraphs > 0) {
                     const el3 = document.createElement('div');
-                    el3.className = 'p-3 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl border border-indigo-500/20';
-                    el3.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Line Density Warning (${longParagraphs}):</strong> Detected overly long text blocks (>280 chars). Break them into concise bullet points for better parser readability.`;
+                    el3.className = 'p-3.5 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-bold rounded-xl border border-indigo-500/20';
+                    el3.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>Long Text Blocks (${longParagraphs}):</strong> Break paragraphs longer than 3 lines into short, crisp bullet points so HR and ATS can scan them easily.`;
                     findings.appendChild(el3);
                 }
             }
@@ -448,25 +579,31 @@
             }
         }
 
-        function shareFormatToWhatsApp() {
-            const rawText = `I scored a ${formatScore}% structural ATS safety score on NextHire Matrix! Check it out: https://www.nexthirematrix.com/format-auditor.html`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
+        function shareFormatSocial(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/format-auditor.html");
+            const rawText = `My resume scored ${formatScore}% on ATS Format & Font Safety! Check yours free on NextHire Matrix: https://www.nexthirematrix.com/format-auditor.html`;
+            const text = encodeURIComponent(rawText);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
         }
 
-        function shareFormatToLinkedIn() {
-            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/format-auditor.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
-        }
-
-        function sendDirectSupportEmail(e) {
-            e.preventDefault();
-            const email = document.getElementById('supportUserEmail').value;
-            const cat = document.getElementById('supportCategory').value;
-            const msg = document.getElementById('supportMessage').value;
-            const subject = `[NextHire Matrix - Format Auditor] ${cat}`;
-            const body = `From: ${email}\nCategory: ${cat}\n\nMessage:\n${msg}`;
-            window.location.href = `mailto:Nexthirematrix@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            document.getElementById('feedbackModal').classList.add('hidden');
+        function sharePlatform(platform) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/format-auditor.html");
+            const rawText = "Check and fix hidden ATS formatting errors in your resume free on NextHire Matrix: https://www.nexthirematrix.com/format-auditor.html";
+            const text = encodeURIComponent(rawText);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText("https://www.nexthirematrix.com/format-auditor.html");
+                    alert("Link copied! Paste it in your Instagram Bio or Story.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
         }
     </script>
 </body>

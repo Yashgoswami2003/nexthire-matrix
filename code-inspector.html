@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AST Code & Big-O Complexity Inspector | NextHire Matrix</title>
+    <title>AST Code & Big-O Complexity Inspector (20+ Languages) - NextHire Matrix</title>
     
     <link rel="canonical" href="https://www.nexthirematrix.com/code-inspector.html">
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta name="description" content="100% Client-Side AST Code Bug & Big-O Complexity Inspector. Analyze code syntax errors, memory leaks, and algorithmic time complexity offline in local browser RAM.">
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="100% Client-Side AST Code Bug & Big-O Complexity Inspector supporting 20+ programming languages. Analyze code syntax errors, time complexity, and memory overhead offline in browser RAM.">
+    <meta name="keywords" content="AST code inspector, big-O complexity calculator, code speed checker, time complexity analyzer, memory leak detector, 20 languages code auditor, NextHire Matrix">
+    <meta name="author" content="Yash Raj Goswami - NextHire Matrix">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NextHire Matrix">
+    <meta property="og:url" content="https://www.nexthirematrix.com/code-inspector.html">
     
     
     
-    
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AST Code & Big-O Complexity Inspector - NextHire Matrix">
+    <meta name="twitter:description" content="Inspect algorithm time complexity and detect code bugs for 20+ languages instantly offline.">
+
+    <!-- Clean SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2306b6d4'/><stop offset='50%' stop-color='%233b82f6'/><stop offset='100%' stop-color='%236366f1'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><path d='M20 22l-8 10 8 10M44 22l8 10-8 10M36 18l-8 28' stroke='%23ffffff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2306b6d4'/><text x='50%' y='54%' font-family='sans-serif' font-size='28' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>CI</text></svg>">
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "zbvrt4kf5g");
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "zbvrt4kf5g");
+            }, 2000);
+        });
     </script>
 
     <!-- Schema.org Structured Data -->
@@ -32,74 +53,52 @@
       "@type": "WebApplication",
       "name": "AST Code Inspector",
       "url": "https://www.nexthirematrix.com/code-inspector.html",
-      "applicationCategory": "Developer Utility",
+      "applicationCategory": "DeveloperApplication",
       "operatingSystem": "All Browsers",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Person",
+        "name": "Yash Raj Goswami",
+        "url": "https://www.linkedin.com/in/yash-raj-goswami-396684306"
+      }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome 6.5.1 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { max-width: 100vw; overflow-x: hidden;  font-family: 'Plus Jakarta Sans', sans-serif; }
         
         .gradient-text { background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #0891b2 50%, #4f46e5 100%); }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #0891b2 50%, #4338ca 100%); }
         
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.8); }
-        .dark .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.8); }
+        .glass-card { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.85); }
+        .dark .glass-card { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(51, 65, 85, 0.85); }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
+        .glow-blob { position: absolute; filter: blur(100px); opacity: 0.18; z-index: -1; }
     </style>
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
 
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
-
-    
-    
-    
-    
-    
-
-    <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%232305966'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs>
-
+    <!-- Share NextHire Matrix & Social Meta Tags -->
+    <meta name="application-name" content="Share NextHire Matrix">
+    <meta property="og:site_name" content="NextHire Matrix">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nexthirematrix.com/">
     <meta property="og:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
     <meta property="og:description" content="Check ATS resume scores, calculate in-hand salary, audit resume format, and practice interview answers instantly in your browser with zero sign-up.">
-    <meta property="og:image" content="https://www.nexthirematrix.com/favicon.ico">
+    <meta property="og:image" content="https://www.nexthirematrix.com/og-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
+    <meta name="twitter:description" content="Check ATS resume scores, calculate in-hand salary, and practice interview answers instantly in your browser.">
+    <meta name="twitter:image" content="https://www.nexthirematrix.com/og-banner.png">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23059669'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='54%' font-family='system-ui, -apple-system, sans-serif' font-size='30' font-weight='900' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>NH</text></svg>">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
@@ -109,80 +108,58 @@
 
     <!-- Navigation Header -->
     <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
-        <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
-            <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
-            <span class="tracking-tight">NextHire Matrix</span>
-        </a>
-        <div class="flex items-center gap-2 sm:gap-3">
-            <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
+            <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2.5 shrink-0">
+                <span class="text-amber-400 text-xl sm:text-2xl drop-shadow"><i class="fa-solid fa-bolt"></i></span>
+                <span class="tracking-tight">NextHire Matrix</span>
             </a>
-            <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
-                <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
-            </button>
-            <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
-                <i class="fa-solid fa-moon"></i>
-            </button>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-black hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-grid-2 text-emerald-500"></i> <span class="hidden sm:inline">All 15 Tools</span>
+                </a>
+                <button onclick="openDirectSupportModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-black hover:bg-emerald-500/20 transition">
+                    <i class="fa-solid fa-envelope"></i> <span class="hidden sm:inline">Support</span>
+                </button>
+                <button onclick="document.getElementById('htmlRoot').classList.toggle('dark')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition text-sm font-bold" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
-    <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
-        <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
-            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
-            <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
-            <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
-            <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
-            <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
-            <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
-            <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
-            <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
-            <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
-            <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
-            <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
-            <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
-            <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
-            <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
-            <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
-            <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
+        <!-- 15-Tools Uniform Scrollable Sub-Navbar -->
+        <div class="bg-slate-900 border-t border-b border-slate-800 py-2.5 px-2 overflow-x-auto whitespace-nowrap shadow-inner no-scrollbar">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 px-2">
+                <a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-house text-emerald-400"></i> Home</a>
+                <a href="ats-checker.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-file-circle-check text-emerald-400"></i> ATS Resume Checker</a>
+                <a href="bullet-enhancer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-fuchsia-400"></i> Resume Bullet Maker</a>
+                <a href="format-auditor.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-align-left text-teal-400"></i> Resume Format Fixer</a>
+                <a href="recruiter-skim.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-eye text-sky-400"></i> 6-Second HR View</a>
+                <a href="salary-simulator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-wallet text-amber-400"></i> In-Hand Salary Calculator</a>
+                <a href="offer-comparator.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-scale-balanced text-rose-400"></i> Job Offer Compare</a>
+                <a href="notice-period.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-calendar-check text-orange-400"></i> Notice Period Calculator</a>
+                <a href="voice-analyzer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-microphone-lines text-purple-400"></i> Speaking & Voice Coach</a>
+                <a href="interview-prep.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-comments text-pink-400"></i> Interview Answer Maker</a>
+                <a href="tech-flashcards.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-layer-group text-emerald-400"></i> Coding & HR Flashcards</a>
+                <a href="code-inspector.html" class="inline-flex items-center gap-2 bg-cyan-500/20 text-cyan-300 font-bold px-3.5 py-2 rounded-xl text-xs border border-cyan-500/40 shrink-0 transition"><i class="fa-solid fa-code text-cyan-400"></i> Code Error & Speed</a>
+                <a href="linkedin-optimizer.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Bio Maker</a>
+                <a href="cover-letter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-envelope-open-text text-violet-400"></i> Cold Email & Cover Letter</a>
+                <a href="certificate-builder.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-award text-indigo-400"></i> Project Certificate Maker</a>
+                <a href="cgpa-converter.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3.5 py-2 rounded-xl text-xs border border-slate-700/80 shrink-0 transition"><i class="fa-solid fa-graduation-cap text-lime-400"></i> CGPA & Marks Converter</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-    <!-- Slide-over Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex justify-end">
-        <div class="bg-white dark:bg-slate-900 w-64 h-full p-6 space-y-6 shadow-2xl flex flex-col justify-between">
-            <div class="space-y-4">
-                <div class="flex justify-between items-center border-b pb-4 border-slate-200 dark:border-slate-800">
-                    <span class="font-bold text-cyan-500 text-sm">NextHire Matrix</span>
-                    <button onclick="toggleMobileDrawer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <nav class="flex flex-col gap-3 text-xs font-bold text-slate-700 dark:text-slate-200">
-                    <a href="index.html" class="py-2 hover:text-cyan-500">🏠 Home</a>
-                    <a href="code-inspector.html" class="py-2 hover:text-cyan-500">💻 Code Error & Speed Checker</a>
-                    <a href="ats-checker.html" class="py-2 hover:text-cyan-500">📄 ATS Resume Checker</a>
-                    <a href="about.html" class="py-2 hover:text-cyan-500">ℹ️ About Us</a>
-                    <a href="privacy.html" class="py-2 hover:text-cyan-500">🔒 Privacy Policy</a>
-                    <a href="terms.html" class="py-2 hover:text-cyan-500">⚖️ Terms & Disclaimer</a>
-                </nav>
-            </div>
-            <div class="text-[10px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-4">
-                100% In-Browser Privacy Guard Active
-            </div>
-        </div>
-    </div>
     <!-- Main Content Workspace -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-grow w-full space-y-8">
         
-        <div class="text-center space-y-3">
-            <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full text-xs font-black text-cyan-600 dark:text-cyan-400">
-                <i class="fa-solid fa-code"></i> Client-Side AST Tokenizer • Zero Server Execution
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-cyan-500/15 border border-cyan-500/30 px-4 py-1.5 rounded-full text-xs font-black text-cyan-700 dark:text-cyan-300">
+                <i class="fa-solid fa-code"></i> 20+ Languages Supported • 100% In-Browser Privacy
             </div>
             <h1 class="text-3xl sm:text-4xl font-black tracking-tight">
                 AST Code & <span class="gradient-text">Big-O Inspector</span>
             </h1>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold max-w-lg mx-auto">
-                Audit algorithm code snippets offline. Detect nested loops, memory leaks, auxiliary space overhead, and estimate time/space complexity.
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold leading-relaxed">
+                Analyze your algorithm code offline. Detect nested loops, memory overhead, and estimate time/space complexity across 20+ programming languages.
             </p>
         </div>
 
@@ -194,24 +171,70 @@
                 </div>
                 <div>
                     <strong class="block text-slate-900 dark:text-white font-extrabold">100% Secure Local Code Evaluation</strong>
-                    <span class="text-slate-500 dark:text-slate-400">Code is tokenized and analyzed 100% locally inside your browser engine memory.</span>
+                    <span class="text-slate-500 dark:text-slate-400">Your code is analyzed 100% locally inside your browser RAM. Zero server uploads.</span>
                 </div>
             </div>
-            <button onclick="fillSampleCode()" class="px-3 py-1.5 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black rounded-xl text-[11px] shrink-0 transition">
+            <button onclick="fillSampleCode()" class="px-3.5 py-2 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black rounded-xl text-[11px] shrink-0 transition shadow">
                 ⚡ Auto-Fill Sample Code
             </button>
         </div>
 
         <!-- Code Input Editor Workstation -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl border border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center text-xs font-bold text-slate-600 dark:text-slate-300">
-                <label class="uppercase tracking-wider text-slate-500 font-black text-[11px]">Paste JavaScript / Python / C++ Code Snippet</label>
-                <select id="codeLang" class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500 text-xs">
-                    <option value="js">JavaScript (JS)</option>
-                    <option value="python">Python</option>
-                    <option value="cpp">C++</option>
-                </select>
+            <div class="flex flex-wrap justify-between items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300">
+                <label class="uppercase tracking-wider text-slate-500 font-black text-[11px]">Select Language & Paste Code Snippet</label>
+                
+                <!-- 20+ Languages Dropdown -->
+                <div class="flex items-center gap-2">
+                    <select id="codeLang" onchange="checkLanguageOption(this)" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500 text-xs">
+                        <option value="js">JavaScript (JS)</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="ts">TypeScript (TS)</option>
+                        <option value="csharp">C# (.NET)</option>
+                        <option value="go">Go (Golang)</option>
+                        <option value="rust">Rust</option>
+                        <option value="c">C Language</option>
+                        <option value="php">PHP</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="swift">Swift (iOS)</option>
+                        <option value="kotlin">Kotlin</option>
+                        <option value="sql">SQL / Database</option>
+                        <option value="bash">Bash / Shell Script</option>
+                        <option value="r">R Language</option>
+                        <option value="scala">Scala</option>
+                        <option value="dart">Dart (Flutter)</option>
+                        <option value="perl">Perl</option>
+                        <option value="lua">Lua</option>
+                        <option value="solidity">Solidity (Smart Contract)</option>
+                        <option value="other">➕ Other / Custom Language (Not Listed)</option>
+                    </select>
+                </div>
             </div>
+
+            <!-- Missing Language Solution Options Box (Shows if 'Other' is selected) -->
+            <div id="missingLangBox" class="hidden p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-2">
+                <div class="flex items-center justify-between font-black text-amber-700 dark:text-amber-300">
+                    <span><i class="fa-solid fa-triangle-exclamation mr-1"></i> Language Not in the List? Here are 3 Quick Solutions:</span>
+                    <button type="button" onclick="document.getElementById('missingLangBox').classList.add('hidden'); document.getElementById('codeLang').value='js';" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/20">
+                        <strong class="block text-amber-600 dark:text-amber-400 mb-0.5">1. Easy (Paste as JS/Python)</strong>
+                        Most C-style syntaxes work instantly when evaluated as JavaScript/C++.
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/20">
+                        <strong class="block text-amber-600 dark:text-amber-400 mb-0.5">2. Moderate (Request Language)</strong>
+                        <button onclick="openDirectSupportModal()" class="text-cyan-600 dark:text-cyan-400 font-bold underline">Click here to message us</button> and we add it within 24h.
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/20">
+                        <strong class="block text-amber-600 dark:text-amber-400 mb-0.5">3. Advanced (Custom Parser)</strong>
+                        Use the universal regex scanner by pasting your algorithm directly below.
+                    </div>
+                </div>
+            </div>
+
             <textarea id="codeInput" rows="10" placeholder="// Paste algorithm code here...
 function findTwoSum(arr, target) {
     for (let i = 0; i < arr.length; i++) {
@@ -254,95 +277,157 @@ function findTwoSum(arr, target) {
                 <div id="codeAuditList" class="space-y-3 text-xs"></div>
             </div>
 
-            <!-- Social Share Banner -->
-            <div class="p-6 gradient-bg rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-                <div class="space-y-1 text-center sm:text-left">
-                    <span class="text-[10px] font-black uppercase text-cyan-200 tracking-wider">🏆 Flex Your Big-O Score</span>
-                    <h4 class="text-sm font-black">Audited your algorithm complexity offline? Share on WhatsApp or LinkedIn!</h4>
+            <!-- Result Summary Strip + Copy + Flex Card + Quick Social Share -->
+            <div class="p-4 sm:p-5 rounded-2xl gradient-bg text-white space-y-3 shadow-lg">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span class="text-[10px] font-black uppercase tracking-wider text-cyan-200">Audited Code Summary</span>
+                        <div id="inspectorResultSummary" class="text-base sm:text-xl font-black mt-0.5">Time Complexity: O(N²) • Space: O(1)</div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button type="button" onclick="openCodeFlexModal()" class="px-4 py-2.5 bg-slate-950/90 hover:bg-slate-900 text-cyan-300 rounded-xl text-xs font-black transition shrink-0 shadow">
+                            <i class="fa-solid fa-id-card-clip mr-1"></i> Create Flex Card
+                        </button>
+                        <button onclick="copyResultText('inspectorResultSummary', this)" class="px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black transition shrink-0 shadow">
+                            <i class="fa-regular fa-copy mr-1"></i> Copy Result
+                        </button>
+                    </div>
                 </div>
-                <div class="flex gap-2 w-full sm:w-auto shrink-0">
-                    <button onclick="shareCodeToWhatsApp()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
-                    </button>
-                    <button onclick="shareCodeToLinkedIn()" class="flex-1 sm:flex-initial px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg">
-                        <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn
-                    </button>
+                <!-- Quick Share Bar -->
+                <div class="pt-2.5 border-t border-white/15 flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span class="text-[11px] font-bold text-cyan-100"><i class="fa-solid fa-share-nodes mr-1"></i> Share Big-O Score:</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="shareScoreDirect('whatsapp', 'inspectorResultSummary')" title="Share on WhatsApp" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-emerald-500 text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></button>
+                        <button onclick="shareScoreDirect('telegram', 'inspectorResultSummary')" title="Share on Telegram" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-sky-500 text-white flex items-center justify-center transition"><i class="fa-brands fa-telegram"></i></button>
+                        <button onclick="shareScoreDirect('linkedin', 'inspectorResultSummary')" title="Share on LinkedIn" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-blue-600 text-white flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in"></i></button>
+                        <button onclick="shareScoreDirect('instagram', 'inspectorResultSummary')" title="Copy for Instagram Story" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-pink-500 text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></button>
+                        <button onclick="shareScoreDirect('twitter', 'Share on X')" title="Share on X" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-slate-900 text-white flex items-center justify-center transition"><i class="fa-brands fa-x-twitter"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Floating Feedback Trigger Button -->
-    <button onclick="document.getElementById('feedbackModal').classList.remove('hidden')" class="fixed bottom-6 right-6 z-50 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-3 rounded-full font-black text-xs shadow-2xl flex items-center gap-2 hover:scale-105 transition transform">
-        <i class="fa-solid fa-comment-dots text-sm"></i> Feedback
-    </button>
-
-    <!-- Interactive Feedback Modal Container -->
-    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="glass-card max-w-md w-full p-6 rounded-3xl space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-800">
-            <button onclick="document.getElementById('feedbackModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Upgraded Customizable Code Flex Card Modal -->
+    <div id="codeFlexModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-slate-900 text-white rounded-3xl p-6 border border-cyan-500/40 shadow-2xl space-y-4 relative">
+            <button onclick="document.getElementById('codeFlexModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
             
             <div class="space-y-1">
-                <h3 class="text-base font-black gradient-text">Direct Creator Feedback</h3>
-                <p class="text-xs text-slate-500 font-semibold">Report a code inspector bug directly to Yash Raj Goswami.</p>
+                <h3 class="text-sm font-black text-cyan-400"><i class="fa-solid fa-sparkles mr-1"></i> Customize Your Big-O Flex Card</h3>
+                <p class="text-[11px] text-slate-400">Add your name to download or share your algorithm complexity score card.</p>
             </div>
 
-            <form action="https://formspree.io/f/xkjjddwb" method="POST" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                    <input type="email" name="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <!-- Optional Name Input -->
+            <div>
+                <input type="text" id="flexDeveloperName" oninput="updateCodeFlexPreview()" placeholder="Your Name or Handle (Optional)" class="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white font-bold text-xs focus:outline-none focus:border-cyan-500">
+            </div>
+
+            <!-- Flex Card Visual Preview Box -->
+            <div id="flexCardCanvasBox" class="p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-cyan-950/60 to-indigo-950 border-2 border-cyan-500/40 space-y-3.5 shadow-xl relative overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <span class="px-2.5 py-1 rounded-lg gradient-bg text-white font-black text-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-amber-300"></i> NextHire Matrix
+                    </span>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-cyan-300 bg-cyan-500/15 px-2.5 py-0.5 rounded-full border border-cyan-500/30">
+                        <i class="fa-solid fa-shield-check mr-1"></i> AST Verified
+                    </span>
                 </div>
+
                 <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Category</label>
-                    <select name="category" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                        <option value="code_issue">💻 Code Inspector / AST Bug</option>
-                        <option value="bug">🐛 Report UX Bug</option>
-                        <option value="feature">💡 Feature Request</option>
-                        <option value="praise">⭐ General Feedback</option>
-                    </select>
+                    <div id="flexPreviewDevName" class="text-xs font-extrabold text-slate-300 uppercase tracking-wider">Algorithm Audit</div>
+                    <div id="flexCardBigOMetric" class="text-2xl sm:text-3xl font-black text-cyan-400 mt-0.5">Time: O(N²) • Space: O(1)</div>
+                    <div id="flexCardSubMetric" class="text-xs font-bold text-slate-300 mt-1">Clean Optimal Loop Structure</div>
                 </div>
-                <div>
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Detailed Message</label>
-                    <textarea name="message" rows="3" required placeholder="Describe your feedback..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+
+                <div class="pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-bold text-slate-300">
+                    <span><i class="fa-solid fa-code text-amber-400 mr-1"></i> 100% Client-Side RAM</span>
+                    <span class="text-cyan-400">nexthirematrix.com</span>
                 </div>
-                <button type="submit" class="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-black rounded-xl shadow-lg shadow-cyan-600/25 transition flex items-center justify-center gap-2">
-                    Send Message <i class="fa-solid fa-paper-plane"></i>
+            </div>
+
+            <!-- Action Buttons (Download PNG + Copy Caption) -->
+            <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" onclick="downloadCodeFlexPNG()" class="py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow">
+                    <i class="fa-solid fa-download"></i> Download Card PNG
                 </button>
-            </form>
+                <button type="button" onclick="copyCodeFlexPost(this)" class="py-3 bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow">
+                    <i class="fa-regular fa-copy"></i> Copy Caption
+                </button>
+            </div>
+
+            <!-- Direct Social Share Icons Row -->
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] font-bold text-slate-400">Share directly on:</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="shareFlexSocial('whatsapp')" title="WhatsApp" class="w-9 h-9 rounded-xl bg-emerald-500/15 hover:bg-emerald-500 text-emerald-400 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                    <button onclick="shareFlexSocial('linkedin')" title="LinkedIn" class="w-9 h-9 rounded-xl bg-blue-500/15 hover:bg-blue-600 text-blue-400 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                    <button onclick="shareFlexSocial('telegram')" title="Telegram" class="w-9 h-9 rounded-xl bg-sky-500/15 hover:bg-sky-500 text-sky-400 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                    <button onclick="shareFlexSocial('instagram')" title="Instagram" class="w-9 h-9 rounded-xl bg-pink-500/15 hover:bg-pink-500 text-pink-400 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                    <button onclick="shareFlexSocial('facebook')" title="Facebook" class="w-9 h-9 rounded-xl bg-indigo-500/15 hover:bg-indigo-600 text-indigo-400 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                    <button onclick="shareFlexSocial('twitter')" title="X (Twitter)" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-x-twitter text-sm"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Footer Section -->
-    <footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
-        <div class="flex justify-center items-center gap-3">
-            <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
-            <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
-            <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
-            <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
-            <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+    <!-- Direct Support Modal -->
+    <div id="directSupportModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4 relative">
+            <button onclick="document.getElementById('directSupportModal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm"><i class="fa-solid fa-xmark"></i></button>
+            <div class="space-y-1">
+                <h3 class="text-base font-black text-slate-900 dark:text-white"><i class="fa-solid fa-headset text-cyan-500 mr-1.5"></i> Request New Language Support</h3>
+                <p class="text-xs text-slate-500 font-medium">Want us to add support or custom parsing for your specific programming language? Email us directly.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
+                <span class="text-xs font-black text-cyan-600 dark:text-cyan-400">Nexthirematrix@gmail.com</span>
+                <a href="mailto:Nexthirematrix@gmail.com?subject=Code%20Inspector%20Language%20Request" class="px-3.5 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl text-xs font-black transition">Send Email</a>
+            </div>
         </div>
-        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
-            <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
-        </div>
-        <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
     </div>
-</footer>
+
+    <!-- Footer Section with All Social Brand Icons -->
+    <footer class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-7 mt-12 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+            <div class="flex justify-center items-center gap-3">
+                <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+                <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+                <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+                <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+                <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+                <button onclick="sharePlatform('twitter')" aria-label="X Twitter" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-x-twitter text-sm"></i></button>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+                <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+            </div>
+            <p>© 2026 NextHire Matrix. Smart Career, Resume & Developer Intelligence Suite.</p>
+        </div>
+    </footer>
 
     <!-- Local Client-Side AST Analysis Script -->
     <script>
         let currentBigO = 'O(N)';
+        let currentSpaceO = 'O(1)';
 
-        function toggleMobileDrawer() {
-            document.getElementById('mobileDrawer').classList.toggle('hidden');
+        function openDirectSupportModal() {
+            document.getElementById('directSupportModal').classList.remove('hidden');
+        }
+
+        function checkLanguageOption(select) {
+            const box = document.getElementById('missingLangBox');
+            if (select.value === 'other') {
+                box.classList.remove('hidden');
+            } else {
+                box.classList.add('hidden');
+            }
         }
 
         function fillSampleCode() {
@@ -368,9 +453,9 @@ function findTwoSum(arr, target) {
                 return;
             }
 
-            const forLoopMatches = (code.match(/for\s*\(|while\s*\(|for\s+\w+\s+in|for\s+\w+\s+of/g) || []).length;
+            const forLoopMatches = (code.match(/for\s*\(|while\s*\(|for\s+\w+\s+in|for\s+\w+\s+of|foreach/g) || []).length;
             const recursionMatches = (code.match(/return\s+\w+\(/g) || []).length;
-            const hashSetMatches = (code.match(/new\s+(Set|Map)|dict\(|\{\}|Set\(/g) || []).length;
+            const hashSetMatches = (code.match(/new\s+(Set|Map)|dict\(|\{\}|Set\(|HashMap|HashSet/g) || []).length;
 
             let timeComp = "O(1)";
             let spaceComp = "O(1)";
@@ -392,10 +477,12 @@ function findTwoSum(arr, target) {
             }
 
             currentBigO = timeComp;
+            currentSpaceO = spaceComp;
 
             document.getElementById('timeCompVal').innerText = timeComp;
             document.getElementById('spaceCompVal').innerText = spaceComp;
             document.getElementById('riskLevelVal').innerText = riskDesc;
+            document.getElementById('inspectorResultSummary').innerText = `Time Complexity: ${timeComp} • Space Complexity: ${spaceComp}`;
 
             const list = document.getElementById('codeAuditList');
             list.innerHTML = '';
@@ -403,19 +490,19 @@ function findTwoSum(arr, target) {
             if (forLoopMatches >= 2) {
                 const el1 = document.createElement('div');
                 el1.className = 'p-3 bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold rounded-xl border border-rose-500/20';
-                el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>High Complexity Penalty (O(N²)):</strong> Multiple nested loops detected. High runtime penalty on large inputs. Consider using a Hash Set/Map to reduce lookup time to O(N).`;
+                el1.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>High Complexity Penalty (${timeComp}):</strong> Multiple loops or nesting detected. High runtime penalty on large datasets. Consider using a Hash Set or optimized lookup.`;
                 list.appendChild(el1);
             } else {
                 const el1 = document.createElement('div');
                 el1.className = 'p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold rounded-xl border border-emerald-500/20';
-                el1.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Optimal Loop Structure:</strong> No quadratic loop nesting detected. Execution pattern is clean.`;
+                el1.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i><strong>Optimal Loop Structure:</strong> No quadratic loop nesting detected. Execution pattern is clean and efficient.`;
                 list.appendChild(el1);
             }
 
             if (hashSetMatches > 0) {
                 const el2 = document.createElement('div');
                 el2.className = 'p-3 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-bold rounded-xl border border-cyan-500/20';
-                el2.innerHTML = `<i class="fa-solid fa-memory mr-2"></i><strong>Space-Time Tradeoff:</strong> Hash Set / Object allocation detected. Sacrifices auxiliary memory O(N) to achieve fast O(1) key lookups.`;
+                el2.innerHTML = `<i class="fa-solid fa-memory mr-2"></i><strong>Space-Time Tradeoff:</strong> Hash Set / Map allocation detected. Sacrifices auxiliary memory O(N) to achieve fast O(1) key lookups.`;
                 list.appendChild(el2);
             }
 
@@ -427,14 +514,119 @@ function findTwoSum(arr, target) {
             }
         }
 
-        function shareCodeToWhatsApp() {
-            const rawText = `I audited my code's time complexity (${currentBigO}) offline using NextHire Matrix! Check it out: https://www.nexthirematrix.com/code-inspector.html`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(rawText)}`, '_blank');
+        // Flex Card Modal Logic
+        function openCodeFlexModal() {
+            updateCodeFlexPreview();
+            document.getElementById('codeFlexModal').classList.remove('hidden');
         }
 
-        function shareCodeToLinkedIn() {
-            const targetUrl = encodeURIComponent("https://www.nexthirematrix.com/code-inspector.html");
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${targetUrl}`, '_blank');
+        function updateCodeFlexPreview() {
+            const devName = document.getElementById('flexDeveloperName').value.trim();
+            document.getElementById('flexPreviewDevName').innerText = devName ? `${devName}'s Algorithm Audit` : 'Algorithm Audit';
+            document.getElementById('flexCardBigOMetric').innerText = `Time: ${currentBigO} • Space: ${currentSpaceO}`;
+        }
+
+        function downloadCodeFlexPNG() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 900;
+            canvas.height = 480;
+            const ctx = canvas.getContext('2d');
+
+            const grad = ctx.createLinearGradient(0, 0, 900, 480);
+            grad.addColorStop(0, '#020617');
+            grad.addColorStop(0.55, '#0e7490');
+            grad.addColorStop(1, '#312e81');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 900, 480);
+
+            ctx.strokeStyle = '#06b6d4';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(20, 20, 860, 440);
+
+            const titleText = document.getElementById('flexPreviewDevName').innerText;
+            const metricText = document.getElementById('flexCardBigOMetric').innerText;
+
+            ctx.fillStyle = '#67e8f9';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.fillText('NEXTHIRE MATRIX • AST CODE INSPECTOR', 55, 80);
+
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.fillText(titleText.toUpperCase(), 55, 165);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '900 42px sans-serif';
+            ctx.fillText(metricText, 55, 235);
+
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.fillText('Optimized Algorithm Complexity Score', 55, 295);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = 'bold 22px sans-serif';
+            ctx.fillText('100% In-Browser RAM   |   nexthirematrix.com', 55, 410);
+
+            const link = document.createElement('a');
+            link.download = 'NextHire-Matrix-BigO-ScoreCard.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function getCodeShareMessage() {
+            const devName = document.getElementById('flexDeveloperName').value.trim();
+            const prefix = devName ? `${devName}'s Algorithm Audit` : `My Code Big-O Complexity`;
+            return `${prefix}: Time ${currentBigO}, Space ${currentSpaceO}! Audited offline via NextHire Matrix Code Inspector: https://www.nexthirematrix.com/code-inspector.html`;
+        }
+
+        function copyCodeFlexPost(btn) {
+            const post = getCodeShareMessage();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(post);
+                const old = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = old; }, 2000);
+            }
+        }
+
+        function copyResultText(elId, btn) {
+            const text = document.getElementById(elId).innerText.trim();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+                const oldHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = oldHtml; }, 1800);
+            }
+        }
+
+        function shareScoreDirect(platform, elId) {
+            const scoreText = document.getElementById(elId).innerText.trim();
+            const shareMsg = `My Code Complexity Analysis (${scoreText}) — Checked on NextHire Matrix: https://www.nexthirematrix.com/code-inspector.html`;
+            openSocialShareWindow(platform, shareMsg);
+        }
+
+        function shareFlexSocial(platform) {
+            openSocialShareWindow(platform, getCodeShareMessage());
+        }
+
+        function openSocialShareWindow(platform, rawText) {
+            const url = encodeURIComponent("https://www.nexthirematrix.com/code-inspector.html");
+            const text = encodeURIComponent(rawText);
+            if (platform === 'whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+            else if (platform === 'telegram') window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+            else if (platform === 'facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            else if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+            else if (platform === 'instagram') {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(rawText);
+                    alert("Score caption copied! Paste it on your Instagram Story or Bio.");
+                }
+                window.open("https://www.instagram.com/", "_blank");
+            }
+        }
+
+        function sharePlatform(platform) {
+            openSocialShareWindow(platform, "Audit algorithm time complexity and detect code bugs instantly offline on NextHire Matrix: https://www.nexthirematrix.com/code-inspector.html");
         }
     </script>
 </body>

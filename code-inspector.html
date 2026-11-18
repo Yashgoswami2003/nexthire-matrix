@@ -11,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <meta name="description" content="100% Client-Side AST Code Bug & Big-O Complexity Inspector. Analyze code syntax errors, memory leaks, and algorithmic time complexity offline in local browser RAM.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.nexthirematrix.com/code-inspector.html">
-    <meta property="og:title" content="Big-O Code Complexity Inspector - NextHire Matrix">
-    <meta property="og:description" content="Inspect JavaScript/Python/C++ code time complexity and memory efficiency locally in browser RAM.">
+    
+    
+    
+    
 
     <!-- Microsoft Clarity Analytics Tag Integration -->
     <script type="text/javascript">
@@ -58,7 +58,15 @@
         
         .glow-blob { position: absolute; filter: blur(100px); opacity: 0.2; z-index: -1; }
     </style>
+    <path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23fbbf24' d='M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z'/></svg>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/">
+    <meta property="og:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
+    <meta property="og:description" content="Check ATS resume scores, calculate in-hand salary, audit resume format, and practice interview answers instantly in your browser with zero sign-up.">
+    <meta property="og:image" content="https://www.nexthirematrix.com/favicon.ico">
+
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
@@ -272,16 +280,29 @@ function findTwoSum(arr, target) {
     </div>
 
     <!-- Footer Section -->
-    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-3">
-            <div class="flex justify-center items-center gap-6 font-bold">
-                <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
-                <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Disclaimer</a>
-            </div>
-            <p>© 2026 NextHire Matrix. Engineered by <a href="https://www.linkedin.com/in/yash-raj-goswami-396684306" target="_blank" class="text-emerald-600 dark:text-emerald-400 hover:underline font-bold">Yash Raj Goswami</a>.</p>
+    <footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 border-t py-7 mt-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+        <div class="flex justify-center items-center gap-3">
+            <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+            <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+            <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+            <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+            <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
         </div>
-    </footer>
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+            <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+        </div>
+        <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
+    </div>
+</footer>
 
     <!-- Local Client-Side AST Analysis Script -->
     <script>

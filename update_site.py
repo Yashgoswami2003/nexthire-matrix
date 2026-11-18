@@ -1,7 +1,7 @@
 import os
 import re
 
-# 1. Uniform Header Template (With yellow thunderbolt logo on the left)
+# 1. Standardized Uniform Header (Logo with yellow thunderbolt + 15 tools sub-nav)
 NEW_HEADER = """<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-2">
         <a href="index.html" class="text-lg sm:text-xl font-black gradient-text flex items-center gap-2 shrink-0">
@@ -43,22 +43,65 @@ NEW_HEADER = """<header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md
     </div>
 </header>"""
 
-# 2. SVG Favicon code to inject into <head>
-FAVICON_TAG = '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><path fill=\'%23fbbf24\' d=\'M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z\'/></svg>">'
+# 2. Standardized Uniform Footer
+NEW_FOOTER = """<footer class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 border-t py-7 mt-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500 dark:text-slate-400 font-medium space-y-4">
+        <div class="flex justify-center items-center gap-3">
+            <button onclick="sharePlatform('instagram')" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-base"></i></button>
+            <button onclick="sharePlatform('facebook')" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></button>
+            <button onclick="sharePlatform('telegram')" aria-label="Telegram" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-telegram text-base"></i></button>
+            <button onclick="sharePlatform('whatsapp')" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-base"></i></button>
+            <button onclick="sharePlatform('linkedin')" aria-label="LinkedIn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-700 hover:text-white text-slate-600 dark:text-slate-300 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></button>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-bold text-slate-700 dark:text-slate-300">
+            <a href="index.html" class="hover:text-emerald-500 transition">Home</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="about.html" class="hover:text-emerald-500 transition">About Us</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="privacy.html" class="hover:text-emerald-500 transition">Privacy Policy</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="terms.html" class="hover:text-emerald-500 transition">Terms & Usage Guide</a>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <a href="mailto:Nexthirematrix@gmail.com" class="hover:text-emerald-500 transition"><i class="fa-solid fa-envelope mr-1 text-emerald-500"></i>Nexthirematrix@gmail.com</a>
+        </div>
+        <p>© 2026 NextHire Matrix. Smart Career, Resume & Interview Intelligence Suite.</p>
+    </div>
+</footer>"""
+
+# 3. Exact Yellow Thunderbolt SVG Favicon (matching the website logo)
+LIGHTNING_FAVICON = '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><path fill=\'%23fbbf24\' d=\'M472.1 149.2c12.4-14.7 9.8-36.8-5.8-48.4-15.6-11.6-37.7-9.8-51.4 3.9L256 226.3 97.1 104.7c-13.7-13.7-35.8-15.5-51.4-3.9-15.6 11.6-18.2 33.7-5.8 48.4L208.6 384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-80.6l198.7-234.8z\'/></svg>">'
+
+# 4. Open Graph Meta Tags for Social Sharing (WhatsApp, LinkedIn, Telegram preview)
+OG_TAGS = """
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nexthirematrix.com/">
+    <meta property="og:title" content="NextHire Matrix — 15 Privacy-First Career & Resume Utilities">
+    <meta property="og:description" content="Check ATS resume scores, calculate in-hand salary, audit resume format, and practice interview answers instantly in your browser with zero sign-up.">
+    <meta property="og:image" content="https://www.nexthirematrix.com/favicon.ico">
+"""
 
 for filename in os.listdir('.'):
     if filename.endswith('.html'):
         with open(filename, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Update header across all files
+        # Uniform Header & Footer replacement
         content = re.sub(r'<header.*?</header>', NEW_HEADER, content, flags=re.DOTALL)
+        content = re.sub(r'<footer.*?</footer>', NEW_FOOTER, content, flags=re.DOTALL)
         
-        # Add favicon if not already present in <head>
-        if 'rel="icon"' not in content and '</head>' in content:
-            content = content.replace('</head>', f'    {FAVICON_TAG}\n</head>')
+        # Remove old favicons or icons to prevent duplicates
+        content = re.sub(r'<link[^>]*rel=["\']icon["\'][^>]*>', '', content, flags=re.IGNORECASE)
+        content = re.sub(r'<link[^>]*rel=["\']shortcut icon["\'][^>]*>', '', content, flags=re.DOTALL)
         
-        # If file is NOT index.html, remove the community feedback / rating section
+        # Remove old og tags if present
+        content = re.sub(r'<meta property="og:[^>]*>', '', content, flags=re.IGNORECASE)
+        
+        # Inject exact lightning favicon and OG sharing tags into <head>
+        if '</head>' in content:
+            head_injection = f"    {LIGHTNING_FAVICON}\n{OG_TAGS}\n</head>"
+            content = content.replace('</head>', head_injection)
+        
+        # Keep reviews/ratings ONLY on index.html, remove from all other pages
         if filename != 'index.html':
             content = re.sub(r'<section\s+id="community-feedback"[^>]*>.*?</section>', '', content, flags=re.DOTALL)
             content = re.sub(r'<a\s+href="#community-feedback"[^>]*>.*?</a>', '', content, flags=re.DOTALL)
@@ -66,4 +109,4 @@ for filename in os.listdir('.'):
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(content)
 
-print("Success! All HTML files updated. Favicon added, uniform navbar applied, and rating section kept only on index.html.")
+print("All HTML files successfully updated with exact lightning favicon and Open Graph sharing tags!")

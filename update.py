@@ -26,11 +26,23 @@ social_tags_to_inject = """
     <meta name="twitter:image" content="https://www.nexthirematrix.com/og-banner.png">
 """
 
-# Adsterra Social Bar Code
+# Delayed Adsterra Social Bar Code (page load aur features slow na ho isliye)
 social_bar_code = """
-<!-- Adsterra Social Bar -->
-<script async="async" data-cfasync="false" src="https://bauval.org/21/2742cb61e9d3a6e44aff4c65acea4487"></script>
+<!-- Adsterra Social Bar (Delayed Non-Blocking Load) -->
 <div id="container-2742cb61e9d3a6e44aff4c65acea4487"></div>
+<script type="text/javascript">
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            if (!document.querySelector('script[src*="bauval.org/21/2742cb61e9d3a6e44aff4c65acea4487"]')) {
+                var s = document.createElement('script');
+                s.async = true;
+                s.setAttribute('data-cfasync', 'false');
+                s.src = 'https://bauval.org/21/2742cb61e9d3a6e44aff4c65acea4487';
+                document.body.appendChild(s);
+            }
+        }, 2500);
+    });
+</script>
 """
 
 for filename in html_files:
@@ -66,14 +78,19 @@ for filename in html_files:
         if 'mb-2">Share NextHire Matrix</p>' not in content:
             content = content.replace(target_pattern, replacement, 1)
 
-    # 5. Adsterra Social Bar ko inject karo (agar pehle se nahi hai toh)
-    if 'bauval.org/21/2742cb61e9d3a6e44aff4c65acea4487' not in content:
-        if '</body>' in content:
-            content = content.replace('</body>', f'{social_bar_code}\n</body>')
+    # 5. Purana direct Adsterra script block agar hai toh usko delayed block se replace/inject karo
+    content = re.sub(
+        r'<!-- Adsterra Social Bar -->.*?<div id="container-2742cb61e9d3a6e44aff4c65acea4487"></div>',
+        '',
+        content,
+        flags=re.DOTALL
+    )
+    if 'container-2742cb61e9d3a6e44aff4c65acea4487' not in content and '</body>' in content:
+        content = content.replace('</body>', f'{social_bar_code}\n</body>')
 
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
         
-    print(f"Successfully updated with SEO, responsive rules, footer heading, and Social Bar: {filename}")
+    print(f"Successfully updated with fast non-blocking Social Bar: {filename}")
 
-print("\n🚀 All pages successfully updated and monetized with Adsterra Social Bar!")
+print("\n🚀 All pages successfully updated without slowing down page load or features!")
